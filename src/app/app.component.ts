@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'uiSPA';
-  Creator='M.Reza Hajjar'
+  Creator='M.Reza Hajjar';
 }

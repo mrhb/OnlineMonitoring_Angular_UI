@@ -13,13 +13,15 @@ import { MatListModule } from '@angular/material/list';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     FirstPageComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
