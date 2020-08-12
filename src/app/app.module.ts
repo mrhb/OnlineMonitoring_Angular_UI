@@ -10,6 +10,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+
+
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
@@ -21,7 +26,7 @@ import { SummaryComponent } from './summary/summary.component';
     NavMenuComponent,
     FirstPageComponent,
     DashboardPageComponent,
-    SummaryComponent
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,9 @@ import { SummaryComponent } from './summary/summary.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
