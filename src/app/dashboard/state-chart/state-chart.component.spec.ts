@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StateGraphComponent } from './state-graph.component';
+import { StateChartComponent } from './state-chart.component';
 
-describe('StateGraphComponent', () => {
-  let component: StateGraphComponent;
-  let fixture: ComponentFixture<StateGraphComponent>;
+describe('StateChartComponent', () => {
+  let component: StateChartComponent;
+  let fixture: ComponentFixture<StateChartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StateGraphComponent ]
+      declarations: [ StateChartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StateGraphComponent);
+    fixture = TestBed.createComponent(StateChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

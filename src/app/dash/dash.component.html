@@ -1,29 +1,43 @@
-<div class="grid-container" >
+
+<div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="3" rowHeight="300px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows"[rows]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
-      </mat-card>      
-    </mat-grid-tile>
-
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="300px">
+      <!--Summary-->
+      <mat-grid-tile *ngFor="let i of [1]" [colspan]="( cardLayout | async )?.summery.cols"
+      [rowspan]="( cardLayout | async )?.summery.rows">
+      <app-card [title]="( cardLayout | async )?.summery.title"><dashboard-summary></dashboard-summary></app-card>
+      </mat-grid-tile>
     
+      <!--Alarm-->
+      <mat-grid-tile  [colspan]="( cardLayout | async )?.alarm.cols"
+      [rowspan]="( cardLayout | async )?.alarm.rows">
+      <app-card [title]="( cardLayout | async )?.alarm.title"><div>Alarms Comes here</div></app-card>
+      </mat-grid-tile>
 
-   
-  
+      <!--power-->
+      <mat-grid-tile  [colspan]="( cardLayout | async )?.power.cols"
+      [rowspan]="( cardLayout | async )?.power.rows">
+      <app-card [title]="( cardLayout | async )?.power.title"><div>Power Comes here</div></app-card>
+      </mat-grid-tile>
+
+      <!--Service-->
+      <mat-grid-tile  [colspan]="( cardLayout | async )?.service.cols"
+      [rowspan]="( cardLayout | async )?.service.rows">
+      <app-card [title]="( cardLayout | async )?.service.title"><div>services Comes here</div></app-card>
+      </mat-grid-tile>    
+      
+      <!--comments-->
+      <mat-grid-tile [colspan]="( cardLayout | async )?.comments.cols"
+      [rowspan]="( cardLayout | async )?.comments.rows">
+      <app-card [title]="( cardLayout | async )?.comments.title"><div>comments Comes here</div></app-card>
+      </mat-grid-tile> 
+
+      <!--state-->
+      <mat-grid-tile  [colspan]="( cardLayout | async )?.state.cols"
+      [rowspan]="( cardLayout | async )?.state.rows">
+      <app-card [title]="( cardLayout | async )?.state.title"><app-state-chart></app-state-chart></app-card>
+      </mat-grid-tile>        
+    
   </mat-grid-list>
+
 </div>

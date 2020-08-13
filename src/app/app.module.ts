@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ChartsModule } from 'ng2-charts';
+
 
 
 
@@ -23,9 +25,10 @@ import { SummaryComponent } from './dashboard/summary/summary.component';
 import { PowerGraphComponent } from './dashboard/power-graph/power-graph.component';
 import { ServiceFilterComponent } from './dashboard/service-filter/service-filter.component';
 import { ActiveCommentsComponent } from './dashboard/active-comments/active-comments.component';
-import { StateGraphComponent } from './dashboard/state-graph/state-graph.component';
 import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { CardComponent } from './dashboard/card/card.component';
+import { StateChartComponent } from './dashboard/state-chart/state-chart.component';
 
 
 @NgModule({
@@ -38,8 +41,9 @@ import { MatMenuModule } from '@angular/material/menu';
     PowerGraphComponent,
     ServiceFilterComponent,
     ActiveCommentsComponent,
-    StateGraphComponent,
     DashComponent,
+    CardComponent,
+    StateChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     MatCardModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    ChartsModule,
       ],
   providers: [],
   bootstrap: [AppComponent],
