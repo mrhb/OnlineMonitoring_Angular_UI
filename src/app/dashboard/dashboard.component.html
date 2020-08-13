@@ -1,0 +1,33 @@
+<h1>dashboard</h1>
+
+  <mat-grid-list cols = "3">
+
+    <!-- <div class='internalMatGrid'> -->
+        <mat-grid-tile
+        [colspan] = "2"
+            [rowspan] = "1">
+            <dashboard-summary ></dashboard-summary>
+        </mat-grid-tile>
+
+        <mat-grid-tile 
+[colspan] = "1"
+[rowspan] = "2"
+style="
+background-color:cornflowerblue;">
+Alarms
+</mat-grid-tile>
+
+
+        <mat-grid-tile><app-power-graph></app-power-graph></mat-grid-tile>
+        <mat-grid-tile><app-active-comments></app-active-comments></mat-grid-tile>
+        <mat-grid-tile><app-service-filter></app-service-filter></mat-grid-tile>
+        <mat-grid-tile><app-state-graph></app-state-graph></mat-grid-tile>
+    
+<!-- </div> -->
+
+
+
+
+
+    
+ </mat-grid-list>

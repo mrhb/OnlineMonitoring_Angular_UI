@@ -15,18 +15,27 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
+
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FirstPageComponent } from './first-page/first-page.component';
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { SummaryComponent } from './summary/summary.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SummaryComponent } from './dashboard/summary/summary.component';
+import { PowerGraphComponent } from './dashboard/power-graph/power-graph.component';
+import { ServiceFilterComponent } from './dashboard/service-filter/service-filter.component';
+import { ActiveCommentsComponent } from './dashboard/active-comments/active-comments.component';
+import { StateGraphComponent } from './dashboard/state-graph/state-graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     FirstPageComponent,
-    DashboardPageComponent,
     SummaryComponent,
+    DashboardComponent,
+    PowerGraphComponent,
+    ServiceFilterComponent,
+    ActiveCommentsComponent,
+    StateGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,7 @@ import { SummaryComponent } from './summary/summary.component';
     MatListModule,
     MatCardModule,
     MatGridListModule
-  ],
+      ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
