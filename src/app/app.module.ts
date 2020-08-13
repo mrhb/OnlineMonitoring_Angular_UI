@@ -24,6 +24,9 @@ import { PowerGraphComponent } from './dashboard/power-graph/power-graph.compone
 import { ServiceFilterComponent } from './dashboard/service-filter/service-filter.component';
 import { ActiveCommentsComponent } from './dashboard/active-comments/active-comments.component';
 import { StateGraphComponent } from './dashboard/state-graph/state-graph.component';
+import { DashComponent } from './dash/dash.component';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { StateGraphComponent } from './dashboard/state-graph/state-graph.compone
     ServiceFilterComponent,
     ActiveCommentsComponent,
     StateGraphComponent,
+    DashComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { StateGraphComponent } from './dashboard/state-graph/state-graph.compone
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatMenuModule
       ],
   providers: [],
   bootstrap: [AppComponent],

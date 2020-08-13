@@ -9,6 +9,7 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+  menuItems = ['dashboard','dash','first-page', 'Users'];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
