@@ -29,7 +29,7 @@
       <!--comments-->
       <mat-grid-tile [colspan]="( cardLayout | async )?.comments.cols"
       [rowspan]="( cardLayout | async )?.comments.rows">
-      <app-card [title]="( cardLayout | async )?.comments.title"><div>comments Comes here</div></app-card>
+      <app-card [title]="( cardLayout | async )?.comments.title"><app-comments></app-comments></app-card>
       </mat-grid-tile> 
 
       <!--state-->

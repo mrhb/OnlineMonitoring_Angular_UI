@@ -1,0 +1,8 @@
+.full-width-table {
+  width: 100%;
+}
+
+.small-table{
+  overflow-y: scroll ;
+  height: 200px;
+}

@@ -12,7 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
+
 import { ChartsModule } from 'ng2-charts';
+
 
 
 
@@ -24,12 +27,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SummaryComponent } from './dashboard/summary/summary.component';
 import { PowerGraphComponent } from './dashboard/power-graph/power-graph.component';
 import { ServiceFilterComponent } from './dashboard/service-filter/service-filter.component';
-import { ActiveCommentsComponent } from './dashboard/active-comments/active-comments.component';
 import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './dashboard/card/card.component';
 import { StateChartComponent } from './dashboard/state-chart/state-chart.component';
 import { ProgressBarComponent } from './dashboard/power-graph/progress-bar/progress-bar.component';
+import { CommentsComponent } from './dashboard/comments/comments.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -41,11 +46,11 @@ import { ProgressBarComponent } from './dashboard/power-graph/progress-bar/progr
     DashboardComponent,
     PowerGraphComponent,
     ServiceFilterComponent,
-    ActiveCommentsComponent,
     DashComponent,
     CardComponent,
     StateChartComponent,
     ProgressBarComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,9 @@ import { ProgressBarComponent } from './dashboard/power-graph/progress-bar/progr
     MatGridListModule,
     MatMenuModule,
     ChartsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
       ],
   providers: [],
   bootstrap: [AppComponent],
