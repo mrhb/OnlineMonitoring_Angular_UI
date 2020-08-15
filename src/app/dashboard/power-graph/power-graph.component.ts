@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-power-graph',
@@ -6,22 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./power-graph.component.sass']
 })
 export class PowerGraphComponent implements OnInit {
-  
   constructor() { }
-  step = 0;
+  unitPower=[
+    {unitName: 'unit 1',power: 33},
+    {unitName: 'unit 2_ Man',power: 66},
+    {unitName: 'unit 3',power: 0},
+    {unitName: 'unit 4',power: 33},
+    {unitName: 'unit 5',power: 80},
+    {unitName: 'unit 5',power: 50},
+    {unitName: 'unit 5',power: 50},
+    {unitName: 'unit 5',power: 0},
+  ];
 
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
+  
   ngOnInit(): void {
+   
   }
 
 }

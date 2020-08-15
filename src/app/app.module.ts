@@ -29,6 +29,7 @@ import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './dashboard/card/card.component';
 import { StateChartComponent } from './dashboard/state-chart/state-chart.component';
+import { ProgressBarComponent } from './dashboard/power-graph/progress-bar/progress-bar.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { StateChartComponent } from './dashboard/state-chart/state-chart.compone
     DashComponent,
     CardComponent,
     StateChartComponent,
+    ProgressBarComponent,
   ],
   imports: [
     BrowserModule,

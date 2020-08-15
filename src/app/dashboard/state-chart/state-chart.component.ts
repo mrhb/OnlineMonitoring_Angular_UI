@@ -18,7 +18,7 @@ export class StateChartComponent implements OnInit {
   public barChartPlugins = [];  
 
   public barChartData: ChartDataSets[] = [
-    { data: [2,1,1,2,0,0,15,], label: 'Series B' ,backgroundColor :'Teal' }
+    { data: [2,1,1,2,0,0,15], label: 'Series B' ,backgroundColor :'Teal' }
   ];
 
   constructor() { }

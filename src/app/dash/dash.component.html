@@ -17,7 +17,7 @@
       <!--power-->
       <mat-grid-tile  [colspan]="( cardLayout | async )?.power.cols"
       [rowspan]="( cardLayout | async )?.power.rows">
-      <app-card [title]="( cardLayout | async )?.power.title"><div>Power Comes here</div></app-card>
+      <app-card [title]="( cardLayout | async )?.power.title"><app-power-graph></app-power-graph></app-card>
       </mat-grid-tile>
 
       <!--Service-->
