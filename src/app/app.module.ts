@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -26,7 +28,6 @@ import { FirstPageComponent } from './first-page/first-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SummaryComponent } from './dashboard/summary/summary.component';
 import { PowerGraphComponent } from './dashboard/power-graph/power-graph.component';
-import { ServiceFilterComponent } from './dashboard/service-filter/service-filter.component';
 import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './dashboard/card/card.component';
@@ -35,6 +36,7 @@ import { ProgressBarComponent } from './dashboard/power-graph/progress-bar/progr
 import { CommentsComponent } from './dashboard/comments/comments.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ServicesComponent } from './dashboard/services/services.component';
 
 
 @NgModule({
@@ -45,12 +47,12 @@ import { MatSortModule } from '@angular/material/sort';
     SummaryComponent,
     DashboardComponent,
     PowerGraphComponent,
-    ServiceFilterComponent,
     DashComponent,
     CardComponent,
     StateChartComponent,
     ProgressBarComponent,
     CommentsComponent,
+    ServicesComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { MatSortModule } from '@angular/material/sort';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,

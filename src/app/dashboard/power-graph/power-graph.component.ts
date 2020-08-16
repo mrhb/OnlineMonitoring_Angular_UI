@@ -10,13 +10,13 @@ export class PowerGraphComponent implements OnInit {
   constructor() { }
   unitPower=[
     {unitName: 'unit 1',power: 33},
-    {unitName: 'unit 2_ Man',power: 66},
+    {unitName: 'unit 2',power: 66},
     {unitName: 'unit 3',power: 0},
     {unitName: 'unit 4',power: 33},
     {unitName: 'unit 5',power: 80},
-    {unitName: 'unit 5',power: 50},
-    {unitName: 'unit 5',power: 50},
-    {unitName: 'unit 5',power: 0},
+    {unitName: 'unit 6',power: 50},
+    {unitName: 'unit 7',power: 50},
+    {unitName: 'unit 8',power: 0},
   ];
 
   

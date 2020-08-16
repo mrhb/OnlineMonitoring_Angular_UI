@@ -23,7 +23,7 @@
       <!--Service-->
       <mat-grid-tile  [colspan]="( cardLayout | async )?.service.cols"
       [rowspan]="( cardLayout | async )?.service.rows">
-      <app-card [title]="( cardLayout | async )?.service.title"><div>services Comes here</div></app-card>
+      <app-card [title]="( cardLayout | async )?.service.title"><app-services></app-services></app-card>
       </mat-grid-tile>    
       
       <!--comments-->

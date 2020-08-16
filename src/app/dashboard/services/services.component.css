@@ -1,0 +1,48 @@
+#main {
+  height: 50px;
+ 
+  display: flex;
+  justify-content: space-between;
+}
+
+button{
+  background-color:rgb(51, 51, 51);
+  color: aliceblue;
+  text-align: center;
+
+}
+button p{ margin: 0;}
+
+button:focus{
+  background-color:rgb(201, 18, 18);
+  border: none;
+}
+
+#main button {
+  width: 24.7%;
+  height: 50px;
+  
+}
+
+
+.full-width-table {
+  width: 100%;
+}
+
+.small-table{
+  overflow-y: scroll ;
+  max-height: 175px;
+  min-height: 175px;
+}
+
+.left-align {
+  text-align: left;
+}
+.red-underline {
+  color: red;
+  text-decoration: underline;
+}
+
+.RightAlign{
+  text-align: right;
+}
