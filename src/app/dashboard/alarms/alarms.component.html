@@ -1,25 +1,64 @@
-<div class="mat-elevation-z8 small-table">
-  <table mat-table class="full-width-table" matSort aria-label="Elements">
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+
+  <!-- <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td class="name-column" mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>   -->
+
+  <!-- unitname Column -->
+  <ng-container matColumnDef="unitname">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td class="name-column" mat-cell *matCellDef="let element"> {{element.unitname}} </td>
+  </ng-container>
+    
+  <!-- unitname Column -->
+    <ng-container matColumnDef="alarms">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td class="agreegated-alarms" mat-cell *matCellDef="let element">  
+        <div  *ngFor="let alarm of element.alarms">
+          <span class="material-icons {{alarm.Icon}}">warning</span>
+        </div>
+      </td>
+    </ng-container>
+
     <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
-    </ng-container>
-
-    <!-- Name Column -->
+    <!-- <ng-container matColumnDef="unitname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit Name</th>
+      <td  class="left-align red-underline" mat-cell *matCellDef="let row">{{row.unitname}}</td>
+    </ng-container> -->
+<!-- 
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
-    </ng-container>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Comment</th>
+      <td class="left-align "  mat-cell *matCellDef="let row">{{row.name}} <fa-icon [icon]="filmIcon"></fa-icon></td>
+    </ng-container> -->
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
 
-  <mat-paginator #paginator
-      [length]="dataSource?.data.length"
-      [pageIndex]="0"
-      [pageSize]="50"
-      [pageSizeOptions]="[25, 50, 100, 250]">
-  </mat-paginator>
-</div>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div>
+        
+            <div class="unit-alarmssss  {{alarm.Icon}}" *ngFor="let alarm of element.alarms">
+              <span class="material-icons {{alarm.Icon}}">warning</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{alarm.name }}
+            </div>
+          
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
+<span class="material-icons">delete_forever</span><span>Clear All Alarms</span>
