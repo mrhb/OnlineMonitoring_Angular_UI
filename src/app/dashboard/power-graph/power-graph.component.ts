@@ -16,7 +16,9 @@ export class PowerGraphComponent implements OnInit {
     {unitName: 'unit 5',power: 80},
     {unitName: 'unit 6',power: 50},
     {unitName: 'unit 7',power: 50},
-    {unitName: 'unit 8',power: 0},
+    {unitName: 'unit 8',power: 0}, 
+    {unitName: 'unit 9',power: 47},
+    {unitName: 'unit 10',power: 90},
   ];
 
   

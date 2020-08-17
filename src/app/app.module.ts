@@ -37,6 +37,7 @@ import { CommentsComponent } from './dashboard/comments/comments.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ServicesComponent } from './dashboard/services/services.component';
+import { AlarmsComponent } from './dashboard/alarms/alarms.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { ServicesComponent } from './dashboard/services/services.component';
     ProgressBarComponent,
     CommentsComponent,
     ServicesComponent,
+    AlarmsComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@
       <!--Alarm-->
       <mat-grid-tile  [colspan]="( cardLayout | async )?.alarm.cols"
       [rowspan]="( cardLayout | async )?.alarm.rows">
-      <app-card [title]="( cardLayout | async )?.alarm.title"><div>Alarms Comes here</div></app-card>
+      <app-card [title]="( cardLayout | async )?.alarm.title"><app-alarms></app-alarms></app-card>
       </mat-grid-tile>
 
       <!--power-->
