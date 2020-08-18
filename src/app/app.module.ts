@@ -28,7 +28,6 @@ import { FirstPageComponent } from './first-page/first-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SummaryComponent } from './dashboard/summary/summary.component';
 import { PowerGraphComponent } from './dashboard/power-graph/power-graph.component';
-import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './dashboard/card/card.component';
 import { StateChartComponent } from './dashboard/state-chart/state-chart.component';
@@ -38,6 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ServicesComponent } from './dashboard/services/services.component';
 import { AlarmsComponent } from './dashboard/alarms/alarms.component';
+import { GroupsComponent } from './dashboard/groups/groups.component';
 
 
 @NgModule({
@@ -48,13 +48,13 @@ import { AlarmsComponent } from './dashboard/alarms/alarms.component';
     SummaryComponent,
     DashboardComponent,
     PowerGraphComponent,
-    DashComponent,
     CardComponent,
     StateChartComponent,
     ProgressBarComponent,
     CommentsComponent,
     ServicesComponent,
     AlarmsComponent,
+    GroupsComponent,
   ],
   imports: [
     BrowserModule,

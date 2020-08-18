@@ -1,28 +1,28 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <!-- <mat-sidenav #drawer class="sidenav" fixedInViewport
   [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
   [mode]="(isHandset$ | async) ? 'over' : 'side'"
   [opened]="(isHandset$ | async) === false">
-<mat-toolbar>TetaPower</mat-toolbar>
+
  
   <mat-nav-list>
     <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item"> {{item | titlecase}} </a>
 </mat-nav-list>
 
-</mat-sidenav>
+</mat-sidenav> -->
   <mat-sidenav-content>
     <mat-toolbar class="secondary-toolbar" color="primary" >
-      <button
+      <!-- <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+      </button> -->
        <span class="menu-spacer"></span>
-        <a mat-button routerLink="/first-page"> <mat-icon>apps</mat-icon>Dashboard </a>
-        <a mat-button routerLink="/second-page"> <mat-icon>trending_up</mat-icon> Trends </a>
+        <a mat-button routerLink="/dashboard"> <mat-icon>apps</mat-icon>Dashboard </a>
+        <a mat-button routerLink="/first-page"> <mat-icon>trending_up</mat-icon> Trends </a>
         <a mat-button routerLink="/first-page"> <mat-icon>person</mat-icon> Users </a>
     </mat-toolbar>
     <router-outlet></router-outlet>
