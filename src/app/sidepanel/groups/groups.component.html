@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <span>
+                <mat-icon>list</mat-icon>
+                Group List
+            </span>
+                  
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+
+          
+        <div id="main">
+            <button mat-button >
+                <mat-icon>search</mat-icon>
+            </button>
+            <button mat-button >
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <button mat-button >
+                <span class="material-icons material-icons-outlined">
+                    library_add
+                    </span>
+            </button>
+        </div>
+
+
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        
+
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell class="nameCulomn" *matCellDef="let element"><mat-icon>{{element.groupType}}</mat-icon>{{element.name}} </td>
+            </ng-container>
+          
+            <!-- count Column -->
+            <ng-container matColumnDef="count">
+              <th mat-header-cell *matHeaderCellDef> count </th>
+              <td mat-cell class="countCulomn" *matCellDef="let element"> {{element.count}} </td>
+            </ng-container>
+          
+           
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                (click)="selection.toggle(row)">
+            </tr>
+          </table>
+    </mat-card-content>
+</mat-card>

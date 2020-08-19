@@ -58,3 +58,16 @@ button{
   th.mat-sort-header-sorted {
 	color: black;
   }
+
+  .nameCulomn{
+	padding-left: 5px;
+  }
+  .countCulomn{
+	  text-align: center;
+  }
+
+  .mat-cell, .mat-header-cell {
+ 
+	background: rgb(47, 47, 47);
+	color: white;
+}

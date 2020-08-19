@@ -38,8 +38,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { ServicesComponent } from './dashboard/mainpanel/services/services.component';
 import { AlarmsComponent } from './dashboard/mainpanel/alarms/alarms.component';
 import { MainpanelComponent } from './dashboard/mainpanel/mainpanel.component';
-import { SidepanelComponent } from './dashboard/sidepanel/sidepanel.component';
-import { GroupsComponent } from './dashboard/sidepanel/groups/groups.component';
+import { SidepanelComponent } from './sidepanel/sidepanel.component';
+import { GroupsComponent } from './sidepanel/groups/groups.component';
 
 
 @NgModule({
