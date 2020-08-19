@@ -50,13 +50,17 @@ tr.example-detail-row {
 
 .agreegated-alarms{
   display: flex;
-  
-  margin: auto;
-  width: 60%;
+  margin-right: auto;
+  /* margin: auto; */
+  width: 80%;
   
 }
 
 .name-column{
   text-align: left;
+  color: white;
+}
+.closeIcon{
+  margin-left: auto;
   color: white;
 }
