@@ -3,7 +3,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { AlarmsDataSource, AlarmsItem } from './alarms-datasource';
+import { AlarmsItem } from './alarms-datasource';
 
 @Component({
   selector: 'app-alarms',
@@ -38,8 +38,8 @@ export class AlarmsComponent implements  OnInit {
 }
 
 export interface PeriodicElement {
-  unitname: string;
   alarms:{name:string , Icon:string}[];
+  unitname: string;
 }
 
 

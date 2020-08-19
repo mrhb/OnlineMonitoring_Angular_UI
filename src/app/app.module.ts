@@ -26,18 +26,20 @@ import { ChartsModule } from 'ng2-charts';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SummaryComponent } from './dashboard/summary/summary.component';
-import { PowerGraphComponent } from './dashboard/power-graph/power-graph.component';
+import { SummaryComponent } from './dashboard/mainpanel/summary/summary.component';
+import { PowerGraphComponent } from './dashboard/mainpanel/power-graph/power-graph.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { CardComponent } from './dashboard/card/card.component';
-import { StateChartComponent } from './dashboard/state-chart/state-chart.component';
+import { CardComponent } from './dashboard/mainpanel/card/card.component';
+import { StateChartComponent } from './dashboard/mainpanel/state-chart/state-chart.component';
 import { ProgressBarComponent } from './dashboard/power-graph/progress-bar/progress-bar.component';
-import { CommentsComponent } from './dashboard/comments/comments.component';
+import { CommentsComponent } from './dashboard/mainpanel/comments/comments.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { ServicesComponent } from './dashboard/services/services.component';
-import { AlarmsComponent } from './dashboard/alarms/alarms.component';
-import { GroupsComponent } from './dashboard/groups/groups.component';
+import { ServicesComponent } from './dashboard/mainpanel/services/services.component';
+import { AlarmsComponent } from './dashboard/mainpanel/alarms/alarms.component';
+import { MainpanelComponent } from './dashboard/mainpanel/mainpanel.component';
+import { SidepanelComponent } from './dashboard/sidepanel/sidepanel.component';
+import { GroupsComponent } from './dashboard/sidepanel/groups/groups.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { GroupsComponent } from './dashboard/groups/groups.component';
     CommentsComponent,
     ServicesComponent,
     AlarmsComponent,
+    MainpanelComponent,
+    SidepanelComponent,
     GroupsComponent,
   ],
   imports: [

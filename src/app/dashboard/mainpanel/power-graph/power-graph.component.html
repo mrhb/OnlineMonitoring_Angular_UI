@@ -1,0 +1,25 @@
+<div class="container">
+<table >
+    <tr>
+        <th class="Names-culomn title">Unit Names</th>
+        <th class="progress-culomn title">Progress</th>        
+      </tr>
+        
+    <tr *ngFor="let item of unitPower">
+        <td class="title">
+            {{item .unitName}}
+        </td>
+        <td>
+           <app-progress-bar [progress]=item.power [total]=100></app-progress-bar>
+        </td>
+    </tr>
+                
+
+
+    
+</table>
+</div>
+
+
+
+

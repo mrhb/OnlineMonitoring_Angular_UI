@@ -1,21 +1,10 @@
-.grid-container {
-  margin: 20px;
+mat-toolbar{
+    height: 40px;
 }
-
-.dashboard-card {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
+mat-button{
+    float: left;
 }
-
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-
-.dashboard-card-content {
-  text-align: center;
-}
+h2 {
+    float: left;
+    margin: 0 0 0 1.25rem;
+  }
