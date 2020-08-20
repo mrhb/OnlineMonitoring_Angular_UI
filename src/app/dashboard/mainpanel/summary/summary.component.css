@@ -27,16 +27,43 @@ span {
   border: 1px solid rgb(212, 212, 212);
 }
 .row2,.row3{
-   height:37px;
+   height:54px;
+   padding: 10px;
    display: flex;
    margin: 1em;
   }
   
-  .title
+  .title ,.value
   {
     vertical-align: middle;
+    padding-top: 5px;
   }
 
 .value {
   margin-left: auto;
+}
+.material-icons{
+  padding-right:5px ;
+}
+
+.Sutdown{
+  color: #d50000;
+}
+.Alarm  {
+  color: #FF8000;
+}
+.Warnig {
+  color: #FBC02D;
+}
+.ECU     {
+  color: #00acec;
+}
+.Sensor{
+  color: #424242;
+}
+.NoCom  {
+  color: #934d11;
+}
+.Disabled{
+  color: #999999;
 }
