@@ -47,7 +47,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     unitname: 'unit 1',
     alarms:[
-      {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'alarm'}
+      {name:'*WrnServiceTime',Icon:'sutdown'},{name:'*Emergency stop', Icon:'Sensor'}
     ]
   },
   {
@@ -59,25 +59,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     unitname: 'unit 3',
     alarms:[
-          {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Dongle Incomp', Icon:'warning'}
+          {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Dongle Incomp', Icon:'warning'},
+          {name:'*WrnServiceTime',Icon:'ECU'},
         ]
   },
   {
     unitname: 'unit 4',
     alarms:[
-          {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
+          {name:'*WrnServiceTime',Icon:'sutdown'},{name:'*Emergency stop', Icon:'warning'}
         ]
   },
   {
     unitname: 'unit 5',
     alarms:[
-          {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
+          {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'sutdown'}
         ]
   },
   {
     unitname: 'unit 6',
     alarms:[
-          {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
+          {name:'*WrnServiceTime',Icon:'warning'},{name:'*Emergency stop', Icon:'warning'}
         ]
   },
   {

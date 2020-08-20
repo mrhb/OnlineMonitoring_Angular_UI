@@ -7,6 +7,8 @@
     <td class="name-column" mat-cell *matCellDef="let element"> {{element[column]}} </td>
   </ng-container>   -->
 
+
+  
   <!-- unitname Column -->
   <ng-container matColumnDef="unitname">
     <th mat-header-cell *matHeaderCellDef></th>
@@ -46,7 +48,11 @@
            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div>        
             <div class="unit-alarmssss  {{alarm.Icon}}" *ngFor="let alarm of element.alarms">
-              <span class="material-icons {{alarm.Icon}}">warning</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{alarm.name }}
+              <span id="detailIcon" class="material-icons {{alarm.Icon}}">warning</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span id="detailIcon" class="{{alarm.Icon}}" >
+                {{alarm.name }}
+              </span>
               
             </div>          
         </div>
