@@ -11,7 +11,7 @@ export interface Tile {
 @Component({
   selector: 'dashboard-summary',
   templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.sass']
+  styleUrls: ['./summary.component.css']
 })
 export class SummaryComponent implements OnInit {
   tiles: Tile[] = [
