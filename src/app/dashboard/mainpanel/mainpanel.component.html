@@ -3,7 +3,9 @@
         <!--Summary-->
         <mat-grid-tile *ngFor="let i of [1]" [colspan]="( cardLayout | async )?.summery.cols"
         [rowspan]="( cardLayout | async )?.summery.rows">
-        <app-card [title]="( cardLayout | async )?.summery.title"><dashboard-summary></dashboard-summary></app-card>
+        <mat-card-content  class="summeryPanel">
+            <dashboard-summary></dashboard-summary>
+        </mat-card-content>
         </mat-grid-tile>
       
         <!--Alarm-->
