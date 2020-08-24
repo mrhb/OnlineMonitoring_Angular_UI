@@ -2,6 +2,8 @@ import { NgModule } from  '@angular/core';
 import { Routes, RouterModule } from  '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -11,6 +13,10 @@ import { UsersComponent } from './users/users.component';
 import { GroupsComponent } from './groups/groups.component';
 import { ManagementComponent } from './management.component';
 import { ActivityComponent } from './activity/activity.component';
+
+import { MatTableModule } from '@angular/material/table'  
+
+
 
 
 const  routes:  Routes  = [
@@ -45,7 +51,9 @@ const  routes:  Routes  = [
     CommonModule,
     MatIconModule,
     MatToolbarModule,
-    
+    MatTableModule,
+    MatCheckboxModule,
+
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
