@@ -42,6 +42,10 @@ import { SidepanelComponent } from './sidepanel/sidepanel.component';
 import { GroupsComponent } from './sidepanel/groups/groups.component';
 
 
+import { ManagementModule } from  './management/management.module';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +81,8 @@ import { GroupsComponent } from './sidepanel/groups/groups.component';
     ChartsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    ManagementModule
       ],
   providers: [],
   bootstrap: [AppComponent],
