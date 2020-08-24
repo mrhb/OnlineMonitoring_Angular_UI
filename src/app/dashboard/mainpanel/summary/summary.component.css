@@ -13,8 +13,17 @@ body {
   border-left:  1px solid rgb(212, 212, 212);
   border-right: 1px solid rgb(212, 212, 212);
   border-bottom:  1px solid rgb(212, 212, 212);
+
+
 }
 
+.cut { 
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 60px; 
+  height: 1.2em; 
+  white-space: nowrap;
+}
 .single-value .value
 {
   display: block;
