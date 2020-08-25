@@ -10,7 +10,8 @@ text-emphasis: initial;
 }
 a{
     color:crimson ;
-    padding-right: 2rem;
+    padding-left: 8px;
+    padding-right: 30px;
     font-size: small;
 
    
