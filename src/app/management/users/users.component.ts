@@ -1,7 +1,9 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { BooleanInput } from '@angular/cdk/coercion';
+import { UsersService } from '../services/users.service';
+
 
 export interface PeriodicElement {
   position:number;
@@ -33,17 +35,35 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
+  users:PeriodicElement[];
   displayedColumns: string[] = ['select', 'position', 'name'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
+  constructor(private UsersService: UsersService) { }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
+  ngOnInit(): void {
+    this.retrieveTutorials();
+  }
+
+  retrieveTutorials(): void {
+    this.UsersService.getAll()
+      .subscribe(
+        data => {
+          this.users = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {

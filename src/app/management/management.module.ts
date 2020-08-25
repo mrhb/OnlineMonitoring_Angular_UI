@@ -3,6 +3,8 @@ import { Routes, RouterModule } from  '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -13,6 +15,7 @@ import { UsersComponent } from './users/users.component';
 import { GroupsComponent } from './groups/groups.component';
 import { ManagementComponent } from './management.component';
 import { ActivityComponent } from './activity/activity.component';
+
 
 import { MatTableModule } from '@angular/material/table'  
 
@@ -53,6 +56,8 @@ const  routes:  Routes  = [
     MatToolbarModule,
     MatTableModule,
     MatCheckboxModule,
+    FormsModule,
+    HttpClientModule,
 
     RouterModule.forChild(routes)
   ],

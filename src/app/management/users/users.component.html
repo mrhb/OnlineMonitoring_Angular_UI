@@ -1,6 +1,6 @@
 
 <div>
-  
+
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -10,7 +10,8 @@
         <mat-checkbox (change)="$event ? masterToggle() : null"
                       [checked]="selection.hasValue() && isAllSelected()"
                       [indeterminate]="selection.hasValue() && !isAllSelected()"
-                      [aria-label]="checkboxLabel()">
+                      [aria-label]="checkboxLabel()"
+                      color="primary">
         </mat-checkbox>
 
      
@@ -19,7 +20,8 @@
         <mat-checkbox (click)="$event.stopPropagation()"
                       (change)="$event ? selection.toggle(row) : null"
                       [checked]="selection.isSelected(row)"
-                      [aria-label]="checkboxLabel(row)" type="checkbox">
+                      [aria-label]="checkboxLabel(row)" type="checkbox"
+                      color="primary">
         </mat-checkbox>
        
       </td>
