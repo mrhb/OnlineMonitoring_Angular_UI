@@ -1,5 +1,90 @@
-<p>units works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()"
+                      color="primary">
+        </mat-checkbox>
+
+     
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)" type="checkbox"
+                      color="primary">
+        </mat-checkbox>
+       
+      </td>
+    </ng-container>
+  
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} 
+    </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- groups Column -->
+    <ng-container matColumnDef="groups">
+      <th mat-header-cell *matHeaderCellDef> groups </th>
+      <td mat-cell *matCellDef="let element"> {{element.groups}} </td>
+    </ng-container>
+      <!-- customer Column -->
+      <ng-container matColumnDef="customer">
+        <th mat-header-cell *matHeaderCellDef> customer </th>
+        <td mat-cell *matCellDef="let element"> {{element.customer}} </td>
+      </ng-container>
+
+      <!-- gate Column -->
+      <ng-container matColumnDef="gate">
+        <th mat-header-cell *matHeaderCellDef> gate
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.gate}} 
+      </td>
+      </ng-container>
 
 
+      <!-- disable Column -->
+      <ng-container matColumnDef="disable">
+        <th mat-header-cell *matHeaderCellDef> disable </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- <mat-checkbox [checked]=element.disable></mat-checkbox >  -->
+            <input type="checkbox" disabled="disabled"   [checked]=element.disable />
 
+           </td>
+      </ng-container>      
 
+      <!-- comm Column -->
+      <ng-container matColumnDef="comm">
+        <th mat-header-cell *matHeaderCellDef> comm </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- <mat-checkbox [checked]=element.comm></mat-checkbox >  -->
+            <input type="checkbox" disabled="disabled"   [checked]=element.comm />
+
+            </td>
+      </ng-container>   
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+  </table>

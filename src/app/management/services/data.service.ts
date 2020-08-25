@@ -36,7 +36,7 @@ export class DataService implements InMemoryDbService {
       { id: 19, name: 'Magma' },
       { id: 20, name: 'Tornado' }
     ];
-    return {users,groups};
+    return {users,groups,units};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
