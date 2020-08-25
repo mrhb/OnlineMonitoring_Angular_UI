@@ -5,11 +5,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
-
 import { CommonModule } from '@angular/common';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { DataService } from './services/data.service';
+
+
+
 import { UnitsComponent } from './units/units.component';
 import { UsersComponent } from './users/users.component';
 import { GroupsComponent } from './groups/groups.component';
@@ -58,6 +60,7 @@ const  routes:  Routes  = [
     MatCheckboxModule,
     FormsModule,
     HttpClientModule,
+    InMemoryWebApiModule.forRoot(DataService),
 
     RouterModule.forChild(routes)
   ],

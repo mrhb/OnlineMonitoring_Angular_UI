@@ -3,29 +3,7 @@ import {Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { UsersService } from '../services/users.service';
-
-
-export interface PeriodicElement {
-  position:number;
-  name: string;
-  id: string;
-  email:string
-  unitCount: number;
-  lang:string;
-  conn:number;
-  reportsM:boolean;
-  reportsW:boolean;
-  api:boolean;
-  isadmin:boolean
- 
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position:1,unitCount: 1, name: 'Hydrogen',email:'mmhajjar82@gmail.com' ,id:'mrhb',    lang:'En',conn:1,reportsM:true,reportsW:false,api:true,isadmin:true },
-  {position:2,unitCount: 2, name: 'Helium'  ,email:'sdf_435@hotmail.com' ,id:'masdfrhb', lang:'En',conn:1,reportsM:true,reportsW:false,api:true,isadmin:false},
-  {position:3,unitCount: 3, name: 'Lithium' ,email:'dfsced_def@yahoo.com' ,id:'mdfrhb',  lang:'En',conn:1,reportsM:true,reportsW:false,api:true,isadmin:false},
-  
-];
+import { User } from '../services/user';
 
 /**
  * @title Table with selection
@@ -36,10 +14,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users:PeriodicElement[];
-  displayedColumns: string[] = ['select', 'position', 'name'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  users:User[];
+  displayedColumns: string[] = ['select', 'id', 'name','loginId','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin'];
+  dataSource = new MatTableDataSource<User>(this.users);
+  selection = new SelectionModel<User>(true, []);
 
   constructor(private UsersService: UsersService) { }
   /** Whether the number of selected elements matches the total number of rows. */
@@ -49,19 +27,23 @@ export class UsersComponent implements OnInit {
     return numSelected === numRows;
   }
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.retrieveUsers();
   }
 
-  retrieveTutorials(): void {
+  retrieveUsers(): void {
     this.UsersService.getAll()
       .subscribe(
         data => {
           this.users = data;
+          this.dataSource = new MatTableDataSource<User>(this.users);
+          this.selection = new SelectionModel<User>(true, []);
           console.log(data);
         },
         error => {
           console.log(error);
         });
+
+        
   }
 
 
@@ -73,10 +55,10 @@ export class UsersComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: User): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 }
