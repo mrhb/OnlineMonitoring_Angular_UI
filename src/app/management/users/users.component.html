@@ -115,7 +115,7 @@
    <!-- actions Column -->
    <ng-container matColumnDef="actions" stickyEnd>
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element" (click)="togglewer(element.id)" class="delete_forever">
+    <td mat-cell *matCellDef="let element" (click)="deleteUser(element)" class="delete_forever">
     <span class="material-icons">delete_forever</span>
     </td>
   </ng-container>

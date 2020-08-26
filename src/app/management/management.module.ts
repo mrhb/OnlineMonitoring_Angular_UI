@@ -6,6 +6,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './services/data.service';
@@ -19,7 +21,8 @@ import { ManagementComponent } from './management.component';
 import { ActivityComponent } from './activity/activity.component';
 
 
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table';
+import { DialogBodyComponent } from './dialog-body/dialog-body.component'  
 
 
 
@@ -51,7 +54,7 @@ const  routes:  Routes  = [
 
 
 @NgModule({
-  declarations: [UnitsComponent, UsersComponent, GroupsComponent, ManagementComponent, ActivityComponent],
+  declarations: [UnitsComponent, UsersComponent, GroupsComponent, ManagementComponent, ActivityComponent, DialogBodyComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -60,6 +63,7 @@ const  routes:  Routes  = [
     MatCheckboxModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule,
     InMemoryWebApiModule.forRoot(DataService),
 
     RouterModule.forChild(routes)
