@@ -15,7 +15,8 @@ import { User } from '../services/user';
 })
 export class UsersComponent implements OnInit {
   users:User[];
-  displayedColumns: string[] = ['select', 'id', 'name','loginId','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin'];
+  displayedColumns: string[] = ['select', 'id', 'name','loginId','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin','actions'];
+  selectableColumns: string[] = ['select', 'id', 'name','loginId','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin'];
   dataSource = new MatTableDataSource<User>(this.users);
   selection = new SelectionModel<User>(true, []);
 
@@ -45,7 +46,10 @@ export class UsersComponent implements OnInit {
 
         
   }
-
+  togglewer( id: number){
+    this.UsersService.delete(id).subscribe();
+    this.retrieveUsers();
+  }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {

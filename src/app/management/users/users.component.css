@@ -2,3 +2,10 @@ table{
     margin: 10px;
     width: -webkit-fill-available;
 }
+.delete_forever :hover{
+    background-color: brown;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+
+}
