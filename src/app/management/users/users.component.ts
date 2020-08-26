@@ -26,23 +26,11 @@ export class UsersComponent implements OnInit {
   selection = new SelectionModel<User>(true, []);
 
 
-  animal: string;
-  name: string;
+ 
   constructor(private UsersService: UsersService,
     public dialog: MatDialog) { }
 
-    openDialog(unitName:string): boolean {
-      const dialogRef = this.dialog.open(DialogBodyComponent, {
-        width: '250px',
-        data: {name: unitName, animal: this.animal}
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        this.animal = result;
-      });
-      return true;
-    }
+    
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -72,17 +60,16 @@ export class UsersComponent implements OnInit {
   deleteUser( unit: Unit){
 
     const dialogRef = this.dialog.open(DialogBodyComponent, {
-      width: '250px',
-      data: {name: unit.name, animal: this.animal}
+      width: '400px',
+      data: {name: unit.name, animal: "unit"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      if(result)
-     {
+      if(result){
         this.UsersService.delete(unit.id).subscribe();
         this.retrieveUsers();
-     }
+      } 
 
     });
 

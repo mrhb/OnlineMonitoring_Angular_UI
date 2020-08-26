@@ -8,10 +8,9 @@ export interface DialogData {
 @Component({
   selector: 'app-dialog-body',
   templateUrl: './dialog-body.component.html',
-  styleUrls: ['./dialog-body.component.sass']
+  styleUrls: ['./dialog-body.component.css']
 })
 export class DialogBodyComponent implements OnInit {
-
   constructor( public dialogRef: MatDialogRef<DialogBodyComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
@@ -19,6 +18,12 @@ export class DialogBodyComponent implements OnInit {
   }
   close() {
     this.dialogRef.close();
+  }
+  onNoClick(): void {
+    this.dialogRef.close(false);
+  }
+  onYesClick(): void {
+    this.dialogRef.close(true);
   }
 }
 

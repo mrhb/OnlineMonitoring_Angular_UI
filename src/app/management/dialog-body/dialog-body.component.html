@@ -1,10 +1,11 @@
-<h2 mat-dialog-title>This is a Dialog title</h2>
+<h2 mat-dialog-title> <p>Unit {{data.name}} will be deleted.</p></h2>
 
-<mat-dialog-content>
+<div mat-dialog-content>
+   
+    
+  </div>
 
-<p> Place content here </p>
-</mat-dialog-content>
-
-<mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Close</button>
-</mat-dialog-actions>
+  <div mat-dialog-actions class="example-button-row">
+    <button mat-raised-button (click)="onYesClick()" color="warn">Yes</button>
+    <button mat-raised-button  (click)="onNoClick()" cdkFocusInitial color="warn">No</button>
+  </div>

@@ -3,10 +3,14 @@ import { Routes, RouterModule } from  '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -22,7 +26,7 @@ import { ActivityComponent } from './activity/activity.component';
 
 
 import { MatTableModule } from '@angular/material/table';
-import { DialogBodyComponent } from './dialog-body/dialog-body.component'  
+import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 
 
 
@@ -64,6 +68,8 @@ const  routes:  Routes  = [
     FormsModule,
     HttpClientModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule,
     InMemoryWebApiModule.forRoot(DataService),
 
     RouterModule.forChild(routes)

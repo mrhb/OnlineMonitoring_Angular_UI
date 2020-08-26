@@ -1,7 +1,3 @@
-
-<div>
-
-</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Checkbox Column -->
@@ -38,7 +34,9 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element">
+        <a routerLink="/management/users/edit"   routerLinkActive="active-link"   >   {{element.name}}  </a>
+       </td>
     </ng-container>
   
     <!-- loginId Column -->
