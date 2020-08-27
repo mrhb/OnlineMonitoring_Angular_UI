@@ -14,6 +14,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { EditComponent } from './edit.component';
 
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { GroupEditComponent } from './group-edit/group-edit.component';
+import { UnitEditComponent } from './unit-edit/unit-edit.component';
 
 
 const  routes:  Routes  = [
@@ -22,21 +24,25 @@ const  routes:  Routes  = [
       component:  EditComponent,
       children: [
         {
-          path:  'userq',
+          path:  'user',
           component: UserEditComponent
-          },
-          {
-          path: '', 
-          component: EditComponent
-         },
-        ]
+        },
+        {
+          path:  'group',
+          component: UserEditComponent
+        },
+        {
+          path:  'unit',
+          component: UserEditComponent
+        }
+      ]
     }
   ];
 
 
 
 @NgModule({
-  declarations: [UserEditComponent,EditComponent],
+  declarations: [UserEditComponent,EditComponent, GroupEditComponent, UnitEditComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
