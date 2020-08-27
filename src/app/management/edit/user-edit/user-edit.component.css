@@ -1,0 +1,12 @@
+.container{
+        padding: 10px;
+}
+.mat-flat-button{
+        border-radius: 50px;
+        background: #d50000;
+        margin-left: 20px;
+}
+
+.footing-toolbar{
+        justify-content:flex-end;
+}

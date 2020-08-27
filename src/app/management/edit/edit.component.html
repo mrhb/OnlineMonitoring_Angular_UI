@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened=true>
+     <h1>lists comes here</h1>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+      <div class="grid-container">    
+         <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

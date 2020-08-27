@@ -12,7 +12,14 @@ a{
     color:crimson ;
     padding-left: 8px;
     padding-right: 30px;
-    font-size: small;
-
-   
+    font-size: small;  
 }
+
+.mat-flat-button{
+    border-radius: 50px;
+    background: #d50000;
+    margin-left: 20px;
+}
+.push-right {
+    margin-left: auto;
+  }

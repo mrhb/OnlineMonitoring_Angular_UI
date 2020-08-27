@@ -16,6 +16,7 @@ import { EditComponent } from './edit.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { GroupEditComponent } from './group-edit/group-edit.component';
 import { UnitEditComponent } from './unit-edit/unit-edit.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 const  routes:  Routes  = [
@@ -24,15 +25,15 @@ const  routes:  Routes  = [
       component:  EditComponent,
       children: [
         {
-          path:  'user',
+          path:  'user/:id',
           component: UserEditComponent
         },
         {
-          path:  'group',
+          path:  'group/:id',
           component: UserEditComponent
         },
         {
-          path:  'unit',
+          path:  'unit/:id',
           component: UserEditComponent
         }
       ]
@@ -45,7 +46,11 @@ const  routes:  Routes  = [
   declarations: [UserEditComponent,EditComponent, GroupEditComponent, UnitEditComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   exports: [RouterModule]
 })
