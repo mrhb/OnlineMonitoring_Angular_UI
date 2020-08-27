@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+import { EditModule } from  './edit/edit.module';
+
 
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -27,6 +29,7 @@ import { ActivityComponent } from './activity/activity.component';
 
 import { MatTableModule } from '@angular/material/table';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
+import { EditComponent } from './edit/edit.component';
 
 
 
@@ -51,6 +54,10 @@ const  routes:  Routes  = [
     {
       path:  'activity',
       component:  ActivityComponent
+    },
+    {
+      path:  'edit',
+      component:  EditComponent
     }
   ]
   }
@@ -71,6 +78,8 @@ const  routes:  Routes  = [
     MatFormFieldModule,
     MatButtonModule,
     InMemoryWebApiModule.forRoot(DataService),
+
+    EditModule,
 
     RouterModule.forChild(routes)
   ],
