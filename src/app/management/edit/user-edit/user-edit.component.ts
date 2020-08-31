@@ -25,7 +25,7 @@ post: any = '';
     private service: UsersService,
     private formBuilder: FormBuilder
   ) { }
-  step = 0;
+  step = 1;
   onFormSubmit(): void {
     console.log('Name:' + this.formGroup.get('name').value);
 } 
@@ -49,6 +49,14 @@ post: any = '';
       this.service.get(params.get('id')))
       );
 
+      this.formGroup=new FormGroup({
+        email:new FormControl('', [Validators.required, Validators.email]),
+        name: new FormControl(),
+        fone:new FormControl(),
+        tel: new FormControl(),
+        company: new FormControl(),
+        country: new FormControl()
+     });
       // this.createForm();
       // this.setChangeValidate()
     }

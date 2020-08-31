@@ -5,8 +5,7 @@
         perm_identity
         </span>Add New User</button >
   </mat-toolbar>
-  
-<div class="container" *ngIf="user$ | async as user">
+  <div class="container" *ngIf="user$ | async as user">
   <h2>{{ user.name }}</h2>
   <!-- <label>Id: </label>{{ user.id }}
  
@@ -24,16 +23,50 @@
       
         </mat-expansion-panel>
       
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" >
+        <mat-expansion-panel [expanded]="true" (opened)="setStep(1)" >
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="material-icons ">
                 person_outlined
                 </span>
-              Persinal information
+              Personal information
             </mat-panel-title>
           </mat-expansion-panel-header>
-      
+      <form [formGroup]="formGroup"  class="form">
+        <mat-form-field class="form-element" appearance="fill">
+          <input matInput placeholder="Enter name" formControlName="name">
+        </mat-form-field>
+        
+        <mat-form-field class="form-element" appearance="fill">
+          <input matInput placeholder="Enter email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Phone number</mat-label>
+          <input matInput formControlName="tel" required>
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-hint>Include area code</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="form-element" appearance="fill">
+          <input matInput placeholder="Enter company name" formControlName="company">
+        </mat-form-field>
+
+        <!-- <mat-form-field class="form-element" appearance="fill">
+          <input matInput placeholder="Choose country" formControlName="country">
+        </mat-form-field> -->
+
+        <mat-form-field  appearance="fill">
+          <mat-label>Choose country</mat-label>
+          <mat-select [(value)]="selected" >
+            <mat-option>None</mat-option>
+            <mat-option value="Ir">Iran</mat-option>
+            <mat-option value="Usa">United State of America (Usa)</mat-option>
+            <mat-option value="UK">United kingdom (UK)</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        </form>
    
         </mat-expansion-panel>
       
@@ -64,7 +97,6 @@
       
       </mat-accordion>
       
-      
       <!-- Copyright 2020 Google LLC. All Rights Reserved.
           Use of this source code is governed by an MIT-style license that
           can be found in the LICENSE file at http://angular.io/license -->
@@ -80,3 +112,4 @@
   </mat-toolbar>
   
 </div>
+
