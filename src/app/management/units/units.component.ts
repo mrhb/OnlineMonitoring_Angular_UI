@@ -1,9 +1,13 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+
+import { MatDialogRef, MatDialog } from "@angular/material/dialog";
+
 import { BooleanInput } from '@angular/cdk/coercion';
 import { UnitsService } from '../services/units.service';
 import { Unit } from '../services/unit';
+import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 @Component({
   selector: 'app-units',
   templateUrl: './units.component.html',
@@ -11,11 +15,12 @@ import { Unit } from '../services/unit';
 })
 export class UnitsComponent implements OnInit {
   units:Unit[];
-  displayedColumns: string[] = ['select', 'id', 'name','groups','customer','gate','disable','comm'];
+  displayedColumns: string[] = ['select', 'id', 'name','groups','customer','gate','disable','comm','actions'];
   dataSource = new MatTableDataSource<Unit>(this.units);
   selection = new SelectionModel<Unit>(true, []);
 
-  constructor(private UsersService: UnitsService) { }
+  constructor(private UnitsService: UnitsService,
+    public dialog: MatDialog) { }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -27,7 +32,7 @@ export class UnitsComponent implements OnInit {
   }
 
   retrieveUsers(): void {
-    this.UsersService.getAll()
+    this.UnitsService.getAll()
       .subscribe(
         data => {
           this.units = data;
@@ -41,7 +46,21 @@ export class UnitsComponent implements OnInit {
 
         
   }
+  deleteUser( unit: Unit){
 
+    const dialogRef = this.dialog.open(DialogBodyComponent, {
+      width: '400px',
+      data: {name: unit.name, type: "unit"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result){
+        this.UnitsService.delete(unit.id).subscribe();
+        this.retrieveUsers();
+      } 
+    });      
+  }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {

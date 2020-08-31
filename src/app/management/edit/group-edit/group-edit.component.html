@@ -1,1 +1,34 @@
+<mat-toolbar class="secondary-toolbar" >   
+    <button mat-icon-button >  <mat-icon>list</mat-icon></button>
+    <h1 class="submenu-title">Group Setting  </h1>
+      <button   mat-flat-button color="warn" ><span class="material-icons">
+        perm_identity
+        </span>Add New Group</button >
+  </mat-toolbar>
+  
 <p>group-edit works!</p>
+<div class="container" *ngIf="group$ | async as group">
+    <h3>"{{ group.name }}"</h3>
+   
+      <label>Id: </label>{{ group.id }}
+ 
+      <label>Name: </label>
+      <input [(ngModel)]="group.name" placeholder="name"/>
+   
+ 
+
+
+
+
+
+<mat-toolbar class="footing-toolbar" >   
+    <button   mat-flat-button color="warn" >
+        <span class="material-icons" (click)="gotoUsers(group)" >save</span>Save
+    </button >
+    
+    <button   mat-flat-button color="warn" >
+        <span class="material-icons">restore</span>Restore to previouse
+    </button >
+  </mat-toolbar>
+  
+</div>

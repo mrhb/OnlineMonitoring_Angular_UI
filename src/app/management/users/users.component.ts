@@ -57,24 +57,21 @@ export class UsersComponent implements OnInit {
 
         
   }
-  deleteUser( unit: Unit){
+  deleteUser( user: Unit){
 
     const dialogRef = this.dialog.open(DialogBodyComponent, {
       width: '400px',
-      data: {name: unit.name, animal: "unit"}
+      data: {name: user.name, type: "user"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(result){
-        this.UsersService.delete(unit.id).subscribe();
+        this.UsersService.delete(user.id).subscribe();
         this.retrieveUsers();
       } 
 
-    });
-
-     
-   
+    });   
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */

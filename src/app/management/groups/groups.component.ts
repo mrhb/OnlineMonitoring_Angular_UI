@@ -4,6 +4,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { GroupsService } from '../services/groups.service';
 import { Group } from '../services/group';
+import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-groups',
@@ -12,11 +14,12 @@ import { Group } from '../services/group';
 })
 export class GroupsComponent implements OnInit {
   groups:Group[];
-  displayedColumns: string[] = ['select', 'id', 'name'];
+  displayedColumns: string[] = ['select', 'id', 'name','actions'];
   dataSource = new MatTableDataSource<Group>(this.groups);
   selection = new SelectionModel<Group>(true, []);
 
-  constructor(private GroupService: GroupsService) { }
+  constructor(private GroupService: GroupsService,
+    public dialog: MatDialog) { }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -38,11 +41,25 @@ export class GroupsComponent implements OnInit {
         },
         error => {
           console.log(error);
-        });
-
-        
+        });        
   }
 
+  deleteUser( group: Group){
+
+    const dialogRef = this.dialog.open(DialogBodyComponent, {
+      width: '400px',
+      data: {name: group.name, type: "group"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result){
+        this.GroupService.delete(group.id).subscribe();
+        this.retrieveUsers();
+      } 
+
+    });   
+  }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {

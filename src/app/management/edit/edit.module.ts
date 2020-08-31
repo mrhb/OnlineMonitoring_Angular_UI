@@ -30,11 +30,11 @@ const  routes:  Routes  = [
         },
         {
           path:  'group/:id',
-          component: UserEditComponent
+          component: GroupEditComponent
         },
         {
           path:  'unit/:id',
-          component: UserEditComponent
+          component: UnitEditComponent
         }
       ]
     }
