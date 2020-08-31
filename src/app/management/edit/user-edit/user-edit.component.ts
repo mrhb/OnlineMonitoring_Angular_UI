@@ -18,6 +18,21 @@ export class UserEditComponent implements OnInit {
     private router: Router,
     private service: UsersService
   ) { }
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
+
+
 
   ngOnInit(): void {
     this.user$ = this.route.paramMap.pipe(

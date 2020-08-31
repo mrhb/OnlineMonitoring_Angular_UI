@@ -6,22 +6,92 @@
         </span>Add New User</button >
   </mat-toolbar>
   
-<p>user-edit works!</p>
 <div class="container" *ngIf="user$ | async as user">
-    <h3>"{{ user.name }}"</h3>
-   
-      <label>Id: </label>{{ user.id }}
+  <h2>{{ user.name }}</h2>
+  <!-- <label>Id: </label>{{ user.id }}
  
       <label>Name: </label>
-      <input [(ngModel)]="user.name" placeholder="name"/>
-   
- 
+      <input [(ngModel)]="user.name" placeholder="name"/> -->
 
+      <mat-accordion class="example-headers-align">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon >desktop_windows</mat-icon>
+              Account information
+            </mat-panel-title>            
+          </mat-expansion-panel-header>
+      
+          <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input matInput>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput type="number" min="1">
+          </mat-form-field>
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons ">
+                person_outlined
+                </span>
+              Persinal information
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field>
+            <mat-label>Country</mat-label>
+            <input matInput>
+          </mat-form-field>
 
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons ">
+                home
+                </span>Invoice information
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+          </mat-form-field>
+          <mat-datepicker #picker></mat-datepicker>
 
+        </mat-expansion-panel>
 
+        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(2)" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons ">
+                vpn_key_outlined
+                </span>
+              Permissions
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+          </mat-form-field>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-expansion-panel>
+      
+      </mat-accordion>
+      
+      
+      <!-- Copyright 2020 Google LLC. All Rights Reserved.
+          Use of this source code is governed by an MIT-style license that
+          can be found in the LICENSE file at http://angular.io/license -->
 
-<mat-toolbar class="footing-toolbar" >   
+  <mat-toolbar class="footing-toolbar" >   
     <button   mat-flat-button color="warn" >
         <span class="material-icons" (click)="gotoUsers(user)" >save</span>Save
     </button >
