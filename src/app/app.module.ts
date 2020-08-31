@@ -31,7 +31,7 @@ import { PowerGraphComponent } from './dashboard/mainpanel/power-graph/power-gra
 import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './dashboard/mainpanel/card/card.component';
 import { StateChartComponent } from './dashboard/mainpanel/state-chart/state-chart.component';
-import { ProgressBarComponent } from './dashboard/power-graph/progress-bar/progress-bar.component';
+import { ProgressBarComponent } from './dashboard/mainpanel/power-graph/progress-bar/progress-bar.component';
 import { CommentsComponent } from './dashboard/mainpanel/comments/comments.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
