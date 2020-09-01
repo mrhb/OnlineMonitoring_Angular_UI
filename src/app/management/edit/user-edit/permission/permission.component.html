@@ -1,8 +1,8 @@
 <p class="title">Add Unit to permission list</p>
           
 <form [formGroup]="myGroup" class="addform">            
-  <span  class="material-icons ">
-    av_timer
+  <span  class="material-icons unit-logo">
+       av_timer
   </span>
   <mat-form-field class="form-element" appearance="fill">
     <mat-icon matPrefix>search</mat-icon>
@@ -10,16 +10,11 @@
     formControlName="name"
     placeholder="Enter existing Unit name" >
   </mat-form-field>
-  <!-- <mat-checkbox color="primary" formControlName="active"   >Sd      </mat-checkbox> -->
-  <!-- <mat-checkbox color="primary" formControlName="allAlarm" >All alarms</mat-checkbox> -->
-  <!-- <mat-checkbox color="primary" formControlName="read"     >Read    </mat-checkbox> -->
-  <!-- <mat-checkbox color="primary" formControlName="control"  >Control </mat-checkbox>
-  <mat-checkbox color="primary" formControlName="modify"   >Modify  </mat-checkbox> -->
-  <input type="checkbox"  formControlName="sd"         >Sd
-  <input type="checkbox"  formControlName="allAlarm"         >allAlarm
-  <input type="checkbox"  formControlName="read"         >Read
-  <input type="checkbox"  formControlName="control"         >Control
-  <input type="checkbox"  formControlName="modify"         >Modify
+  <input type="checkbox"  formControlName="sd"         ><span class="checkbox_title">Sd</span>
+  <input type="checkbox"  formControlName="allAlarm"   ><span class="checkbox_title">allAlarm</span>
+  <input type="checkbox"  formControlName="read"       ><span class="checkbox_title">Read</span>
+  <input type="checkbox"  formControlName="control"    ><span class="checkbox_title">Control</span>
+  <input type="checkbox"  formControlName="modify"     ><span class="checkbox_title">Modify</span>
 
   <button  type="button" class="add-button" mat-flat-button color="warn">
     Add

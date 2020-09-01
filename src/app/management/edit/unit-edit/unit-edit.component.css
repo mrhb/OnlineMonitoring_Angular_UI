@@ -1,12 +1,53 @@
 .container{
     padding: 10px;
+    overflow-y:auto;
+  }
+mat-panel-title{
+color: #d50000;
 }
+mat-panel-title span{
+color: black;
+}
+
+
 .mat-flat-button{
     border-radius: 50px;
     background: #d50000;
     margin-left: 20px;
 }
-
+.btndelete {
+  margin-right: auto;
+}
 .footing-toolbar{
     justify-content:flex-end;
 }
+
+.material-icons {
+    width: 48px;
+}
+
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  
+  .container {
+    padding: 10px;
+  }
+  
+  .form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .form-element {
+    padding: 5px 0px 5px 2px;
+    width: 75%;
+  }
+  
+  .button {
+    width: 100%;
+  }

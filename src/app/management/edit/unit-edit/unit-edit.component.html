@@ -5,30 +5,62 @@
         perm_identity
         </span>Add New Unit</button >
   </mat-toolbar>
-  
-<p>unit-edit works!</p>
-<div class="container" *ngIf="unit$ | async as unit">
-    <h3>"{{ unit.name }}"</h3>
-   
-      <label>Id: </label>{{ unit.id }}
- 
-      <label>Name: </label>
-      <input [(ngModel)]="unit.name" placeholder="name"/>
-   
- 
-
-
-
-
-
-<mat-toolbar class="footing-toolbar" >   
-    <button   mat-flat-button color="warn" >
-        <span class="material-icons" (click)="gotoUsers(user)" >save</span>Save
-    </button >
-    
-    <button   mat-flat-button color="warn" >
-        <span class="material-icons">restore</span>Restore to previouse
-    </button >
-  </mat-toolbar>
-  
-</div>
+  <div class="container" *ngIf="unit$ | async as unit">
+    <h2>{{ unit.name }}</h2>
+        <mat-accordion>
+          <!-- Unit information -->
+          <mat-expansion-panel [expanded]="true" (opened)="setStep(2)" >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="material-icons ">
+                  av_timer 
+                  </span>
+                Unit Information
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <!-- <user-edit-permission></user-edit-permission> -->
+          </mat-expansion-panel>
+          <!-- Unit groups -->
+          <mat-expansion-panel [expanded]="true" (opened)="setStep(2)" >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="material-icons ">
+                  library_add 
+                  </span>
+                Unit Groups
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <!-- <user-edit-permission></user-edit-permission> -->
+          </mat-expansion-panel>
+          <!--User Permissions -->
+          <mat-expansion-panel [expanded]="true" (opened)="setStep(2)" >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="material-icons ">
+                  vpn_key_outlined
+                  </span>
+                Permissions
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <!-- <user-edit-permission></user-edit-permission> -->
+          </mat-expansion-panel>
+        
+        </mat-accordion>
+        
+        <!-- Copyright 2020 Google LLC. All Rights Reserved.
+            Use of this source code is governed by an MIT-style license that
+            can be found in the LICENSE file at http://angular.io/license -->
+            
+    </div>
+      <mat-toolbar class="footing-toolbar" >  
+        <button   mat-flat-button color="warn" class="btndelete" >
+          <span class="material-icons" >delete_forever</span>Delete
+      </button > 
+        <button   mat-flat-button color="warn" >
+            <span class="material-icons" >save</span>Save
+        </button >
+        
+        <button  type="button" mat-flat-button color="warn">
+            <span class="material-icons"  >restore</span>Restore to previouse
+        </button >
+      </mat-toolbar>

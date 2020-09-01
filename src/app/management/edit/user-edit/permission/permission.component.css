@@ -13,13 +13,22 @@
         margin-left: 20px;
         
       }
-      mat-checkbox{
+      .unit-logo{
+      padding-left: 10px;
+      padding-right: 10px;
+      }
+      .checkbox_title{
         padding-right:30px ;
       }
       table{
         margin: 10px;
         width: -webkit-fill-available;
     }
+
+    .title{
+      padding-top: 20px;
+    }
+
 td span{
   color: red;
 }

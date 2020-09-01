@@ -99,10 +99,14 @@
       <!-- Copyright 2020 Google LLC. All Rights Reserved.
           Use of this source code is governed by an MIT-style license that
           can be found in the LICENSE file at http://angular.io/license -->
-
-  <mat-toolbar class="footing-toolbar" >   
+          
+  </div>
+  <mat-toolbar class="footing-toolbar" >  
+    <button   mat-flat-button color="warn" class="btndelete" >
+      <span class="material-icons"  >delete_forever</span>Delete
+  </button > 
     <button   mat-flat-button color="warn" >
-        <span class="material-icons" (click)="gotoUsers(user)" >save</span>Save
+        <span class="material-icons"  >save</span>Save
     </button >
     
     <button  type="button" (click) = "resetForm()" mat-flat-button color="warn">
@@ -110,5 +114,4 @@
     </button >
   </mat-toolbar>
   
-</div>
 
