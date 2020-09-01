@@ -7,6 +7,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 
@@ -66,7 +68,9 @@ const  routes:  Routes  = [
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule,
+    
   ],
   exports: [RouterModule]
 })

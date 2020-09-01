@@ -3,6 +3,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { User } from './user';
 import { Group } from './group';
 import { Unit } from './unit';
+import { UserPermit } from './user-permit';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,12 @@ export class DataService implements InMemoryDbService {
       {id:1,unitCount: 1, name: 'M.Reza'     ,email:'mmhajjar82@gmail.com' ,loginId:'mrhb',    lang:'En',conn:1,reportsM:true,reportsW:true,api:true,isadmin:true },
       {id:2,unitCount: 2, name: 'Hajjar.B'  ,email:'sdf_435@hotmail.com'  ,loginId:'masdfrhb',lang:'En',conn:1,reportsM:false,reportsW:false,api:true,isadmin:false},
       {id:3,unitCount: 3, name: 'mrhb' ,email:'dfsced_def@yahoo.com' ,loginId:'mdfrhb',  lang:'En',conn:1,reportsM:true,reportsW:true,api:true,isadmin:false},      
+    ];
+
+    const users_permits: UserPermit[] = [
+      {id:1,name: 'M.Reza'   ,sd:false,allalarm:true,read:false,control:true,modify:false},
+      {id:2,name: 'Hajjar.B' ,sd:false,allalarm:true,read:false,control:true,modify:false},
+      {id:3,name: 'mrhb'     ,sd:false,allalarm:true,read:false,control:true,modify:false},
     ];
     const units: Unit[] = [
       {id:1,name: 'unit1',groups:'g1',customer:'tetaPower',gate:'654.168.167.56',disable:true,comm:false},
@@ -43,7 +50,7 @@ export class DataService implements InMemoryDbService {
   //   return users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 11;
   // }
 
-  genId<T extends User |Group>(myTable: T[]): number {
+  genId<T extends User |Group|UserPermit>(myTable: T[]): number {
     return myTable.length > 0 ? Math.max(...myTable.map(t => t.id)) + 1 : 11;
   }
 }

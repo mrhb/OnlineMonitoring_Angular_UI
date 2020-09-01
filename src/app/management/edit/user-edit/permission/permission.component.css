@@ -6,6 +6,7 @@
       .addform mat-form-field{
         width: 30%;
         padding-right:30px ;
+        padding-top:15px ;
       }
       .addform button{
         background: #7bc85d;
@@ -15,3 +16,10 @@
       mat-checkbox{
         padding-right:30px ;
       }
+      table{
+        margin: 10px;
+        width: -webkit-fill-available;
+    }
+td span{
+  color: red;
+}
