@@ -1,0 +1,17 @@
+
+      .addform{
+        background: #d8efd0;
+        justify-content:flex-end;
+      }
+      .addform mat-form-field{
+        width: 30%;
+        padding-right:30px ;
+      }
+      .addform button{
+        background: #7bc85d;
+        margin-left: 20px;
+        
+      }
+      mat-checkbox{
+        padding-right:30px ;
+      }

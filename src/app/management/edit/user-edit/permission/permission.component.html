@@ -1,0 +1,23 @@
+<p class="title">Add Unit to permission list</p>
+          
+<form [formGroup]="myGroup" class="addform">            
+  <span  class="material-icons ">
+    offline_bolt
+  </span>
+  <mat-form-field class="form-element"  appearance="fill">
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput type="search" 
+    formControlName="name"
+    placeholder="Enter existing Unit name" >
+  </mat-form-field>
+  <mat-checkbox color="primary" formControlName="active"   >Sd      </mat-checkbox>
+  <mat-checkbox color="primary" formControlName="allAlarm" >All alarms</mat-checkbox>
+  <mat-checkbox color="primary" formControlName="read"     >Read    </mat-checkbox>
+  <mat-checkbox color="primary" formControlName="control"  >Control </mat-checkbox>
+  <mat-checkbox color="primary" formControlName="modify"   >Modify  </mat-checkbox>
+
+  <button  type="button" class="add-button" mat-flat-button color="warn">
+    Add
+  </button >
+</form>
+<p class="title">Manage Unit Permission</p>

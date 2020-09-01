@@ -16,6 +16,9 @@ export class UserEditComponent implements OnInit {
   user$: Observable<User>;
 
   formGroup :FormGroup ; 
+
+  myGroup :FormGroup ; 
+
 titleAlert: string = 'This field is required';
 post: any = '';
 
@@ -25,7 +28,7 @@ post: any = '';
     private service: UsersService,
     private formBuilder: FormBuilder
   ) { }
-  step = 1;
+  step = 3;
   onFormSubmit(): void {
     console.log('Name:' + this.formGroup.get('name').value);
 } 
@@ -57,6 +60,16 @@ post: any = '';
         company: new FormControl(),
         country: new FormControl()
      });
+
+
+     this.myGroup = new FormGroup({
+      name  :new FormControl(),  
+      active  :new FormControl(true),  
+      allAlarm:new FormControl(true),
+      read    :new FormControl(true),  
+      control :new FormControl(true),
+      modify  :new FormControl(true),
+   });
       // this.createForm();
       // this.setChangeValidate()
     }

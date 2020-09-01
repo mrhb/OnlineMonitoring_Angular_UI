@@ -19,12 +19,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 
+
 import { EditComponent } from './edit.component';
 
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { GroupEditComponent } from './group-edit/group-edit.component';
 import { UnitEditComponent } from './unit-edit/unit-edit.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { PermissionComponent } from './user-edit/permission/permission.component';
 
 
 const  routes:  Routes  = [
@@ -51,7 +53,7 @@ const  routes:  Routes  = [
 
 
 @NgModule({
-  declarations: [UserEditComponent,EditComponent, GroupEditComponent, UnitEditComponent],
+  declarations: [UserEditComponent,EditComponent, GroupEditComponent, UnitEditComponent, PermissionComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -63,7 +65,8 @@ const  routes:  Routes  = [
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ],
   exports: [RouterModule]
 })
