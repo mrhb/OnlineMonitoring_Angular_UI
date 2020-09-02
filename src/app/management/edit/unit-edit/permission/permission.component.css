@@ -1,0 +1,34 @@
+
+      .addform{
+        background: #d8efd0;
+        justify-content:flex-end;
+      }
+      .addform mat-form-field{
+        width: 30%;
+        padding-right:30px ;
+        padding-top:15px ;
+      }
+      .addform button{
+        background: #7bc85d;
+        margin-left: 20px;
+        
+      }
+      .unit-logo{
+      padding-left: 10px;
+      padding-right: 10px;
+      }
+      .checkbox_title{
+        padding-right:30px ;
+      }
+      table{
+        margin: 10px;
+        width: -webkit-fill-available;
+    }
+
+    .title{
+      padding-top: 20px;
+    }
+
+td span{
+  color: red;
+}

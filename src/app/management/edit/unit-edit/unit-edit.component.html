@@ -9,7 +9,7 @@
     <h2>{{ unit.name }}</h2>
         <mat-accordion>
           <!-- Unit information -->
-          <mat-expansion-panel [expanded]="true" (opened)="setStep(2)" >
+          <mat-expansion-panel [expanded]="true" >
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <span class="material-icons ">
@@ -21,7 +21,7 @@
             <!-- <user-edit-permission></user-edit-permission> -->
           </mat-expansion-panel>
           <!-- Unit groups -->
-          <mat-expansion-panel [expanded]="true" (opened)="setStep(2)" >
+          <mat-expansion-panel [expanded]="true" >
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <span class="material-icons ">
@@ -30,10 +30,10 @@
                 Unit Groups
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <!-- <user-edit-permission></user-edit-permission> -->
+            <unit-edit-groups></unit-edit-groups>
           </mat-expansion-panel>
-          <!--User Permissions -->
-          <mat-expansion-panel [expanded]="true" (opened)="setStep(2)" >
+          <!--Permissions -->
+          <mat-expansion-panel [expanded]="true" >
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <span class="material-icons ">
@@ -42,7 +42,7 @@
                 Permissions
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <!-- <user-edit-permission></user-edit-permission> -->
+            <unit-edit-permission></unit-edit-permission>
           </mat-expansion-panel>
         
         </mat-accordion>

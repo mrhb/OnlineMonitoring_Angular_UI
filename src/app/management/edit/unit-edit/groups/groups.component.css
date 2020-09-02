@@ -1,0 +1,51 @@
+
+      .addform{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background: #d8efd0;
+        justify-content:flex-end;
+        width: 800px;
+      }
+      .addform mat-form-field{        
+        width: 30%;
+        padding-right:30px ;
+        padding-top:15px ;
+      }
+      button{
+        border-radius: 50px;
+        margin-right: 20px;
+        height: 100%;
+      }
+      .addform button{
+        background: #7bc85d;        
+        margin-left: auto;       
+      }
+      .new-group-button{
+        color: #424242;
+        background: #d4d4d4;
+        margin-top: 20px; 
+      }
+      .new-group-button:hover{
+        color: red;
+       
+      }
+      .unit-logo{
+      padding-left: 10px;
+      padding-right: 10px;
+      }
+      .checkbox_title{
+        padding-right:30px ;
+      }
+      table{
+        margin: 10px;
+        width: 800px;
+    }
+
+    .title{
+      padding-top: 20px;
+    }
+
+td span{
+  color: red;
+}

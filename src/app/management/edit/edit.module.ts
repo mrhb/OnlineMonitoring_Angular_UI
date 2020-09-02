@@ -29,6 +29,8 @@ import { GroupEditComponent } from './group-edit/group-edit.component';
 import { UnitEditComponent } from './unit-edit/unit-edit.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PermissionComponent } from './user-edit/permission/permission.component';
+import { UnitPermissionComponent } from './unit-edit/permission/permission.component';
+import { UnitgroupsComponent } from './unit-edit/groups/groups.component';
 
 
 const  routes:  Routes  = [
@@ -55,7 +57,15 @@ const  routes:  Routes  = [
 
 
 @NgModule({
-  declarations: [UserEditComponent,EditComponent, GroupEditComponent, UnitEditComponent, PermissionComponent],
+  declarations: [
+    UserEditComponent,
+    EditComponent, 
+    GroupEditComponent,
+     UnitEditComponent, 
+     PermissionComponent,
+     UnitPermissionComponent,
+     UnitgroupsComponent,
+    ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
