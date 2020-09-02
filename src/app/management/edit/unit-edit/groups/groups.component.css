@@ -1,4 +1,13 @@
-
+.mat-expansion-panel
+{
+  margin-bottom: 10px;
+}
+.mat-expansion-panel-header
+{
+  padding: 0 12px;
+  color: #d50000;
+  border-left: solid 5px #d50000;
+}
       .addform{
         display: flex;
         justify-content: flex-end;
