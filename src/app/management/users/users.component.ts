@@ -3,6 +3,12 @@ import {Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+
+
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
 
 
 import { BooleanInput } from '@angular/cdk/coercion';
@@ -20,6 +26,8 @@ import { Unit } from '../services/unit';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  formGroup :FormGroup ; 
+
   users:User[];
   displayedColumns: string[] = ['select', 'id', 'name','loginId','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin','actions'];
   dataSource = new MatTableDataSource<User>(this.users);
@@ -40,6 +48,11 @@ export class UsersComponent implements OnInit {
   }
   ngOnInit(): void {
     this.retrieveUsers();
+    this.formGroup=new FormGroup({
+     action: new FormControl(),
+     value: new FormControl()
+   });
+
   }
 
   retrieveUsers(): void {

@@ -1,3 +1,32 @@
+<div class="bulckActions">
+  <form [formGroup]="formGroup"  class="form">
+      <mat-form-field  >
+      <mat-label>Bulc action</mat-label>
+      <mat-select  formControlName="action">
+        <mat-option>None</mat-option>
+        <mat-option value="Ir">Set Send a report monthly</mat-option>
+        <mat-option value="Ir">Set Send a report weekly</mat-option>
+        <mat-option value="Ir">Set API permissions</mat-option>
+        <mat-option value="Usa">SetAdmin role</mat-option>
+        <mat-option value="UK">Delete</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field  >
+      <mat-label>Choose value</mat-label>
+      <mat-select formControlName="calue">
+        <mat-option>None</mat-option>
+        <mat-option value='True'>True</mat-option>
+        <mat-option value='False'>False</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <button  type="button"  mat-flat-button color="warn">
+      Apply
+  </button >
+    </form>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Checkbox Column -->
