@@ -8,6 +8,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 
 
 
@@ -31,6 +35,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { PermissionComponent } from './user-edit/permission/permission.component';
 import { UnitPermissionComponent } from './unit-edit/permission/permission.component';
 import { UnitgroupsComponent } from './unit-edit/groups/groups.component';
+import { InformationComponent } from './unit-edit/information/information.component';
 
 
 const  routes:  Routes  = [
@@ -65,6 +70,7 @@ const  routes:  Routes  = [
      PermissionComponent,
      UnitPermissionComponent,
      UnitgroupsComponent,
+     InformationComponent,
     ],
   imports: [
     CommonModule,
@@ -80,6 +86,8 @@ const  routes:  Routes  = [
     MatSelectModule,
     MatCheckboxModule,
     MatTableModule,
+    MatGridListModule,
+    MatRadioModule
     
   ],
   exports: [RouterModule]
