@@ -5,11 +5,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
 
 import { EditModule } from  './edit/edit.module';
 
@@ -30,6 +31,7 @@ import { ActivityComponent } from './activity/activity.component';
 import { MatTableModule } from '@angular/material/table';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { EditComponent } from './edit/edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -72,11 +74,14 @@ const  routes:  Routes  = [
     MatToolbarModule,
     MatTableModule,
     MatCheckboxModule,
-    FormsModule,
     HttpClientModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatButtonModule,
+
+    FormsModule,
+    ReactiveFormsModule,
     InMemoryWebApiModule.forRoot(DataService),
 
     EditModule,
