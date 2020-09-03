@@ -7,15 +7,20 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./information.component.css']
 })
 export class InformationComponent implements OnInit {
-  formGroup :FormGroup ; 
+  infoformGroup :FormGroup ; 
+  nameformGroup :FormGroup ; 
 
   constructor() { }
 
   ngOnInit(): void {
-    this.formGroup=new FormGroup({
+    this.nameformGroup=new FormGroup({
       name: new FormControl(),
-      state: new FormControl(false)
+      state: new FormControl("true")
    });
+   this.infoformGroup=new FormGroup({
+    name: new FormControl(),
+    state: new FormControl("false")
+ });
   }
 
 }

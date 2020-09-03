@@ -1,17 +1,20 @@
 mat-grid-tile:hover{
     background-color: #ebebeb;
 }
-.name-state{
-    display: flex;
+.name-state , .info{
+       display: flex;
     
 }
 .form {
     padding: 5px 0px 5px 2px;
     width: 100%;
   }
-
-.form-element {
+  .form-element {
     padding: 5px 5px 5px 15px;
+    width: 100%;
+  }
+.form-culomn {
+    padding-right: 10px;
     width: 50%;
   }
 .mat-radio-button ~ .mat-radio-button {
