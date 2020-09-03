@@ -20,22 +20,28 @@
         </form>
     </mat-grid-tile>
     <!-- Map -->
-    <mat-grid-tile [colspan]="1" [rowspan]="4">
-        <form [formGroup]="mapformGroup"  class="form map">
-        <div class="form-culomn">
+    <mat-grid-tile class="map" [colspan]="1" [rowspan]="4">
+        <form [formGroup]="mapformGroup" >
+        
             <mat-form-field class="form-element" appearance="fill">
                 <mat-label>GPS Latitude (N)</mat-label>
                 <input type="number" matInput placeholder="E.g. 45.44471" formControlName="name" required>
             </mat-form-field>
-        </div>
-            <div class="form-culomn">
+      
+
+        
             <mat-form-field class="form-element" appearance="fill">
                 <mat-label>GPS Longitude (E)</mat-label>
                 <input type="number" matInput placeholder="E.g. 13.35937" formControlName="name" required>
             </mat-form-field>  
+        
+        
+
+        <div style="height:250px;width: 100%;  "
+            leaflet 
+            [leafletOptions]="options">
         </div>
         </form>
-
        
     </mat-grid-tile>    
     <!-- infoformGroup -->
@@ -78,3 +84,7 @@
     </form>
     </mat-grid-tile>
   </mat-grid-list>
+
+
+  
+  

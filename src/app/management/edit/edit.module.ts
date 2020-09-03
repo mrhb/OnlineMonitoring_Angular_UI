@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
 
@@ -87,7 +88,8 @@ const  routes:  Routes  = [
     MatCheckboxModule,
     MatTableModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    LeafletModule
     
   ],
   exports: [RouterModule]
