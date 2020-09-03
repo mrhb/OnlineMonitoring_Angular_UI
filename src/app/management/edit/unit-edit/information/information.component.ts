@@ -9,6 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class InformationComponent implements OnInit {
   infoformGroup :FormGroup ; 
   nameformGroup :FormGroup ; 
+  mapformGroup :FormGroup ; 
 
   constructor() { }
 
@@ -21,6 +22,10 @@ export class InformationComponent implements OnInit {
     name: new FormControl(),
     state: new FormControl("false")
  });
+ this.mapformGroup=new FormGroup({
+  name: new FormControl(),
+  state: new FormControl("false")
+});
   }
 
 }
