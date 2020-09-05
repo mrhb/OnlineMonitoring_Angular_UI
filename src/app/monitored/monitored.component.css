@@ -1,0 +1,56 @@
+mat-sidenav-content{
+    display: flex;
+}
+app-map.min{
+    width: 50%;
+}
+app-map.normal{
+    width: 30%;
+}
+
+app-map.max{
+    width: 0%;
+}
+
+#container.min{
+    width: 50%;
+}
+#container.normal{
+    width: 70%;
+}
+#container.max{
+    width: 100%;
+}
+
+mat-icon.max{
+    visibility: collapse;
+}
+.views{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    
+    margin-right: 0;  
+}
+.views mat-icon {
+    padding-right: 15px;
+    }
+.actions{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    color: red;
+    margin-right: 0;  
+}
+mat-icon.filter{
+    color: black;
+}
+span.filter{
+    color:#d50000
+}
+.actions mat-icon {
+padding-right: 15px;
+}
+.actions span{
+    padding-right: 15px;
+    }

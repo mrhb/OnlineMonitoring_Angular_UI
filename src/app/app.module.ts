@@ -41,8 +41,14 @@ import { MainpanelComponent } from './dashboard/mainpanel/mainpanel.component';
 import { SidepanelComponent } from './sidepanel/sidepanel.component';
 import { GroupsComponent } from './sidepanel/groups/groups.component';
 
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
+
 
 import { ManagementModule } from  './management/management.module';
+import { MonitoredComponent } from './monitored/monitored.component';
+import { MapComponent } from './monitored/map/map.component';
+import { ContentComponent } from './monitored/content/content.component';
 
 
 
@@ -63,6 +69,9 @@ import { ManagementModule } from  './management/management.module';
     MainpanelComponent,
     SidepanelComponent,
     GroupsComponent,
+    MonitoredComponent,
+    MapComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +91,8 @@ import { ManagementModule } from  './management/management.module';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    ManagementModule
+    ManagementModule,
+    LeafletModule
       ],
   providers: [],
   bootstrap: [AppComponent],

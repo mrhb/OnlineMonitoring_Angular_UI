@@ -1,0 +1,31 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened=true>
+      <app-sidepanel></app-sidepanel>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+        <div id="container" [ngClass]="expantion" >    
+            <mat-toolbar>
+                <span>Monitored Units</span>
+
+                <div class="views">
+                    <span> views: </span>
+                    <mat-icon >view_list</mat-icon>
+                    <mat-icon  >apps</mat-icon>
+                    <mat-icon [ngClass]="expantion" >view_week</mat-icon>
+                </div>
+
+                <div class="actions">
+                    <mat-icon (click)="sidenav.toggle()" class="filter">filter_alt</mat-icon>
+                    <span class="filter"> filter</span>
+                    <mat-icon (click)="collapse()" >keyboard_arrow_left</mat-icon>
+                    <mat-icon [ngClass]="expantion" (click)="expand()">keyboard_arrow_right</mat-icon>
+                </div>
+            </mat-toolbar>   
+           <app-content></app-content>
+        </div>
+        <app-map  [ngClass]="expantion" 
+        style="height:650px"
+        ></app-map>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
