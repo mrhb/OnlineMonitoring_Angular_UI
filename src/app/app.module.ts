@@ -18,11 +18,6 @@ import {MatTableModule} from '@angular/material/table';
 
 import { ChartsModule } from 'ng2-charts';
 
-
-
-
-
-
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -49,6 +44,10 @@ import { ManagementModule } from  './management/management.module';
 import { MonitoredComponent } from './monitored/monitored.component';
 import { MapComponent } from './monitored/map/map.component';
 import { ContentComponent } from './monitored/content/content.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TableviewComponent } from './monitored/content/tableview/tableview.component';
+import { IconviewComponent } from './monitored/content/iconview/iconview.component';
+import { ModuleviewComponent } from './monitored/content/moduleview/moduleview.component';
 
 
 
@@ -72,6 +71,9 @@ import { ContentComponent } from './monitored/content/content.component';
     MonitoredComponent,
     MapComponent,
     ContentComponent,
+    TableviewComponent,
+    IconviewComponent,
+    ModuleviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,9 @@ import { ContentComponent } from './monitored/content/content.component';
     MatPaginatorModule,
     MatSortModule,
     ManagementModule,
-    LeafletModule
+    LeafletModule,
+    MatFormFieldModule,
+
       ],
   providers: [],
   bootstrap: [AppComponent],
