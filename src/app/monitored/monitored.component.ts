@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MonitoredComponent implements OnInit {
 expantion:string="normal";
+viewType:string="table";
   constructor() { }
 
   ngOnInit(): void {
@@ -18,9 +19,16 @@ expantion:string="normal";
     this.expantion="max";
   }
   collapse(){
+    console.log("sadfcgr");
     if(this.expantion=="max")
     this.expantion="normal";
     else
     this.expantion="min";
+  }
+  setView(){
+
+  }
+  setContentView(type:string){
+    this.viewType=type;
   }
 }

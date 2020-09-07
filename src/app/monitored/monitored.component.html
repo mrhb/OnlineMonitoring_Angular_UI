@@ -10,9 +10,9 @@
 
                 <div class="views">
                     <span> views: </span>
-                    <mat-icon >view_list</mat-icon>
-                    <mat-icon >apps</mat-icon>
-                    <mat-icon >view_week</mat-icon>
+                    <mat-icon (click)="setContentView('table')" >view_list</mat-icon>
+                    <mat-icon (click)="setContentView('icon')" >apps</mat-icon>
+                    <mat-icon (click)="setContentView('module')" >view_week</mat-icon>
                 </div>
 
                 <div class="actions">
@@ -22,7 +22,7 @@
                     <mat-icon [ngClass]="expantion" (click)="expand()">keyboard_arrow_right</mat-icon>
                 </div>
             </mat-toolbar>   
-           <app-content></app-content>
+           <app-content [ViewType]=viewType></app-content>
         </div>
         <app-map  [ngClass]="expantion" 
         style="height:650px"

@@ -48,6 +48,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TableviewComponent } from './monitored/content/tableview/tableview.component';
 import { IconviewComponent } from './monitored/content/iconview/iconview.component';
 import { ModuleviewComponent } from './monitored/content/moduleview/moduleview.component';
+import { ViewUnitsDirective } from './monitored/content/view-units.directive';
 
 
 
@@ -74,6 +75,7 @@ import { ModuleviewComponent } from './monitored/content/moduleview/moduleview.c
     TableviewComponent,
     IconviewComponent,
     ModuleviewComponent,
+    ViewUnitsDirective,
   ],
   imports: [
     BrowserModule,
