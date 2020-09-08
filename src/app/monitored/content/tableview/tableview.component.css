@@ -1,13 +1,20 @@
 table {
     width: 100%;
-    background: rgb(65, 65, 65);
+    /* background: rgb(65, 65, 65); */
   }
   
   tr.example-detail-row {
     height: 0;
   }
   
+  .mat-header-row{
+    height: fit-content;
+    background: dimgray;
+  }
   
+  .mat-header-cell{
+    color: whitesmoke;
+  }
   
   .example-element-row td {
     border-bottom-width: 0;
@@ -17,7 +24,7 @@ table {
     overflow: hidden;
     display: flex;
   }
-  
+/*   
   .material-icons.alarm{
     color: #FF8000;
   }
@@ -81,4 +88,4 @@ table {
   .closeIcon{
     margin-left: auto;
     color: white;
-  }
+  } */

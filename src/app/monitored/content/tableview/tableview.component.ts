@@ -22,12 +22,9 @@ export class TableviewComponent implements ViewComponent,OnInit {
   constructor() { }
 
   dataSource = ELEMENT_DATA;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<PeriodicElement>;
  
 
-  columnsToDisplay = ['unitname','alarms'];
+  columnsToDisplay = ['Alarm','Name','Engine','Update','Actions'];
   expandedElement: PeriodicElement | null;
 
  
@@ -38,56 +35,65 @@ export class TableviewComponent implements ViewComponent,OnInit {
 
 export interface PeriodicElement {
   alarms:{name:string , Icon:string}[];
-  unitname: string;
+  itemName: string;
+  engines: number;
 }
 
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
-    unitname: 'unit 1',
+    itemName: 'unit 1',
+    engines:2,
     alarms:[
       {name:'*WrnServiceTime',Icon:'sutdown'},{name:'*Emergency stop', Icon:'Sensor'}
     ]
   },
   {
-    unitname: 'unit 2',
+    itemName: 'unit 2',
+    engines:2,
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
         ]
   },
   {
-    unitname: 'unit 3',
+    itemName: 'unit 3',
+    engines:2,
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Dongle Incomp', Icon:'warning'},
           {name:'*WrnServiceTime',Icon:'ECU'},
         ]
   },
   {
-    unitname: 'unit 4',
+    itemName: 'unit 4',
+    engines:2,
     alarms:[
           {name:'*WrnServiceTime',Icon:'sutdown'},{name:'*Emergency stop', Icon:'warning'}
         ]
   },
   {
-    unitname: 'unit 5',
+    itemName: 'unit 5',
+    engines:2,
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'sutdown'}
         ]
   },
   {
-    unitname: 'unit 6',
+    itemName: 'unit 6',
+    engines:2,
     alarms:[
           {name:'*WrnServiceTime',Icon:'warning'},{name:'*Emergency stop', Icon:'warning'}
         ]
   },
   {
-    unitname: 'unit 7',
+    itemName: 'unit 7',
+    engines:2,
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
         ]
   },
      {
-    unitname: 'unit 8',
+    itemName: 'unit 8',
+    engines:2,
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
         ]

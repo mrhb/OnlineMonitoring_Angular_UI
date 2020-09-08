@@ -1,46 +1,45 @@
-<p>tableview works!</p>
+
 <table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
+       [dataSource]="dataSource" 
+       multiTemplateDataRows     
        class="mat-elevation-z8">
 
-  <!-- <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-    <td class="name-column" mat-cell *matCellDef="let element"> {{element[column]}} </td>
-  </ng-container>   -->
-
-
-  
-  <!-- unitname Column -->
-  <ng-container matColumnDef="unitname">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td class="name-column" mat-cell *matCellDef="let element"> {{element.unitname}} </td>
-  </ng-container>
+    <!-- Alarm Column -->
+    <ng-container matColumnDef="Alarm">
+        <th mat-header-cell *matHeaderCellDef>Alarm</th>
+        <td class="name-column" mat-cell *matCellDef="let element"> {{element.unitname}} </td>
+    </ng-container>
     
-  <!-- unitname Column -->
-    <ng-container matColumnDef="alarms">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td class="agreegated-alarms" mat-cell *matCellDef="let element">  
-        <div  *ngFor="let alarm of element.alarms">
-          <span class="material-icons {{alarm.Icon}}">warning</span>
-        </div>
-          <span class="material-icons closeIcon">
-            close
-          </span>
-      </td>
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td class="name-column" mat-cell *matCellDef="let element"> {{element.itemName}} </td>
     </ng-container>
 
-    <!-- Id Column -->
-    <!-- <ng-container matColumnDef="unitname">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit Name</th>
-      <td  class="left-align red-underline" mat-cell *matCellDef="let row">{{row.unitname}}</td>
-    </ng-container> -->
-<!-- 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Comment</th>
-      <td class="left-align "  mat-cell *matCellDef="let row">{{row.name}} <fa-icon [icon]="filmIcon"></fa-icon></td>
-    </ng-container> -->
+    <!-- Engine Column -->
+    <ng-container matColumnDef="Engine">
+        <th mat-header-cell *matHeaderCellDef>Engine</th>
+        <td class="name-column" mat-cell *matCellDef="let element"> ({{element.engines}}) </td>
+    </ng-container>
 
+    <!-- Update Column -->
+    <ng-container matColumnDef="Update">
+        <th mat-header-cell *matHeaderCellDef>Update</th>
+        <td class="name-column" mat-cell *matCellDef="let element">
+          <!-- <container-element [ngSwitch]="match_expression"> -->
+            <!-- the same view can be shown in more than one case -->
+            <!-- <some-element *ngSwitchCase=1><span class="material-icons">browser_not_supported</span></some-element> -->
+            <!--default case when there are no matches -->
+            <!-- <some-element *ngSwitchDefault>...</some-element> -->
+          <!-- </container-element> -->
+        </td>
+    </ng-container>      
 
+    <!-- Actions Column -->
+    <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td class="name-column" mat-cell *matCellDef="let element"> {{element.unitname}} </td>
+    </ng-container>   
 
   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
   <ng-container matColumnDef="expandedDetail">
