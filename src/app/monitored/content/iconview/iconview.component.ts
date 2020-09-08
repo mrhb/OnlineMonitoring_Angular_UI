@@ -25,7 +25,7 @@ export class IconviewComponent implements ViewComponent,OnInit {
 export interface PeriodicElement {
   alarms:{name:string , Icon:string}[];
   itemName: string;
-  update:number
+  update:string;
   engines: number;
 }
 
@@ -34,7 +34,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     itemName: 'unit 1',
     engines:2,
-    update:1,
+    update:'2',
     alarms:[
       {name:'*WrnServiceTime',Icon:'sutdown'},{name:'*Emergency stop', Icon:'Sensor'}
     ]
@@ -42,7 +42,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     itemName: 'unit 2',
     engines:2,
-    update:1,
+    update:'2',
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
         ]
@@ -50,7 +50,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     itemName: 'unit 3',
     engines:2,
-    update:1,
+    update:'2',
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Dongle Incomp', Icon:'warning'},
           {name:'*WrnServiceTime',Icon:'ECU'},
@@ -59,7 +59,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     itemName: 'unit 4',
     engines:2,
-    update:1,
+    update:'2',
     alarms:[
           {name:'*WrnServiceTime',Icon:'sutdown'},{name:'*Emergency stop', Icon:'warning'}
         ]
@@ -67,7 +67,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     itemName: 'unit 5',
     engines:2,
-    update:1,
+    update:'2',
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'sutdown'}
         ]
@@ -75,7 +75,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     itemName: 'unit 6',
     engines:2,
-    update:3,
+    update:'1',
     alarms:[
           {name:'*WrnServiceTime',Icon:'warning'},{name:'*Emergency stop', Icon:'warning'}
         ]
@@ -83,7 +83,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     itemName: 'unit 7',
     engines:2,
-    update:1,
+    update:'2',
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
         ]
@@ -91,7 +91,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
      {
     itemName: 'unit 8',
     engines:2,
-    update:1,
+    update:'2',
     alarms:[
           {name:'*WrnServiceTime',Icon:'alarm'},{name:'*Emergency stop', Icon:'warning'}
         ]

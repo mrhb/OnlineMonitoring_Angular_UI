@@ -26,12 +26,14 @@
     <ng-container matColumnDef="Update">
         <th mat-header-cell *matHeaderCellDef>Update</th>
         <td class="name-column" mat-cell *matCellDef="let element">
-          <!-- <container-element [ngSwitch]="match_expression"> -->
+          <container-element [ngSwitch]="element.update">
             <!-- the same view can be shown in more than one case -->
-            <!-- <some-element *ngSwitchCase=1><span class="material-icons">browser_not_supported</span></some-element> -->
+            <some-element *ngSwitchCase='1'><span class="material-icons">cast_for_education</span></some-element>
+            <some-element *ngSwitchCase='2'><span class="material-icons">cast</span></some-element>
+            <some-element *ngSwitchCase='3'><span class="material-icons">cast_connected</span></some-element>
             <!--default case when there are no matches -->
-            <!-- <some-element *ngSwitchDefault>...</some-element> -->
-          <!-- </container-element> -->
+            <some-element *ngSwitchDefault>?</some-element>
+          </container-element>
         </td>
     </ng-container>      
 
@@ -45,7 +47,7 @@
   <ng-container matColumnDef="expandedDetail">
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
       <div class="example-element-detail"
-           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+      [@detailExpand]="checkExpanded(element) ? 'expanded' : 'collapsed'">
         <div>        
             <div class="unit-alarmssss  {{alarm.Icon}}" *ngFor="let alarm of element.alarms">
               <span id="detailIcon" class="material-icons {{alarm.Icon}}">warning</span>
@@ -63,8 +65,8 @@
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
       class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
+      [class.example-expanded-row]="checkExpanded(element)"
+      (click)="pushPopElement(element)">
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>

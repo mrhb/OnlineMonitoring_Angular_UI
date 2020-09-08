@@ -36,12 +36,12 @@ export class ContentComponent implements OnInit {
         break; 
       } 
       case "icon": { 
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(IconviewComponent);
+        // componentFactory = this.componentFactoryResolver.resolveComponentFactory(IconviewComponent);
         //statements; 
         break; 
       } 
       default: { 
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(ModuleviewComponent);
+        // componentFactory = this.componentFactoryResolver.resolveComponentFactory(ModuleviewComponent);
          //statements; 
          break; 
       } 
