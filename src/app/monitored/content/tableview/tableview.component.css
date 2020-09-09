@@ -15,16 +15,53 @@ table {
   .mat-header-cell{
     color: whitesmoke;
   }
-  
+
+  .engin-column{
+    padding-left: 20px;
+  }
   .example-element-row td {
     border-bottom-width: 0;
   }
   
-  .example-element-detail {
+  .element-detail-container {
+ 
+  }  
+  .element-detail-element {
     overflow: hidden;
     display: flex;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+
+    
+    border-style: solid;
+    /* border: beige; */
+    border-bottom-width: thin;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-color: coral;
   }
-/*   
+  .element-detail-element .material-icons
+  {
+    padding-right: 30px;
+    padding-left: 10px;
+  }
+  .element-detail-element .name
+  {
+    width: 210px;
+    margin-right: 20px;
+    padding-bottom: 2px;
+   
+  }
+  /* .example-expanded-row{
+    background-color: lawngreen;
+  } */
+
+  .alarm-column{
+    width: 50px;
+  }
+
+
   .material-icons.alarm{
     color: #FF8000;
   }
@@ -42,7 +79,8 @@ table {
   }
   
   
-  .unit-alarmssss{
+  
+  /* .backgroundAlarm{
     display: inline-flex;
     width: 1500%;
     background-color: #ffc800;
@@ -50,30 +88,30 @@ table {
     padding-left:5px;
     padding-top: 5px;
     
-  }
+  } */
   
   
-  .unit-alarmssss.alarm{
+  .backgroundAlarm.alarm{
     background-color: #FF8000;
   }
-  .unit-alarmssss.warning{
+  .backgroundAlarm.warning{
     background-color:  #FBC02D;
   }
-  .unit-alarmssss.sutdown{
+  .backgroundAlarm.sutdown{
     background-color: #d50000;
   }
-  .unit-alarmssss.ECU{
+  .backgroundAlarm.ECU{
     background-color:  #00acec;
   }
-  .unit-alarmssss.Sensor{
+  .backgroundAlarm.Sensor{
     background-color:  #424242;
   }
-  #detailIcon.warning,#detailIcon.ECU {
+  /* #detailIcon.warning,#detailIcon.ECU {
     color: black;
   }
   #detailIcon.alarm,#detailIcon.Sensor ,#detailIcon.sutdown{
     color: white;
-  }
+  } */
   
   .agreegated-alarms{
     display: inline-flex;
@@ -81,11 +119,3 @@ table {
     padding-top: 13px;
       }
   
-  .name-column{
-    text-align: left;
-    color: white;
-  }
-  .closeIcon{
-    margin-left: auto;
-    color: white;
-  } */

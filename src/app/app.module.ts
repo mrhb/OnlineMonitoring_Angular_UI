@@ -49,7 +49,8 @@ import { TableviewComponent } from './monitored/content/tableview/tableview.comp
 import { IconviewComponent } from './monitored/content/iconview/iconview.component';
 import { ModuleviewComponent } from './monitored/content/moduleview/moduleview.component';
 import { ViewUnitsDirective } from './monitored/content/view-units.directive';
-
+import{SideComponent} from './monitored/side/side.component';
+import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.component'
 
 
 @NgModule({
@@ -75,7 +76,9 @@ import { ViewUnitsDirective } from './monitored/content/view-units.directive';
     TableviewComponent,
     IconviewComponent,
     ModuleviewComponent,
+    SideComponent,
     ViewUnitsDirective,
+    MinidetailsComponent,
   ],
   imports: [
     BrowserModule,
