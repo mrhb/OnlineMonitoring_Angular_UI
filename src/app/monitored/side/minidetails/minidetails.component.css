@@ -1,0 +1,21 @@
+.filter-sort-panel{
+    display: flex;
+    font-size: .875rem;
+    background-color: #eeeeee;
+    border-bottom: solid 1px #d4d4d4;
+    height: 30px;
+}
+.filter-sort-panel button 
+{
+    margin: 0 auto 0 -3px;
+    border-left: solid 1px #d4d4d4;
+}
+
+
+
+.filter-sort-panel div
+{
+    padding: 5px;
+    margin: 0 auto 0 -3px;
+    border-left: solid 1px #d4d4d4;
+}

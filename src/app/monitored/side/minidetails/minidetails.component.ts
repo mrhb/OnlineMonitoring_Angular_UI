@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-minidetails',
+  selector: 'minidetails',
   templateUrl: './minidetails.component.html',
-  styleUrls: ['./minidetails.component.sass']
+  styleUrls: ['./minidetails.component.css']
 })
 export class MinidetailsComponent implements OnInit {
 

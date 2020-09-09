@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import{ViewComponent, RowElement} from './view.component'
 import { TableviewComponent } from './tableview/tableview.component';
 import { ViewUnitsDirective } from './view-units.directive';
@@ -13,10 +13,16 @@ import { ModuleviewComponent } from './moduleview/moduleview.component';
 })
 export class ContentComponent implements OnInit {
   @Input() ViewType: string;
+  @Output() unitSelectionEvent = new EventEmitter<number>(); tempnum:number=0;
   @ViewChild(ViewUnitsDirective, {static: true}) appViewUnits: ViewUnitsDirective;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
+  viewClick(){
+    this.tempnum=this.tempnum+1;
+    console.log(this.tempnum +"  clicked");
+    this.unitSelectionEvent.emit(this.tempnum);
+  }
   ngOnInit(): void {
     this.LoadView(this.ViewType) ;
   }

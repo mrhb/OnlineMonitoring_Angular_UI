@@ -50,7 +50,8 @@ import { IconviewComponent } from './monitored/content/iconview/iconview.compone
 import { ModuleviewComponent } from './monitored/content/moduleview/moduleview.component';
 import { ViewUnitsDirective } from './monitored/content/view-units.directive';
 import{SideComponent} from './monitored/side/side.component';
-import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.component'
+import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.component';
+import { FilterComponent } from './monitored/side/filter/filter.component'
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.c
     SideComponent,
     ViewUnitsDirective,
     MinidetailsComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,

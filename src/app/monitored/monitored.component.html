@@ -1,6 +1,6 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened=true>
-      <monitored-side></monitored-side>
+    <mat-sidenav #sidenav mode="side" opened="{{sideOpen}}">
+      <monitored-side [sideType]="SideType"></monitored-side>
     </mat-sidenav>
     
     <mat-sidenav-content>
@@ -16,13 +16,13 @@
                 </div>
 
                 <div class="actions">
-                    <mat-icon (click)="sidenav.toggle()" class="filter">filter_alt</mat-icon>
+                    <mat-icon (click)="filterClick()" class="filter">filter_alt</mat-icon>
                     <span class="filter"> filter</span>
                     <mat-icon (click)="collapse()" >keyboard_arrow_left</mat-icon>
-                    <mat-icon [ngClass]="expantion" (click)="expand()">keyboard_arrow_right</mat-icon>
+                    <mat-icon (click)="expand()">keyboard_arrow_right</mat-icon>
                 </div>
             </mat-toolbar>   
-           <app-content [ViewType]=viewType></app-content>
+           <app-content [ViewType]=viewType (unitSelectionEvent)="unitSelected($event)"></app-content>
         </div>
         <app-map  [ngClass]="expantion" 
         style="height:650px"
