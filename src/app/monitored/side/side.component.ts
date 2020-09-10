@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SideComponent implements OnInit {
   @Input() sideType:string="";
+
+  name:string="Unit 1";
  filterVisible:boolean=false;
  unitMiniDetailVisible:boolean=false;
   constructor() { }

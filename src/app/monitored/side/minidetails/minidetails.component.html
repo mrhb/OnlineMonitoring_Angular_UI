@@ -1,13 +1,50 @@
 <form class="filter-sort-panel">
     <button mat-button >
-        <mat-icon >warning</mat-icon>
+        <mat-icon >cloud_download</mat-icon>
+    </button>
+    <button mat-button >
+        <mat-icon >show_chart</mat-icon>
     </button>
     <button mat-button  >
         <mat-icon> av_timer </mat-icon>
     </button>
     <button mat-button >
-        <mat-icon>keyboard_arrow_down</mat-icon>
+        <mat-icon>settings  </mat-icon>
     </button>
     
  
 </form> 
+
+<p>
+    Disabled:
+</p>
+
+<p>
+    Breacker State:
+</p>
+
+<p>
+    Controller Mode:
+</p>
+
+
+<p>
+    Last Update:
+</p>
+<p>
+    <span class="material-icons alarmReset">cast</span>2020-01-01 03:25:44
+</p>
+
+<p>
+    AlarmList:
+    <span class="material-icons alarmReset">warning</span>
+</p>
+    
+<div class="alarms-Container">
+    <div class="unit-alarmssss  {{alarm.Icon}}" *ngFor="let alarm of element.alarms">
+        <span id="detailIcon" class="material-icons {{alarm.Icon}}">warning</span>
+        <span id="detailIcon" class="{{alarm.Icon}}" >
+            {{alarm.name }}
+        </span>
+    </div>          
+</div>
