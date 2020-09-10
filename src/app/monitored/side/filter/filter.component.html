@@ -1,1 +1,38 @@
-<p>filter works!</p>
+<div class="container">
+    <form  class="form">
+        <fieldset>
+            <label>Show only</label>
+            <button  type="button" [class.selected]="selected== 'groups'"  (click)="groupsClicked()" class="groups selected" mat-flat-button color="warn">
+                <mat-icon>library_books</mat-icon>
+            </button >
+            <button  type="button" [class.selected]="selected== 'units'"    (click)="unitsClicked()"  class="units" mat-flat-button color="warn">
+                <mat-icon> av_timer </mat-icon>
+            </button >
+            <button  type="button" [class.selected]="selected== 'all'"      (click)="allClicked()" class="all" mat-flat-button color="warn">
+                All
+            </button >
+        </fieldset>
+
+        <fieldset>
+            <label>Show groups</label>
+        </fieldset>
+        
+        <fieldset>
+            <label>Alarm type</label>
+            <div  class="alarms">
+                <div class="alarmItem" *ngFor="let alarm of alarms">
+
+                   <input type="checkbox" [checked]="alarm.checked"   (change)="alarm.checked = !alarm.checked">                    
+                    <span  class=" material-icons {{alarm.Icon}} ">warning</span>  
+                    <span class="checkbox_title">
+                        {{alarm.Icon}}
+                    </span>
+                </div>               
+            </div>
+        </fieldset>
+
+        <button  type="button"       (click)="resetClicked()" class="reset selected" mat-flat-button color="warn">
+            Reset filters
+        </button >
+    </form>
+</div>

@@ -5,11 +5,7 @@
     align-items: center;
     color: #ffffff;
     padding-left: 6px;
-
-    width: 100%;
-    
-
-    border-bottom: solid 1px #d4d4d4;
+   
     height: 30px;
 }
 .header .mat-button

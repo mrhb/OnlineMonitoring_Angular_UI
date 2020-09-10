@@ -9,10 +9,10 @@ export class MonitoredComponent implements OnInit {
 expantion:string="normal";
 viewType:string="table";
 
-SideType:string="miniDetail";
+SideType:string="";
 sideOpen:boolean=true;
-showfilter:boolean=false;
-showUnitDetail:boolean=true;
+showfilter:boolean=true;
+showUnitDetail:boolean=false;
   constructor() { }
 
   ngOnInit(): void {

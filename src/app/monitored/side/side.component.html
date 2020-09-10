@@ -1,7 +1,6 @@
 <form class="header">
-    <h2>
-        {{name}}
-    </h2>
+    <h2 *ngIf="unitMiniDetailVisible"> {{name}}</h2>
+    <h2 *ngIf="filterVisible">Filter</h2>
 
     <button mat-button  >
         <mat-icon>close</mat-icon>

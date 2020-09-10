@@ -1,0 +1,92 @@
+
+.container{
+    background-color: #484848;
+    color: #ffffff;
+    padding: 0 .875rem;
+}
+fieldset{
+    border: none;
+}
+label {
+    font-size: 1em;
+    display: block;
+    margin-bottom: .3125rem;
+    font-weight: 500;
+}
+.alarms{
+    border: 5px ;
+    padding-left: 0px;
+}
+.alarmItem{
+    display: block;
+    margin-bottom: .3125rem;
+    font-weight: 500;
+    text-align: left;
+    margin: 10px;
+}
+
+mat-form-field{
+    margin-left: 10px;
+}
+.mat-flat-button.selected{
+    background: #d50000;    
+}
+.mat-flat-button.selected{
+    background: -webkit-linear-gradient(#f40000, #e40000);
+}
+.mat-flat-button {
+    cursor: pointer;
+    background: #6e6e6e;   
+    border-left: solid 1px #2f2f2f; 
+}
+.groups{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-left: none;
+}
+.units{
+    border-radius: 0px;
+}
+   
+.all{
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.reset{
+    border-radius: 50px;
+    width: 100%;
+    margin-bottom: .625rem;
+}
+
+ .material-icons{
+    padding-right:5px ;
+  }
+  
+  .Sutdown{
+    color: #d50000;
+  }
+  .Alarm  {
+    color: #FF8000;
+  }
+  .Warning {
+    color: #FBC02D;
+  }
+  .ECU     {
+    color: #00acec;
+  }
+  .Fail{
+      color: #90A4AE;
+  }
+  .Sensor{
+    color: #424242;
+  }
+  .NoComm  {
+    color: #934d11;
+  }
+  .Disabled{
+    color: #999999;
+  }
+  .Online{
+      color: #6cc24a;
+  }
