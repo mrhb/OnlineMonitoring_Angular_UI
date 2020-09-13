@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { TrendInfo } from '../trendInfo';
+import { TrendsService } from '../trends.service';
 
 @Component({
-  selector: 'app-content',
+  selector: 'trends-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.sass']
+  styleUrls: ['./content.component.css']
 })
-export class ContentComponent implements OnInit {
-
-  constructor() { }
+export class TrendsContentComponent implements OnInit {
+  trends : TrendInfo[];
+  constructor(_trendsService:TrendsService) {
+    this.trends=_trendsService.getSelected();
+   }
 
   ngOnInit(): void {
   }

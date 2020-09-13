@@ -41,6 +41,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
 import { ManagementModule } from  './management/management.module';
+import { TrendsModule } from  './trends/trends.module';
 import { MonitoredComponent } from './monitored/monitored.component';
 import { MapComponent } from './monitored/map/map.component';
 import { ContentComponent } from './monitored/content/content.component';
@@ -101,6 +102,7 @@ import { FilterComponent } from './monitored/side/filter/filter.component'
     MatPaginatorModule,
     MatSortModule,
     ManagementModule,
+    TrendsModule,
     LeafletModule,
     MatFormFieldModule,
 

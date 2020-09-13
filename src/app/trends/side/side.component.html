@@ -1,1 +1,8 @@
 <p>side works!</p>
+<ul>
+    <li *ngFor="let item of trends; index as i;">
+        {{item.UnitId}}
+        <a routerLink="/trends/qw/{{item.UnitId}}" (click)="selected()"  routerLinkActive="active-link"   >   {{item.UnitName}}  </a>
+
+    </li>
+</ul>

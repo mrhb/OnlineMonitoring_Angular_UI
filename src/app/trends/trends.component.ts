@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrendsComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
   }
+  onActivate(){
+    console.log('onActivate');
+  }
+  onDeactivate(){
+    console.log('onDeactivate');
+  }
+
 
 }

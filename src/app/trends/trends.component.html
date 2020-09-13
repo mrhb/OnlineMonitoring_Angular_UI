@@ -1,1 +1,27 @@
-<p>trends works!</p>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="true">
+      <trends-side ></trends-side>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+         
+            <mat-toolbar>
+                <span>Monitored Units</span>
+
+                <div class="views">
+                    <span> views: </span>
+                    <mat-icon >view_list</mat-icon>
+                   
+                </div>
+
+            </mat-toolbar>   
+           <trends-content></trends-content>
+        
+        <router-outlet 
+        name='trendContent'
+        (activate)='onActivate($event)'
+        (deactivate)='onDeactivate($event)'
+        ></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>

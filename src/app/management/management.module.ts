@@ -85,8 +85,8 @@ const  routes:  Routes  = [
     InMemoryWebApiModule.forRoot(DataService),
 
     EditModule,
-
     RouterModule.forChild(routes)
+
   ],
   exports: [RouterModule]
 })
