@@ -1,0 +1,10 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TrendsService {
+
+  constructor() { }
+  getUnitVariables(unitId:number) { return variableList; }
+}
