@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: 'monitored-units', component: MonitoredComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'management', component: ManagementModule },
-{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
 @NgModule({
 imports: [RouterModule.forRoot(routes)],

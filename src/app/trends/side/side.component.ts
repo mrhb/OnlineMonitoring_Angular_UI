@@ -17,7 +17,16 @@ export class SideComponent implements OnInit {
   
   ngOnInit(): void {
   }
-selected(){
-  this.trendsService.addToList(this.trends[1]);
+selected(item:TrendInfo,checked:true){
+  if(checked)
+  this.trendsService.addToList(item);
+  else
+  this.trendsService.removeFromList(item);
+}
+onChange(event, item:TrendInfo) {
+
+
+
+
 }
 }

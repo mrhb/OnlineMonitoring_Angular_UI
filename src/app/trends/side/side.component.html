@@ -2,7 +2,13 @@
 <ul>
     <li *ngFor="let item of trends; index as i;">
         {{item.UnitId}}
-        <a routerLink="/trends/qw/{{item.UnitId}}" (click)="selected()"  routerLinkActive="active-link"   >   {{item.UnitName}}  </a>
+        <a routerLink="/trends/qw/{{item.UnitId}}" (click)="selected(item,'true')"  routerLinkActive="active-link"   >   {{item.UnitName}}  </a>
 
     </li>
 </ul>
+
+<div class="alarmItem" *ngFor="let item of trends">
+    <md-checkbox [checked]="'true'"  (change)="onChange($event, item)">
+        {{item.UnitId}}
+      </md-checkbox>       
+ </div>

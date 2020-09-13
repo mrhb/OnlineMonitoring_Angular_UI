@@ -12,12 +12,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
-
 import { TrendsComponent } from './trends.component';
 import { SideComponent } from './side/side.component';
 import { TrendsContentComponent } from './content/content.component';
 import { MatTableModule } from '@angular/material/table';
-
 
 
 const  routes:  Routes  = [
@@ -28,7 +26,7 @@ const  routes:  Routes  = [
     {
       path:  'qw/:id',
       component: TrendsContentComponent,
-      outlet: 'trendContent'
+      // outlet: 'trendContent'
     },
     // {
     //   path:  'users',

@@ -12,5 +12,13 @@ selectedtrends:TrendInfo[]=[];
   addToList(item:TrendInfo){
     this.selectedtrends.push(item);
   }
+  removeFromList(item:TrendInfo){
+    const index = this.selectedtrends.indexOf(item, 0);
+    if (index > -1) {
+      this.selectedtrends.splice(index, 1);
+    }
+
+    this.selectedtrends.push(item);
+  }
   getSelected(){return this.selectedtrends}
 }
