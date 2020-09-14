@@ -13,8 +13,8 @@
 
         <div class="views">
             <span> Type: </span>
-            <mat-icon  >timeline</mat-icon>
-            <mat-icon >grid_on</mat-icon>
+            <mat-icon  (click)="setContentView('table')"  >timeline</mat-icon>
+            <mat-icon  (click)="setContentView('chart')" >grid_on</mat-icon>
         </div>
 
         <div class="actions">
@@ -27,6 +27,6 @@
            <mat-icon>settings</mat-icon>   <a  routerLink="/management/activity"routerLinkActive="active-link"   > Settings </a>
           </div>
     </mat-toolbar>   
-           <trends-content></trends-content>
+           <trends-content [ViewType]=viewType></trends-content>
     </mat-sidenav-content>
   </mat-sidenav-container>

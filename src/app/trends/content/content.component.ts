@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { SeriesInfo, TrendInfo } from '../trendInfo';
 import { TrendsService } from '../trends.service';
 import { ChartViewComponent } from './chart-view/chart-view.component';
@@ -13,6 +13,7 @@ import { trendViewComponent } from './trendView.Cmponent';
 })
 export class TrendsContentComponent implements OnInit {
   series : SeriesInfo[];
+  @Input() ViewType: string;
   @ViewChild(TrendsViewDirective, {static: true}) trendsView: TrendsViewDirective;
 
   constructor(_trendsService:TrendsService,
@@ -21,8 +22,14 @@ export class TrendsContentComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.LoadView("table");
+    this.LoadView(this.ViewType) ;
   }
+  ngOnChanges() {
+    this.LoadView(this.ViewType) ;
+    // You can also use categoryId.previousValue and 
+    // categoryId.firstChange for comparing old and new values
+    
+}
   LoadView(Type:string) {
     const viewContainerRef = this.trendsView.viewContainerRef;
      viewContainerRef.clear();

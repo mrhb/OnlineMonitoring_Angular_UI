@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trends.component.css']
 })
 export class TrendsComponent implements OnInit {
-
+  viewType:string;
 
   constructor() { }
 
@@ -17,6 +17,9 @@ export class TrendsComponent implements OnInit {
   }
   onDeactivate(){
     console.log('onDeactivate');
+  }
+  setContentView(type:string){
+    this.viewType=type;
   }
 
 
