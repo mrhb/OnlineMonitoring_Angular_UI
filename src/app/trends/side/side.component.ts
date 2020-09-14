@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TrendInfo } from '../trendInfo';
+import { SeriesInfo, TrendInfo } from '../trendInfo';
 import { TrendsService } from '../trends.service';
 
 @Component({
@@ -12,18 +12,18 @@ export class SideComponent implements OnInit {
   trendsService:TrendsService;
   constructor(_trendsService:TrendsService) { 
     this.trendsService=_trendsService;
-    this.trends=this.trendsService.getUnitVariables(1);
+    this.trends=this.trendsService.getTrendsInfos();
   }
   
   ngOnInit(): void {
   }
-selected(item:TrendInfo,checked:true){
+selected(item:SeriesInfo,checked:true){
   if(checked)
   this.trendsService.addToList(item);
   else
   this.trendsService.removeFromList(item);
 }
-onChange(event, item:TrendInfo) {
+onChange(event, item:SeriesInfo) {
 
 
 

@@ -4,24 +4,29 @@
     </mat-sidenav>
     
     <mat-sidenav-content>
-         
-            <mat-toolbar>
-                <span>Monitored Units</span>
+      
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>list</mat-icon>
+        </button>
+        <span>Trends</span>
 
-                <div class="views">
-                    <span> views: </span>
-                    <mat-icon >view_list</mat-icon>
-                   
-                </div>
+        <div class="views">
+            <span> Type: </span>
+            <mat-icon  >timeline</mat-icon>
+            <mat-icon >grid_on</mat-icon>
+        </div>
 
-            </mat-toolbar>   
+        <div class="actions">
+          <span>Devise:</span>
+            <!-- <h1 class="submenu-title push-right filter" >  </h1> -->
+           <mat-icon>av_timer</mat-icon> <a  routerLink="/management/units"   routerLinkActive="active-link "   > Unit Detail </a>
+           <mat-icon>timeline</mat-icon> <a  routerLink="/management/users"   routerLinkActive="active-link"   > Trends </a>
+           <mat-icon>event_note</mat-icon> <a  routerLink="/management/groups"  routerLinkActive="active-link"   > Reports </a>
+           <mat-icon>cloud_download</mat-icon>   <a  routerLink="/management/activity"routerLinkActive="active-link"   > Downloads </a>
+           <mat-icon>settings</mat-icon>   <a  routerLink="/management/activity"routerLinkActive="active-link"   > Settings </a>
+          </div>
+    </mat-toolbar>   
            <trends-content></trends-content>
-<!--         
-        <router-outlet 
-        name='trendContent'
-        (activate)='onActivate()'
-        (deactivate)='onDeactivate()'
-        ></router-outlet> -->
-
     </mat-sidenav-content>
   </mat-sidenav-container>

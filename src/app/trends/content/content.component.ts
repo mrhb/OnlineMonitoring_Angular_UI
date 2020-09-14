@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TrendInfo } from '../trendInfo';
+import { SeriesInfo, TrendInfo } from '../trendInfo';
 import { TrendsService } from '../trends.service';
 
 @Component({
@@ -8,9 +8,9 @@ import { TrendsService } from '../trends.service';
   styleUrls: ['./content.component.css']
 })
 export class TrendsContentComponent implements OnInit {
-  trends : TrendInfo[];
+  series : SeriesInfo[];
   constructor(_trendsService:TrendsService) {
-    this.trends=_trendsService.getSelected();
+    this.series=_trendsService.getSelected();
    }
 
   ngOnInit(): void {

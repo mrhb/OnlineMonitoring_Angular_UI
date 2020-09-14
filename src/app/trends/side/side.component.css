@@ -1,0 +1,52 @@
+.header{
+    display: flex;
+    font-size: .875rem;
+    background-color: #2f2f2f;
+    align-items: center;
+    color: #ffffff;
+    padding-left: 6px;
+   
+    height: 30px;
+}
+.header .mat-button
+{
+    margin-left: auto;  
+}
+.header h2
+{
+    margin: 0;
+}
+
+.header div
+{
+    padding: 5px;
+    margin: 0 auto 0 -3px;
+    border-left: solid 1px #d4d4d4;
+}
+
+.list-actions1{
+    display: flex;
+    font-size: .875rem;
+    background-color: #eeeeee;
+   
+}
+.list-actions1 button 
+{
+    background-color: #5a5a5a;
+    color: #ffffff;
+    border: solid 1px  #222222;
+    border-width: 0 0 1px 1px;
+    border-radius: 0;
+    width: 50%;
+
+}
+.list-actions2 button 
+{
+    background-color: #5a5a5a;
+    color: #ffffff;
+    border: solid 1px  #222222;
+    border-width: 0 0 1px 1px;
+    border-radius: 0;
+    width: 33.33333%;
+
+}

@@ -1,0 +1,42 @@
+mat-toolbar{
+    padding: 0px;
+    padding-right: 10px;
+}
+.views{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    
+    margin-right: 0;  
+}
+.views mat-icon {
+    padding-left: 15px;
+    }
+.actions{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    color: red;
+    margin-right: 0;  
+}
+mat-icon.filter{
+    color: black;
+}
+span.filter{
+    color:#d50000
+}
+.actions mat-icon  {
+margin: 0 .625rem;
+color: #424242;
+}
+.actions span{
+    color: #424242;
+}
+.active-link{
+    color: #424242;  
+    text-emphasis: initial;
+}
+a{
+    color:#d50000;
+    font-size: small;  
+}

@@ -1,14 +1,37 @@
-<p>side works!</p>
-<ul>
-    <li *ngFor="let item of trends; index as i;">
-        {{item.UnitId}}
-        <a routerLink="/trends/qw/{{item.UnitId}}" (click)="selected(item,'true')"  routerLinkActive="active-link"   >   {{item.UnitName}}  </a>
+<form class="header">
+    <h2 > Trends unit list</h2>
+    <button mat-button  >
+        <mat-icon>close</mat-icon>
+    </button>  
+    
+</form> 
 
+<form class="list-actions1">
+    <button mat-button >
+        <mat-icon > av_timer </mat-icon>
+    </button>
+    <button mat-button >
+        <mat-icon > av_timer </mat-icon>
+    </button>
+
+</form> 
+<form class="list-actions2">
+    <button mat-button >
+        <mat-icon >search</mat-icon>
+    </button>
+    <button mat-button >
+        <mat-icon >show_chart</mat-icon>
+    </button>
+    <button mat-button  >
+        <mat-icon> av_timer </mat-icon>
+    </button>
+</form> 
+
+<ul>
+    <li *ngFor="let group of trends; index as i;">
+        {{group.GroupName}}
+            <p *ngFor="let item of group.UnitsSeriesInfo ; index as i;">
+                <a routerLink="/trends/qw/{{item.UnitId}}" (click)="selected(item,'true')"  routerLinkActive="active-link"   >   {{item.UnitName}}  </a>
+            </p>
     </li>
 </ul>
-
-<div class="alarmItem" *ngFor="let item of trends">
-    <md-checkbox [checked]="'true'"  (change)="onChange($event, item)">
-        {{item.UnitId}}
-      </md-checkbox>       
- </div>
