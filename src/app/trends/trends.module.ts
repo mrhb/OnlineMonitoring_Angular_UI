@@ -1,4 +1,5 @@
 import { NgModule } from  '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from  '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { TrendsViewDirective } from './content/trends-view.directive';
 import { TableViewComponent } from './content/table-view/table-view.component';
 import { ChartViewComponent } from './content/chart-view/chart-view.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const  routes:  Routes  = [
@@ -64,6 +66,10 @@ const  routes:  Routes  = [
     MatSelectModule,
     MatButtonModule,
     MatSidenavModule,
+    FormsModule,
+     ReactiveFormsModule, 
+     MatSelectModule,
+     BrowserModule,
 
     RouterModule.forChild(routes)
   ],

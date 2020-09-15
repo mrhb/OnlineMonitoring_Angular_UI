@@ -48,11 +48,7 @@ export class TrendsContentComponent implements OnInit {
       } 
    } 
 
-
-
-
-
    const componentRef = viewContainerRef.createComponent<trendViewComponent>(componentFactory);
-  //  componentRef.instance.data =this.view_DATA;
+    componentRef.instance.data = this.series;
   }
 }

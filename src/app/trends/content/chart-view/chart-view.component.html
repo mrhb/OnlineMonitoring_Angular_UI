@@ -1,1 +1,69 @@
-<p>chart-view works!</p>
+<div class="bulckActions">
+    <form  class="form">
+        <mat-form-field  >
+            <mat-label>
+                <mat-icon >calendar_today </mat-icon> Range</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let range of Ranges" [value]="range.value">
+                        {{range.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field  >
+                <mat-label>
+                    <mat-icon >timeline</mat-icon> Chart Type</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let type of Types" [value]="type.value">
+                        {{type.label}}
+                      </mat-option>
+                </mat-select>
+              </mat-form-field>
+                
+                          
+            <mat-form-field  >
+                <mat-label>
+                    <mat-icon >timeline</mat-icon> Tools</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let type of Tools" [value]="type.value">
+                        {{type.label}}
+                      </mat-option>
+                </mat-select>
+              </mat-form-field>
+            
+              <mat-form-field >
+                <mat-label>Display</mat-label>
+                <mat-select [formControl]="toppings" multiple>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <button mat-button  >
+                <mat-icon> fact_check</mat-icon>
+                Uncheck all values
+            </button>
+        </form>
+  </div>
+
+
+<ul>
+    <li *ngFor="let item of data; index as i;">
+        {{item.UnitId}}
+      </li>
+</ul>
+
+
+
+<form class="list-actions2">
+    <button mat-button >
+        <mat-icon >search</mat-icon>
+    </button>
+    <button mat-button >
+        <mat-icon >show_chart</mat-icon>
+    </button>
+    <button mat-button  >
+        <mat-icon> av_timer </mat-icon>
+    </button>
+</form> 
+
+
