@@ -1,0 +1,23 @@
+.list-actions2 button 
+{
+    background-color: #5a5a5a;
+    color: #ffffff;
+    border: solid 1px  #222222;
+    border-width: 0 0 1px 1px;
+    border-radius: 0;
+
+}
+mat-form-field{
+    margin-left: 10px;;
+}
+.ShiftLeft{
+    margin-right: auto;
+}
+.list-actions2{
+    display: flex;
+    justify-content: flex-end;
+    font-size: .875rem;
+    align-items:center;
+
+   
+}

@@ -14,3 +14,20 @@ mat-form-field{
   ng-select {
     width: 200px;
   }
+
+  .list-actions2 button 
+{
+    background-color: #5a5a5a;
+    color: #ffffff;
+    border: solid 1px  #222222;
+    border-width: 0 0 1px 1px;
+    border-radius: 0;
+    width: 25%;
+
+}
+.list-actions2{
+    display: flex;
+    font-size: .875rem;
+    background-color: #eeeeee;
+   
+}

@@ -1,5 +1,32 @@
-<p>table-view works!</p>
 
+<form class="list-actions2">
+
+  <mat-form-field  >
+    <mat-label>
+        <mat-icon >calendar_today </mat-icon> Range</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let range of Ranges" [value]="range.value">
+                {{range.label}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+      <mat-form-field    class="ShiftLeft">
+        <mat-label>
+            <mat-icon >timeline</mat-icon> Tools</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let type of Tools" [value]="type.value">
+                {{type.label}}
+              </mat-option>
+        </mat-select>
+      </mat-form-field>
+  <button mat-button  >
+      <mat-icon> arrow_back </mat-icon>
+  </button>
+  <button mat-button  >
+      <mat-icon> arrow_forward </mat-icon>
+  </button>
+</form> 
 
 <ul>
     <li *ngFor="let item of data; index as i;">
