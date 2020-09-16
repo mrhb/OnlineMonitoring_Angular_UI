@@ -21,6 +21,8 @@ import { TrendsViewDirective } from './content/trends-view.directive';
 import { TableViewComponent } from './content/table-view/table-view.component';
 import { ChartViewComponent } from './content/chart-view/chart-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+
 
 
 const  routes:  Routes  = [
@@ -70,6 +72,7 @@ const  routes:  Routes  = [
      ReactiveFormsModule, 
      MatSelectModule,
      BrowserModule,
+     ChartsModule,
 
     RouterModule.forChild(routes)
   ],

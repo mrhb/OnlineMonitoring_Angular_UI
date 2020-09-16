@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 import { SeriesInfo } from '../../trendInfo';
 import { trendViewComponent } from '../trendView.Cmponent';
@@ -52,6 +54,22 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   formGroup :FormGroup ; 
 
   constructor(private fb: FormBuilder) { }
+  
+  
+  public barChartOptions: ChartOptions = {
+    responsive: true, 
+  };
+  public barChartLabels: Label[] = ['Ready', 'Running ', 'Loaded', 'Stop', 'Init', 'Shout down', 'NotReady','EmergMan'];
+  public barChartType: ChartType = 'line';
+  public barChartLegend = false;
+  public barChartPlugins = [];  
+
+  public barChartData: ChartDataSets[] = [
+    { data: [2,11,1,2,8,0,15], label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
+  ];
+
+
+
 
   ngOnInit(): void {
     this.form = this.fb.group({

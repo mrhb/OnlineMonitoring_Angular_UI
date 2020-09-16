@@ -45,7 +45,18 @@
         </form>
   </div>
 
-
+  <div  class="Chart">
+      
+      <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"
+      >
+    </canvas> 
+</div>
 <ul>
     <li *ngFor="let item of data; index as i;">
         {{item.UnitId}}
