@@ -56,23 +56,64 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   constructor(private fb: FormBuilder) { }
   
   
-  public barChartOptions: ChartOptions = {
-    responsive: true, 
-  };
   public barChartLabels: Label[] = ['Ready', 'Running ', 'Loaded', 'Stop', 'Init', 'Shout down', 'NotReady','EmergMan'];
   public barChartType: ChartType = 'line';
   public barChartLegend = false;
   public barChartPlugins = [];  
-
+  
   public barChartData: ChartDataSets[] = [
     { data: [2,11,1,2,8,0,15], label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
   ];
-
-
-
-
-  ngOnInit(): void {
-    this.form = this.fb.group({
+  
+  public barChartOptions: ChartOptions = {
+    responsive: true, 
+    title: {
+    display: true,
+    text: 'Unit 1'
+    },
+    tooltips: {
+        mode: 'index',
+        intersect: false,
+    },
+    // scales: {
+    //       xAxes: [{
+    //             type: 'time',
+    //             time: {
+    //                   parser: 'MM/DD/YYYY HH:mm:ss',
+    //                   round: 'day',
+    //                   tooltipFormat: 'll HH:mm'
+    //               },
+    //               scaleLabel: {
+    //                     display: true,
+    //                     labelString: ''
+    //                 },
+    //                 ticks: {
+    //                       maxRotation: 0
+    //                   }
+    //               }],
+    //       yAxes: [{
+    //             scaleLabel: {
+    //                   display: true,
+    //                   labelString: 'Power(Kw)'
+    //               }
+    //           }]
+    // },
+    plugins: {
+          zoom: {
+                zoom: {
+                      enabled: true,
+                      drag: false,
+                      mode: 'x',
+                      speed: 0.1
+                  }
+              }
+    }
+  };
+                    
+                    
+                    
+ngOnInit(): void {
+  this.form = this.fb.group({
       first: [],
       second: []
     })
