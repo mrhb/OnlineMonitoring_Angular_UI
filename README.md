@@ -1,6 +1,5 @@
 # PUblished:
-https://mrhb.github.io/OnlineMonitoring_Angular_UI/
-
+https://mrhb.github.io/OnlineMonitoring_Angular_UI/OnlineMonitoring_Angular_UI
 
 [<img src="docs/assets/Capture.PNG">](https://mrhb.github.io/OnlineMonitoring_Angular_UI/OnlineMonitoring_Angular_UI)
 
