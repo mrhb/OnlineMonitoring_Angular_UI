@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
+import * as moment from 'jalali-moment';
 
 import { SeriesInfo } from '../../trendInfo';
 import { trendViewComponent } from '../trendView.Cmponent';
@@ -12,6 +13,9 @@ import { trendViewComponent } from '../trendView.Cmponent';
   styleUrls: ['./chart-view.component.css']
 })
 export class ChartViewComponent implements trendViewComponent, OnInit {
+  dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
+
+  
   data: SeriesInfo[];
   SelectedRange:string="Today";
   Type:string="Line";

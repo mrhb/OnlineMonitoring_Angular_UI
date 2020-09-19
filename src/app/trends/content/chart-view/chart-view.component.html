@@ -57,6 +57,13 @@
       >
     </canvas> 
 </div>
+<dp-date-picker 
+dir="rtl"
+[(ngModel)]="dateObject"
+mode="day"
+placeholder="تاریخ"
+theme="dp-material">
+</dp-date-picker>
 <ul>
     <li *ngFor="let item of data; index as i;">
         {{item.UnitId}}
