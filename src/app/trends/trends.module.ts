@@ -23,6 +23,7 @@ import { ChartViewComponent } from './content/chart-view/chart-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import {DpDatePickerModule} from 'ng2-jalali-date-picker';
+import { TimeRangeDilaogueComponent } from './content/time-range-dilaogue/time-range-dilaogue.component';
 
 
 
@@ -56,7 +57,7 @@ const  routes:  Routes  = [
   }
   ];
 @NgModule({
-  declarations: [TrendsComponent, SideComponent, TrendsContentComponent, TrendsViewDirective, TableViewComponent, ChartViewComponent],
+  declarations: [TrendsComponent, SideComponent, TrendsContentComponent, TrendsViewDirective, TableViewComponent, ChartViewComponent, TimeRangeDilaogueComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -70,11 +71,11 @@ const  routes:  Routes  = [
     MatButtonModule,
     MatSidenavModule,
     FormsModule,
-     ReactiveFormsModule, 
-     MatSelectModule,
-     BrowserModule,
-     ChartsModule,
-     DpDatePickerModule,
+    ReactiveFormsModule, 
+    MatSelectModule,
+    BrowserModule,
+    ChartsModule,
+    DpDatePickerModule,
 
     RouterModule.forChild(routes)
   ],

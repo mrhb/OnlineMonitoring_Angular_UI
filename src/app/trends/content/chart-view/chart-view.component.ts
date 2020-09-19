@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
-import * as moment from 'jalali-moment';
 
 import { SeriesInfo } from '../../trendInfo';
 import { trendViewComponent } from '../trendView.Cmponent';
+import { MatDialog } from '@angular/material/dialog';
+import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-dilaogue.component';
 
 @Component({
   selector: 'app-chart-view',
@@ -13,7 +14,6 @@ import { trendViewComponent } from '../trendView.Cmponent';
   styleUrls: ['./chart-view.component.css']
 })
 export class ChartViewComponent implements trendViewComponent, OnInit {
-  dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
 
   
   data: SeriesInfo[];
@@ -57,7 +57,8 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
 
   formGroup :FormGroup ; 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    public dialog: MatDialog) { }
   
   
   public barChartLabels: Label[] = ['Ready', 'Running ', 'Loaded', 'Stop', 'Init', 'Shout down', 'NotReady','EmergMan'];
@@ -113,7 +114,24 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
               }
     }
   };
-                    
+        
+  selectedFood2: string;
+
+  onFoodSelection2() {
+    console.log(this.selectedFood2);
+ 
+
+    const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
+      width: '400px',
+      data: {name: "sedf", type: "user"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     
+
+    });   
+  }
                     
                     
 ngOnInit(): void {

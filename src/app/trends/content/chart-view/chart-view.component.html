@@ -1,9 +1,9 @@
 <div class="bulckActions">
-    <form  class="form">
+    <div  class="form">
         <mat-form-field  >
             <mat-label>
                 <mat-icon >calendar_today </mat-icon> Range</mat-label>
-                <mat-select>
+                <mat-select [(ngModel)]="selectedFood2" (ngModelChange)="onFoodSelection2()">
                     <mat-option *ngFor="let range of Ranges" [value]="range.value">
                         {{range.label}}
                     </mat-option>
@@ -13,7 +13,7 @@
             <mat-form-field  >
                 <mat-label>
                     <mat-icon >timeline</mat-icon> Chart Type</mat-label>
-                <mat-select>
+                <mat-select >
                     <mat-option *ngFor="let type of Types" [value]="type.value">
                         {{type.label}}
                       </mat-option>
@@ -42,7 +42,7 @@
                 <mat-icon> fact_check</mat-icon>
                 Uncheck all values
             </button>
-        </form>
+        </div>
   </div>
 
   <div  class="Chart">
@@ -57,13 +57,7 @@
       >
     </canvas> 
 </div>
-<dp-date-picker 
-dir="rtl"
-[(ngModel)]="dateObject"
-mode="day"
-placeholder="تاریخ"
-theme="dp-material">
-</dp-date-picker>
+
 <ul>
     <li *ngFor="let item of data; index as i;">
         {{item.UnitId}}

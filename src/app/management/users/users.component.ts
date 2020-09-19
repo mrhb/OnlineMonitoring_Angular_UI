@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
 
   users:User[];
   displayedColumns: string[] = ['select', 'id', 'name','loginId','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin','actions'];
-  dataSource = new MatTableDataSource<User>(this.users);
+  dataSource = new MatTableDataSource<User>();
   selection = new SelectionModel<User>(true, []);
 
 

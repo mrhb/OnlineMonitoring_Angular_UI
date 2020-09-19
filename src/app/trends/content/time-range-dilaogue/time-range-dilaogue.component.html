@@ -1,0 +1,18 @@
+<h2 mat-dialog-title> <p>{{data.type}} <b>"{{data.name}}"</b> will be deleted.</p></h2>
+
+<div mat-dialog-content>
+  <dp-day-calendar 
+  dir="rtl"
+  [(ngModel)]="dateObject"
+  mode="day"
+  placeholder="تاریخ شروع"
+  theme="dp-material">
+  </dp-day-calendar>
+
+    
+  </div>
+
+  <div mat-dialog-actions class="example-button-row">
+    <button mat-raised-button (click)="onYesClick()" color="warn">Yes</button>
+    <button mat-raised-button  (click)="onNoClick()" cdkFocusInitial color="warn">No</button>
+  </div>
