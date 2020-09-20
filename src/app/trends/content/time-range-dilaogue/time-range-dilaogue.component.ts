@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import * as moment from 'moment';
+import * as moment from 'jalali-moment';
 export interface DialogData {
   type: string;
   name: string;
@@ -13,7 +13,7 @@ export interface DialogData {
   styleUrls: ['./time-range-dilaogue.component.css']
 })
 export class TimeRangeDilaogueComponent implements OnInit {
-  dateObject = moment('1366-11-22','jYYYY,jMM,jDD');
+  dateObject = moment('1367/11/04', 'jYYYY/jMM/jDD');
 
     constructor( public dialogRef: MatDialogRef<TimeRangeDilaogueComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
