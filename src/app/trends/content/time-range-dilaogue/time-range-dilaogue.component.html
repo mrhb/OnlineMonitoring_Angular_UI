@@ -1,14 +1,11 @@
 <h2 mat-dialog-title> <p>{{data.type}} <b>"{{data.name}}"</b> will be deleted.</p></h2>
 
 <div mat-dialog-content>
-  <dp-day-calendar 
-  dir="rtl"
-  [(ngModel)]="dateObject"
-  mode="daytime"
-  placeholder="تاریخ شروع"
-  theme="dp-material">
-  </dp-day-calendar>
 
+  
+  <dp-day-time-calendar  #dayPicker  [(ngModel)]="dateObject" theme="dp-material"
+  [config]="datePickerConfig">
+  ></dp-day-time-calendar>
     
   </div>
 
