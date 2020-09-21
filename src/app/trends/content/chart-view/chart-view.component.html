@@ -3,7 +3,7 @@
         <mat-form-field  >
             <mat-label>
                 <mat-icon >calendar_today </mat-icon> Range</mat-label>
-                <mat-select [(ngModel)]="selectedFood2" (ngModelChange)="onFoodSelection2()">
+                <mat-select [(ngModel)]="selectedRange" (ngModelChange)="onRangeSelection()">
                     <mat-option *ngFor="let range of Ranges" [value]="range.value">
                         {{range.label}}
                     </mat-option>
@@ -12,8 +12,8 @@
             
             <mat-form-field  >
                 <mat-label>
-                    <mat-icon >timeline</mat-icon> Chart Type</mat-label>
-                <mat-select >
+                    <mat-icon>timeline</mat-icon> Chart Type</mat-label>
+                <mat-select  [(ngModel)]="selectedType" (ngModelChange)="onTypeSelection(selectedType)" >
                     <mat-option *ngFor="let type of Types" [value]="type.value">
                         {{type.label}}
                       </mat-option>
@@ -44,7 +44,7 @@
             </button>
         </div>
   </div>
-
+{{selectedType}}
   <div  class="Chart">
       
       <canvas baseChart

@@ -18,6 +18,7 @@ export interface DialogData {
 })
 export class TimeRangeDilaogueComponent implements OnInit {
   dateObject:Moment = moment('1395-11-23','jYYYY,jMM,jDD');
+  dateObject2:Moment = moment('1395-11-23','jYYYY,jMM,jDD');
 
   datePickerConfig = {
     drops: 'up',
@@ -25,19 +26,19 @@ export class TimeRangeDilaogueComponent implements OnInit {
     showGoToCurrent: true
 }
 @ViewChild('dayPicker') datePicker: DatePickerComponent;
+@ViewChild('dayPicker2') datePicker2: DatePickerComponent;
   
   constructor( public dialogRef: MatDialogRef<TimeRangeDilaogueComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      
-     
-
-      
     }
     
     ngOnInit(): void {}
       onNoClick(): void {
         this.datePicker.api.moveCalendarTo(
-          moment('1395-11-22','jYYYY,jMM,jDD')
+          moment('1366-11-22','jYYYY,jMM,jDD')
+        );
+        this.datePicker2.api.moveCalendarTo(
+          moment('1368-12-16','jYYYY,jMM,jDD')
         );
         console.log(this.dateObject);
         // this.dateObject = moment('1395-11-22','jYYYY,jMM,jDD');  
