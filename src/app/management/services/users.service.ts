@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+
 
 import { MessageService } from './message.service';
 
-const baseUrl = 'http://localhost:8080/api/users';
+const baseUrl =environment.api+ '/users/';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +20,9 @@ export class UsersService {
     }
 
   getAll(): Observable<any> {
-    return this.http.get(baseUrl);
+    return this.http.get("http://localhost:3600/users");
+
+   // return this.http.get(baseUrl);
   }
 
   get(id): Observable<any> {

@@ -32,6 +32,8 @@ import { MatTableModule } from '@angular/material/table';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { EditComponent } from './edit/edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -69,6 +71,12 @@ const  routes:  Routes  = [
 @NgModule({
   declarations: [UnitsComponent, UsersComponent, GroupsComponent, ManagementComponent, ActivityComponent, DialogBodyComponent],
   imports: [
+
+    BrowserModule,
+    // import HttpClientModule after BrowserModule.
+    HttpClientModule,
+
+    
     CommonModule,
     MatIconModule,
     MatToolbarModule,
@@ -82,8 +90,9 @@ const  routes:  Routes  = [
 
     FormsModule,
     ReactiveFormsModule,
-    InMemoryWebApiModule.forRoot(DataService),
-
+    environment.useMockServer ?   InMemoryWebApiModule.forRoot(DataService, {
+      passThruUnknownUrl: true
+    }) : [],
     EditModule,
     RouterModule.forChild(routes)
 

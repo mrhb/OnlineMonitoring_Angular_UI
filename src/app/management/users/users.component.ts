@@ -16,6 +16,7 @@ import { UsersService } from '../services/users.service';
 import { User } from '../services/user';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 import { Unit } from '../services/unit';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * @title Table with selection
@@ -36,7 +37,8 @@ export class UsersComponent implements OnInit {
 
  
   constructor(private UsersService: UsersService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    public http:HttpClient) { }
 
     
 
@@ -56,6 +58,8 @@ export class UsersComponent implements OnInit {
   }
 
   retrieveUsers(): void {
+
+
     this.UsersService.getAll()
       .subscribe(
         data => {
