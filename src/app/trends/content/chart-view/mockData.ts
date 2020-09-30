@@ -129,19 +129,32 @@ export const seriasData=[
 ];
 
 
-  
 
- var  mock:any[] = [];
-    for (let  i = 0; i < seriasData.length; i++) {
-        var obj = {
+var  mock:any[] = [];
+var  data1:any[] = [];
+var  data2:any[] = [];
+for (let  i = 0; i < seriasData.length; i++) {
+    var obj1 = {
             x: moment(seriasData[i].time).format('MM/DD/YYYY HH:mm:ss'),
             y: seriasData[i].Water_T,
-            y2: seriasData[i].mean
         };
-        mock.push(obj);
-    }
+        var obj2 = {
+            x: moment(seriasData[i].time).format('MM/DD/YYYY HH:mm:ss'),
+            y: seriasData[i].mean,
+        };
 
-export const mockk=mock;
+        mock.push(obj1);
+        data1.push(obj1);
+        data2.push(obj2);
+    }
+    
+ let mock2=  [
+    { data: data1, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' },
+    { data: data2, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
+    ] 
+    export const mockk=mock;
+    export const mockk2=mock2;
+
 
 // export const TRENDSINFO: String = "dfcrgf";
 

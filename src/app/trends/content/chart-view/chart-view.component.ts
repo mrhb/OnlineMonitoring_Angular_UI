@@ -1,4 +1,4 @@
-import {mockk } from './mockData';
+import {mockk ,mockk2} from './mockData';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
@@ -71,10 +71,12 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   public barChartLegend = false;
   public barChartPlugins = [];  
   
-  public barChartData: ChartDataSets[] = [
-   // { data: [2,11,1,2,8,0,15], label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
-    { data: mockk, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
-  ];
+  public barChartData: ChartDataSets[] = mockk2;
+  
+  // [
+  //  // { data: [2,11,1,2,8,0,15], label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
+  //   { data: mockk, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
+  // ];
 
 
   
