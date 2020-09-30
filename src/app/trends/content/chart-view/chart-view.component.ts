@@ -1,6 +1,10 @@
+import {mockk } from './mockData';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import 'chartjs-plugin-zoom'
+
+
 import { Label } from 'ng2-charts';
 
 import { SeriesInfo } from '../../trendInfo';
@@ -68,8 +72,11 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   public barChartPlugins = [];  
   
   public barChartData: ChartDataSets[] = [
-    { data: [2,11,1,2,8,0,15], label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
+   // { data: [2,11,1,2,8,0,15], label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
+    { data: mockk, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
   ];
+
+
   
   public barChartOptions: ChartOptions = {
     responsive: true, 
@@ -81,29 +88,29 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
         mode: 'index',
         intersect: false,
     },
-    // scales: {
-    //       xAxes: [{
-    //             type: 'time',
-    //             time: {
-    //                   parser: 'MM/DD/YYYY HH:mm:ss',
-    //                   round: 'day',
-    //                   tooltipFormat: 'll HH:mm'
-    //               },
-    //               scaleLabel: {
-    //                     display: true,
-    //                     labelString: ''
-    //                 },
-    //                 ticks: {
-    //                       maxRotation: 0
-    //                   }
-    //               }],
-    //       yAxes: [{
-    //             scaleLabel: {
-    //                   display: true,
-    //                   labelString: 'Power(Kw)'
-    //               }
-    //           }]
-    // },
+    scales: {
+          xAxes: [{
+                type: 'time',
+                time: {
+                      parser: 'MM/DD/YYYY HH:mm:ss',
+                      // round: 'minute',
+                      tooltipFormat: 'll HH:mm:ss'
+                  },
+                  scaleLabel: {
+                        display: true,
+                        labelString: ''
+                    },
+                    ticks: {
+                          maxRotation: 0
+                      }
+                  }],
+          yAxes: [{
+                scaleLabel: {
+                      display: true,
+                      labelString: 'Power(Kw)'
+                  }
+              }]
+    },
     plugins: {
           zoom: {
                 zoom: {
