@@ -130,6 +130,9 @@ export const seriasData=[
 
 
 
+
+
+
 var  mock:any[] = [];
 var  data1:any[] = [];
 var  data2:any[] = [];

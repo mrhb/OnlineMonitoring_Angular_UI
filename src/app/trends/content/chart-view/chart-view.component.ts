@@ -1,4 +1,4 @@
-import {mockk ,mockk2} from './mockData';
+import {mockk2} from './mockData';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';

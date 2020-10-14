@@ -20,7 +20,7 @@ export class UsersService {
     }
 
   getAll(): Observable<any> {
-    return this.http.get("http://localhost:3600/users");
+    return this.http.get(baseUrl);
 
    // return this.http.get(baseUrl);
   }
