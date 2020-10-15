@@ -9,4 +9,7 @@ export interface TrendInfo {
     variables: string[];
     startDate: Date|null ;
     endDate: Date|null;
+    
   }
+
+  export interface SeriesData {any}

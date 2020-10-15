@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SeriesInfo } from '../../trendInfo';
+import { SeriesData, SeriesInfo } from '../../trendInfo';
 import{trendViewComponent} from '../trendView.Cmponent'
 @Component({
   selector: 'app-table-view',
@@ -9,7 +9,8 @@ import{trendViewComponent} from '../trendView.Cmponent'
 export class TableViewComponent implements trendViewComponent, OnInit {
 
   constructor() { }
-  data: SeriesInfo[];
+  seriesInfo: SeriesInfo[];
+  seriesData: SeriesData;
   Ranges = [
     { value: 1, label: 'Today'},
     { value: 2, label: 'Last 3 Days'},

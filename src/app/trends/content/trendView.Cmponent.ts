@@ -1,5 +1,6 @@
-import { SeriesInfo } from '../trendInfo';
+import { SeriesInfo,SeriesData} from '../trendInfo';
 
 export interface trendViewComponent {
-    data:SeriesInfo[];
+  seriesInfo:SeriesInfo[];
+  seriesData: SeriesData;
   }

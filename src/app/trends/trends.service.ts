@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-// import { MessageService } from './message.service';
+import { HttpClient } from '@angular/common/http';
+import { MessageService } from '../management/services/message.service';
+import { Observable } from 'rxjs';
 
 
 import { TRENDSINFO } from './mock-trends';
@@ -16,12 +16,18 @@ const baseUrl =environment.api+ '/trends/';
 export class TrendsService {
 selectedSeries:SeriesInfo[]=[];
 trendsInfos:TrendInfo[];
-  constructor(
- ) {
+  constructor(private http: HttpClient,
+    private messageService: MessageService
+    ) {
     this.trendsInfos=TRENDSINFO;    
    }
+   private log(message: string) {
+   this.messageService.add(`UserService: ${message}`);
+  }
 
-
+  getSeriesData(): Observable<any> {
+    return this.http.get(baseUrl);
+  }
   getUnitSeries(groupId:number,unitId:number) { 
     let group:TrendInfo = this.trendsInfos.find(i => i.GroupId === groupId);
     let unit = group.UnitsSeriesInfo.find(i => i.UnitId === unitId);

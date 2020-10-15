@@ -7,7 +7,7 @@ import 'chartjs-plugin-zoom'
 
 import { Label } from 'ng2-charts';
 
-import { SeriesInfo } from '../../trendInfo';
+import { SeriesData, SeriesInfo } from '../../trendInfo';
 import { trendViewComponent } from '../trendView.Cmponent';
 import { MatDialog } from '@angular/material/dialog';
 import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-dilaogue.component';
@@ -20,7 +20,8 @@ import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-di
 export class ChartViewComponent implements trendViewComponent, OnInit {
 
   
-  data: SeriesInfo[];
+  seriesInfo: SeriesInfo[];
+  seriesData: SeriesData;
   
   Ranges = [
      { value: 1, label: 'Today'},
@@ -61,9 +62,6 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
 
   formGroup :FormGroup ; 
 
-  constructor(private fb: FormBuilder,
-    public dialog: MatDialog) { 
-    }
   
   
   public barChartLabels: Label[] = ['Ready', 'Running ', 'Loaded', 'Stop', 'Init', 'Shout down', 'NotReady','EmergMan'];
@@ -71,12 +69,14 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   public barChartLegend = false;
   public barChartPlugins = [];  
   
-  public barChartData: ChartDataSets[] = mockk2;
+  public barChartData: ChartDataSets[];
+  
   
   // [
   //  // { data: [2,11,1,2,8,0,15], label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
   //   { data: mockk, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
   // ];
+
 
 
   
@@ -124,7 +124,10 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
               }
     }
   };
-        
+  constructor(private fb: FormBuilder,
+    public dialog: MatDialog) { 
+     
+    }     
   selectedRange: string;
   selectedType: string='line';
   onTypeSelection(type ){
@@ -141,13 +144,12 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-     
-
     });   
   }
                     
                     
 ngOnInit(): void {
+  this.barChartData = mockk2(this.seriesData);
   this.form = this.fb.group({
       first: [],
       second: []

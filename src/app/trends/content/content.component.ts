@@ -13,12 +13,25 @@ import { trendViewComponent } from './trendView.Cmponent';
 })
 export class TrendsContentComponent implements OnInit {
   series : SeriesInfo[];
+  seriesData:any;
   @Input() ViewType: string;
   @ViewChild(TrendsViewDirective, {static: true}) trendsView: TrendsViewDirective;
 
   constructor(_trendsService:TrendsService,
     private componentFactoryResolver: ComponentFactoryResolver) {
     this.series=_trendsService.getSelected();
+    //this.seriesData=
+    _trendsService.getSeriesData()
+    .subscribe(
+      data => {
+        this.seriesData = data;
+        console.log(data);
+        this.ngOnChanges() ;
+      },
+      error => {
+        console.log(error);
+      });;
+
    }
 
   ngOnInit(): void {
@@ -49,6 +62,8 @@ export class TrendsContentComponent implements OnInit {
    } 
 
    const componentRef = viewContainerRef.createComponent<trendViewComponent>(componentFactory);
-    componentRef.instance.data = this.series;
+    componentRef.instance.seriesInfo = this.series;
+    componentRef.instance.seriesData = this.seriesData;
+
   }
 }
