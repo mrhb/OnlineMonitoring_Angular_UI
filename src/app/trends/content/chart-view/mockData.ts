@@ -130,24 +130,41 @@ import * as moment from 'moment';
 
 // Named function
 function Convertor(seriasData) {
+   const seriesInfo= ["Oil_P" ,"Water_T" ];
 var  data1:any[] = [];
 var  data2:any[] = [];
+var  data3:any[][] = [];
 for (let  i = 0; i < seriasData.length; i++) {
+
+    for (let  f = 0; f < seriesInfo.length; f++){
+        var obj3 = {
+            x: moment(seriasData[i].time).format('MM/DD/YYYY HH:mm:ss'),
+            y: seriasData[i][seriesInfo[f]]
+        };
+        data3[f].push(obj3);
+    }
+
     var obj1 = {
             x: moment(seriasData[i].time).format('MM/DD/YYYY HH:mm:ss'),
-            y: seriasData[i].Water_T,
+            y: seriasData[i]["Water_T"]
         };
         var obj2 = {
             x: moment(seriasData[i].time).format('MM/DD/YYYY HH:mm:ss'),
-            y: seriasData[i].mean,
+            y: seriasData[i]["Oil_P"]
         };
 
         data1.push(obj1);
         data2.push(obj2);
     }
     
+    // let series2=  []
+    // for (let  f = 0; f < seriesInfo.length; f++){
+    //     series2.push(
+    //         { data: data3[f], label: 'Series A' ,backgroundColor : 'rgba(255,0,0,0.3)' }
+    //     );
+    // }
  let series=  [
-    { data: data1, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' },
+    { data: data1, label: 'Series A' ,backgroundColor : 'rgba(255,0,0,0.3)' },
     { data: data2, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
     ] ;
 
