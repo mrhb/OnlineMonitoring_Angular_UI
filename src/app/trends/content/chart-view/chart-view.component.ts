@@ -68,22 +68,11 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   public barChartType: ChartType = 'line';
   public barChartLegend = false;
   public barChartPlugins = [];  
-  
   public barChartData: ChartDataSets[];
-  
-  
-  // [
-  //  // { data: [2,11,1,2,8,0,15], label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
-  //   { data: mockk, label: 'Series B' ,backgroundColor : 'rgba(255,0,0,0.3)' }
-  // ];
-
-
-
-  
   public barChartOptions: ChartOptions = {
     responsive: true, 
     title: {
-    display: true,
+    display: false,
     text: 'Unit 1'
     },
     tooltips: {
