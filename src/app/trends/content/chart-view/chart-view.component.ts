@@ -1,16 +1,15 @@
 import {mockk2} from './mockData';
-import { Component, OnInit } from '@angular/core';
+import {IRange} from '../../range'
+import { Component, OnInit , Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import 'chartjs-plugin-zoom'
-
-
-import { Label } from 'ng2-charts';
 
 import { SeriesData, SeriesInfo } from '../../trendInfo';
 import { trendViewComponent } from '../trendView.Cmponent';
 import { MatDialog } from '@angular/material/dialog';
 import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-dilaogue.component';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-chart-view',
@@ -19,7 +18,13 @@ import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-di
 })
 export class ChartViewComponent implements trendViewComponent, OnInit {
 
-  
+  @Output() RangesEvent = new EventEmitter<IRange>();
+
+  @Output() outputEvent : EventEmitter<boolean> = new EventEmitter<boolean>(); 
+someFunc() {
+      this.outputEvent.emit(true)
+}
+
   seriesInfo: SeriesInfo[];
   seriesData: SeriesData;
   
@@ -64,7 +69,6 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
 
   
   
-  public barChartLabels: Label[] = ['Ready', 'Running ', 'Loaded', 'Stop', 'Init', 'Shout down', 'NotReady','EmergMan'];
   public barChartType: ChartType = 'line';
   public barChartLegend = false;
   public barChartPlugins = [];  
@@ -124,15 +128,20 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
     this.barChartType = <ChartType>type;
   }
   onRangeSelection() {
-    console.log(this.selectedRange);
- 
-
     const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
-          data: {name: "sedf", type: "user"}
+      data: {name: "sedf", type: "user"}
     });
-
+    
+    console.log(this.selectedRange);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+
+      this.someFunc();
+
+      var range:IRange={label:"df",timeRange:null}
+    range.label="this.selectedRange";
+   this.RangesEvent.emit(range);
+
     });   
   }
                     

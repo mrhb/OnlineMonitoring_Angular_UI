@@ -17,6 +17,11 @@ export class TrendsContentComponent implements OnInit {
   @Input() ViewType: string;
   @ViewChild(TrendsViewDirective, {static: true}) trendsView: TrendsViewDirective;
 
+
+  addItem(newItem: any) {
+    console.log("Parent: "+newItem);
+  }
+
   constructor(_trendsService:TrendsService,
     private componentFactoryResolver: ComponentFactoryResolver) {
     this.series=_trendsService.getSelected();
@@ -65,5 +70,6 @@ export class TrendsContentComponent implements OnInit {
     componentRef.instance.seriesInfo = this.series;
     componentRef.instance.seriesData = this.seriesData;
 
+    componentRef.instance.RangesEvent.subscribe(val => console.log("RangesEvent value: "+val));
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { IRange } from '../../range';
 import { SeriesData, SeriesInfo } from '../../trendInfo';
 import{trendViewComponent} from '../trendView.Cmponent'
 @Component({
@@ -7,8 +8,11 @@ import{trendViewComponent} from '../trendView.Cmponent'
   styleUrls: ['./table-view.component.css']
 })
 export class TableViewComponent implements trendViewComponent, OnInit {
+  @Output() RangesEvent = new EventEmitter<IRange>();
 
   constructor() { }
+
+
   seriesInfo: SeriesInfo[];
   seriesData: SeriesData;
   Ranges = [
