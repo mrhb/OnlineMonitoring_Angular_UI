@@ -18,3 +18,6 @@ export const TRENDSINFO: TrendInfo[] = [
       ]
     }
   ];
+  export const METRICS:string[]=[
+    
+  ]

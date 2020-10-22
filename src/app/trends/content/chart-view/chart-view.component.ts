@@ -20,13 +20,8 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
 
   @Output() RangesEvent = new EventEmitter<IRange>();
 
-  @Output() outputEvent : EventEmitter<boolean> = new EventEmitter<boolean>(); 
-someFunc() {
-      this.outputEvent.emit(true)
-}
-
-  seriesInfo: SeriesInfo[];
-  seriesData: SeriesData;
+  series: SeriesInfo;
+  metricsData: SeriesData;
   
   Ranges = [
      { value: 1, label: 'Today'},
@@ -136,8 +131,6 @@ someFunc() {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
 
-      this.someFunc();
-
       var range:IRange={label:"df",timeRange:null}
     range.label="this.selectedRange";
    this.RangesEvent.emit(range);
@@ -147,7 +140,7 @@ someFunc() {
                     
                     
 ngOnInit(): void {
-  this.barChartData = mockk2(this.seriesData);
+  this.barChartData = mockk2(this.metricsData);
   this.form = this.fb.group({
       first: [],
       second: []

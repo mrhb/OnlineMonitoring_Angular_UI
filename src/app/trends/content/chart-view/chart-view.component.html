@@ -44,7 +44,6 @@
             </button>
         </div>
   </div>
-{{selectedType}}
   <div  class="Chart">
       
       <canvas baseChart
@@ -59,9 +58,9 @@
 </div>
 
 <ul>
-    <li *ngFor="let item of seriesInfo; index as i;">
+    <li *ngFor="let item of series.metricsInfo; index as i;">
         {{item.UnitName}}
-      </li>
+    </li>
 </ul>
 
 <form class="list-actions2">

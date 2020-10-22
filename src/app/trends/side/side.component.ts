@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SeriesInfo, TrendInfo } from '../trendInfo';
+import { MetricInfo, SeriesInfo, TrendInfo } from '../trendInfo';
 import { TrendsService } from '../trends.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class SideComponent implements OnInit {
   
   ngOnInit(): void {
   }
-selected(item:SeriesInfo,checked:true){
+selected(item:MetricInfo,checked:true){
   if(checked)
   this.trendsService.addToList(item);
   else

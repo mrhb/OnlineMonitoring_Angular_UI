@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 
 import { TRENDSINFO } from './mock-trends';
-import { SeriesInfo, TrendInfo } from './trendInfo';
+import { MetricInfo, SeriesInfo, TrendInfo } from './trendInfo';
 import { environment } from '../../environments/environment';
 
 const baseUrl =environment.api+ '/trends/';
@@ -14,7 +14,7 @@ const baseUrl =environment.api+ '/trends/';
   providedIn: 'root'
 })
 export class TrendsService {
-selectedSeries:SeriesInfo[]=[];
+selectedSeries:SeriesInfo={metricsInfo:[],startDate:null,endDate:null};
 trendsInfos:TrendInfo[];
   constructor(private http: HttpClient,
     private messageService: MessageService
@@ -36,13 +36,13 @@ trendsInfos:TrendInfo[];
    getTrendsInfos(){
      return this.trendsInfos;
    }
-  addToList(item:SeriesInfo){
-    this.selectedSeries.push(item);
+  addToList(item:MetricInfo){
+    this.selectedSeries.metricsInfo.push(item);
   }
-  removeFromList(item:SeriesInfo){
-    const index = this.selectedSeries.indexOf(item, 0);
+  removeFromList(item:MetricInfo){
+    const index = this.selectedSeries.metricsInfo.indexOf(item, 0);
     if (index > -1) {
-      this.selectedSeries.splice(index, 1);
+      this.selectedSeries.metricsInfo.splice(index, 1);
     }
 
     this.selectedSeries.push(item);

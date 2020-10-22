@@ -3,13 +3,16 @@ export interface TrendInfo {
   GroupName:string;
   UnitsSeriesInfo:SeriesInfo[];
   }
+ 
   export interface SeriesInfo {
+    metricsInfo:MetricInfo[];
+    startDate: Date|null ;
+    endDate: Date|null;    
+  }
+  export interface MetricInfo {
     UnitId: number;
     UnitName:string;    
-    variables: string[];
-    startDate: Date|null ;
-    endDate: Date|null;
-    
+    Measurment: string[];
   }
 
   export interface SeriesData {any}

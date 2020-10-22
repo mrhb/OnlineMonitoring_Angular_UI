@@ -13,8 +13,8 @@ export class TableViewComponent implements trendViewComponent, OnInit {
   constructor() { }
 
 
-  seriesInfo: SeriesInfo[];
-  seriesData: SeriesData;
+  series: SeriesInfo;
+  metricsData: SeriesData;
   Ranges = [
     { value: 1, label: 'Today'},
     { value: 2, label: 'Last 3 Days'},

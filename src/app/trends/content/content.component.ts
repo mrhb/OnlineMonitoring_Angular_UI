@@ -12,7 +12,7 @@ import { trendViewComponent } from './trendView.Cmponent';
   styleUrls: ['./content.component.css']
 })
 export class TrendsContentComponent implements OnInit {
-  series : SeriesInfo[];
+  series : SeriesInfo;
   seriesData:any;
   @Input() ViewType: string;
   @ViewChild(TrendsViewDirective, {static: true}) trendsView: TrendsViewDirective;
@@ -67,8 +67,8 @@ export class TrendsContentComponent implements OnInit {
    } 
 
    const componentRef = viewContainerRef.createComponent<trendViewComponent>(componentFactory);
-    componentRef.instance.seriesInfo = this.series;
-    componentRef.instance.seriesData = this.seriesData;
+    componentRef.instance.series = this.series;
+    componentRef.instance.metricsData = this.seriesData;
 
     componentRef.instance.RangesEvent.subscribe(val => console.log("RangesEvent value: "+val));
   }
