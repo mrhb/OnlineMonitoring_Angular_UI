@@ -1,7 +1,11 @@
 export interface TrendInfo {
   GroupId:number;
   GroupName:string;
-  UnitsSeriesInfo:SeriesInfo[];
+  UnitsInfo:UnitInfo[];
+  }
+  export interface UnitInfo {
+    UnitId: number;
+    UnitName:string;
   }
  
   export interface SeriesInfo {
@@ -10,9 +14,8 @@ export interface TrendInfo {
     endDate: Date|null;    
   }
   export interface MetricInfo {
-    UnitId: number;
-    UnitName:string;    
-    Measurment: string[];
+    Unit: UnitInfo;
+    Measurment: String;
   }
 
   export interface SeriesData {any}

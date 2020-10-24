@@ -50,3 +50,88 @@
     width: 33.33333%;
 
 }
+/* **********Table***************************** */
+table {
+    width: 100%;
+    background: rgb(65, 65, 65);
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .material-icons.alarm{
+    color: #FF8000;
+  }
+  .material-icons.warning{
+    color: #ffc800;
+  }
+  .material-icons.sutdown{
+    color: #d50000;
+  }
+  .material-icons.ECU{
+    color: #00acec;
+  }
+  .material-icons.Sensor{
+    color: #424242;
+  }
+  
+  
+  .unit-alarmssss{
+    display: inline-flex;
+    width: 1500%;
+    background-color: #ffc800;
+    text-align: left;
+    padding-left:5px;
+    padding-top: 5px;
+    
+  }
+  
+  
+  .unit-alarmssss.alarm{
+    background-color: #FF8000;
+  }
+  .unit-alarmssss.warning{
+    background-color:  #FBC02D;
+  }
+  .unit-alarmssss.sutdown{
+    background-color: #d50000;
+  }
+  .unit-alarmssss.ECU{
+    background-color:  #00acec;
+  }
+  .unit-alarmssss.Sensor{
+    background-color:  #424242;
+  }
+  #detailIcon.warning,#detailIcon.ECU {
+    color: black;
+  }
+  #detailIcon.alarm,#detailIcon.Sensor ,#detailIcon.sutdown{
+    color: white;
+  }
+  
+  .agreegated-alarms{
+    display: inline-flex;
+    width: 100%;
+    padding-top: 13px;
+      }
+  
+  .name-column{
+    text-align: left;
+    color: white;
+  }
+  .closeIcon{
+    margin-left: auto;
+    color: white;
+  }
