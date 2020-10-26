@@ -1,5 +1,5 @@
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
-import { SeriesInfo, TrendInfo } from '../trendInfo';
+import { SeriesInfo } from '../trendInfo';
 import { TrendsService } from '../trends.service';
 import { ChartViewComponent } from './chart-view/chart-view.component';
 import { TableViewComponent } from './table-view/table-view.component';
@@ -31,7 +31,7 @@ export class TrendsContentComponent implements OnInit {
       data => {
         this.seriesData = data;
         console.log(data);
-        this.ngOnChanges() ;
+        this.LoadView(this.ViewType) ;
       },
       error => {
         console.log(error);
@@ -40,7 +40,7 @@ export class TrendsContentComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.LoadView(this.ViewType) ;
+    
   }
   ngOnChanges() {
     this.LoadView(this.ViewType) ;
@@ -65,11 +65,12 @@ export class TrendsContentComponent implements OnInit {
         break; 
       } 
    } 
-
    const componentRef = viewContainerRef.createComponent<trendViewComponent>(componentFactory);
+
     componentRef.instance.series = this.series;
     componentRef.instance.metricsData = this.seriesData;
-
+    
     componentRef.instance.RangesEvent.subscribe(val => console.log("RangesEvent value: "+val));
+  
   }
 }

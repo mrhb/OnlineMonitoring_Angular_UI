@@ -17,8 +17,7 @@ export class TrendsService {
 selectedSeries:SeriesInfo={metricsInfo:[],startDate:null,endDate:null};
 trendsInfos:TrendInfo[];
 metrics:string[];
-
-  constructor(private http: HttpClient,
+constructor(private http: HttpClient,
     private messageService: MessageService
     ) {
     this.trendsInfos=TRENDSINFO;    
@@ -31,11 +30,7 @@ metrics:string[];
   getSeriesData(): Observable<any> {
     return this.http.get(baseUrl);
   }
-  // getUnitSeries(groupId:number,unitId:number) { 
-  //   let group:TrendInfo = this.trendsInfos.find(i => i.GroupId === groupId);
-  //   let unit = group.UnitsInfo.find(i => i.UnitId === unitId);
-  //   return unit.variables;
-  //  }
+
    getTrendsInfos(){
      return this.trendsInfos;
    }

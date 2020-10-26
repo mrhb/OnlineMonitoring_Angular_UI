@@ -47,21 +47,16 @@
   <div  class="Chart">
       
       <canvas baseChart
-      [datasets]="barChartData"
-     
-      [options]="barChartOptions"
-      [plugins]="barChartPlugins"
-      [legend]="barChartLegend"
-      [chartType]="barChartType"
+      [datasets]="ChartData"     
+      [options]="ChartOptions"
+      [plugins]="ChartPlugins"
+      [legend]="ChartLegend"
+      [chartType]="ChartType"
       >
     </canvas> 
 </div>
 
-<ul>
-    <li *ngFor="let item of series.metricsInfo; index as i;">
-        {{item.Measurment}}
-    </li>
-</ul>
+
 
 <form class="list-actions2">
     <button mat-button >

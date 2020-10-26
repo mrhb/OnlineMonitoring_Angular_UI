@@ -9,7 +9,6 @@ import { SeriesData, SeriesInfo } from '../../trendInfo';
 import { trendViewComponent } from '../trendView.Cmponent';
 import { MatDialog } from '@angular/material/dialog';
 import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-dilaogue.component';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-chart-view',
@@ -59,16 +58,15 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
     SelectedRange=this.Ranges[1];
     SelectedType=this.Types[1];
   form: FormGroup;
-
   formGroup :FormGroup ; 
 
-  
-  
-  public barChartType: ChartType = 'line';
-  public barChartLegend = false;
-  public barChartPlugins = [];  
-  public barChartData: ChartDataSets[];
-  public barChartOptions: ChartOptions = {
+  public ChartType: ChartType = 'line';
+  public ChartLegend = false;
+  public ChartPlugins = [];  
+  public ChartData: ChartDataSets[]= [
+    { data: [], label: '' }
+  ];
+  public ChartOptions: ChartOptions = {
     responsive: true, 
     title: {
     display: false,
@@ -114,13 +112,13 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   };
   constructor(private fb: FormBuilder,
     public dialog: MatDialog) { 
-     
-    }     
+
+      }
   selectedRange: string;
   selectedType: string='line';
   onTypeSelection(type ){
     console.log(type +"  Type Selected");
-    this.barChartType = <ChartType>type;
+    this.ChartType = <ChartType>type;
   }
   onRangeSelection() {
     const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
@@ -140,7 +138,8 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
                     
                     
 ngOnInit(): void {
-  this.barChartData = mockk2(this.metricsData);
+  if(this.metricsData!=null)
+  this.ChartData = mockk2(this.metricsData);
   this.form = this.fb.group({
       first: [],
       second: []
