@@ -121,19 +121,26 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
     this.ChartType = <ChartType>type;
   }
   onRangeSelection() {
-    const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
-      data: {name: "sedf", type: "user"}
-    });
-    
-    console.log(this.selectedRange);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-
-      var range:IRange={label:"df",timeRange:null}
-    range.label="this.selectedRange";
-   this.RangesEvent.emit(range);
-
+    var range:IRange;
+    console.log("selectedRange: "+this.selectedRange);
+    if(this.selectedRange=='10')
+    {
+      const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
+        data: {name: "sedf", type: "user"}
+      });
+      
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed: '+result);
+        
+        range={label:"df",
+        endTime:result.EndTime,
+        startTime:result.StartTime
+      };
+      
+      range.label="this.selectedRange";
+      this.RangesEvent.emit(range);
     });   
+  }
   }
                     
                     

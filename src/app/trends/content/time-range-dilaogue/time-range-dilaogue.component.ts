@@ -17,16 +17,16 @@ export interface DialogData {
   styleUrls: ['./time-range-dilaogue.component.css']
 })
 export class TimeRangeDilaogueComponent implements OnInit {
-  dateObject:Moment = moment('1395-11-23','jYYYY,jMM,jDD');
-  dateObject2:Moment = moment('1395-11-23','jYYYY,jMM,jDD');
+  StartTime:Moment = moment('1395-11-23','jYYYY,jMM,jDD');
+  EndTime:Moment = moment('1395-11-23','jYYYY,jMM,jDD');
 
   datePickerConfig = {
     drops: 'up',
     format: 'YY/M/D',
     showGoToCurrent: true
 }
-@ViewChild('dayPicker') datePicker: DatePickerComponent;
-@ViewChild('dayPicker2') datePicker2: DatePickerComponent;
+@ViewChild('Start') datePickerStart: DatePickerComponent;
+@ViewChild('End') datePickerEnd: DatePickerComponent;
   
   constructor( public dialogRef: MatDialogRef<TimeRangeDilaogueComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
@@ -34,17 +34,19 @@ export class TimeRangeDilaogueComponent implements OnInit {
     
     ngOnInit(): void {}
       onNoClick(): void {
-        this.datePicker.api.moveCalendarTo(
+        this.datePickerStart.api.moveCalendarTo(
           moment('1366-11-22','jYYYY,jMM,jDD')
         );
-        this.datePicker2.api.moveCalendarTo(
+        this.datePickerEnd.api.moveCalendarTo(
           moment('1368-12-16','jYYYY,jMM,jDD')
         );
-        console.log(this.dateObject);
+        console.log(this.StartTime);
         // this.dateObject = moment('1395-11-22','jYYYY,jMM,jDD');  
   }
   onYesClick(): void {
-    this.dialogRef.close(true);
+    console.log("EndTime: "+this.EndTime)
+    console.log("StartTime: "+this.StartTime)
+    this.dialogRef.close({'StartTime':this.StartTime,'EndTime':this.EndTime});
   }
 
 }

@@ -10,8 +10,8 @@ export interface TrendInfo {
  
   export interface SeriesInfo {
     metricsInfo:MetricInfo[];
-    startDate: Date|null ;
-    endDate: Date|null;    
+    startDate: number|null ;
+    endDate: number|null;    
   }
   export interface MetricInfo {
     Unit: UnitInfo;
