@@ -25,20 +25,11 @@ export class TrendsContentComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver) {
     this.series=_trendsService.getSelected();
     //this.seriesData=
-    _trendsService.getSeriesData()
-    .subscribe(
-      data => {
-        this.seriesData = data;
-        console.log(data);
-        this.LoadView(this.ViewType) ;
-      },
-      error => {
-        console.log(error);
-      });;
+    this.ReadSeriesData();
 
    }
    ReadSeriesData(): void {
-   this._trendsService.getSeriesData()
+   this._trendsService.getSeriesData(this.series)
     .subscribe(
       data => {
         this.seriesData = data;
@@ -84,18 +75,7 @@ export class TrendsContentComponent implements OnInit {
     
     componentRef.instance.RangesEvent.subscribe(val => {
       console.log("RangesEvent value: "+val)
-
-      this._trendsService.getSeriesData()
-    .subscribe(
-      data => {
-        this.seriesData = data;
-        console.log(data);
-        this.LoadView(this.ViewType) ;
-      },
-      error => {
-        console.log(error);
-      });;
-
+      this.ReadSeriesData();
     });
   
   }

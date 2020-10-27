@@ -1,12 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MessageService } from '../management/services/message.service';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+
 
 
 import { METRICS, TRENDSINFO } from './mock-trends';
 import { MetricInfo, SeriesInfo, TrendInfo } from './trendInfo';
 import { environment } from '../../environments/environment';
+import { HttpHeaders } from '@angular/common/http';
+import * as moment from 'moment';
+import { WeekDay } from '@angular/common';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    Authorization: 'my-auth-token'
+  })
+};
 
 const baseUrl =environment.api+ '/trends/';
 
@@ -14,7 +26,7 @@ const baseUrl =environment.api+ '/trends/';
   providedIn: 'root'
 })
 export class TrendsService {
-selectedSeries:SeriesInfo={metricsInfo:[],startDate:null,endDate:null};
+selectedSeries:SeriesInfo={metricsInfo:[],startDate: moment().valueOf(),endDate:moment().subtract(1,'d').valueOf()};
 trendsInfos:TrendInfo[];
 metrics:string[];
 constructor(private http: HttpClient,
@@ -27,9 +39,18 @@ constructor(private http: HttpClient,
    this.messageService.add(`UserService: ${message}`);
   }
 
-  getSeriesData(): Observable<any> {
-    return this.http.get(baseUrl);
-  }
+  // getSeriesData(): Observable<any> {
+  //   return this.http.get(baseUrl);
+  // }
+
+  /** POST: Send seriesInfo to get series data from timeseries database */
+  getSeriesData(seriesInfo: SeriesInfo): Observable<any> {
+  return this.http.post<SeriesInfo>(baseUrl, seriesInfo, httpOptions)
+    .pipe(
+      catchError(err => of([]))
+    );
+}
+
 
    getTrendsInfos(){
      return this.trendsInfos;
@@ -52,4 +73,22 @@ constructor(private http: HttpClient,
 
   }
   getSelected(){return this.selectedSeries}
+  
+  
+
+  private handleError(error: HttpErrorResponse) {
+  if (error.error instanceof ErrorEvent) {
+    // A client-side or network error occurred. Handle it accordingly.
+    console.error('An error occurred:', error.error.message);
+  } else {
+    // The backend returned an unsuccessful response code.
+    // The response body may contain clues as to what went wrong.
+    console.error(
+      `Backend returned code ${error.status}, ` +
+      `body was: ${error.error}`);
+    }
+    // Return an observable with a user-facing error message.
+  return throwError(
+    'Something bad happened; please try again later.');
+  }
 }

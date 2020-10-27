@@ -1,3 +1,5 @@
+import { Moment } from 'jalali-moment';
+
 export interface TrendInfo {
   GroupId:number;
   GroupName:string;
