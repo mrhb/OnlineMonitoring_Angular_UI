@@ -62,7 +62,7 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   formGroup :FormGroup ; 
 
   public ChartType: ChartType = 'line';
-  public ChartLegend = false;
+  public ChartLegend = true;
   public ChartPlugins = [];  
   public ChartData: ChartDataSets[]= [
     { data: [], label: '' }
@@ -110,8 +110,45 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
     },
     plugins: {
           zoom: {
+            // Container for pan options
+                pan: {
+                  // Boolean to enable panning
+                  enabled: true,
+
+                  // Panning directions. Remove the appropriate direction to disable
+                  // Eg. 'y' would only allow panning in the y direction
+                  // A function that is called as the user is panning and returns the
+                  // available directions can also be used:
+                  //   mode: function({ chart }) {
+                  //     return 'xy';
+                  //   },
+                  mode: 'xy',
+
+                  rangeMin: {
+                    // Format of min pan range depends on scale type
+                    x: null,
+                    y: null
+                  },
+                  rangeMax: {
+                    // Format of max pan range depends on scale type
+                    x: null,
+                    y: null
+                  },
+
+                  // On category scale, factor of pan velocity
+                  speed: 20,
+
+                  // Minimal pan distance required before actually applying pan
+                  threshold: 10,
+
+                  // Function called while the user is panning
+                  onPan: function({chart}) { console.log(`I'm panning!!!`); },
+                  // Function called once panning is completed
+                  onPanComplete: function({chart}) { console.log(`I was panned!!!`); }
+                },
                 zoom: {
                       enabled: true,
+                      // Enable drag-to-zoom behavior
                       drag: false,
                       mode: 'x',
                       speed: 0.1
@@ -141,54 +178,63 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
             endTime:moment().valueOf(),
             startTime: moment().subtract(1,'d').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 2://Last 3 Days
             range={label:"Last 3 Days",
             endTime:moment().valueOf(),
             startTime: moment().subtract(3,'d').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 3://Last Week
             range={label:"Last Week",
             endTime:moment().valueOf(),
             startTime: moment().subtract(7,'d').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 4://Last Month
             range={label:"Last Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(1,'months').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 5://Last 2 Month
             range={label:"Last 2 Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(2,'months').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 6://Last 3 Month
             range={label:"Last 3 Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(3,'months').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 7://Last 6 Month
             range={label:"Last 6 Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(6,'months').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 8://Last 9 Month
             range={label:"Last 9 Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(9,'months').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 9://Last 1 Year
             range={label:"Last 1 Year",
             endTime:moment().valueOf(),
             startTime: moment().subtract(1,'years').valueOf()
             };
+            this.RangesEvent.emit(range);
           break;
       case 10://From - To
             const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
@@ -196,15 +242,15 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
             });
             
             dialogRef.afterClosed().subscribe(result => {
-              console.log('The dialog was closed: '+result);
-              
-              range={label:"From - To",
-              endTime:result.EndTime,
-              startTime:result.StartTime
-              };
-            
-              range.label="this.selectedRange";
-              this.RangesEvent.emit(range);
+              console.log('The dialog was closed with this result: '+result.Result);
+              if(result.Result)
+              {
+                range={label:"From - To",
+                endTime:result.EndTime,
+                startTime:result.StartTime
+                };
+                this.RangesEvent.emit(range);
+              }
             });       
             break;
             
@@ -212,7 +258,6 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
           console.log("No such Range exists!");
           break;
     }//switch
-    this.RangesEvent.emit(range);
   }//onRangeSelection
                     
                     

@@ -3,18 +3,9 @@ import { TrendInfo } from './trendInfo';
 export const TRENDSINFO: TrendInfo[] = [
   {
     GroupId:1,
-    GroupName:'maqsoud',
-    UnitsInfo:[
-      { UnitId: 11, UnitName: 'aban' },
-      { UnitId: 12, UnitName: 'Unit 20'},
-    ]
-  },
-  {
-    GroupId:2,
     GroupName:'CharmShahr',
     UnitsInfo:[
-      { UnitId: 13, UnitName: 'Unit 1'},
-      { UnitId: 15, UnitName: 'Unit 20'},
+      { UnitId: 1, UnitName: 'MAN 5'}
       ]
     }
   ];

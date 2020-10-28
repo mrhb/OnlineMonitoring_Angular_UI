@@ -17,8 +17,8 @@ export interface DialogData {
   styleUrls: ['./time-range-dilaogue.component.css']
 })
 export class TimeRangeDilaogueComponent implements OnInit {
-  StartTime:Moment = moment('1395-11-23','jYYYY,jMM,jDD');
-  EndTime:Moment = moment('1395-11-23','jYYYY,jMM,jDD');
+  StartTime:Moment =  moment().subtract(6,'h');
+  EndTime:Moment = moment();
 
   datePickerConfig = {
     drops: 'up',
@@ -34,19 +34,12 @@ export class TimeRangeDilaogueComponent implements OnInit {
     
     ngOnInit(): void {}
       onNoClick(): void {
-        this.datePickerStart.api.moveCalendarTo(
-          moment('1366-11-22','jYYYY,jMM,jDD')
-        );
-        this.datePickerEnd.api.moveCalendarTo(
-          moment('1368-12-16','jYYYY,jMM,jDD')
-        );
-        console.log(this.StartTime);
-        // this.dateObject = moment('1395-11-22','jYYYY,jMM,jDD');  
+        this.dialogRef.close({'Result':false,'StartTime':this.StartTime.valueOf(),'EndTime':this.EndTime.valueOf()});
   }
   onYesClick(): void {
     console.log("EndTime: "+this.EndTime)
     console.log("StartTime: "+this.StartTime)
-    this.dialogRef.close({'StartTime':this.StartTime.valueOf(),'EndTime':this.EndTime.valueOf()});
+    this.dialogRef.close({'Result':true,'StartTime':this.StartTime.valueOf(),'EndTime':this.EndTime.valueOf()});
   }
 
 }
