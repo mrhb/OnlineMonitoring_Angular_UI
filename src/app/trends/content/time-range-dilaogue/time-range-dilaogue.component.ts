@@ -46,7 +46,7 @@ export class TimeRangeDilaogueComponent implements OnInit {
   onYesClick(): void {
     console.log("EndTime: "+this.EndTime)
     console.log("StartTime: "+this.StartTime)
-    this.dialogRef.close({'StartTime':this.StartTime,'EndTime':this.EndTime});
+    this.dialogRef.close({'StartTime':this.StartTime.valueOf(),'EndTime':this.EndTime.valueOf()});
   }
 
 }

@@ -38,7 +38,7 @@ export class TrendsContentComponent implements OnInit {
       },
       error => {
         console.log(error);
-      });;
+      });
 
     
   }
@@ -75,6 +75,8 @@ export class TrendsContentComponent implements OnInit {
     
     componentRef.instance.RangesEvent.subscribe(val => {
       console.log("RangesEvent value: "+val)
+      this.series.startDate=val["startTime"];
+      this.series.endDate=val["endTime"];
       this.ReadSeriesData();
     });
   

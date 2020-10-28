@@ -26,7 +26,7 @@ const baseUrl =environment.api+ '/trends/';
   providedIn: 'root'
 })
 export class TrendsService {
-selectedSeries:SeriesInfo={metricsInfo:[],startDate: moment().valueOf(),endDate:moment().subtract(1,'d').valueOf()};
+selectedSeries:SeriesInfo={metricsInfo:[],startDate: moment().subtract(1,'d').valueOf(),endDate:moment().valueOf()};
 trendsInfos:TrendInfo[];
 metrics:string[];
 constructor(private http: HttpClient,

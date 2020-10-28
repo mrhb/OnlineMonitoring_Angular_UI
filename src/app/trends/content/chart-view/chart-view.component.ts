@@ -1,4 +1,4 @@
-import {mockk2} from './mockData';
+import {DataPreparation} from './DataPreparation';
 import {IRange} from '../../range'
 import { Component, OnInit , Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -9,6 +9,7 @@ import { SeriesData, SeriesInfo } from '../../trendInfo';
 import { trendViewComponent } from '../trendView.Cmponent';
 import { MatDialog } from '@angular/material/dialog';
 import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-dilaogue.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-chart-view',
@@ -26,12 +27,12 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
      { value: 1, label: 'Today'},
      { value: 2, label: 'Last 3 Days'},
      { value: 3, label: 'Last Week'},
-     { value: 4, label: 'Last Month'},
-     { value: 5, label: 'Last 2 Month'},
-     { value: 6, label: 'Last 3 Month'},
-     { value: 7, label: 'Last 6 Month'},
-     { value: 8, label: 'Last 9 Month'},
-     { value: 9, label: 'Last 1 Year'},
+    //  { value: 4, label: 'Last Month'},
+    //  { value: 5, label: 'Last 2 Month'},
+    //  { value: 6, label: 'Last 3 Month'},
+    //  { value: 7, label: 'Last 6 Month'},
+    //  { value: 8, label: 'Last 9 Month'},
+    //  { value: 9, label: 'Last 1 Year'},
      { value: 10, label: 'From - To' }
     ];
     Types=[
@@ -72,9 +73,17 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
     display: false,
     text: 'Unit 1'
     },
+
     tooltips: {
         mode: 'index',
         intersect: false,
+        callbacks: {
+          label: function(tooltipItem, data) {
+              return  Number(tooltipItem.yLabel).toFixed(2).replace(/./g, function(c, i, a) {
+                  return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+              });
+          }
+        }
     },
     scales: {
           xAxes: [{
@@ -95,7 +104,7 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
           yAxes: [{
                 scaleLabel: {
                       display: true,
-                      labelString: 'Power(Kw)'
+                      //labelString: 'Power(Kw)'
                   }
               }]
     },
@@ -114,7 +123,7 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
     public dialog: MatDialog) { 
 
       }
-  selectedRange: string;
+  selectedRange: number;
   selectedType: string='line';
   onTypeSelection(type ){
     console.log(type +"  Type Selected");
@@ -123,30 +132,93 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
   onRangeSelection() {
     var range:IRange;
     console.log("selectedRange: "+this.selectedRange);
-    if(this.selectedRange=='10')
-    {
-      const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
-        data: {name: "sedf", type: "user"}
-      });
-      
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed: '+result);
-        
-        range={label:"df",
-        endTime:result.EndTime,
-        startTime:result.StartTime
-      };
-      
-      range.label="this.selectedRange";
-      this.RangesEvent.emit(range);
-    });   
-  }
-  }
+
+
+
+    switch (this.selectedRange) {
+     case 1://Today
+            range={label:"Today",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(1,'d').valueOf()
+            };
+          break;
+      case 2://Last 3 Days
+            range={label:"Last 3 Days",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(3,'d').valueOf()
+            };
+          break;
+      case 3://Last Week
+            range={label:"Last Week",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(7,'d').valueOf()
+            };
+          break;
+      case 4://Last Month
+            range={label:"Last Month",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(1,'months').valueOf()
+            };
+          break;
+      case 5://Last 2 Month
+            range={label:"Last 2 Month",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(2,'months').valueOf()
+            };
+          break;
+      case 6://Last 3 Month
+            range={label:"Last 3 Month",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(3,'months').valueOf()
+            };
+          break;
+      case 7://Last 6 Month
+            range={label:"Last 6 Month",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(6,'months').valueOf()
+            };
+          break;
+      case 8://Last 9 Month
+            range={label:"Last 9 Month",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(9,'months').valueOf()
+            };
+          break;
+      case 9://Last 1 Year
+            range={label:"Last 1 Year",
+            endTime:moment().valueOf(),
+            startTime: moment().subtract(1,'years').valueOf()
+            };
+          break;
+      case 10://From - To
+            const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
+              data: {name: "sedf", type: "user"}
+            });
+            
+            dialogRef.afterClosed().subscribe(result => {
+              console.log('The dialog was closed: '+result);
+              
+              range={label:"From - To",
+              endTime:result.EndTime,
+              startTime:result.StartTime
+              };
+            
+              range.label="this.selectedRange";
+              this.RangesEvent.emit(range);
+            });       
+            break;
+            
+      default:
+          console.log("No such Range exists!");
+          break;
+    }//switch
+    this.RangesEvent.emit(range);
+  }//onRangeSelection
                     
                     
 ngOnInit(): void {
   if(this.metricsData!=null)
-  this.ChartData = mockk2(this.metricsData);
+  this.ChartData = DataPreparation(this.metricsData,this.series);
   this.form = this.fb.group({
       first: [],
       second: []
