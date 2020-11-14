@@ -37,6 +37,13 @@ export class TrendsContentComponent implements OnInit {
         this.LoadView(this.ViewType) ;
       },
       error => {
+        this.seriesData =[
+         {
+           metricsInfo:[],
+           startDate: null,
+           endDate: null 
+          }
+        ];
         console.log(error);
       });
 

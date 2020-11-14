@@ -262,8 +262,9 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
                     
                     
 ngOnInit(): void {
-  if(this.metricsData!=null)
+  if((this.metricsData!=null) && (this.series.metricsInfo.length!=0))
   this.ChartData = DataPreparation(this.metricsData,this.series);
+   
   this.form = this.fb.group({
       first: [],
       second: []
