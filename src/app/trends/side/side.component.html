@@ -66,12 +66,13 @@
         <div>        
             <div  *ngFor="let unit of element.UnitsInfo">
               <div>
-                <a routerLink="/trends/qw/{{unit.UnitId}}" (click)="selecteUnit(unit)"  routerLinkActive="active-link"   >   {{unit.UnitName}}  </a>
+                <span  class="name-column" (click)="selecteUnit(unit)"  routerLinkActive="active-link"   >   {{unit.UnitName}}  </span>
               </div>
               <div *ngIf="unit==selectedUnit">
               
                   <div *ngFor="let metric of selectedUnitMetrics; index as i;">
-                    <mat-checkbox (change)="selectedMetric(metric,$event.checked)"  > {{metric}} </mat-checkbox>                   
+                    <mat-checkbox (change)="selectedMetric(metric,$event.checked)"  > </mat-checkbox>                   
+                    <span class="name-column"> {{metric}}</span>
                   </div>
            
               </div>
@@ -79,12 +80,12 @@
         </div>
       </div>
     </td>
-  </ng-container>
-
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
+    
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+    class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element">
   </tr>
+</ng-container>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>

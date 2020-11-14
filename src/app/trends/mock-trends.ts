@@ -5,7 +5,10 @@ export const TRENDSINFO: TrendInfo[] = [
     GroupId:1,
     GroupName:'CharmShahr',
     UnitsInfo:[
-      { UnitId: 1, UnitName: 'MAN 5'}
+      { UnitId: 1 , UnitName: 'MAN 5' ,UnitType: 'Classic'},
+      { UnitId: 7 , UnitName: 'MAN 7' ,UnitType: 'minit'  },
+      { UnitId: 8 , UnitName: 'MAN 8' ,UnitType: 'minit'  },
+      { UnitId: 20, UnitName: 'MAN 20',UnitType: 'minit'  },
       ]
     }
   ];
@@ -29,3 +32,38 @@ export const METRICS:string[]=[
   "RunT_H",          //32
   "RunT_L",          //33
   ];
+
+  export const METRICS_minit:string[]=[
+    "Gen_V_L1-N",
+    "Gen_V_L2-N",
+    "Gen_V_L3-N",
+    "Gen_V_L1-L2",
+    "Gen_V_L2-L3",
+    "Gen_V_L3-L1",
+    "Gen_A_L1",
+    "Gen_A_L2",
+    "Gen_A_L3",
+    "RPM",
+    "Gen_Freq",
+    "W-TerminalFreq",
+    "Gen_kW",
+    "Gen_kW_L1",
+    "Gen_kW_L2",
+    "Gen_kW_L3",
+    "Gen_kVAr",
+    "Gen_kVAr_L1",
+    "Gen_kVAr_L2",
+    "Gen_kVAr_L3",
+    "Gen_PF",
+    "Gen_PF_L1",
+    "Gen_PF_L2",
+    "Gen_PF_L3",
+    "Battery_Volts",
+    "Oil_Pressure",
+    "water_temp",
+    "ECU_State",
+    "Run_Hours1",
+    "Run_Hours2",
+    "Energy_kWh1",
+    "Energy_kWh2",
+    ];

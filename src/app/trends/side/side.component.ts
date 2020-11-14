@@ -45,7 +45,7 @@ export class SideComponent implements OnInit {
     else
     {
       this.selectedUnit=item;
-      this.selectedUnitMetrics=this.trendsService.getUinitMetric(item.UnitId);
+      this.selectedUnitMetrics=this.trendsService.getUinitMetric(item.UnitType);
     }
 
   }

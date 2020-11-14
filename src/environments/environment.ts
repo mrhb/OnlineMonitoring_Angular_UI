@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   // api: 'http://localhost:3600/mock',
-  api: 'http://185.252.28.72:3600/api',
-  useMockServer: false
+   api: 'http://185.252.28.72:3600/api',
+  useMockServer: true
 };
 
 /*

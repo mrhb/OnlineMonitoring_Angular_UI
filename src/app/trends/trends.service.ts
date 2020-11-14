@@ -6,7 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 
 
-import { METRICS, TRENDSINFO } from './mock-trends';
+import { METRICS, METRICS_minit, TRENDSINFO } from './mock-trends';
 import { MetricInfo, SeriesInfo, TrendInfo } from './trendInfo';
 import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
@@ -29,11 +29,13 @@ export class TrendsService {
 selectedSeries:SeriesInfo={metricsInfo:[],startDate: moment().subtract(1,'d').valueOf(),endDate:moment().valueOf()};
 trendsInfos:TrendInfo[];
 metrics:string[];
+metrics_minit:string[];
 constructor(private http: HttpClient,
     private messageService: MessageService
     ) {
     this.trendsInfos=TRENDSINFO;    
     this.metrics=METRICS;
+    this.metrics_minit=METRICS_minit;
    }
    private log(message: string) {
    this.messageService.add(`UserService: ${message}`);
@@ -56,9 +58,12 @@ constructor(private http: HttpClient,
      return this.trendsInfos;
    }
 
-   getUinitMetric(unitId){
+   getUinitMetric(unitType){
     this.selectedSeries.metricsInfo=[];
-    return this.metrics;
+    if(unitType=="Classic")
+      return this.metrics;
+    else
+      return this.metrics_minit;
   }
   addToList(item:MetricInfo){
     this.selectedSeries.metricsInfo.push(item);

@@ -122,7 +122,7 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
                   //   mode: function({ chart }) {
                   //     return 'xy';
                   //   },
-                  mode: 'xy',
+                  mode: 'x',
 
                   rangeMin: {
                     // Format of min pan range depends on scale type

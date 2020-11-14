@@ -7,6 +7,7 @@ export interface TrendInfo {
   }
   export interface UnitInfo {
     UnitId: number;
+    UnitType:string;
     UnitName:string;
   }
  
