@@ -6,7 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 
 
-import { METRICS, METRICS_minit, TRENDSINFO } from './mock-trends';
+import {  METRICS_classic, METRICS_minit } from './mock-trends';
 import { MetricInfo, SeriesInfo, TrendInfo } from './trendInfo';
 import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
@@ -21,6 +21,7 @@ const httpOptions = {
 };
 
 const baseUrl =environment.api+ '/trends/';
+const baseSidebarUrl =environment.sidebar+ '/sidebar/';
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +29,13 @@ const baseUrl =environment.api+ '/trends/';
 export class TrendsService {
 selectedSeries:SeriesInfo={metricsInfo:[],startDate: moment().subtract(1,'d').valueOf(),endDate:moment().valueOf()};
 trendsInfos:TrendInfo[];
-metrics:string[];
+metrics_classic:string[];
 metrics_minit:string[];
 constructor(private http: HttpClient,
     private messageService: MessageService
     ) {
-    this.trendsInfos=TRENDSINFO;    
-    this.metrics=METRICS;
+    this.trendsInfos=[];    
+    this.metrics_classic=METRICS_classic;
     this.metrics_minit=METRICS_minit;
    }
    private log(message: string) {
@@ -55,7 +56,11 @@ constructor(private http: HttpClient,
 
 
    getTrendsInfos(){
-     return this.trendsInfos;
+    return this.http.get<TrendInfo[]>(baseSidebarUrl,httpOptions)
+    .pipe(
+      catchError(err => of([]))
+    );
+    //   return this.trendsInfos;
    }
 
    getUinitMetric(unitType){

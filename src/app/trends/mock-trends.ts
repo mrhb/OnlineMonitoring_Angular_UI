@@ -1,18 +1,6 @@
 import { TrendInfo } from './trendInfo';
 
-export const TRENDSINFO: TrendInfo[] = [
-  {
-    GroupId:1,
-    GroupName:'CharmShahr',
-    UnitsInfo:[
-      { UnitId: 1 , UnitName: 'MAN 5' ,UnitType: 'Classic'},
-      { UnitId: 7 , UnitName: 'MAN 7' ,UnitType: 'minit'  },
-      { UnitId: 8 , UnitName: 'MAN 8' ,UnitType: 'minit'  },
-      { UnitId: 20, UnitName: 'MAN 20',UnitType: 'minit'  },
-      ]
-    }
-  ];
-export const METRICS:string[]=[
+export const METRICS_classic:string[]=[
   "GAC_SP",          //10
   "GAC_FB",          //11
   "GAC_PWM",         //12

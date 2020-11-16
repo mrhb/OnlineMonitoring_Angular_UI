@@ -33,11 +33,21 @@ export class SideComponent implements OnInit {
   trendsService:TrendsService;
   constructor(_trendsService:TrendsService) { 
     this.trendsService=_trendsService;
-    this.trends=this.trendsService.getTrendsInfos();
+    
+    this.trendsService.getTrendsInfos().subscribe(data=>{
+      this.trends= data;
+      this.dataSource =this.trends;
+      console.log(data);
+    },
+    error => {
+           console.log(error);
+    
+    })
   }
   
   ngOnInit(): void {
     this.dataSource =  this.trends;
+
   }
   selecteUnit(item:UnitInfo){
     if(this.selectedUnit==item)
