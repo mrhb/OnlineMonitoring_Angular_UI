@@ -50,3 +50,41 @@
     width: 33.33333%;
 
 }
+
+/* **********Table***************************** */
+table {
+    width: 100%;
+    background: rgb(65, 65, 65);
+    color: #ffffff;
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+    color: white;
+  }
+  
+  
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .agreegated-alarms{
+    display: inline-flex;
+    width: 100%;
+    padding-top: 13px;
+      }
+  
+  .name-column{
+    text-align: left;
+    color: white;
+  }
+  .closeIcon{
+    margin-left: auto;
+    color: white;
+  }

@@ -2,15 +2,21 @@
 
 <div mat-dialog-content>
 
+  
   <div class="pickers">
-
-    <dp-day-time-calendar  #dayPicker  [(ngModel)]="dateObject" theme="dp-material"
-    [config]="datePickerConfig">
-    ></dp-day-time-calendar>
-    
-    <dp-day-time-calendar  #dayPicker2  [(ngModel)]="dateObject2" theme="dp-material"
-    [config]="datePickerConfig">
-    ></dp-day-time-calendar>
+    <div >
+      <p>Start Time</p>
+      <dp-day-time-calendar  #Start  [(ngModel)]="StartTime" theme="dp-material"
+      [config]="datePickerConfig">
+      </dp-day-time-calendar>
+    </div>
+  
+    <div >
+      <p>End Time</p>
+      <dp-day-time-calendar  #End  [(ngModel)]="EndTime" theme="dp-material"
+      [config]="datePickerConfig">
+      </dp-day-time-calendar>
+    </div>
   </div>
     
   </div>

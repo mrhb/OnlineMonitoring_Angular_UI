@@ -1,4 +1,5 @@
 export interface IRange {
     label: string;
-    timeRange: TimeRanges
+    endTime: number;
+    startTime: number;
 }

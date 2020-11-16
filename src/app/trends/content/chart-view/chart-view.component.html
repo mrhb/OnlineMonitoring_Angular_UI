@@ -44,25 +44,19 @@
             </button>
         </div>
   </div>
-{{selectedType}}
-  <div  class="Chart">
+  <div class="Chart">
       
       <canvas baseChart
-      [datasets]="barChartData"
-     
-      [options]="barChartOptions"
-      [plugins]="barChartPlugins"
-      [legend]="barChartLegend"
-      [chartType]="barChartType"
+      [datasets]="ChartData"     
+      [options]="ChartOptions"
+      [plugins]="ChartPlugins"
+      [legend]="ChartLegend"
+      [chartType]="ChartType"
       >
     </canvas> 
 </div>
 
-<ul>
-    <li *ngFor="let item of seriesInfo; index as i;">
-        {{item.UnitName}}
-      </li>
-</ul>
+
 
 <form class="list-actions2">
     <button mat-button >

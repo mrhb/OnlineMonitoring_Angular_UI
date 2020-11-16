@@ -61,6 +61,9 @@ const  routes:  Routes  = [
 import { DateAdapter,MAT_DATE_FORMATS,  MAT_DATE_LOCALE } from "@angular/material/core";
 
 import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from "../shared/material.persian-date.adapter";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   providers: [
@@ -69,10 +72,13 @@ import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from "../shared/mate
   ],
   declarations: [TrendsComponent, SideComponent, TrendsContentComponent, TrendsViewDirective, TableViewComponent, ChartViewComponent, TimeRangeDilaogueComponent],
   imports: [
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     CommonModule,
     MatIconModule,
     MatToolbarModule,
-    MatTableModule,
     MatCheckboxModule,
     HttpClientModule,
     MatDialogModule,

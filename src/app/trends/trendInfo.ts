@@ -1,15 +1,24 @@
+import { Moment } from 'jalali-moment';
+
 export interface TrendInfo {
   GroupId:number;
   GroupName:string;
-  UnitsSeriesInfo:SeriesInfo[];
+  UnitsInfo:UnitInfo[];
   }
-  export interface SeriesInfo {
+  export interface UnitInfo {
     UnitId: number;
-    UnitName:string;    
-    variables: string[];
-    startDate: Date|null ;
-    endDate: Date|null;
-    
+    UnitType:string;
+    UnitName:string;
+  }
+ 
+  export interface SeriesInfo {
+    metricsInfo:MetricInfo[];
+    startDate: number|null ;
+    endDate: number|null;    
+  }
+  export interface MetricInfo {
+    Unit: UnitInfo;
+    Measurment: String;
   }
 
   export interface SeriesData {any}

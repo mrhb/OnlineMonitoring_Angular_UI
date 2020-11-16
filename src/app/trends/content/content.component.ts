@@ -1,5 +1,5 @@
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
-import { SeriesInfo, TrendInfo } from '../trendInfo';
+import { SeriesInfo } from '../trendInfo';
 import { TrendsService } from '../trends.service';
 import { ChartViewComponent } from './chart-view/chart-view.component';
 import { TableViewComponent } from './table-view/table-view.component';
@@ -12,35 +12,45 @@ import { trendViewComponent } from './trendView.Cmponent';
   styleUrls: ['./content.component.css']
 })
 export class TrendsContentComponent implements OnInit {
-  series : SeriesInfo[];
+  series : SeriesInfo;
   seriesData:any;
   @Input() ViewType: string;
   @ViewChild(TrendsViewDirective, {static: true}) trendsView: TrendsViewDirective;
-
-
+  
   addItem(newItem: any) {
     console.log("Parent: "+newItem);
   }
-
-  constructor(_trendsService:TrendsService,
+  
+  constructor(public _trendsService:TrendsService,
     private componentFactoryResolver: ComponentFactoryResolver) {
     this.series=_trendsService.getSelected();
     //this.seriesData=
-    _trendsService.getSeriesData()
+    this.ReadSeriesData();
+
+   }
+   ReadSeriesData(): void {
+   this._trendsService.getSeriesData(this.series)
     .subscribe(
       data => {
         this.seriesData = data;
         console.log(data);
-        this.ngOnChanges() ;
+        this.LoadView(this.ViewType) ;
       },
       error => {
+        this.seriesData =[
+         {
+           metricsInfo:[],
+           startDate: null,
+           endDate: null 
+          }
+        ];
         console.log(error);
-      });;
+      });
 
-   }
-
+    
+  }
   ngOnInit(): void {
-    this.LoadView(this.ViewType) ;
+    
   }
   ngOnChanges() {
     this.LoadView(this.ViewType) ;
@@ -65,11 +75,17 @@ export class TrendsContentComponent implements OnInit {
         break; 
       } 
    } 
-
    const componentRef = viewContainerRef.createComponent<trendViewComponent>(componentFactory);
-    componentRef.instance.seriesInfo = this.series;
-    componentRef.instance.seriesData = this.seriesData;
 
-    componentRef.instance.RangesEvent.subscribe(val => console.log("RangesEvent value: "+val));
+    componentRef.instance.series = this.series;
+    componentRef.instance.metricsData = this.seriesData;
+    
+    componentRef.instance.RangesEvent.subscribe(val => {
+      console.log("RangesEvent value: "+val)
+      this.series.startDate=val["startTime"];
+      this.series.endDate=val["endTime"];
+      this.ReadSeriesData();
+    });
+  
   }
 }
