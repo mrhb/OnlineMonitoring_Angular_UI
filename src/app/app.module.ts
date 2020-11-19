@@ -53,6 +53,8 @@ import { ViewUnitsDirective } from './monitored/content/view-units.directive';
 import{SideComponent} from './monitored/side/side.component';
 import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.component';
 import { FilterComponent } from './monitored/side/filter/filter.component'
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -82,9 +84,11 @@ import { FilterComponent } from './monitored/side/filter/filter.component'
     ViewUnitsDirective,
     MinidetailsComponent,
     FilterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,

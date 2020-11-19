@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { FirstPageComponent } from './first-page/first-page.component';
+import { LoginComponent } from './login/login.component';
 import { ManagementModule } from './management/management.module';
 import { MonitoredComponent } from './monitored/monitored.component';
 
 
 const routes: Routes = [
+    { path: 'login', component: LoginComponent },
     { path: 'first-page', component: FirstPageComponent },
     { path: 'monitored-units', component: MonitoredComponent },
     { path: 'dashboard', component: DashboardComponent },
