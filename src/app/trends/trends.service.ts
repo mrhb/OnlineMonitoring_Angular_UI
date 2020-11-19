@@ -66,7 +66,7 @@ constructor(private http: HttpClient,
    getUinitMetric(unitType){
     this.selectedSeries.metricsInfo=[];
     if(unitType=="Classic")
-      return this.metrics;
+      return this.metrics_classic;
     else
       return this.metrics_minit;
   }
