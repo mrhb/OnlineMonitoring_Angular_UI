@@ -56,7 +56,8 @@ import { FilterComponent } from './monitored/side/filter/filter.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 
-
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,7 +112,9 @@ import { LoginComponent } from './login/login.component';
     MatFormFieldModule,
 
       ],
-  providers: [],
+  providers: [
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
