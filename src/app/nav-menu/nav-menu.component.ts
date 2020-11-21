@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AuthenticationService } from '@app/_services/authentication.service';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
   selector: 'app-nav-menu',
