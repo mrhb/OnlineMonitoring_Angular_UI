@@ -55,6 +55,9 @@ import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.c
 import { FilterComponent } from './monitored/side/filter/filter.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -113,6 +116,9 @@ import { fakeBackendProvider } from './_helpers';
 
       ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
     fakeBackendProvider
   ],
   bootstrap: [AppComponent],

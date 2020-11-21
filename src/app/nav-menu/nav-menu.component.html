@@ -28,7 +28,7 @@
         <a mat-button routerLink="/first-page"> <mat-icon>settings</mat-icon> Settings </a>
         <a mat-button routerLink="/first-page"> <mat-icon>help</mat-icon> Help </a>
         <a mat-button routerLink="/login"> <mat-icon>login</mat-icon> login </a>
-        <a class="nav-item nav-link" (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
+        <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
         
     </mat-toolbar>
     <router-outlet></router-outlet>

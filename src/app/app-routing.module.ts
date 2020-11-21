@@ -12,11 +12,12 @@ import { Role } from './_models';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'first-page', component: FirstPageComponent },
+    { path: 'first-page', component: FirstPageComponent,canActivate: [AuthGuard],data: { roles: [Role.Admin] }},
     { path: 'monitored-units', component: MonitoredComponent },
-    { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard], data: { roles: [Role.Admin]} },
+    // { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard], data: { roles: [Role.Admin]} },
+    { path: 'dashboard', component: DashboardComponent},
     { path: 'management', component: ManagementModule },
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 @NgModule({
 imports: [RouterModule.forRoot(routes)],
