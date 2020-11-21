@@ -57,10 +57,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import{    MaterialModule} from './app-material.module'
 
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
+import { RegistrationComponent } from './login/registration/registration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +91,7 @@ import { fakeBackendProvider } from './_helpers';
     MinidetailsComponent,
     FilterComponent,
     LoginComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,15 +99,7 @@ import { fakeBackendProvider } from './_helpers';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatGridListModule,
-    MatMenuModule,
+    
     ChartsModule,
     MatTableModule,
     MatPaginatorModule,
@@ -113,7 +108,7 @@ import { fakeBackendProvider } from './_helpers';
     TrendsModule,
     LeafletModule,
     MatFormFieldModule,
-
+    MaterialModule
       ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

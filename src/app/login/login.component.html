@@ -1,16 +1,37 @@
-<p>login works!</p>
+<mat-toolbar>
+    <span>LOGIN</span>
+  </mat-toolbar>
+  <div class="alert alert-info">
+    <strong>Normal User</strong> - U: user P: user<br />
+    <strong>Administrator</strong> - U: admin P: admin
+</div>
+  <mat-card class="my-card">
+     <mat-card-content>
+        <form [formGroup]="loginForm"  class="my-form">
+           <mat-form-field class="full-width">
+              <mat-label>Username</mat-label>
+              <input  matInput  placeholder="Username" formControlName="username">
+           </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input  matInput  placeholder="Password" formControlName="password">
+           </mat-form-field>
+        </form>
+     </mat-card-content>
+     <mat-card-actions>
+        <button mat-raised-button [disabled]="loading" (click)="onSubmit()" color="primary">LOGIN</button>
+     </mat-card-actions>
+  </mat-card>
+
 
 <!-- <form [formGroup]="loginForm">
 
     <button class="button" type="submit">Purchase</button>
   
   </form> -->
-
+<!-- 
 <div class="col-md-6 offset-md-3 mt-5">
-    <div class="alert alert-info">
-        <strong>Normal User</strong> - U: user P: user<br />
-        <strong>Administrator</strong> - U: admin P: admin
-    </div>
+
     <div class="card">
         <h4 class="card-header">Angular 10 Role Based Auth Example</h4>
         <div class="card-body">
@@ -37,4 +58,4 @@
             </form>
         </div>
     </div>
-</div>            
+</div>             -->
