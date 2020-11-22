@@ -29,7 +29,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.sass",
+              "src/styles.scss",
               "./node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": []
@@ -96,7 +96,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -129,5 +129,10 @@
       }
     }
   },
-  "defaultProject": "uiSPA"
+  "defaultProject": "uiSPA",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

@@ -53,8 +53,16 @@ import { ViewUnitsDirective } from './monitored/content/view-units.directive';
 import{SideComponent} from './monitored/side/side.component';
 import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.component';
 import { FilterComponent } from './monitored/side/filter/filter.component'
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import{    MaterialModule} from './app-material.module'
 
 
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+import { RegistrationComponent } from './login/registration/registration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,21 +90,16 @@ import { FilterComponent } from './monitored/side/filter/filter.component'
     ViewUnitsDirective,
     MinidetailsComponent,
     FilterComponent,
+    LoginComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatGridListModule,
-    MatMenuModule,
+    
     ChartsModule,
     MatTableModule,
     MatPaginatorModule,
@@ -105,9 +108,14 @@ import { FilterComponent } from './monitored/side/filter/filter.component'
     TrendsModule,
     LeafletModule,
     MatFormFieldModule,
-
+    MaterialModule
       ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

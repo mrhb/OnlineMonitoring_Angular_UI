@@ -1,6 +1,7 @@
 <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="side" opened="{{sideOpen}}">
-      <monitored-side [sideType]="SideType"></monitored-side>
+     <p>salam</p>
+      <!-- <monitored-side [sideType]="SideType"></monitored-side> -->
     </mat-sidenav>
     
     <mat-sidenav-content>
@@ -22,10 +23,13 @@
                     <mat-icon (click)="expand()">keyboard_arrow_right</mat-icon>
                 </div>
             </mat-toolbar>   
-           <app-content [ViewType]=viewType (unitSelectionEvent)="unitSelected($event)"></app-content>
+           <!-- <app-content [ViewType]=viewType (unitSelectionEvent)="unitSelected($event)"></app-content> -->
         </div>
         <app-map  [ngClass]="expantion" 
         style="height:650px"
         ></app-map>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+
+  <p>monitored works </p>

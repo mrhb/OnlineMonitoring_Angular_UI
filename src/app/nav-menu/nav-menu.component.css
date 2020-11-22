@@ -27,3 +27,6 @@
   background: rgba(0, 0, 0, 0.781);
   border-bottom: solid 4px #d50000;
 }
+.spacer {
+  flex: 1 1 auto;
+}
