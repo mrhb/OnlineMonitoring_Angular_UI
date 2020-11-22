@@ -7,3 +7,18 @@
   .full-width {
     width: 100%;
   }
+
+
+  :host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0px;
+  }
+
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+  }
