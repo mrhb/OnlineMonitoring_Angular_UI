@@ -30,3 +30,10 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+
+
+.example-header-image {
+  background-image: url('../../assets/user.png');
+  background-size: cover;
+}

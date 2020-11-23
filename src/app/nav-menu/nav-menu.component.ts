@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthenticationService } from '../_services/authentication.service';
+import { Role, User } from '@app/_models';
 
 @Component({
   selector: 'app-nav-menu',
@@ -10,7 +11,12 @@ import { AuthenticationService } from '../_services/authentication.service';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  menuItems = ['dashboard','dash','first-page', 'Users'];
+  user: User;
+  show = true;
+  thenBlock: TemplateRef<any>|null = null;
+  @ViewChild('primaryBlock', {static: true}) primaryBlock: TemplateRef<any>|null = null;
+  @ViewChild('secondaryBlock', {static: true}) secondaryBlock: TemplateRef<any>|null = null;
+
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -20,7 +26,11 @@ export class NavMenuComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private authenticationService: AuthenticationService) {}
+    private authenticationService: AuthenticationService) {
+      this.authenticationService.user.subscribe(x => this.user = x);
+
+      this.thenBlock = this.primaryBlock;
+    }
   logout() {
     this.authenticationService.logout();
 }

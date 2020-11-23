@@ -28,11 +28,17 @@
         <a mat-button routerLink="/first-page"> <mat-icon>settings</mat-icon> Settings </a>
         <a mat-button routerLink="/first-page"> <mat-icon>help</mat-icon> Help </a>
         <span class="spacer"></span>
-        <a mat-button routerLink="/login"> <mat-icon>login</mat-icon> login </a>
-        <a mat-button routerLink="/registration"> <mat-icon>contact_page</mat-icon> registeration </a>
-        <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
-        
+        <div *ngIf="user==null; else elseBlock">
+          <a mat-button routerLink="/login"> <mat-icon>login</mat-icon> login </a>
+        </div>
+        <ng-template #elseBlock>
+          <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
+          <div mat-card-avatar class="example-header-image"></div>
+        </ng-template>
+    
+        <!-- <a mat-button routerLink="/registration"> <mat-icon>contact_page</mat-icon> registeration </a> -->
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+

@@ -15,12 +15,14 @@
            </mat-form-field>
         </form>
     </mat-card-content>
-    <p>Normal User: - U: user P: user</p>
-    <p>Administrator- U: admin P: admin</p> 
-     <mat-card-actions>
+    <mat-card-actions>
         <button mat-flat-button  [disabled]="loading" (click)="onSubmit()">Login</button>
-     </mat-card-actions>
-  </mat-card>
+    </mat-card-actions>
+    <li>Normal User: - U: user P: user</li>
+     <li>Administrator- U: admin P: admin</li> 
+     <span >Don't have an account</span><a  mat-button routerLink="/registration" > Sign up</a>
+
+</mat-card>
 
 
 <!-- <form [formGroup]="loginForm">
