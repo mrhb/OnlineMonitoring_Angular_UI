@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, materialize, dematerialize } from 'rxjs/operators';
 
 import { Role } from '../_models';
+import { environment } from '@environments/environment';
 
 const users = [
     { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
@@ -15,11 +16,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
 
-        return handleRoute();        
+        if(environment.production)
+            return next.handle(request);
+        else
+            return handleRoute();        
 
         function handleRoute() {
             switch (true) {
-                case url.endsWith('/users/authenticate') && method === 'POST':
+                case url.endsWith('/auth') && method === 'POST':
                     return authenticate();
                 case url.endsWith('/users') && method === 'GET':
                     return getUsers();
@@ -35,8 +39,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // route functions
 
         function authenticate() {
-            const { username, password } = body;
-            const user = users.find(x => x.username === username && x.password === password);
+            const { email, password } = body;
+            const user = users.find(x => x.username === email && x.password === password);
             if (!user) return error('Username or password is incorrect');
             return ok({
                 id: user.id,

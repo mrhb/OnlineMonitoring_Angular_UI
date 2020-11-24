@@ -27,7 +27,10 @@ export class NavMenuComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private authenticationService: AuthenticationService) {
-      this.authenticationService.user.subscribe(x => this.user = x);
+      this.authenticationService.user.subscribe(x => 
+        {
+          this.user = x
+        });
 
       this.thenBlock = this.primaryBlock;
     }
