@@ -61,17 +61,17 @@
     </ng-container>
   
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef>First Name </th>
       <td mat-cell *matCellDef="let element">
-        <a routerLink="/management/edit/user/{{element.id}}"   routerLinkActive="active-link"   >   {{element.name}}  </a>
+        <a routerLink="/management/edit/user/{{element.id}}"   routerLinkActive="active-link"   >   {{element.firstName}}  </a>
        </td>
     </ng-container>
   
     <!-- loginId Column -->
-    <ng-container matColumnDef="loginId">
-      <th mat-header-cell *matHeaderCellDef> loginId </th>
-      <td mat-cell *matCellDef="let element"> {{element.loginId}} </td>
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
     </ng-container>
       <!-- email Column -->
       <ng-container matColumnDef="email">

@@ -4,32 +4,32 @@
    </mat-card-title>
 
     <mat-card-content>
-        <form class="my-form">
+        <form [formGroup]="signupForm" class="my-form">
              <mat-form-field class="full-width">
                    <mat-label>First Name</mat-label>
-                   <input  matInput  placeholder="First name"  name="fname"  required>
+                   <input  matInput  placeholder="First name"  formControlName="firstname"  required>
              </mat-form-field>
                 <mat-form-field class="full-width">
                    <mat-label>Last Name</mat-label>
-                   <input  matInput  placeholder="Last Name" name="lname"  required>
+                   <input  matInput  placeholder="Last Name" formControlName="lastname"  required>
                 </mat-form-field>
                 <mat-form-field class="full-width">
                    <mat-label>Address</mat-label>
-                   <input  matInput  placeholder="Address" name="address"  required>
+                   <input  matInput  placeholder="Address" formControlName="address"  required>
                 </mat-form-field>
-             <!--    <mat-form-field class="full-width">
+                <mat-form-field class="full-width">
                    <mat-label>Email</mat-label>
-                   <input  matInput  placeholder="Email" name="email">
+                   <input  matInput  placeholder="Email" formControlName="username">
                 </mat-form-field>
                 <mat-form-field class="full-width">
                    <mat-label>Password</mat-label>
-                   <input  matInput  placeholder="Password"  name="password">
-                </mat-form-field> -->
+                   <input  matInput  placeholder="Password"  formControlName="password">
+                </mat-form-field>
          </form>
        </mat-card-content>
      
        <mat-card-actions>
-        <button mat-flat-button >Register</button>
+         <button mat-flat-button  [disabled]="loading" (click)="onSubmit()">Register</button>
       </mat-card-actions>
   </mat-card>
 

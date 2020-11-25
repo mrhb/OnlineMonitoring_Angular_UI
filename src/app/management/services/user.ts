@@ -1,7 +1,7 @@
 export interface User {
     id: number;
-    name: string;
-    loginId: string;
+    fistname: string;
+    lastname: string;
     email:string
     unitCount: number;
     lang:string;

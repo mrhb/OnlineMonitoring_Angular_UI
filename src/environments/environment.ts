@@ -3,11 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  api: 'http://185.252.28.72:3600/api',
+  production: true,
+  api: 'http://localhost:3600/api',
   sidebar: 'http://localhost:3600/mock',
-  authUrl: 'http://localhost:4200',
-  useMockServer: true
+  authUrl: 'http://localhost:3600',
+  useMockServer: false
 };
 
 /*

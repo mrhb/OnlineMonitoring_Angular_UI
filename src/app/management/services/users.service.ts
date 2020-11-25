@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 
 import { MessageService } from './message.service';
 
-const baseUrl =environment.api+ '/users/';
+const baseUrl =environment.api+ '/users';
 @Injectable({
   providedIn: 'root'
 })

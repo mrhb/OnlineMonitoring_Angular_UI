@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
   formGroup :FormGroup ; 
 
   users:User[];
-  displayedColumns: string[] = ['select', 'id', 'name','loginId','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin','actions'];
+  displayedColumns: string[] = ['select', 'id', 'firstname','lastname','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin','actions'];
   dataSource = new MatTableDataSource<User>();
   selection = new SelectionModel<User>(true, []);
 
