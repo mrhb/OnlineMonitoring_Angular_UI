@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 
@@ -17,6 +17,8 @@ export class RegistrationComponent implements OnInit {
   loading = false;
   submitted = false;
   error = '';
+  email = new FormControl('', [Validators.required, Validators.email]);
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -26,13 +28,20 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email:this.email,
       password: ['', Validators.required],
       address: [''],
       firstname: [''],
       lastname: [''],
 
   });
+  }
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 // convenience getter for easy access to form fields
 get f() { return this.signupForm.controls; }
@@ -50,7 +59,7 @@ onSubmit() {
     this.f.firstname.value,
     this.f.lastname.value,
     this.f.address.value,
-    this.f.username.value, 
+    this.f.email.value, 
     this.f.password.value)
       .pipe(first())
       .subscribe({

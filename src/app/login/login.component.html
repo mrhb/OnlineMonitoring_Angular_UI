@@ -5,11 +5,12 @@
     </mat-card-title>
      <mat-card-content>
         <form [formGroup]="loginForm"  class="my-form">
-           <mat-form-field class="full-width">
-              <mat-label>Username</mat-label>
-              <input  matInput  placeholder="Username" formControlName="username">
-           </mat-form-field>
 
+           <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
 
            <mat-form-field appearance="fill" class="full-width">
             <mat-label>Enter your password</mat-label>
