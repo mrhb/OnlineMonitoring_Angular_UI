@@ -11,6 +11,7 @@ import { AuthenticationService } from '../_services';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
   loginForm: FormGroup;
   loading = false;
   submitted = false;

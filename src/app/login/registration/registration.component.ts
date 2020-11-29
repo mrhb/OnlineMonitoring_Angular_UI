@@ -11,6 +11,8 @@ import { AuthenticationService } from '../../_services';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
+  hide = true;
+
   signupForm: FormGroup;
   loading = false;
   submitted = false;
