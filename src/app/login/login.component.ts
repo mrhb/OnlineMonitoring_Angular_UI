@@ -17,19 +17,20 @@ export class LoginComponent implements OnInit {
   submitted = false;
   error = '';
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-
+  
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService
-  ) { }
-
+    ) { }
+    
+    email = new FormControl('', [Validators.required, Validators.email]);
+    password = new FormControl('', [Validators.required]);
   ngOnInit(): void {
       this.loginForm = this.formBuilder.group({
         email:this.email,
-        password: ['', Validators.required]
+        password: this.password
     });
   }
   getErrorMessage() {
@@ -39,9 +40,6 @@ export class LoginComponent implements OnInit {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-      // convenience getter for easy access to form fields
-      get f() { return this.loginForm.controls; }
-
       onSubmit() {
         this.submitted = true;
 
@@ -51,7 +49,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.email.value, this.f.password.value)
+        this.authenticationService.login(this.email.value, this.password.value)
             .pipe(first())
             .subscribe({
                 next: () => {
