@@ -34,10 +34,10 @@ export class AuthenticationService {
             }));
     }
 
-    signup(firstname:string,lastname:string,address:string,email: string, password: string) {
+    signup(firstName:string,lastName:string,address:string,email: string, password: string) {
         var endpoint=`${environment.authUrl}/api/users`;
         var permissionLevel=1;
-        return this.http.post<any>(endpoint, { email, firstname,lastname,password ,permissionLevel});
+        return this.http.post<any>(endpoint, { email, firstName,lastName,password ,permissionLevel});
     }
     logout() {
         // remove user from local storage to log user out

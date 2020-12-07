@@ -3,8 +3,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { User } from '../../services/user';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { first, switchMap } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MustMatch } from '../../../_helpers/must-match.validator';
+import { MatDialogRef, MatDialog } from "@angular/material/dialog";
+import { DialogBodyComponent } from '@app/management/dialog-body/dialog-body.component';
+
+
 
 
 @Component({
@@ -13,19 +18,21 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-  user$: Observable<User>;
+  hide = true;
+  userInfoForm :FormGroup ; 
+  id: string;
+  isAddMode: boolean;
+  loading = false;
+  submitted = false;
 
   formGroup :FormGroup ; 
 
-  myGroup :FormGroup ; 
-
-titleAlert: string = 'This field is required';
-post: any = '';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: UsersService,
+    private userService: UsersService,
+    public dialog: MatDialog,
     private formBuilder: FormBuilder
   ) { }
   step = 3;
@@ -47,31 +54,37 @@ post: any = '';
 
 
   ngOnInit(): void {
-    this.user$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-      this.service.get(params.get('id')))
-      );
+    this.id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.id;
+    
+    // password not required in edit mode
+    const passwordValidators = [Validators.minLength(6)];
+    if (this.isAddMode) {
+        passwordValidators.push(Validators.required);
+    }
 
-      this.formGroup=new FormGroup({
-        email:new FormControl('', [Validators.required, Validators.email]),
-        name: new FormControl(),
-        fone:new FormControl(),
-        tel: new FormControl(),
-        company: new FormControl(),
-        country: new FormControl()
-     });
+    this.userInfoForm = this.formBuilder.group({
+       // title: ['', Validators.required],
+       firstName: ['', Validators.required],
+       lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        permissionLevel: [1, Validators.required],
+        password: ['123456', [Validators.minLength(6), this.isAddMode ? Validators.required : Validators.nullValidator]],
+      //  confirmPassword: ['', this.isAddMode ? Validators.required : Validators.nullValidator]
+    }, {
+      //  validator: MustMatch('password', 'confirmPassword')
+    });
 
-
-     this.myGroup = new FormGroup({
-      name  :new FormControl(),  
-      active  :new FormControl(true),  
-      allAlarm:new FormControl(true),
-      read    :new FormControl(true),  
-      control :new FormControl(true),
-      modify  :new FormControl(true),
-   });
-      // this.createForm();
-      // this.setChangeValidate()
+    if (!this.isAddMode) {
+        this.userService.get(this.id)
+            .pipe(first())
+            .subscribe(x =>
+              {
+                console.log(x);
+                 this.userInfoForm.patchValue(x);
+              }
+              );
+    }
     }
 
   //   createForm() {
@@ -107,16 +120,7 @@ post: any = '';
       this.router.navigate(['/management/users']);
     }
     resetForm() { 
-
-      this.user$ = this.route.paramMap.pipe(
-        switchMap((params: ParamMap) =>
-        this.service.get(params.get('id')))
-        );
-        
-      this.formGroup.reset({
-         name: "sdfv",
-         age: 20
-      });
+      this.router.navigate(['/management/users']);
    } 
 
   //  checkPassword(control) {
@@ -147,8 +151,73 @@ post: any = '';
   //   return this.formGroup.get('password').hasError('required') ? 'Field is required (at least eight characters, one uppercase letter and one number)' :
   //     this.formGroup.get('password').hasError('requirements') ? 'Password needs to be at least eight characters, one uppercase letter and one number' : '';
   // }
-  //  onSubmit(post) {
-  //   this.post = post;
-  // }
+  get f() { return this.userInfoForm.controls; }
 
+  onSubmit() {
+      this.submitted = true;
+
+      // reset alerts on submit
+      //this.alertService.clear();
+
+      // stop here if form is invalid
+      if (this.userInfoForm.invalid) {
+          return;
+      }
+
+      this.loading = true;
+      if (this.isAddMode) {
+          this.createUser();
+      } else {
+          this.updateUser();
+      }
+  }
+
+  private createUser() {
+      this.userService.create(this.userInfoForm.value)
+          .pipe(first())
+          .subscribe({
+              next: () => {
+                //  this.alertService.success('User added', { keepAfterRouteChange: true });
+                  this.router.navigate(['../'], { relativeTo: this.route });
+              },
+              error: error => {
+              //    this.alertService.error(error);
+                  this.loading = false;
+              }
+          });
+  }
+
+  private updateUser() {
+      this.userService.update(this.id, this.userInfoForm.value)
+          .pipe(first())
+          .subscribe({
+              next: () => {
+             //     this.alertService.success('User updated', { keepAfterRouteChange: true });
+                  // this.router.navigate(['/management/users'], { relativeTo: this.route });
+                  this.router.navigate(['/management/users']);
+              },
+              error: error => {
+              //    this.alertService.error(error);
+                  this.loading = false;
+              }
+          });
+  }
+  deleteUser(){
+
+    const dialogRef = this.dialog.open(DialogBodyComponent, {
+      width: '400px',
+      data: {name: this.userInfoForm.value.email, type: "user"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result){
+        this.userService.delete(this.id).subscribe();
+                    //     this.alertService.success('User updated', { keepAfterRouteChange: true });
+                  // this.router.navigate(['/management/users'], { relativeTo: this.route });
+                  this.router.navigate(['/management/users']);
+      } 
+
+    });   
+  }
 }

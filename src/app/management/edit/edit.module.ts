@@ -49,11 +49,23 @@ const  routes:  Routes  = [
           component: UserEditComponent
         },
         {
+          path:  'user',
+          component: UserEditComponent
+        },
+        {
           path:  'group/:id',
           component: GroupEditComponent
         },
         {
+          path:  'group',
+          component: GroupEditComponent
+        },
+        {
           path:  'unit/:id',
+          component: UnitEditComponent
+        },
+        {
+          path:  'unit',
           component: UnitEditComponent
         }
       ]

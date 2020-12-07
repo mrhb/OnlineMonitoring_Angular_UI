@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 
 import { MessageService } from './message.service';
 
-const baseUrl =environment.api+ '/users';
+const baseUrl =environment.userUrl+ '/api/users';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +35,7 @@ export class UsersService {
   }
 
   update(id, data): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+    return this.http.patch(`${baseUrl}/${id}`, data);
   }
 
   delete(id): Observable<any> {

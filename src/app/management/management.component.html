@@ -1,14 +1,36 @@
 <mat-toolbar class="secondary-toolbar" >  
-  <h1 class="submenu-title">User Setting  </h1>
-  <button   mat-flat-button color="warn"  routerLink="/management/edit/user/0"   routerLinkActive="active-link "><span class="material-icons">
-    perm_identity
-    </span>Add New User</button >
+
+  <ng-template [ngIf]="users.isActive">
+    <h1  class="submenu-title">Users</h1>
+    <button mat-flat-button color="warn"  routerLink="/management/edit/user"   routerLinkActive="active-link ">
+      <span class="material-icons">perm_identity</span>
+      Add User
+    </button >
+  </ng-template>
+
+  <ng-template [ngIf]="units.isActive">
+    <h1  class="submenu-title">Units</h1>
+    <button mat-flat-button color="warn"  routerLink="/management/edit/unit"   routerLinkActive="active-link ">
+      <span class="material-icons">perm_identity</span>
+      Add Unit
+    </button >
+  </ng-template>
+
+
+  <ng-template [ngIf]="groups.isActive">
+    <h1  class="submenu-title">Groups</h1>
+    <button mat-flat-button color="warn"  routerLink="/management/edit/group"   routerLinkActive="active-link ">
+      <span class="material-icons">perm_identity</span>
+      Add Group
+    </button >
+  </ng-template>
+
 
   <h1 class="submenu-title push-right" >Management:  </h1>
-    <span ><mat-icon>fact_check</mat-icon> <a mat-button routerLink="/management/units"   routerLinkActive="active-link "   > Units </a></span>
-    <span ><mat-icon>fact_check</mat-icon> <a mat-button routerLink="/management/users"   routerLinkActive="active-link"   > Users </a></span>
-    <span ><mat-icon>fact_check</mat-icon> <a mat-button routerLink="/management/groups"  routerLinkActive="active-link"   > Groups </a></span>
-    <span ><mat-icon>settings</mat-icon>   <a mat-button routerLink="/management/activity"routerLinkActive="active-link"   > Activity logger </a>        </span>
+    <span ><mat-icon>fact_check</mat-icon> <a mat-button routerLink="/management/units"    #units="routerLinkActive" routerLinkActive="active-link "   > Units </a></span>
+    <span ><mat-icon>fact_check</mat-icon> <a mat-button routerLink="/management/users"    #users="routerLinkActive" routerLinkActive="active-link"   > Users </a></span>
+    <span ><mat-icon>fact_check</mat-icon> <a mat-button routerLink="/management/groups"   #groups="routerLinkActive" routerLinkActive="active-link"   > Groups </a></span>
+    <span ><mat-icon>settings</mat-icon>   <a mat-button routerLink="/management/activity" #activity="routerLinkActive" routerLinkActive="active-link"   > Activity logger </a>        </span>
 </mat-toolbar>
 <router-outlet></router-outlet>
 

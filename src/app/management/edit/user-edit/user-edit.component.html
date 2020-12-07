@@ -1,14 +1,16 @@
 <mat-toolbar class="secondary-toolbar" >   
     <button mat-icon-button >  <mat-icon>list</mat-icon></button>
     <h1 class="submenu-title">User Setting  </h1>
-      <button   mat-flat-button color="warn" ><span class="material-icons">
-        perm_identity
-        </span>Add New User</button >
+    <ng-template [ngIf]="!isAddMode" >
+      <button   mat-flat-button color="warn"  routerLink="/management/edit/user"  >
+        <span class="material-icons">perm_identity</span>Add New User
+      </button >
+    </ng-template>
   </mat-toolbar>
-  <div class="container" *ngIf="user$ | async as user">
-  <h2>{{ user.name }}</h2>
+  <!-- <h2>{{ user.firstName }}</h2> -->
       <mat-accordion>
-        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" >
+        <!-- اطلاعات حساب کاربری -->
+        <!-- <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" >
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="material-icons ">
@@ -18,9 +20,9 @@
             </mat-panel-title>            
           </mat-expansion-panel-header>
       
-        </mat-expansion-panel>
-      
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" >
+        </mat-expansion-panel> -->
+      <!-- اطلاعات شخصی کاربر -->
+        <mat-expansion-panel [expanded]="true" (opened)="setStep(1)" >
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="material-icons ">
@@ -29,10 +31,15 @@
               Personal information
             </mat-panel-title>
           </mat-expansion-panel-header>
-      <form [formGroup]="formGroup"  class="form">
+      <form [formGroup]="userInfoForm"  class="form">
         <mat-form-field class="form-element" appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Enter name" formControlName="name">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Enter first name" formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field class="form-element" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Enter last name" formControlName="lastName">
         </mat-form-field>
         
         <mat-form-field class="form-element" appearance="fill">
@@ -40,7 +47,24 @@
           <input matInput placeholder="Enter email" formControlName="email">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <!-- <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>confirmP your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"  formControlName="confirmPassword">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field> -->
+
+
+        <!-- <mat-form-field appearance="fill">
           <mat-label>Phone number</mat-label>
           <input matInput formControlName="tel" required>
           <mat-icon matSuffix>phone</mat-icon>
@@ -50,13 +74,13 @@
         <mat-form-field class="form-element" appearance="fill">
           <mat-label>Company name</mat-label>
           <input matInput placeholder="Enter company name" formControlName="company">
-        </mat-form-field>
+        </mat-form-field> -->
 
         <!-- <mat-form-field class="form-element" appearance="fill">
           <input matInput placeholder="Choose country" formControlName="country">
         </mat-form-field> -->
 
-        <mat-form-field  appearance="fill">
+        <!-- <mat-form-field  appearance="fill">
           <mat-label>Choose country</mat-label>
           <mat-select [(value)]="selected"  formControlName="country">
             <mat-option>None</mat-option>
@@ -64,13 +88,13 @@
             <mat-option value="Usa">United State of America (Usa)</mat-option>
             <mat-option value="UK">United kingdom (UK)</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
 
         </form>
    
         </mat-expansion-panel>
-      
-        <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" >
+      <!-- اطلاعات حساب  -->
+        <!-- <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" >
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="material-icons ">
@@ -78,11 +102,10 @@
                 </span>Invoice information
             </mat-panel-title>
           </mat-expansion-panel-header>
-
+        </mat-expansion-panel> -->
 
         <!-- Permissions -->
-        </mat-expansion-panel>
-        <mat-expansion-panel [expanded]="true" (opened)="setStep(2)" >
+        <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(2)" >
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="material-icons ">
@@ -92,7 +115,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <user-edit-permission></user-edit-permission>
-        </mat-expansion-panel>
+        </mat-expansion-panel> -->
       
       </mat-accordion>
       
@@ -100,17 +123,19 @@
           Use of this source code is governed by an MIT-style license that
           can be found in the LICENSE file at http://angular.io/license -->
           
-  </div>
+  
   <mat-toolbar class="footing-toolbar" >  
-    <button   mat-flat-button color="warn" class="btndelete" >
-      <span class="material-icons"  >delete_forever</span>Delete
-  </button > 
+    <ng-template [ngIf]="!isAddMode" >
+      <button   mat-flat-button color="warn" class="btndelete" >
+        <span class="material-icons" (click)="deleteUser()" >delete_forever</span>Delete
+      </button > 
+    </ng-template>
     <button   mat-flat-button color="warn" >
-        <span class="material-icons"  >save</span>Save
+        <span class="material-icons" (click)="onSubmit()" >save</span>Save
     </button >
     
     <button  type="button" (click) = "resetForm()" mat-flat-button color="warn">
-        <span class="material-icons"  >restore</span>Restore to previouse
+        <span class="material-icons"  >restore</span>Cancel
     </button >
   </mat-toolbar>
   

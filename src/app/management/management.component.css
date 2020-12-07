@@ -4,6 +4,10 @@ body {
     color: #424242;
     background-color: white;
 }
+.submenu-title
+{
+    margin-left: 20px;
+}
 .active-link{
     color: #424242;  
 text-emphasis: initial;
