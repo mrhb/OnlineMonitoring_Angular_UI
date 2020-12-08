@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MessageService } from './message.service';
 
-const baseUrl = 'http://localhost:8080/api/groups';
+const baseUrl = 'http://localhost:3600/api/groups';
 
 @Injectable({
   providedIn: 'root'

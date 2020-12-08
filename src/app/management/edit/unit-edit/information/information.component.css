@@ -1,7 +1,13 @@
 mat-grid-tile:hover{
     background-color: rgb(230 230 230 / 0.19);
 }
-
+.map{
+  background-color: aqua;
+}
+#map {
+  height: 100%;
+  width: 100%;
+}
 
 .form {
     display: flex;
@@ -12,9 +18,15 @@ mat-grid-tile:hover{
     padding: 5px 5px 5px 15px;
     width: 100%;
   }
-.form-culomn {
+.form-half-culomn {
     padding-right: 10px;
     width: 50%;
+  }
+
+  .form-culomn {
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 100%;
   }
 .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;

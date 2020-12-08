@@ -1,88 +1,65 @@
-<p>information works!</p>
-<mat-grid-list cols="3"  rowHeight="100px">
-    <!-- nameformGroup -->
-    <mat-grid-tile colspan="2" rowspan="1">
-        <form [formGroup]="nameformGroup"  class="form name-state">
-                <mat-form-field class="form-culomn" appearance="fill">
-                <mat-label>Unit Name</mat-label>
-                <input matInput placeholder="Enter name" formControlName="name" required>
+<mat-grid-list cols="2"  rowHeight="100px">
+    <!-- unitInfoForm -->
+    <form [formGroup]="unitInfoForm"  class="form name-state">
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+        <div  id="map"></div>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" rowspan="1">
+                <mat-form-field class="form-half-culomn" appearance="fill">
+                    <mat-label>Unit Name</mat-label>
+                    <input matInput placeholder="Enter name" formControlName="name" required>
                 </mat-form-field>
            
-            <div class="form-culomn">
-                <label>Float label: </label>
-                <p>
-                    <mat-radio-group formControlName="state">
-                        <mat-radio-button value="true">Enabled</mat-radio-button>
-                        <mat-radio-button value="false">Disabled</mat-radio-button>
-                    </mat-radio-group>
-                </p>
-            </div>
-        </form>
-    </mat-grid-tile>
-    <!-- Map -->
-    <mat-grid-tile class="map" [colspan]="1" [rowspan]="4">
-        <form [formGroup]="mapformGroup" >
-        
-            <mat-form-field class="form-element" appearance="fill">
-                <mat-label>GPS Latitude (N)</mat-label>
-                <input type="number" matInput placeholder="E.g. 45.44471" formControlName="name" required>
-            </mat-form-field>
-      
-
-        
-            <mat-form-field class="form-element" appearance="fill">
-                <mat-label>GPS Longitude (E)</mat-label>
-                <input type="number" matInput placeholder="E.g. 13.35937" formControlName="name" required>
-            </mat-form-field>  
-        
-        
-
-        <div style="height:250px;width: 100%;  "
-            leaflet 
-            [leafletOptions]="options">
-        </div>
-        </form>
-       
-    </mat-grid-tile>    
-    <!-- infoformGroup -->
-    <mat-grid-tile [colspan]="2" [rowspan]="3">
-        <form [formGroup]="infoformGroup"  class="form info">
-            <div class="form-culomn">
-                
-            <mat-form-field class="form-element" appearance="fill">
-            <mat-label>Unit Name</mat-label>
-            <input matInput placeholder="Enter name" formControlName="name" required>
-            </mat-form-field>
-
-            <mat-form-field class="form-element" appearance="fill">
-                <mat-label>Unit Name</mat-label>
-                <input matInput placeholder="Enter name" formControlName="name" required>
-            </mat-form-field>
-            
-            <mat-form-field class="form-element" appearance="fill">
-                <mat-label>Unit Name</mat-label>
-                <input matInput placeholder="Enter name" formControlName="name" required>
-            </mat-form-field>
-        </div>
- 
-        <div class="form-culomn">
-            <mat-form-field class="form-element" appearance="fill">
-                <mat-label>Unit Name</mat-label>
-                <input matInput placeholder="Enter name" formControlName="name" required>
-            </mat-form-field>
-       
-        <div class="form-element">
-            <label>Float label: </label>
-            <p>
+                <label>Unit State:&nbsp;&nbsp;&nbsp;</label>
                 <mat-radio-group formControlName="state">
-                    <mat-radio-button value="true" >Enabled</mat-radio-button>
+                    <mat-radio-button value="true">Enabled</mat-radio-button>
                     <mat-radio-button value="false">Disabled</mat-radio-button>
                 </mat-radio-group>
-            </p>
-        </div>
-        </div>
-    </form>
+             
     </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-culomn" appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Enter position address" formControlName="address" required>
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+     <!-- infoformGroup -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+
+        
+        <mat-form-field class="form-culomn" appearance="fill">
+            <mat-label>Ip Address</mat-label>
+            <input matInput placeholder="Enter name" formControlName="ip" required>
+        </mat-form-field>
+
+        <mat-form-field class="form-culomn" appearance="fill">
+            <mat-label>Port</mat-label>
+            <input matInput placeholder="Enter port number 4550-4570" formControlName="port" required>
+        </mat-form-field>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile  [colspan]="1" [rowspan]="1">
+        <mat-form-field  class="form-culomn" appearance="fill">
+            <mat-label>GPS Latitude (N)</mat-label>
+            <input type="number" matInput placeholder="E.g. 45.44471" formControlName="lat" required>
+        </mat-form-field>
+        
+        <mat-form-field  class="form-culomn" appearance="fill">
+            <mat-label>GPS Longitude (E)</mat-label>
+            <input type="number" matInput placeholder="E.g. 13.35937" formControlName="long" required>
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+
+    </form>
+  
+
   </mat-grid-list>
 
 
