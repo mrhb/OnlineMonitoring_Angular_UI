@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { icon, latLng, Map, marker, point, polyline, tileLayer } from 'leaflet';
 import * as L from "leaflet";
@@ -37,11 +37,7 @@ export class InformationComponent implements OnInit,AfterViewInit {
 devices=DEVICES;
   unitmarker;
 
-  formGroup :FormGroup ; 
-
-
-  infoformGroup :FormGroup ; 
-  nameformGroup :FormGroup ; 
+  @ViewChild('map') mapComntainer;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -100,7 +96,9 @@ devices=DEVICES;
   }
   mapInit()
   {
-    this.map = L.map("map");
+
+
+    this.map = L.map(this.mapComntainer.nativeElement);
 
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
      { attribution: '...' }
@@ -192,7 +190,7 @@ devices=DEVICES;
   delete(){
     const dialogRef = this.dialog.open(DialogBodyComponent, {
       width: '400px',
-      data: {name: this.unitInfoForm.value.email, type: "user"}
+      data: {name: this.unitInfoForm.value.name, type: "unit"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
