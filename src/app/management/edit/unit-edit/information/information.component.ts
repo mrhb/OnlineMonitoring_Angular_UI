@@ -163,7 +163,7 @@ devices=DEVICES;
           .subscribe({
               next: () => {
                 //  this.alertService.success('User added', { keepAfterRouteChange: true });
-                  this.router.navigate(['../'], { relativeTo: this.route });
+                  this.router.navigate(['/management/units'], { relativeTo: this.route });
               },
               error: error => {
               //    this.alertService.error(error);
