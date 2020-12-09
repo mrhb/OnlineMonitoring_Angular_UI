@@ -22,12 +22,12 @@ export class DataService implements InMemoryDbService {
       {id:2,name: 'Hajjar.B' ,sd:false,allalarm:true,read:false,control:true,modify:false},
       {id:3,name: 'mrhb'     ,sd:false,allalarm:true,read:false,control:true,modify:false},
     ];
-    const units: Unit[] = [
-      {id:1,name: 'unit1',groups:'g1',customer:'tetaPower',gate:'654.168.167.56',disable:true,comm:false},
-      {id:2,name: 'unit2',groups:'gasdf',customer:'tetaPower',gate:'234.333.61.55',disable:true,comm:false},
-      {id:3,name: 'unit3',groups:'gqwe',customer:'tetaPower',gate:'343.168.56.35',disable:true,comm:false},
-      {id:4,name: 'unit4',groups:'dfe1',customer:'tetaPower',gate:'324.168.1.37',disable:true,comm:false},
-    ];
+    // const units: Unit[] = [
+    //   {id:1,name: 'unit1',groups:'g1',customer:'tetaPower',gate:'654.168.167.56',disable:true,comm:false},
+    //   {id:2,name: 'unit2',groups:'gasdf',customer:'tetaPower',gate:'234.333.61.55',disable:true,comm:false},
+    //   {id:3,name: 'unit3',groups:'gqwe',customer:'tetaPower',gate:'343.168.56.35',disable:true,comm:false},
+    //   {id:4,name: 'unit4',groups:'dfe1',customer:'tetaPower',gate:'324.168.1.37',disable:true,comm:false},
+    // ];
       
 
 
@@ -38,7 +38,8 @@ export class DataService implements InMemoryDbService {
       { id: 14, name: 'Armitajh' },
      
     ];
-    return {users,groups,units};
+    // return {users,groups,units};
+    return {users,groups};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

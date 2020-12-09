@@ -15,7 +15,7 @@ import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 })
 export class UnitsComponent implements OnInit {
   units:Unit[];
-  displayedColumns: string[] = ['select', 'id', 'name','groups','customer','gate','disable','comm','actions'];
+  displayedColumns: string[] = ['select', 'id', 'name','deviceType','state','netaddress','groups','customer','gate','disable','comm','actions'];
   dataSource = new MatTableDataSource<Unit>(this.units);
   selection = new SelectionModel<Unit>(true, []);
 

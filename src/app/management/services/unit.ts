@@ -1,6 +1,16 @@
 export interface Unit {
     id: number;
     name: string;
+    address:String,
+    ip:String,
+    port:Number,
+    lat:Number,
+    long:Number,
+    state:Boolean,
+    deviceType:{
+      type: String,
+      enum: ['mint','amf25','teta']
+      },
     groups: string;
     customer: string;
     gate:string;
