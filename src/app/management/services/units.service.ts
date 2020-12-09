@@ -33,7 +33,7 @@ export class UnitsService {
   }
 
   update(id, data): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+    return this.http.patch(`${baseUrl}/${id}`, data);
   }
 
   delete(id): Observable<any> {

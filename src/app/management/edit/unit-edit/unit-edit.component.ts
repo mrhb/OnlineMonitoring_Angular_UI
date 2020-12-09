@@ -10,27 +10,17 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./unit-edit.component.css']
 })
 export class UnitEditComponent implements OnInit {
-  unit$: Observable<Unit>;
-  constructor(
+  id: string;
+  isAddMode: boolean;
+   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private service: UnitsService
+    private router: Router
   ) { }
   
   ngOnInit(): void {
-    this.unit$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-      this.service.get(params.get('id')))
-      );
-    }
+    this.id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.id;
+  }
 
-
-    gotoUserss(unit: Unit) {
-      const userId = unit ? unit.id : null;
-      // Pass along the hero id if available
-      // so that the HeroList component can select that hero.
-      // Include a junk 'foo' property for fun.
-      this.router.navigate(['/management/units']);
-    }
 
 }

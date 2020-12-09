@@ -31,3 +31,18 @@ mat-grid-tile:hover{
 .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
   }
+
+
+
+  /* action toolbar */
+  .mat-flat-button{
+    border-radius: 50px;
+    background: #d50000;
+    margin-left: 20px;
+}
+.btndelete {
+  margin-right: auto;
+}
+.footing-toolbar{
+    justify-content:flex-end;
+}

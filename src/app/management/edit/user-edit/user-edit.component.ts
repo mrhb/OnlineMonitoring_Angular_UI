@@ -119,9 +119,7 @@ export class UserEditComponent implements OnInit {
       // Include a junk 'foo' property for fun.
       this.router.navigate(['/management/users']);
     }
-    resetForm() { 
-      this.router.navigate(['/management/users']);
-   } 
+   
 
   //  checkPassword(control) {
   //   let enteredPassword = control.value
@@ -151,6 +149,10 @@ export class UserEditComponent implements OnInit {
   //   return this.formGroup.get('password').hasError('required') ? 'Field is required (at least eight characters, one uppercase letter and one number)' :
   //     this.formGroup.get('password').hasError('requirements') ? 'Password needs to be at least eight characters, one uppercase letter and one number' : '';
   // }
+
+  resetForm() { 
+    this.router.navigate(['/management/users']);
+ } 
   get f() { return this.userInfoForm.controls; }
 
   onSubmit() {

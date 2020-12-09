@@ -1,67 +1,79 @@
 <mat-grid-list cols="2"  rowHeight="100px">
     <!-- unitInfoForm -->
     <form [formGroup]="unitInfoForm"  class="form name-state">
-    <mat-grid-tile [colspan]="1" [rowspan]="4">
-        <div  id="map"></div>
-    </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="4">
+            <div  id="map"></div>
+        </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="1">
-                <mat-form-field class="form-half-culomn" appearance="fill">
-                    <mat-label>Unit Name</mat-label>
-                    <input matInput placeholder="Enter name" formControlName="name" required>
-                </mat-form-field>
-           
-                <label>Unit State:&nbsp;&nbsp;&nbsp;</label>
-                <mat-radio-group formControlName="state">
-                    <mat-radio-button value="true">Enabled</mat-radio-button>
-                    <mat-radio-button value="false">Disabled</mat-radio-button>
-                </mat-radio-group>
-             
-    </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+                    <mat-form-field class="form-half-culomn" appearance="fill">
+                        <mat-label>Unit Name</mat-label>
+                        <input matInput placeholder="Enter name" formControlName="name" required>
+                    </mat-form-field>
+            
+                    <label>Unit State:&nbsp;&nbsp;&nbsp;</label>
+                    <mat-radio-group formControlName="state">
+                        <mat-radio-button [value]=true>Enabled</mat-radio-button>
+                        <mat-radio-button [value]=false>Disabled</mat-radio-button>
+                    </mat-radio-group>
+        </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="1">
-        <mat-form-field class="form-culomn" appearance="fill">
-            <mat-label>Address</mat-label>
-            <input matInput placeholder="Enter position address" formControlName="address" required>
-        </mat-form-field>
-    </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field class="form-culomn" appearance="fill">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Enter position address" formControlName="address" required>
+            </mat-form-field>
+        </mat-grid-tile>
 
 
-     <!-- infoformGroup -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <!--NetworkData  -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="form-culomn" appearance="fill">
+                <mat-label>Ip Address</mat-label>
+                <input matInput placeholder="Enter name" formControlName="ip" required>
+            </mat-form-field>
 
-        
-        <mat-form-field class="form-culomn" appearance="fill">
-            <mat-label>Ip Address</mat-label>
-            <input matInput placeholder="Enter name" formControlName="ip" required>
-        </mat-form-field>
+            <mat-form-field class="form-culomn" appearance="fill">
+                <mat-label>Port</mat-label>
+                <input matInput placeholder="Enter port number 4550-4570" formControlName="port" required>
+            </mat-form-field>
 
-        <mat-form-field class="form-culomn" appearance="fill">
-            <mat-label>Port</mat-label>
-            <input matInput placeholder="Enter port number 4550-4570" formControlName="port" required>
-        </mat-form-field>
+            <mat-form-field  appearance="fill">
+                <mat-label>Choose Devivce Type*</mat-label>
+                <mat-select formControlName="deviceType">
+                    <mat-option *ngFor="let device of devices" [value]="device.type" >{{device.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
 
-    </mat-grid-tile>
-
-    <mat-grid-tile  [colspan]="1" [rowspan]="1">
-        <mat-form-field  class="form-culomn" appearance="fill">
-            <mat-label>GPS Latitude (N)</mat-label>
-            <input type="number" matInput placeholder="E.g. 45.44471" formControlName="lat" required>
-        </mat-form-field>
-        
-        <mat-form-field  class="form-culomn" appearance="fill">
-            <mat-label>GPS Longitude (E)</mat-label>
-            <input type="number" matInput placeholder="E.g. 13.35937" formControlName="long" required>
-        </mat-form-field>
-    </mat-grid-tile>
+        <!-- Geo Data -->
+        <mat-grid-tile  [colspan]="1" [rowspan]="1">
+            <mat-form-field  class="form-culomn" appearance="fill">
+                <mat-label>GPS Latitude (N)</mat-label>
+                <input type="number" matInput placeholder="E.g. 45.44471" formControlName="lat" required>
+            </mat-form-field>
+            
+            <mat-form-field  class="form-culomn" appearance="fill">
+                <mat-label>GPS Longitude (E)</mat-label>
+                <input type="number" matInput placeholder="E.g. 13.35937" formControlName="long" required>
+            </mat-form-field>
+        </mat-grid-tile>
 
 
 
     </form>
-  
-
-  </mat-grid-list>
-
-
-  
+</mat-grid-list>
+<mat-toolbar class="footing-toolbar" >  
+    <ng-template [ngIf]="!isAddMode" >
+        <button   mat-flat-button color="warn" class="btndelete" >
+        <span class="material-icons" (click)="delete()" >delete_forever</span>Delete
+        </button > 
+    </ng-template>
+    <button   mat-flat-button color="warn" >
+        <span class="material-icons" (click)="onSubmit()" >save</span>Save
+    </button >
+    <button  type="button" (click) = "resetForm()" mat-flat-button color="warn">
+        <span class="material-icons"  >restore</span>Cancel
+    </button >
+</mat-toolbar>
   
