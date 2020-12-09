@@ -1,9 +1,11 @@
 <mat-toolbar class="secondary-toolbar" >   
     <button mat-icon-button >  <mat-icon>list</mat-icon></button>
     <h1 class="submenu-title">Unit Setting  </h1>
-      <button   mat-flat-button color="warn" ><span class="material-icons">
-        perm_identity
-        </span>Add New Unit</button >
+    <ng-template [ngIf]="!isAddMode" >
+      <button   mat-flat-button color="warn"  routerLink="/management/edit/unit"  >
+        <span class="material-icons">perm_identity</span>Add New Unit
+      </button >
+    </ng-template>
   </mat-toolbar>
         <mat-accordion>
           <!-- Unit information -->
