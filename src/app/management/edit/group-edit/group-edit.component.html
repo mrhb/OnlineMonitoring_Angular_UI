@@ -1,34 +1,62 @@
 <mat-toolbar class="secondary-toolbar" >   
-    <button mat-icon-button >  <mat-icon>list</mat-icon></button>
-    <h1 class="submenu-title">Group Setting  </h1>
-      <button   mat-flat-button color="warn" ><span class="material-icons">
-        perm_identity
-        </span>Add New Group</button >
-  </mat-toolbar>
-  
-<p>group-edit works!</p>
-<div class="container" *ngIf="group$ | async as group">
-    <h3>"{{ group.name }}"</h3>
-   
-      <label>Id: </label>{{ group.id }}
- 
-      <label>Name: </label>
-      <input [(ngModel)]="group.name" placeholder="name"/>
-   
- 
-
-
-
-
-
-<mat-toolbar class="footing-toolbar" >   
-    <button   mat-flat-button color="warn" >
-        <span class="material-icons" (click)="gotoUsers(group)" >save</span>Save
+  <button mat-icon-button >  <mat-icon>list</mat-icon></button>
+  <h1 class="submenu-title">Group Setting  </h1>
+  <ng-template [ngIf]="!isAddMode" >
+    <button   mat-flat-button color="warn"  routerLink="/management/edit/group"  >
+      <span class="material-icons">perm_identity</span>Add New Group
     </button >
+  </ng-template>
+</mat-toolbar>
+<!-- <h2>{{ user.firstName }}</h2> -->
+    <mat-accordion>
+     
+    <!-- اطلاعات شخصی کاربر -->
+      <mat-expansion-panel [expanded]="true" >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="material-icons ">
+              person_outlined
+              </span>
+            Group information
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+    <form [formGroup]="InfoForm"  class="form">
+      <mat-form-field class="form-element" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Enter first name" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field  appearance="fill">
+        <mat-label>Choose Group Type*</mat-label>
+        <mat-select formControlName="groupType">
+            <mat-option *ngFor="let group of groups" [value]="group.type" >{{group.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      </form>
+ 
+      </mat-expansion-panel>
     
-    <button   mat-flat-button color="warn" >
-        <span class="material-icons">restore</span>Restore to previouse
-    </button >
-  </mat-toolbar>
+    </mat-accordion>
+    
+    <!-- Copyright 2020 Google LLC. All Rights Reserved.
+        Use of this source code is governed by an MIT-style license that
+        can be found in the LICENSE file at http://angular.io/license -->
+        
+
+<mat-toolbar class="footing-toolbar" >  
+  <ng-template [ngIf]="!isAddMode" >
+    <button   mat-flat-button color="warn"  (click)="deleteUser()" class="btndelete" >
+      <span class="material-icons">delete_forever</span>Delete
+    </button > 
+  </ng-template>
+  <button   mat-flat-button color="warn" (click)="onSubmit()"  >
+      <span class="material-icons" >save</span>Save
+  </button >
   
-</div>
+  <button  type="button" (click) = "resetForm()" mat-flat-button color="warn">
+      <span class="material-icons"  >restore</span>Cancel
+  </button >
+</mat-toolbar>
+
+
