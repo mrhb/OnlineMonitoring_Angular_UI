@@ -6,7 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 
 
-import {  METRICS_classic, METRICS_minit } from './mock-trends';
+import {  METRICS_amf25, METRICS_classic, METRICS_minit } from './mock-trends';
 import { MetricInfo, SeriesInfo, TrendInfo } from './trendInfo';
 import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
@@ -20,7 +20,7 @@ const httpOptions = {
   })
 };
 
-const baseUrl =environment.api+ '/trends/';
+const baseTrendsUrl =environment.api+ '/trends/';
 const baseSidebarUrl =environment.sidebar+ '/sidebar/';
 
 @Injectable({
@@ -31,24 +31,26 @@ selectedSeries:SeriesInfo={metricsInfo:[],startDate: moment().subtract(1,'d').va
 trendsInfos:TrendInfo[];
 metrics_classic:string[];
 metrics_minit:string[];
+metrics_amf25:string[];
 constructor(private http: HttpClient,
     private messageService: MessageService
     ) {
     this.trendsInfos=[];    
     this.metrics_classic=METRICS_classic;
     this.metrics_minit=METRICS_minit;
+    this.metrics_amf25=METRICS_amf25;
    }
    private log(message: string) {
    this.messageService.add(`UserService: ${message}`);
   }
 
   // getSeriesData(): Observable<any> {
-  //   return this.http.get(baseUrl);
+  //   return this.http.get(baseTrendsUrl);
   // }
 
   /** POST: Send seriesInfo to get series data from timeseries database */
   getSeriesData(seriesInfo: SeriesInfo): Observable<any> {
-  return this.http.post<SeriesInfo>(baseUrl, seriesInfo, httpOptions)
+  return this.http.post<SeriesInfo>(baseTrendsUrl, seriesInfo, httpOptions)
     .pipe(
       catchError(err => of([]))
     );
@@ -65,10 +67,12 @@ constructor(private http: HttpClient,
 
    getUinitMetric(unitType){
     this.selectedSeries.metricsInfo=[];
-    if(unitType=="Classic")
-      return this.metrics_classic;
+    if(unitType=="mint")
+    return this.metrics_minit;
+    if(unitType=="amf25")
+    return this.metrics_amf25;
     else
-      return this.metrics_minit;
+    return this.metrics_classic;
   }
   addToList(item:MetricInfo){
     this.selectedSeries.metricsInfo.push(item);

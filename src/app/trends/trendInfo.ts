@@ -6,9 +6,9 @@ export interface TrendInfo {
   UnitsInfo:UnitInfo[];
   }
   export interface UnitInfo {
-    UnitId: number;
-    UnitType:string;
-    UnitName:string;
+    id: string;
+    deviceType:string;
+    name:string;
   }
  
   export interface SeriesInfo {
