@@ -59,7 +59,7 @@ devices=DEVICES;
        address: ['', Validators.required],
        state: [false],
         ip: ['', [Validators.required, Validators.pattern("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")]],
-        port:['',Validators.compose([Validators.required, Validators.min(4551), Validators.max(4570)])],
+        port:['',Validators.compose([Validators.required, Validators.min(4511), Validators.max(4530)])],
         deviceType:[],
         lat: [
           null,
