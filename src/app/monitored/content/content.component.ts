@@ -1,10 +1,14 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import{ViewComponent, RowElement} from './view.component'
+import{ViewComponent} from './view.component'
+import{stateInto,unitsStateInfo} from './../service/UnitsData';
 import { TableviewComponent } from './tableview/tableview.component';
 import { ViewUnitsDirective } from './view-units.directive';
 import { IconviewComponent } from './iconview/iconview.component';
 import { ModuleviewComponent } from './moduleview/moduleview.component';
-
+import{StatesService} from '../service/states.service';
+import { Observable,of } from 'rxjs';
+import { UnitsService } from '@app/management/services/units.service';
+import { Unit } from '@app/management/services/unit';
 
 @Component({
   selector: 'app-content',
@@ -16,7 +20,12 @@ export class ContentComponent implements OnInit {
   @Output() unitSelectionEvent = new EventEmitter<number>(); tempnum:number=0;
   @ViewChild(ViewUnitsDirective, {static: true}) appViewUnits: ViewUnitsDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  units:stateInto[];
+ 
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private statesService:StatesService
+    ){}
 
   viewClick(){
     this.tempnum=this.tempnum+1;
@@ -24,14 +33,17 @@ export class ContentComponent implements OnInit {
     this.unitSelectionEvent.emit(this.tempnum);
   }
   ngOnInit(): void {
-    this.LoadView(this.ViewType) ;
+    this.statesService.Download().subscribe((data)=>{
+      this.units = data;
+      this.LoadView(this.ViewType) ;
+    })
   }
   ngOnChanges() {
     this.LoadView(this.ViewType) ;
     // You can also use categoryId.previousValue and 
     // categoryId.firstChange for comparing old and new values
     
-}
+  }
   LoadView(Type:string) {
     const viewContainerRef = this.appViewUnits.viewContainerRef;
     viewContainerRef.clear();
@@ -54,53 +66,12 @@ export class ContentComponent implements OnInit {
          break; 
       } 
    } 
-
-
-
-
-     const componentRef = viewContainerRef.createComponent<ViewComponent>(componentFactory);
-     componentRef.instance.data =this.view_DATA;
+    const componentRef = viewContainerRef.createComponent<ViewComponent>(componentFactory);
+      if(this.units){
+        var df=new unitsStateInfo(this.units);
+        componentRef.instance.data =df;
+      }
+      
   }
 
-
-
-
- view_DATA: RowElement[] = [
-  {
-    itemName: 'CharmShahr',
-    engines:'(2)',
-    update:2,
-    subunits:[
-      {
-        itemName: 'unit 1',
-        engines:'ready',
-        update:2,
-        subunits:[],
-        alarm:{name:'*WrnServiceTime',Icon:'ECU'}
-      },
-      {
-        itemName: 'unit 20',
-        engines:'Shot down',
-        update:1,
-        subunits:[],
-        alarm:{name:'*WrnServiceTime',Icon:'alarm'}
-      },
-    ],
-    alarm:{name:'*Emergency stop', Icon:'sutdown'}
-  },
-  {
-    itemName: 'unit 2',
-    engines:'ready',
-    update:1,
-    subunits:[],
-    alarm:{name:'*Emergency stop', Icon:'warning'}
-  },
-  {
-    itemName: 'unit 3',
-    engines:'(3)',
-    update:3,
-    subunits:[],
-    alarm:{name:'*WrnServiceTime',Icon:'ECU'}
-  }
-];
 }

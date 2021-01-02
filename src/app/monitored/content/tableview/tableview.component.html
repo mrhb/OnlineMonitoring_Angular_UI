@@ -8,25 +8,26 @@
     <ng-container matColumnDef="Alarm">
         <th mat-header-cell *matHeaderCellDef>Alarm</th>
         <td class="alarm-column" mat-cell *matCellDef="let element">
-          <span  class="material-icons {{element.alarm.Icon}} ">warning</span>
         </td>
-    </ng-container>
-    
-    <!-- Name Column -->
-    <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td class="name-column" mat-cell *matCellDef="let element">
+      </ng-container>
+      
+      <!-- Name Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td class="name-column" mat-cell *matCellDef="let element">
+        <span  class="material-icons {{element.alarm}} ">warning</span>
         <!-- <span  class="name-column">{{element.itemName}} </span>  -->
-        <div class="backgroundAlarm {{element.alarm.Icon}}">
-          {{element.itemName}}
-        </div>
+        <!-- <div class="backgroundAlarm {{element.alarm.Icon}}">
+          {{element.name}}
+        </div> -->
+        {{element.name}}
       </td>
     </ng-container>
 
-    <!-- Engine Column -->
-    <ng-container matColumnDef="Engine">
-        <th class="engin-column" mat-header-cell *matHeaderCellDef>Engine</th>
-        <td class="engin-column" mat-cell *matCellDef="let element">{{element.engines}} </td>
+    <!-- State Column -->
+    <ng-container matColumnDef="State">
+        <th class="engin-column" mat-header-cell *matHeaderCellDef>State</th>
+        <td class="engin-column" mat-cell *matCellDef="let element">{{element.state}} </td>
     </ng-container>
 
     <!-- Update Column -->
@@ -39,7 +40,7 @@
             <some-element *ngSwitchCase='2'><span class="material-icons">cast</span></some-element>
             <some-element *ngSwitchCase='3'><span class="material-icons">cast_connected</span></some-element>
             <!--default case when there are no matches -->
-            <some-element *ngSwitchDefault>?</some-element>
+            <some-element *ngSwitchDefault>{{element.elapsed}}</some-element>
           </container-element>
         </td>
     </ng-container>      
@@ -60,13 +61,12 @@
           
               <span  class=" material-icons {{unit.alarm.Icon}} ">warning</span>
               <div   class="name backgroundAlarm {{unit.alarm.Icon}}">
-                {{unit.itemName}}
+                {{unit.name}}
               </div>
               <div>
                 {{unit.engines}}
               </div>
               <container-element [ngSwitch]="unit.update">
-                <!-- the same view can be shown in more than one case -->
                 <some-element *ngSwitchCase='1'><span class="material-icons">cast_for_education</span></some-element>
                 <some-element *ngSwitchCase='2'><span class="material-icons">cast</span></some-element>
                 <some-element *ngSwitchCase='3'><span class="material-icons">cast_connected</span></some-element>
