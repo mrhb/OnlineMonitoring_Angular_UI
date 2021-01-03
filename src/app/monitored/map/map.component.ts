@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { icon, latLng, Map, marker, point, polyline, tileLayer } from 'leaflet';
-import "leaflet/dist/images/marker-shadow.png";
+import * as L from "leaflet";
+
+import "src/assets/mapIcons/marker-shadow.png"
+import { StatesService } from '../service/states.service';
+import { stateInto } from '../service/UnitsData';
 
 
 @Component({
@@ -8,19 +12,51 @@ import "leaflet/dist/images/marker-shadow.png";
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit,AfterViewInit {
+  @Input()  items:stateInto[];
+  map:any;
+  @ViewChild('map') mapContainer;
+  
+  units:stateInto[];
 
-  options = {
-    layers: [
-        tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' }),
-        marker([ 36.250091, 59.914066])
-    ],
-    zoom: 8,
-    center: latLng(36.250091, 59.914066)
-};
-  constructor() { }
+  constructor(
+    private statesService:StatesService
+  ) { }
 
   ngOnInit(): void {
+    this.statesService.UnitsDataSubject.subscribe((data)=>{
+      if(data.items.length>1)
+      {
+        this.units = data.items;
+        this.displayMap() ;
+      }
+    });
   }
 
+  ngAfterViewInit(): void {
+    this.mapInit();
+    }
+  displayMap(): void {
+
+   var marers= this.units.map( item=>{
+     var mar=marker([item.lat,item.long]);
+     mar.addTo(this.map);
+    return  mar;
+    });
+
+        
+    var group = new L.featureGroup(marers);
+    this.map.fitBounds(group.getBounds(),
+    {padding: [20, 20]});
+  }
+
+  mapInit()
+  {
+    this.map = L.map(this.mapContainer.nativeElement);
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+     { attribution: '...' }
+    ).addTo(this.map);
+
+  }
 }

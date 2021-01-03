@@ -25,8 +25,6 @@
             </mat-toolbar>   
            <app-content [ViewType]=viewType (unitSelectionEvent)="unitSelected($event)"></app-content>
         </div>
-        <app-map  [ngClass]="expantion" 
-        style="height:650px"
-        ></app-map>
+        <app-map  [ngClass]="expantion" style="height:650px"></app-map>
     </mat-sidenav-content>
   </mat-sidenav-container>

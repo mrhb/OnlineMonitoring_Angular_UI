@@ -44,11 +44,30 @@ const view_DATA: stateInto[] = [
 export class StatesService {
 
 
-  private UnitsDataSubject: BehaviorSubject<unitsStateInfo>;
+  public UnitsDataSubject: BehaviorSubject<unitsStateInfo>;
   public readonly UnitsData: Observable<unitsStateInfo>;
   constructor(
     private http: HttpClient
-  ) {}
+  ) {
+    this.UnitsDataSubject = new BehaviorSubject<unitsStateInfo>(new unitsStateInfo([{"name":"rgtr5get5","id":"rfevfehrtbethb"}]));
+    this.UnitsData = this.UnitsDataSubject.asObservable();
+    this.Load();
+  }
+  
+  public get UnitsDataValue(): unitsStateInfo {
+    return this.UnitsDataSubject.value;
+}
+Load() {
+   this.http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions).subscribe((states)=>{
+         this.UnitsDataSubject.next(new unitsStateInfo(states));
+         console.log(this.UnitsDataSubject.value.items);
+   })
+      // .pipe(map(states => {
+      //     this.UnitsDataSubject.next(new unitsStateInfo(states));
+      //     return states;
+      // }));
+}
+
 Download() : Observable<stateInto[]>{
     return this.http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions);
   }

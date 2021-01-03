@@ -25,7 +25,9 @@ export class ContentComponent implements OnInit {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private statesService:StatesService
-    ){}
+    ){
+
+    }
 
   viewClick(){
     this.tempnum=this.tempnum+1;
@@ -33,10 +35,18 @@ export class ContentComponent implements OnInit {
     this.unitSelectionEvent.emit(this.tempnum);
   }
   ngOnInit(): void {
-    this.statesService.Download().subscribe((data)=>{
-      this.units = data;
+    this.statesService.UnitsDataSubject.subscribe((data)=>{
+      this.units = data.items;
+      if(this.ViewType)
       this.LoadView(this.ViewType) ;
-    })
+    });
+      // this.units=  this.statesService.UnitsDataValue.items
+      // this.LoadView(this.ViewType) ;
+
+      // this.statesService.Download().subscribe((data)=>{
+      // this.units = data;
+      // this.LoadView(this.ViewType) ;
+    // })
   }
   ngOnChanges() {
     this.LoadView(this.ViewType) ;

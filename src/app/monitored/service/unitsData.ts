@@ -6,6 +6,8 @@ export class stateInto{
     yellowAlarm:boolean;
     time:String;
     elapsed:string;
+    lat:string;
+    long:string;
 
   public   get alarm(): string {
         var x:string;
@@ -38,6 +40,8 @@ export class unitsStateInfo{
        temp.yellowAlarm=item.yellowAlarm;
        temp.time=item.time;
        temp.elapsed=item.elapsed;
+       temp.lat=item.lat;
+       temp.long=item.long;
           return temp;
       });
     } 
