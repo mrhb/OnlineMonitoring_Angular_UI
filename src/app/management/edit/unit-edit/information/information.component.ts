@@ -34,7 +34,7 @@ export class InformationComponent implements OnInit,AfterViewInit {
   loading = false;
   submitted = false;
 devices=DEVICES;
-  unitmarker;
+markersGroup;
 
   @ViewChild('map') mapComntainer;
   constructor(
@@ -89,44 +89,38 @@ devices=DEVICES;
               {
                 console.log(x);
                  this.unitInfoForm.patchValue(x);
+                 this.LocationChange();
               }
               );
     }
   }
   mapInit()
   {
-
-
-    this.map = L.map(this.mapComntainer.nativeElement);
-
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    var basemaplayer=L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
      { attribution: '...' }
-    ).addTo(this.map);
+    );
+    this.markersGroup = L.layerGroup([]);
 
-    var marker1= L.marker([36.250091, 59.914066]);
-    var marker2= L.marker([36.250091, 52.914069]);
-
-    this.unitmarker= L.marker([36.250091, 52.914079]);;
-
-    this.unitmarker.addTo(this.map);
-    marker2.addTo(this.map);
-
-    
-    var group = new L.featureGroup([marker2,this.unitmarker]);
-    this.map.fitBounds(group.getBounds(),
-    {padding: [50, 50]});
-
-
-    this.unitmarker=marker1;
-
-
-    var group = new L.featureGroup([marker2,this.unitmarker]);
-    this.map.fitBounds(group.getBounds(),
-    {padding: [50, 50]});
-
-   // this.onMapReady(this.map) ;
+     this.map = L.map(this.mapComntainer.nativeElement,{
+      layers: [basemaplayer,  this.markersGroup ]
+    });
   }
+  LocationChange(): void {  
+    console.log(this.unitInfoForm.value.lat);
+    console.log(this.unitInfoForm.value.long);
 
+    var unitmarker= L.marker([this.unitInfoForm.value.lat,this.unitInfoForm.value.long]);
+    
+    this.markersGroup.clearLayers()
+    unitmarker.addTo(this.markersGroup);
+
+    // this.map.setView(unitmarker,10);
+
+    var group = new L.featureGroup([unitmarker]);
+    this.map.fitBounds(group.getBounds(),
+    {padding: [50,50]});
+    this.map.setZoom(9)
+  }
   onMapReady(map: L.Map) {
     setTimeout(() => {
       map.invalidateSize();

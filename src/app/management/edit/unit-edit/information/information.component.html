@@ -50,12 +50,12 @@
         <mat-grid-tile  [colspan]="1" [rowspan]="1">
             <mat-form-field  class="form-culomn" appearance="fill">
                 <mat-label>GPS Latitude (N)</mat-label>
-                <input type="number" matInput placeholder="E.g. 45.44471" formControlName="lat" required>
+                <input type="number" (change)="LocationChange()" matInput placeholder="E.g. 45.44471" formControlName="lat" required>
             </mat-form-field>
             
             <mat-form-field  class="form-culomn" appearance="fill">
                 <mat-label>GPS Longitude (E)</mat-label>
-                <input type="number" matInput placeholder="E.g. 13.35937" formControlName="long" required>
+                <input type="number"  (change)="LocationChange()"  matInput placeholder="E.g. 13.35937" formControlName="long" required>
             </mat-form-field>
         </mat-grid-tile>
 
