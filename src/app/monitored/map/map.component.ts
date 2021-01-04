@@ -1,8 +1,22 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { icon, latLng, Map, marker, point, polyline, tileLayer } from 'leaflet';
 import * as L from "leaflet";
 
-import "src/assets/mapIcons/marker-shadow.png"
+const iconRetinaUrl = 'assets/marker-icon-2x.png';
+const iconUrl = 'assets/marker-icon.png';
+const shadowUrl = 'assets/marker-shadow.png';
+const iconDefault = L.icon({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+});
+L.Marker.prototype.options.icon = iconDefault;
+
+
 import { StatesService } from '../service/states.service';
 import { stateInto } from '../service/UnitsData';
 
@@ -21,25 +35,32 @@ export class MapComponent implements OnInit,AfterViewInit {
 
   constructor(
     private statesService:StatesService
-  ) { }
+  ) {
+   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.map = L.map(this.mapContainer.nativeElement);
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+     { attribution: '...' }
+    ).addTo(this.map);
+    
+    
     this.statesService.UnitsDataSubject.subscribe((data)=>{
       if(data.items.length>1)
       {
         this.units = data.items;
         this.displayMap() ;
       }
-    });
-  }
-
-  ngAfterViewInit(): void {
-    this.mapInit();
+    });    
     }
   displayMap(): void {
 
    var marers= this.units.map( item=>{
-     var mar=marker([item.lat,item.long]);
+     var mar=L.marker([item.lat,item.long]);
      mar.addTo(this.map);
     return  mar;
     });
@@ -48,15 +69,5 @@ export class MapComponent implements OnInit,AfterViewInit {
     var group = new L.featureGroup(marers);
     this.map.fitBounds(group.getBounds(),
     {padding: [20, 20]});
-  }
-
-  mapInit()
-  {
-    this.map = L.map(this.mapContainer.nativeElement);
-
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-     { attribution: '...' }
-    ).addTo(this.map);
-
   }
 }
