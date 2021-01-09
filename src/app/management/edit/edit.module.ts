@@ -6,6 +6,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -96,6 +97,7 @@ const  routes:  Routes  = [
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatAutocompleteModule,
     MatSelectModule,
     MatCheckboxModule,
     MatTableModule,

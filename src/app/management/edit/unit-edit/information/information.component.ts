@@ -3,9 +3,10 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import * as L from "leaflet";
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { first } from 'rxjs/operators';
+import { first, map, startWith } from 'rxjs/operators';
 import { UnitsService } from '@app/management/services/units.service';
 import { DialogBodyComponent } from '@app/management/dialog-body/dialog-body.component';
+import { Observable } from 'rxjs';
 
 export enum DeviceType {
   mint= "mint", 
@@ -36,6 +37,10 @@ export class InformationComponent implements OnInit,AfterViewInit {
 devices=DEVICES;
 markersGroup;
 
+myControl = new FormControl();
+options: string[] = ['One', 'Two', 'Three'];
+filteredOptions: Observable<string[]>;
+
   @ViewChild('map') mapComntainer;
   constructor(
     private route: ActivatedRoute,
@@ -43,12 +48,25 @@ markersGroup;
     private userService: UnitsService,
     public  dialog: MatDialog,
     private formBuilder: FormBuilder
-  ) { }
+  ) { 
+  
+  }
   ngAfterViewInit(): void {
     this.mapInit();
     }
-
+    private _filter(value: string): string[] {
+      const filterValue = value.toLowerCase();
+  
+      return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    }
   ngOnInit(): void {
+
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+
+
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
 
@@ -56,6 +74,7 @@ markersGroup;
        // title: ['', Validators.required],
        name: ['', Validators.required],
        address: ['', Validators.required],
+       myControl:this.myControl,
        state: [false],
         ip: ['', [Validators.required, Validators.pattern("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")]],
         port:['',Validators.compose([Validators.required, Validators.min(4511), Validators.max(4530)])],
