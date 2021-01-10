@@ -8,6 +8,9 @@ import { UnitsService } from '@app/management/services/units.service';
 import { DialogBodyComponent } from '@app/management/dialog-body/dialog-body.component';
 import { Observable } from 'rxjs';
 
+import { UsersService } from '../../../services/users.service';
+import { User } from '../../../services/user';
+
 export enum DeviceType {
   mint= "mint", 
   amf25= "amf25", 
@@ -34,37 +37,49 @@ export class InformationComponent implements OnInit,AfterViewInit {
   isAddMode: boolean;
   loading = false;
   submitted = false;
-devices=DEVICES;
-markersGroup;
+  devices=DEVICES;
 
-myControl = new FormControl();
-options: string[] = ['One', 'Two', 'Three'];
-filteredOptions: Observable<string[]>;
+  markersGroup;
+
+  options: User[] ;
+  filteredOptions: Observable<User[]>;
 
   @ViewChild('map') mapComntainer;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UnitsService,
+    private UnitsService: UnitsService,
     public  dialog: MatDialog,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private UsersService: UsersService,
   ) { 
   
   }
   ngAfterViewInit(): void {
     this.mapInit();
     }
-    private _filter(value: string): string[] {
-      const filterValue = value.toLowerCase();
-  
-      return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
-    }
+  private _filter(value: string): User[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.email.indexOf(filterValue) === 0);
+  }
   ngOnInit(): void {
 
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+    
+    this.UsersService.getAll()
+    .subscribe(
+      data => {
+        this.options = data;
+        this.filteredOptions=data;
+        // this.filteredOptions = this.userId.valueChanges.pipe(
+        //   startWith(''),
+        //   map(value => this._filter(value))
+        // );
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
 
 
     this.id = this.route.snapshot.params['id'];
@@ -74,7 +89,7 @@ filteredOptions: Observable<string[]>;
        // title: ['', Validators.required],
        name: ['', Validators.required],
        address: ['', Validators.required],
-       myControl:this.myControl,
+       userId: [],
        state: [false],
         ip: ['', [Validators.required, Validators.pattern("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")]],
         port:['',Validators.compose([Validators.required, Validators.min(4511), Validators.max(4530)])],
@@ -102,7 +117,7 @@ filteredOptions: Observable<string[]>;
     });
 
     if (!this.isAddMode) {
-        this.userService.get(this.id)
+        this.UnitsService.get(this.id)
             .pipe(first())
             .subscribe(x =>
               {
@@ -112,6 +127,10 @@ filteredOptions: Observable<string[]>;
               }
               );
     }
+  }
+  displayFn(user: User): string {
+    return user && user.email ? 
+    (user.fistName?user.fistName:"")+" "+(user.lastName?user.lastName:"") : '';
   }
   mapInit()
   {
@@ -170,7 +189,7 @@ filteredOptions: Observable<string[]>;
   }
 
   private create() {
-      this.userService.create(this.unitInfoForm.value)
+      this.UnitsService.create(this.unitInfoForm.value)
           .pipe(first())
           .subscribe({
               next: () => {
@@ -185,7 +204,7 @@ filteredOptions: Observable<string[]>;
   }
 
   private update() {
-      this.userService.update(this.id, this.unitInfoForm.value)
+      this.UnitsService.update(this.id, this.unitInfoForm.value)
           .pipe(first())
           .subscribe({
               next: () => {
@@ -208,7 +227,7 @@ filteredOptions: Observable<string[]>;
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(result){
-        this.userService.delete(this.id).subscribe();
+        this.UnitsService.delete(this.id).subscribe();
                     //     this.alertService.success('User updated', { keepAfterRouteChange: true });
                   // this.router.navigate(['/management/users'], { relativeTo: this.route });
                   this.router.navigate(['/management/units']);
