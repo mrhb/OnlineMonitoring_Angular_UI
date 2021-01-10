@@ -130,7 +130,7 @@ export class InformationComponent implements OnInit,AfterViewInit {
   }
   displayFn(user: User): string {
     return user && user.email ? 
-    (user.fistName?user.fistName:"")+" "+(user.lastName?user.lastName:"") : '';
+    (user.firstName?user.firstName:"")+" "+(user.lastName?user.lastName:"") : '';
   }
   mapInit()
   {
