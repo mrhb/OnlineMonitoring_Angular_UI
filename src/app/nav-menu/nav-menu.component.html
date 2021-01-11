@@ -28,13 +28,18 @@
         <a mat-button routerLink="/first-page"> <mat-icon>settings</mat-icon> Settings </a>
         <a mat-button routerLink="/first-page"> <mat-icon>help</mat-icon> Help </a>
         <span class="spacer"></span>
-        <div *ngIf="user==null; else elseBlock">
-          <a mat-button routerLink="/login"> <mat-icon>login</mat-icon> login </a>
+
+        <div *ngIf="(user$ | async) as userrrr; else loading" >
+          <div class="profile">
+            <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
+            <div mat-card-avatar class="example-header-image"></div>
+            <p> {{userrrr?.displayName}}</p>
+          </div>
         </div>
-        <ng-template #elseBlock>
-          <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
-          <div mat-card-avatar class="example-header-image"></div>
+        <ng-template #loading >
+          <a mat-button routerLink="/login"> <mat-icon>login</mat-icon> login </a>
         </ng-template>
+
     
         <!-- <a mat-button routerLink="/registration"> <mat-icon>contact_page</mat-icon> registeration </a> -->
     </mat-toolbar>

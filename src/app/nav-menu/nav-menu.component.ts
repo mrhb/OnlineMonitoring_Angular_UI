@@ -11,7 +11,7 @@ import { Role, User } from '@app/_models';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  user: User;
+  user$: Observable<User>;
   show = true;
   thenBlock: TemplateRef<any>|null = null;
   @ViewChild('primaryBlock', {static: true}) primaryBlock: TemplateRef<any>|null = null;
@@ -27,14 +27,10 @@ export class NavMenuComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private authenticationService: AuthenticationService) {
-      this.authenticationService.user.subscribe(x => 
-        {
-          this.user = x
-        });
-
+      this.user$=this.authenticationService.user;
       this.thenBlock = this.primaryBlock;
     }
   logout() {
     this.authenticationService.logout();
-}
+  }
 }
