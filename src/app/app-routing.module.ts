@@ -18,8 +18,8 @@ const routes: Routes = [
     // { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard], data: { roles: [Role.Admin]} },
     { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]},
     { path: 'management', component: ManagementModule ,canActivate: [AuthGuard]},
-    { path: 'registration', component: RegistrationComponent }
-    //{ path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'registration', component: RegistrationComponent },
+    { path: '', redirectTo: 'monitored-units', pathMatch: 'full' },
   //{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 
 ];
