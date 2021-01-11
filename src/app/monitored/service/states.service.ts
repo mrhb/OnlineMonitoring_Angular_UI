@@ -51,21 +51,17 @@ export class StatesService {
   ) {
     this.UnitsDataSubject = new BehaviorSubject<unitsStateInfo>(new unitsStateInfo([]));
     this.UnitsData = this.UnitsDataSubject.asObservable();
-    this.Load();
+    this.Load(http,this.UnitsDataSubject);
+    setInterval(this.Load,30000,http,this.UnitsDataSubject);
   }
   
   public get UnitsDataValue(): unitsStateInfo {
     return this.UnitsDataSubject.value;
 }
-Load() {
-   this.http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions).subscribe((states)=>{
-         this.UnitsDataSubject.next(new unitsStateInfo(states));
-         console.log(this.UnitsDataSubject.value.items);
+Load(http: HttpClient,UnitsDataSubject :BehaviorSubject<unitsStateInfo> ) {
+   http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions).subscribe((states)=>{
+         UnitsDataSubject.next(new unitsStateInfo(states));
    })
-      // .pipe(map(states => {
-      //     this.UnitsDataSubject.next(new unitsStateInfo(states));
-      //     return states;
-      // }));
 }
 
 Download() : Observable<stateInto[]>{
