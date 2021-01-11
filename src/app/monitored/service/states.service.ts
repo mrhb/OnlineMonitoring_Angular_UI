@@ -49,7 +49,7 @@ export class StatesService {
   constructor(
     private http: HttpClient
   ) {
-    this.UnitsDataSubject = new BehaviorSubject<unitsStateInfo>(new unitsStateInfo([{"name":"rgtr5get5","id":"rfevfehrtbethb"}]));
+    this.UnitsDataSubject = new BehaviorSubject<unitsStateInfo>(new unitsStateInfo([]));
     this.UnitsData = this.UnitsDataSubject.asObservable();
     this.Load();
   }

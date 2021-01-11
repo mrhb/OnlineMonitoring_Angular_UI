@@ -50,7 +50,7 @@ export class MapComponent implements OnInit,AfterViewInit {
     
     
     this.statesService.UnitsDataSubject.subscribe((data)=>{
-      if(data.items.length>1)
+      if(data.items.length>0)
       {
         this.units = data.items;
         this.displayMap() ;
