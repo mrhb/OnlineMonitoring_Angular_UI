@@ -62,7 +62,11 @@ const  routes:  Routes  = [
     {
       path:  'edit',
       component:  EditComponent
-    }
+    },
+    { path: '', 
+    redirectTo: 'users',
+     pathMatch: 'full'
+     }
   ]
   }
   ];
