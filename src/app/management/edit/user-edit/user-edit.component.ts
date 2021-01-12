@@ -8,7 +8,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from '../../../_helpers/must-match.validator';
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
 import { DialogBodyComponent } from '@app/management/dialog-body/dialog-body.component';
+import { environment } from '@environments/environment';
+ 
 
+const PERMISSIONLEVELS=[
+  {permissionLevel:environment.permissionLevels.ADMIN, name: "Admin"},
+  {permissionLevel:environment.permissionLevels.NORMAL_USER, name: "Normal user"},
+  {permissionLevel:environment.permissionLevels.OWNER, name: "Owner"},
+];
 
 
 
@@ -24,7 +31,7 @@ export class UserEditComponent implements OnInit {
   isAddMode: boolean;
   loading = false;
   submitted = false;
-
+  permissionLevels=PERMISSIONLEVELS;
   formGroup :FormGroup ; 
 
 
@@ -64,12 +71,12 @@ export class UserEditComponent implements OnInit {
     }
 
     this.userInfoForm = this.formBuilder.group({
-       // title: ['', Validators.required],
-       firstName: ['', Validators.required],
-       lastName: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        permissionLevel: [1, Validators.required],
-        password: ['123456', [Validators.minLength(6), this.isAddMode ? Validators.required : Validators.nullValidator]],
+      // title: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      permissionLevel: [1, Validators.required],
+      password: ['123456', [Validators.minLength(6), this.isAddMode ? Validators.required : Validators.nullValidator]],
       //  confirmPassword: ['', this.isAddMode ? Validators.required : Validators.nullValidator]
     }, {
       //  validator: MustMatch('password', 'confirmPassword')

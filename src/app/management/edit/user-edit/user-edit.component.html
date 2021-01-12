@@ -42,6 +42,13 @@
           <input matInput placeholder="Enter last name" formControlName="lastName">
         </mat-form-field>
         
+        <mat-form-field  appearance="fill">
+          <mat-label>Choose access level*</mat-label>
+          <mat-select formControlName="permissionLevel">
+              <mat-option *ngFor="let level of permissionLevels" [value]="level.permissionLevel" >{{level.name}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
         <mat-form-field class="form-element" appearance="fill">
           <mat-label>Email</mat-label>
           <input matInput placeholder="Enter email" formControlName="email">
