@@ -2,13 +2,13 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import * as L from "leaflet";
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
-const iconUrl = 'assets/marker-icon.png';
+const iconUrl = 'assets/mapIcons/power-plant-48.png';
 const shadowUrl = 'assets/marker-shadow.png';
 const iconDefault = L.icon({
   iconRetinaUrl,
   iconUrl,
   shadowUrl,
-  iconSize: [25, 41],
+  iconSize: [38, 38],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   tooltipAnchor: [16, -28],
@@ -29,6 +29,7 @@ import { stateInto } from '../service/UnitsData';
 export class MapComponent implements OnInit,AfterViewInit {
   @Input()  items:stateInto[];
   map:any;
+  markersGroup;
   @ViewChild('map') mapContainer;
   
   units:stateInto[];
@@ -42,13 +43,8 @@ export class MapComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.map = L.map(this.mapContainer.nativeElement);
+    this.mapInit();
 
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-     { attribution: '...' }
-    ).addTo(this.map);
-    
-    
     this.statesService.UnitsDataSubject.subscribe((data)=>{
       if(data.items.length>0)
       {
@@ -57,17 +53,34 @@ export class MapComponent implements OnInit,AfterViewInit {
       }
     });    
     }
+
+    mapInit()
+    {
+      var basemaplayer=L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+       { attribution: '...' }
+      );
+      this.markersGroup = L.layerGroup([]);
+  
+       this.map = L.map(this.mapContainer.nativeElement,{
+        layers: [basemaplayer,  this.markersGroup ]
+      });
+    }
   displayMap(): void {
+    this.markersGroup.clearLayers()
 
    var marers= this.units.map( item=>{
-     var mar=L.marker([item.lat,item.long]);
-     mar.addTo(this.map);
+     var mar=L.marker([item.lat,item.long]).bindTooltip(item.name, 
+      {
+        permanent: false
+      });
+     mar.addTo(this.markersGroup);
     return  mar;
     });
 
-        
+    
     var group = new L.featureGroup(marers);
     this.map.fitBounds(group.getBounds(),
-    {padding: [20, 20]});
+    {padding: [50, 50]});
+    // this.map.setZoom(9);
   }
 }
