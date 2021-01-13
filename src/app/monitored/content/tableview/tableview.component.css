@@ -60,17 +60,17 @@ table {
   .alarm-column{
     width: 50px;
   }
-  .material-icons.nocomm{
+  .material-icons.NoCon{
     color: #934d11;
   }
-  .material-icons.yellow{
+  .material-icons.NoData{
     color: #ffc800;
   }
-  .material-icons.red{
-    color: #d50000;
+  .material-icons.stop{
+    color: #27441c;
   }
-  .material-icons.online{
-    color: #6cc24a;
+  .material-icons.running{
+    color: #7ddd57;
   }
   .material-icons.Sensor{
     color: #424242;
