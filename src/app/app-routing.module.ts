@@ -8,17 +8,34 @@ import { RegistrationComponent } from './login/registration/registration.compone
 import { ManagementModule } from './management/management.module';
 import { MonitoredComponent } from './monitored/monitored.component';
 import { AuthGuard } from './_helpers/auth.guard';
-import { Role } from './_models';
+import { Permission, Role } from './_models';
 
 
 const routes: Routes = [
-    { path: 'login', component: LoginComponent},
-    { path: 'first-page', component: FirstPageComponent,canActivate: [AuthGuard],data: { roles: [Role.Admin] }},
-    { path: 'monitored-units', component: MonitoredComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'first-page', component: FirstPageComponent,canActivate: [AuthGuard],data: { roles: [Permission.ADMIN] }},
+  { path: 'monitored-units',
+  component: MonitoredComponent,
+  canActivate: [AuthGuard],
+  data: { 
+    roles: [
+      Permission.NORMAL ,
+        Permission.ADMIN,
+        Permission.OWNER
+      ] 
+    }
+  },
+  { path: 'management', component: ManagementModule ,
+  canActivate: [AuthGuard],
+  data: { 
+    roles: [
+      Permission.ADMIN,
+    ]
+   }
+  },
     // { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard], data: { roles: [Role.Admin]} },
     { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]},
-    { path: 'management', component: ManagementModule ,canActivate: [AuthGuard]},
-    { path: 'registration', component: RegistrationComponent },
     { path: '', redirectTo: 'monitored-units', pathMatch: 'full' },
   //{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 

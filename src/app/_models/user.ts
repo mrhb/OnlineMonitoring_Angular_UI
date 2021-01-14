@@ -6,7 +6,6 @@ export class User {
     lastName: string;
     username: string;
     permissionLevel: Permission
-    role: Role;
     token?: string;
 }
 
