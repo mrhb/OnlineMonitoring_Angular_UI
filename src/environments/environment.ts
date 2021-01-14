@@ -9,12 +9,7 @@ export const environment = {
    sidebar: 'http://localhost:3600/api',
    authUrl: 'http://localhost:3600',
    userUrl: 'http://localhost:3600',
-   useMockServer: false,
-   permissionLevels: {
-    NORMAL_USER: 1,
-    OWNER: 4,
-    ADMIN: 2048
-  }
+   useMockServer: false
 };
 
 /*

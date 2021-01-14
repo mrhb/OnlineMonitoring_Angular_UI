@@ -2,22 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { User } from '../../services/user';
+import { Permission } from '@app/_models/user';
 import { Observable } from 'rxjs';
 import { first, switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from '../../../_helpers/must-match.validator';
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
 import { DialogBodyComponent } from '@app/management/dialog-body/dialog-body.component';
-import { environment } from '@environments/environment';
  
 
 const PERMISSIONLEVELS=[
-  {permissionLevel:environment.permissionLevels.ADMIN, name: "Admin"},
-  {permissionLevel:environment.permissionLevels.NORMAL_USER, name: "Normal user"},
-  {permissionLevel:environment.permissionLevels.OWNER, name: "Owner"},
+  {permissionLevel:Permission.ADMIN, name: "Admin"},
+  {permissionLevel:Permission.NORMAL, name: "Normal user"},
+  {permissionLevel:Permission.OWNER, name: "Owner user"},
 ];
-
-
 
 @Component({
   selector: 'app-user-edit',
