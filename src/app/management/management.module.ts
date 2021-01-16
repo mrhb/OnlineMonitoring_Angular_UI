@@ -34,6 +34,8 @@ import { EditComponent } from './edit/edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { AuthGuard } from '@app/_helpers';
+import { Permission } from '@app/_models';
 
 
 
@@ -49,11 +51,23 @@ const  routes:  Routes  = [
       },
     {
       path:  'users',
-      component:  UsersComponent
-    },
+      component:  UsersComponent,
+      canActivate: [AuthGuard],
+      data: { 
+        roles: [
+          Permission.ADMIN,
+        ]
+       }
+      },
     {
       path:  'units',
-      component:  UnitsComponent
+      component:  UnitsComponent,
+      canActivate: [AuthGuard],
+      data: { 
+        roles: [
+          Permission.ADMIN,
+        ]
+       }
     },
     {
       path:  'activity',
@@ -61,7 +75,13 @@ const  routes:  Routes  = [
     },
     {
       path:  'edit',
-      component:  EditComponent
+      component:  EditComponent,
+      canActivate: [AuthGuard],
+      data: { 
+        roles: [
+          Permission.ADMIN,
+        ]
+       }
     },
     { path: '', 
     redirectTo: 'users',

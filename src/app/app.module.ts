@@ -15,6 +15,8 @@ import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -102,6 +104,8 @@ import { RegistrationComponent } from './login/registration/registration.compone
     
     ChartsModule,
     MatTableModule,
+    MatSelectModule,
+    MatInputModule,
     MatPaginatorModule,
     MatSortModule,
     ManagementModule,

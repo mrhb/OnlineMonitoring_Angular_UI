@@ -29,11 +29,27 @@
         <a mat-button routerLink="/first-page"> <mat-icon>help</mat-icon> Help </a>
         <span class="spacer"></span>
 
+        <div *ngIf="(user$ | async) as user" >
+          <div *ngIf="(user!==undefined) && (user.permissionLevel==2048)" >
+            <form  [formGroup]="unitInfoForm" >
+              <mat-form-field  appearance="fill">
+                <mat-select formControlName="userId" >
+                  <mat-option *ngFor="let option of filteredOptions" [value]="option.id" >
+                    {{this.displayName(option)}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form>
+            <span class="spacer"></span>
+          </div>
+        </div>
+
+
         <div *ngIf="(user$ | async) as userrrr; else loading" >
           <div class="profile">
             <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
             <div mat-card-avatar class="example-header-image"></div>
-            <p> {{userrrr?.displayName}}</p>
+            <a mat-button>{{this.displayName(userrrr)}}</a>
           </div>
         </div>
         <ng-template #loading >
@@ -44,6 +60,10 @@
         <!-- <a mat-button routerLink="/registration"> <mat-icon>contact_page</mat-icon> registeration </a> -->
     </mat-toolbar>
     <router-outlet></router-outlet>
+
+
+
+    
   </mat-sidenav-content>
 </mat-sidenav-container>
 
