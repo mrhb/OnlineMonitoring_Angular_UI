@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MessageService } from '../management/services/message.service';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 
 
 
@@ -52,6 +52,9 @@ constructor(private http: HttpClient,
   getSeriesData(seriesInfo: SeriesInfo): Observable<any> {
   return this.http.post<SeriesInfo>(baseTrendsUrl, seriesInfo, httpOptions)
     .pipe(
+      map(Sf => {
+      console.log(Sf);
+      }),
       catchError(err => of([]))
     );
 }
