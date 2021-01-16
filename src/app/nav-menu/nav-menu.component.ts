@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { first, map, shareReplay } from 'rxjs/operators';
 import { AuthenticationService } from '../_services/authentication.service';
 import { Role, User } from '@app/_models';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -15,6 +15,7 @@ import { UsersService } from '@app/management/services/users.service';
 export class NavMenuComponent implements OnInit {
   user$: Observable<User>;
   unitInfoForm : FormGroup;
+  ownerSelection:FormControl=new FormControl([]);
   filteredOptions: Observable<User[]>;
 
   show = true;
@@ -41,13 +42,13 @@ export class NavMenuComponent implements OnInit {
       
     }
     ngOnInit(): void {
-
-  this.UsersService.getAll()
-  .subscribe(
+      this.UsersService.getAll()
+      .subscribe(
     data => {
       this.filteredOptions=data;
       // this.filteredOptions = this.userId.valueChanges.pipe(
-      //   startWith(''),
+        //   startWith(''),
+        
       //   map(value => this._filter(value))
       // );
       console.log(data);
@@ -57,11 +58,22 @@ export class NavMenuComponent implements OnInit {
     });
 
     this.unitInfoForm = this.formBuilder.group({
-      userId: []
+      ownerSelection: []
    });
 
   }
+  UpdateOwnerId(){
+    this.authenticationService.setOwnerId(this.unitInfoForm.value.ownerSelection).pipe(first())
+    .subscribe({
+        next: () => {
+            // get return url from query parameters or default to home page
 
+        },
+        error: error => {
+
+        }
+    });
+  }
     displayName(user: User): string {
       return user ? 
       (user.firstName?user.firstName:"")+" "+(user.lastName?user.lastName:"") : '';

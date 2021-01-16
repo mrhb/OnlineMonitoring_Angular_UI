@@ -33,7 +33,7 @@
           <div *ngIf="(user!==undefined) && (user.permissionLevel==2048)" >
             <form  [formGroup]="unitInfoForm" >
               <mat-form-field  appearance="fill">
-                <mat-select formControlName="userId" >
+                <mat-select formControlName="ownerSelection" (selectionChange)="UpdateOwnerId()" >
                   <mat-option *ngFor="let option of filteredOptions" [value]="option.id" >
                     {{this.displayName(option)}}
                   </mat-option>

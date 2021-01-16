@@ -34,6 +34,16 @@ export class AuthenticationService {
             }));
     }
 
+    setOwnerId(ownerId: string) {
+        return this.http.post<any>(`${environment.authUrl}/auth/serOwnerId`, { ownerId})
+            .pipe(map(user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('user', JSON.stringify(user));
+                this.userSubject.next(user);
+                return user;
+            }));
+    }
+
     signup(firstName:string,lastName:string,address:string,email: string, password: string) {
         var endpoint=`${environment.authUrl}/api/users`;
         var permissionLevel=1;
