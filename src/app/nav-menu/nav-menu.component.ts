@@ -14,34 +14,34 @@ import { UsersService } from '@app/management/services/users.service';
 })
 export class NavMenuComponent implements OnInit {
   user$: Observable<User>;
-  unitInfoForm : FormGroup;
-  ownerSelection:FormControl=new FormControl([]);
+  selectedOwnerId;
   filteredOptions: Observable<User[]>;
-
+  
   show = true;
   thenBlock: TemplateRef<any>|null = null;
   @ViewChild('primaryBlock', {static: true}) primaryBlock: TemplateRef<any>|null = null;
   @ViewChild('secondaryBlock', {static: true}) secondaryBlock: TemplateRef<any>|null = null;
-
-
+  
+  
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
     );
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private UsersService: UsersService,
-    private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService) {
-      this.user$=this.authenticationService.user;
-      this.thenBlock = this.primaryBlock;
-
-      
-      
+    ownerSelection:FormControl=new FormControl('');
+    
+    constructor(
+      private breakpointObserver: BreakpointObserver,
+      private UsersService: UsersService,
+      private authenticationService: AuthenticationService) {
+        this.user$=this.authenticationService.user;
+        this.thenBlock = this.primaryBlock;
     }
+
     ngOnInit(): void {
+      this.user$.subscribe(user=>{
+        this.selectedOwnerId=user.ownerId
+      });
       this.UsersService.getAll()
       .subscribe(
     data => {
@@ -57,13 +57,9 @@ export class NavMenuComponent implements OnInit {
       console.log(error);
     });
 
-    this.unitInfoForm = this.formBuilder.group({
-      ownerSelection: []
-   });
-
   }
   UpdateOwnerId(){
-    this.authenticationService.setOwnerId(this.unitInfoForm.value.ownerSelection).pipe(first())
+    this.authenticationService.setOwnerId(this.selectedOwnerId).pipe(first())
     .subscribe({
         next: () => {
             // get return url from query parameters or default to home page

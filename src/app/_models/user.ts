@@ -2,6 +2,7 @@
 
 export class User {
     id: number;
+    ownerId:string;
     firstName: string;
     lastName: string;
     username: string;
