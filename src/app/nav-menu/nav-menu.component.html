@@ -47,8 +47,8 @@
         <div *ngIf="(user$ | async) as userrrr; else loading" >
           <div class="profile">
             <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
-            <div mat-card-avatar class="example-header-image"></div>
-            <a mat-button>{{this.displayName(userrrr)}}</a>
+            <div mat-card-avatar class="example-header-image" 
+            matTooltip="{{this.displayName(userrrr)}}"></div>
           </div>
         </div>
         <ng-template #loading >
