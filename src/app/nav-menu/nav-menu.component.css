@@ -2,6 +2,9 @@
   position: fixed;
 }
 
+mat-form-field.mat-form-field {
+  font-size: 14px;
+}
 .mat-drawer-backdrop {
   position: fixed ;
 }
