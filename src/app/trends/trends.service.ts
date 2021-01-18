@@ -52,9 +52,9 @@ constructor(private http: HttpClient,
   getSeriesData(seriesInfo: SeriesInfo): Observable<any> {
   return this.http.post<SeriesInfo>(baseTrendsUrl, seriesInfo, httpOptions)
     .pipe(
-      map(Sf => {
-      console.log(Sf);
-      }),
+      // map(Sf => {
+      // console.log(Sf);
+      // }),
       catchError(err => of([]))
     );
 }
