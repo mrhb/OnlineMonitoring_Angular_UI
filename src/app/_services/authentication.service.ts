@@ -35,7 +35,7 @@ export class AuthenticationService {
     }
 
     setOwnerId(ownerId: string) {
-        return this.http.post<any>(`${environment.authUrl}/auth/serOwnerId`, { ownerId})
+        return this.http.post<any>(`${environment.authUrl}/auth/setOwnerId`, { ownerId})
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
