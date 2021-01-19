@@ -14,6 +14,7 @@ import { UsersService } from '@app/management/services/users.service';
 })
 export class NavMenuComponent implements OnInit {
   user$: Observable<User>;
+  owners$: Observable<User[]>;
   selectedOwnerId;
   filteredOptions: Observable<User[]>;
   
@@ -33,33 +34,20 @@ export class NavMenuComponent implements OnInit {
     constructor(
       private breakpointObserver: BreakpointObserver,
       private UsersService: UsersService,
-      private authenticationService: AuthenticationService) {
+      private authenticationService: AuthenticationService
+      ) {
         this.user$=this.authenticationService.user;
+        this.owners$=this.authenticationService.owners;
         this.thenBlock = this.primaryBlock;
-    }
+      }
 
     ngOnInit(): void {
       this.user$.subscribe(user=>{
         this.selectedOwnerId=user.ownerId
       });
-      this.UsersService.getAll()
-      .subscribe(
-    data => {
-      this.filteredOptions=data;
-      // this.filteredOptions = this.userId.valueChanges.pipe(
-        //   startWith(''),
-        
-      //   map(value => this._filter(value))
-      // );
-      console.log(data);
-    },
-    error => {
-      console.log(error);
-    });
-
-  }
+      }
   UpdateOwnerId(){
-    this.authenticationService.setOwnerId(this.selectedOwnerId).pipe(first())
+    this.authenticationService.setOwnerId(this.selectedOwnerId)
     .subscribe({
         next: () => {
             // get return url from query parameters or default to home page

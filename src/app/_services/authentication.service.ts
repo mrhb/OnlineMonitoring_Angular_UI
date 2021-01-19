@@ -2,7 +2,7 @@
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../_models';
@@ -12,12 +12,18 @@ export class AuthenticationService {
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
 
+    private ownersSubject: BehaviorSubject<User[]>;
+    public owners: Observable<User[]>;
+
     constructor(
         private router: Router,
         private http: HttpClient
     ) {
         this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
         this.user = this.userSubject.asObservable();
+
+        this.ownersSubject = new BehaviorSubject<User[]>(JSON.parse(localStorage.getItem('owners')));
+        this.owners = this.ownersSubject.asObservable();
     }
 
     public get userValue(): User {
@@ -25,13 +31,30 @@ export class AuthenticationService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<any>(`${environment.authUrl}/auth`, { email, password })
+        return this.http.post<User>(`${environment.authUrl}/auth`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
+
+                this.getOwners() .subscribe({
+                    next:  data => {
+                        // store user details and jwt token in local storage to keep user logged in between page refreshes
+                        var owners_string= JSON.stringify(data);
+                        console.log(owners_string);
+                        localStorage.setItem('owners',owners_string);
+                        this.ownersSubject.next(data);
+                    },
+                    error: error => {
+                        console.log(error);
+                    }
+                });
                 return user;
             }));
+    }
+
+    getOwners() {
+        return this.http.get<User[]>(`${environment.authUrl}/auth/owners`);
     }
 
     setOwnerId(ownerId: string) {
@@ -53,6 +76,9 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('user');
         this.userSubject.next(null);
+
+        localStorage.removeItem('owners');
+        this.ownersSubject.next(null);
         this.router.navigate(['/login']);
     }
 }

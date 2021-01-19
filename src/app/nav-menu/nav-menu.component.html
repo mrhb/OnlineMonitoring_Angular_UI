@@ -27,18 +27,20 @@
         <a mat-button routerLink="/management/users"> <mat-icon>fact_check</mat-icon> Management </a>
 
    
-        <div *ngIf="(user$ | async) as user" >
-          <div *ngIf="(user!==undefined) && (user.permissionLevel==2048)" >
+        <!-- <div *ngIf="(user$ | async) as user" >
+          <div *ngIf="(user!==undefined) && (user.permissionLevel==2048)" > -->
+          <div *ngIf="( owners$ | async) as  owners" >
    
               <mat-form-field  appearance="fill">
                 <mat-select [(value)]="selectedOwnerId" (selectionChange)="UpdateOwnerId()" >
-                  <mat-option *ngFor="let option of filteredOptions" [value]="option.id" >
+                  <mat-option *ngFor="let option of owners" [value]="option.id" >
                     {{this.displayName(option)}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
-          </div>
+            <!-- </div>
+          </div> -->
           
           
           <span class="spacer"></span>
@@ -56,6 +58,8 @@
     
         <!-- <a mat-button routerLink="/registration"> <mat-icon>contact_page</mat-icon> registeration </a> -->
     </mat-toolbar>
+
+
     <router-outlet></router-outlet>
 
 
