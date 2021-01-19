@@ -37,24 +37,24 @@ export class AuthenticationService {
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
 
-                this.getOwners() .subscribe({
-                    next:  data => {
-                        // store user details and jwt token in local storage to keep user logged in between page refreshes
-                        var owners_string= JSON.stringify(data);
-                        console.log(owners_string);
-                        localStorage.setItem('owners',owners_string);
-                        this.ownersSubject.next(data);
-                    },
-                    error: error => {
-                        console.log(error);
-                    }
-                });
+                this.getOwners() ;
                 return user;
             }));
     }
 
     getOwners() {
-        return this.http.get<User[]>(`${environment.authUrl}/auth/owners`);
+        return this.http.get<User[]>(`${environment.authUrl}/auth/owners`).subscribe({
+            next:  data => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                var owners_string= JSON.stringify(data);
+                console.log(owners_string);
+                localStorage.setItem('owners',owners_string);
+                this.ownersSubject.next(data);
+            },
+            error: error => {
+                console.log(error);
+            }
+        });
     }
 
     setOwnerId(ownerId: string) {
