@@ -53,7 +53,7 @@ export class StatesService {
       );
     this.UnitsData = this.UnitsDataSubject.asObservable();
     // this.Load(http,this.UnitsDataSubject);
-    // setInterval(this.Load,30000,http,this.UnitsDataSubject);
+    setInterval(this.Load,30000,http,this.UnitsDataSubject);
   }
   
   public get UnitsDataValue(): unitsStateInfo {
