@@ -7,6 +7,7 @@ import { first, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { User } from '../_models';
 import { StatesService } from '@app/monitored/service/states.service';
+import { TrendsService } from '@app/trends/trends.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -19,7 +20,8 @@ export class AuthenticationService {
     constructor(
         private router: Router,
         private http: HttpClient,
-        private statesService:StatesService
+        private statesService:StatesService,
+        private trendsService:TrendsService
 
     ) {
         this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
@@ -42,37 +44,39 @@ export class AuthenticationService {
 
                 this.getOwners() ;
                 this.statesService.LoadStateReq();
+                this.trendsService.LoadTrendsInfo();
                 return user;
             }));
+        }
+        
+        getOwners() {
+            return this.http.get<User[]>(`${environment.authUrl}/auth/owners`).subscribe({
+                next:  data => {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    var owners_string= JSON.stringify(data);
+                    console.log(owners_string);
+                    localStorage.setItem('owners',owners_string);
+                    this.ownersSubject.next(data);
+                },
+                error: error => {
+                    console.log(error);
+                }
+            });
     }
-
-    getOwners() {
-        return this.http.get<User[]>(`${environment.authUrl}/auth/owners`).subscribe({
-            next:  data => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                var owners_string= JSON.stringify(data);
-                console.log(owners_string);
-                localStorage.setItem('owners',owners_string);
-                this.ownersSubject.next(data);
-            },
-            error: error => {
-                console.log(error);
-            }
-        });
-    }
-
+    
     setOwnerId(ownerId: string) {
         return this.http.post<any>(`${environment.authUrl}/auth/setOwnerId`, { ownerId})
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
-
-                this.getOwners() ;
-                this.statesService.LoadStateReq();
-                
-                return user;
-            }));
+        .pipe(map(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('user', JSON.stringify(user));
+            this.userSubject.next(user);
+            
+            this.getOwners() ;
+            this.statesService.LoadStateReq();
+            this.trendsService.LoadTrendsInfo();
+            
+            return user;
+        }));
     }
 
     signup(firstName:string,lastName:string,address:string,email: string, password: string) {

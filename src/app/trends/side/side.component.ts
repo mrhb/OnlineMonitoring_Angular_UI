@@ -34,7 +34,7 @@ export class SideComponent implements OnInit {
   constructor(_trendsService:TrendsService) { 
     this.trendsService=_trendsService;
     
-    this.trendsService.getTrendsInfos().subscribe(data=>{
+    this.trendsService.TrendsInfoSubject.subscribe(data=>{
       this.trends= data;
       this.dataSource =this.trends;
       console.log(data);

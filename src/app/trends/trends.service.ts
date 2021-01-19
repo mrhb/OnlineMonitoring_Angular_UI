@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MessageService } from '../management/services/message.service';
-import { Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 
 
@@ -27,17 +27,23 @@ const baseSidebarUrl =environment.sidebar+ '/sidebar/';
 })
 export class TrendsService {
 selectedSeries:SeriesInfo={metricsInfo:[],startDate: moment().subtract(1,'d').valueOf(),endDate:moment().valueOf()};
-trendsInfos:TrendInfo[];
-metrics_classic:string[];
-metrics_minit:string[];
-metrics_amf25:string[];
+trendsInfos:TrendInfo[]=[];
+metrics_classic:string[]=METRICS_classic;
+metrics_minit:string[]=METRICS_minit;
+metrics_amf25:string[]=METRICS_amf25;
+
+public TrendsInfoSubject: BehaviorSubject<TrendInfo[]>;
+
 constructor(private http: HttpClient,
     private messageService: MessageService
     ) {
-    this.trendsInfos=[];    
-    this.metrics_classic=METRICS_classic;
-    this.metrics_minit=METRICS_minit;
-    this.metrics_amf25=METRICS_amf25;
+      if(JSON.parse(localStorage.getItem('TrendsInfo')))
+      {
+      this.TrendsInfoSubject = new BehaviorSubject<TrendInfo[]>(
+        JSON.parse(localStorage.getItem('TrendsInfo')));
+      }else
+      this.TrendsInfoSubject = new BehaviorSubject<TrendInfo[]>([]);
+
    }
    private log(message: string) {
    this.messageService.add(`UserService: ${message}`);
@@ -57,17 +63,14 @@ constructor(private http: HttpClient,
       catchError(err => of([]))
     );
 }
-
-
-   getTrendsInfos(){
+  LoadTrendsInfo() {
     return this.http.get<TrendInfo[]>(baseSidebarUrl,httpOptions)
-    .pipe(
-      catchError(err => of([]))
-    );
-    //   return this.trendsInfos;
-   }
-
-   getUinitMetric(unitType){
+    .subscribe((Infos)=>{
+      localStorage.setItem('TrendsInfo', JSON.stringify(Infos));
+      this.  TrendsInfoSubject.next(Infos);
+    })
+  }
+  getUinitMetric(unitType){
     this.selectedSeries.metricsInfo=[];
     if(unitType=="mint")
     return this.metrics_minit;
