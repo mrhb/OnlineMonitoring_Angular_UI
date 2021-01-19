@@ -48,7 +48,9 @@ export class StatesService {
   constructor(
     private http: HttpClient
   ) {
-    this.UnitsDataSubject = new BehaviorSubject<unitsStateInfo>(new unitsStateInfo([]));
+    this.UnitsDataSubject = new BehaviorSubject<unitsStateInfo>(
+      new unitsStateInfo(JSON.parse(localStorage.getItem('unitsStateInfo')))
+      );
     this.UnitsData = this.UnitsDataSubject.asObservable();
     this.Load(http,this.UnitsDataSubject);
     setInterval(this.Load,30000,http,this.UnitsDataSubject);
@@ -59,10 +61,17 @@ export class StatesService {
 }
 Load(http: HttpClient,UnitsDataSubject :BehaviorSubject<unitsStateInfo> ) {
    http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions).subscribe((states)=>{
-         UnitsDataSubject.next(new unitsStateInfo(states));
-   })
+    localStorage.setItem('unitsStateInfo', JSON.stringify(states));
+    UnitsDataSubject.next(new unitsStateInfo(states));
+  })
 }
 
+LoadStateReq() {
+  this.http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions).subscribe((states)=>{
+    localStorage.setItem('unitsStateInfo', JSON.stringify(states));
+    this.  UnitsDataSubject.next(new unitsStateInfo(states));
+  })
+}
 Download() : Observable<stateInto[]>{
     return this.http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions);
   }

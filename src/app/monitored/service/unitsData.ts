@@ -30,6 +30,8 @@ export class unitsStateInfo{
    public items:stateInto[];
    constructor(_items:any[])
     {
+      if(!_items)
+      _items=[];
       this.items=_items.map(item=>{
        var temp=  new stateInto();
 
