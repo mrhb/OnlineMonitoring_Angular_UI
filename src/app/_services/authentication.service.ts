@@ -6,6 +6,7 @@ import { first, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../_models';
+import { StatesService } from '@app/monitored/service/states.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -17,7 +18,9 @@ export class AuthenticationService {
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private http: HttpClient,
+        private statesService:StatesService
+
     ) {
         this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
         this.user = this.userSubject.asObservable();
@@ -38,6 +41,7 @@ export class AuthenticationService {
                 this.userSubject.next(user);
 
                 this.getOwners() ;
+                this.statesService.LoadStateReq();
                 return user;
             }));
     }
@@ -63,6 +67,10 @@ export class AuthenticationService {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
+
+                this.getOwners() ;
+                this.statesService.LoadStateReq();
+                
                 return user;
             }));
     }

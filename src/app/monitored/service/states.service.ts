@@ -52,8 +52,8 @@ export class StatesService {
       new unitsStateInfo(JSON.parse(localStorage.getItem('unitsStateInfo')))
       );
     this.UnitsData = this.UnitsDataSubject.asObservable();
-    this.Load(http,this.UnitsDataSubject);
-    setInterval(this.Load,30000,http,this.UnitsDataSubject);
+    // this.Load(http,this.UnitsDataSubject);
+    // setInterval(this.Load,30000,http,this.UnitsDataSubject);
   }
   
   public get UnitsDataValue(): unitsStateInfo {
