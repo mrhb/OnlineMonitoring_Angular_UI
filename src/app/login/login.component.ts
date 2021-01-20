@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { AuthenticationService } from '../_services';
 
@@ -53,14 +54,31 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Login',
+                    text: 'you logged in successfully',
+                    timer: 2000,
+                    buttons: false,
+                  })
+                  .then(() => {
                     // get return url from query parameters or default to home page
                     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/monitored-units';
                     this.router.navigateByUrl(returnUrl);
                     this.loading = false;
+                  })
                 },
                 error: error => {
                     this.error = error;
                     this.loading = false;
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Login',
+                      text: error,
+                      timer: 2000,
+                      buttons: false,
+                    })
+
                 }
             });
     }
