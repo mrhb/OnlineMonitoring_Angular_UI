@@ -9,6 +9,9 @@ import { User } from '../_models';
 import { StatesService } from '@app/monitored/service/states.service';
 import { TrendsService } from '@app/trends/trends.service';
 
+import Notiflix from "notiflix-angular";
+
+
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     public userSubject: BehaviorSubject<User>;
@@ -72,6 +75,7 @@ export class AuthenticationService {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('user', JSON.stringify(user));
             this.userSubject.next(user);
+    Notiflix.Notify.Success('page Owner has been set');
             
             this.getOwners() ;
             this.statesService.LoadStateReq();
