@@ -6,6 +6,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { Role, User } from '@app/_models';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from '@app/management/services/users.service';
+import Notiflix from "notiflix-angular";
 
 @Component({
   selector: 'app-nav-menu',
@@ -43,9 +44,12 @@ export class NavMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.user$.subscribe(user=>{
-      if(user)
-      this.selectedOwnerId=user.ownerId
-    });
+      if(user && ( this.selectedOwnerId!=user.ownerId))
+      {
+        this.selectedOwnerId=user.ownerId
+        Notiflix.Notify.Success('page Owner has been set');
+      }
+      });
   }
   UpdateOwnerId(){
     this.authenticationService.setOwnerId(this.selectedOwnerId);
