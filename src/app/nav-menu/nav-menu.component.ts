@@ -36,32 +36,24 @@ export class NavMenuComponent implements OnInit {
       private UsersService: UsersService,
       private authenticationService: AuthenticationService
       ) {
-        this.user$=this.authenticationService.user;
+        this.user$=this.authenticationService.userSubject;
         this.owners$=this.authenticationService.owners;
         this.thenBlock = this.primaryBlock;
       }
 
-    ngOnInit(): void {
-      this.user$.subscribe(user=>{
-        this.selectedOwnerId=user.ownerId
-      });
-      }
-  UpdateOwnerId(){
-    this.authenticationService.setOwnerId(this.selectedOwnerId)
-    .subscribe({
-        next: () => {
-            // get return url from query parameters or default to home page
-
-        },
-        error: error => {
-
-        }
+  ngOnInit(): void {
+    this.user$.subscribe(user=>{
+      if(user)
+      this.selectedOwnerId=user.ownerId
     });
   }
-    displayName(user: User): string {
-      return user ? 
-      (user.firstName?user.firstName:"")+" "+(user.lastName?user.lastName:"") : '';
-    }
+  UpdateOwnerId(){
+    this.authenticationService.setOwnerId(this.selectedOwnerId);
+  }
+  displayName(user: User): string {
+    return user ? 
+    (user.firstName?user.firstName:"")+" "+(user.lastName?user.lastName:"") : '';
+  }
   logout() {
     this.authenticationService.logout();
   }

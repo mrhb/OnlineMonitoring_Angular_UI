@@ -11,7 +11,7 @@ import { TrendsService } from '@app/trends/trends.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private userSubject: BehaviorSubject<User>;
+    public userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
 
     private ownersSubject: BehaviorSubject<User[]>;
@@ -24,11 +24,14 @@ export class AuthenticationService {
         private trendsService:TrendsService
 
     ) {
-        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+       var  last_user:User=JSON.parse(localStorage.getItem('user')) ;
+        this.userSubject = new BehaviorSubject<User>(last_user);
         this.user = this.userSubject.asObservable();
 
         this.ownersSubject = new BehaviorSubject<User[]>(JSON.parse(localStorage.getItem('owners')));
         this.owners = this.ownersSubject.asObservable();
+
+        //this.setOwnerId(last_user.ownerId) ;
     }
 
     public get userValue(): User {
@@ -54,7 +57,6 @@ export class AuthenticationService {
                 next:  data => {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     var owners_string= JSON.stringify(data);
-                    console.log(owners_string);
                     localStorage.setItem('owners',owners_string);
                     this.ownersSubject.next(data);
                 },
@@ -65,8 +67,8 @@ export class AuthenticationService {
     }
     
     setOwnerId(ownerId: string) {
-        return this.http.post<any>(`${environment.authUrl}/auth/setOwnerId`, { ownerId})
-        .pipe(map(user => {
+        this.http.post<any>(`${environment.authUrl}/auth/setOwnerId`, { ownerId}).subscribe({
+            next: user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('user', JSON.stringify(user));
             this.userSubject.next(user);
@@ -74,9 +76,8 @@ export class AuthenticationService {
             this.getOwners() ;
             this.statesService.LoadStateReq();
             this.trendsService.LoadTrendsInfo();
-            
-            return user;
-        }));
+        }
+    });
     }
 
     signup(firstName:string,lastName:string,address:string,email: string, password: string) {
