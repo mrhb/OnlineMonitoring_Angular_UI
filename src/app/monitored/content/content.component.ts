@@ -24,7 +24,6 @@ export class ContentComponent implements OnInit {
  
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-    private statesService:StatesService
     ){
 
     }
@@ -35,24 +34,9 @@ export class ContentComponent implements OnInit {
     this.unitSelectionEvent.emit(this.tempnum);
   }
   ngOnInit(): void {
-    this.statesService.UnitsDataSubject.subscribe((data)=>{
-      this.units = data.items;
-      if(this.ViewType)
-      this.LoadView(this.ViewType) ;
-    });
-      // this.units=  this.statesService.UnitsDataValue.items
-      // this.LoadView(this.ViewType) ;
-
-      // this.statesService.Download().subscribe((data)=>{
-      // this.units = data;
-      // this.LoadView(this.ViewType) ;
-    // })
   }
   ngOnChanges() {
-    this.LoadView(this.ViewType) ;
-    // You can also use categoryId.previousValue and 
-    // categoryId.firstChange for comparing old and new values
-    
+    this.LoadView(this.ViewType) ;    
   }
   LoadView(Type:string) {
     const viewContainerRef = this.appViewUnits.viewContainerRef;
@@ -77,11 +61,6 @@ export class ContentComponent implements OnInit {
       } 
    } 
     const componentRef = viewContainerRef.createComponent<ViewComponent>(componentFactory);
-      if(this.units){
-        var df=new unitsStateInfo(this.units);
-        componentRef.instance.data =df;
-      }
-      
   }
 
 }

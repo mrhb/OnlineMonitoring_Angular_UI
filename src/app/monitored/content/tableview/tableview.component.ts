@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { stateInto,unitsStateInfo } from '@app/monitored/service/UnitsData';
+import { OnDestroy } from '@angular/core';
+import { StatesService } from '@app/monitored/service/states.service';
 
 @Component({
   selector: 'app-tableview',
@@ -18,11 +20,15 @@ import { stateInto,unitsStateInfo } from '@app/monitored/service/UnitsData';
     ]),
   ],
 })
-export class TableviewComponent implements ViewComponent,OnInit {
-  @Input() data: unitsStateInfo=new unitsStateInfo([]);
+export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
   dataSource = new MatTableDataSource<stateInto>();
   
-  constructor() { 
+  constructor(
+    private statesService:StatesService
+  ) { 
+  }
+  ngOnDestroy(): void {
+   console.log("tableview destroyed");
   }
 
   // dataSource = ELEMENT_DATA; 
@@ -33,7 +39,10 @@ export class TableviewComponent implements ViewComponent,OnInit {
   
   
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<stateInto>(this.data.items);
+    
+    this.statesService.UnitsDataSubject.subscribe((data)=>{
+      this.dataSource = new MatTableDataSource<stateInto>(data.items);
+         });
   }
 
 }
