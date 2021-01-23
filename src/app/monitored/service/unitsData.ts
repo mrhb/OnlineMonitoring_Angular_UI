@@ -4,6 +4,7 @@ export class stateInto{
     state:String;
     redAlarm:boolean;
     yellowAlarm:boolean;
+    AlarmList:String[]|null;
     time:String;
     elapsed:string;
     lat:string;
@@ -40,6 +41,7 @@ export class unitsStateInfo{
        temp.state=item.state;
        temp.redAlarm=item.redAlarm;
        temp.yellowAlarm=item.yellowAlarm;
+       temp.AlarmList=this.readJSON(item.AlarmList);
        temp.time=item.time;
        temp.elapsed=item.elapsed;
        temp.lat=item.lat;
@@ -47,7 +49,14 @@ export class unitsStateInfo{
           return temp;
       });
     } 
-    public multiplyBy(x: number): number {
-        return  x;
+
+    
+    public readJSON(str) {
+      try {
+        return JSON.parse(str);
+    } catch (e) {
+        // Instead of error, return str as json object
+        return  str;
+    }
     }
 }

@@ -56,10 +56,12 @@
   <ng-container matColumnDef="expandedDetail">
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
       <div class="element-detail-container "
-      [@detailExpand]="checkExpanded(element) ? 'expanded' : 'collapsed'">
-        <div class="element-detail-element" *ngFor="let unit of element.subunits">
-          
-              <span  class=" material-icons {{unit.alarm.Icon}} ">warning</span>
+      [@detailExpand]="element == expandedElement  ? 'expanded' : 'collapsed'">
+
+      <li *ngFor="let alarm of element.AlarmList">
+        {{alarm}}
+      </li>
+              <!-- <span  class=" material-icons {{unit.alarm.Icon}} ">warning</span>
               <div   class="name backgroundAlarm {{unit.alarm.Icon}}">
                 {{unit.name}}
               </div>
@@ -70,11 +72,9 @@
                 <some-element *ngSwitchCase='1'><span class="material-icons">cast_for_education</span></some-element>
                 <some-element *ngSwitchCase='2'><span class="material-icons">cast</span></some-element>
                 <some-element *ngSwitchCase='3'><span class="material-icons">cast_connected</span></some-element>
-                <!--default case when there are no matches -->
                 <some-element *ngSwitchDefault>?</some-element>
-              </container-element>
+              </container-element> -->
               
-         </div>
 
       </div>
     </td>
@@ -82,9 +82,10 @@
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-      class="example-element-row"
-      [class.example-expanded-row]="checkExpanded(element)"
-      (click)="pushPopElement(element)">
+  class="example-element-row"
+  [class.example-expanded-row]="expandedElement === element"
+  (click)="expandedElement = expandedElement === element ? null : element">
   </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row">
+  </tr>
 </table>

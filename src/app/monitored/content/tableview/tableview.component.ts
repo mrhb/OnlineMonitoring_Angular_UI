@@ -14,7 +14,7 @@ import { stateInto,unitsStateInfo } from '@app/monitored/service/UnitsData';
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
       state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      // transition('expanded <=> collapsed', animate('50ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
 })
@@ -29,30 +29,11 @@ export class TableviewComponent implements ViewComponent,OnInit {
   
   // columnsToDisplay = ['Alarm','Name','Engine','Update','Actions'];
   columnsToDisplay = ['Name','State','Update'];
-  expandedElement: stateInto[] = [];
+  expandedElement: stateInto|null ;
   
   
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<stateInto>(this.data.items);
-  }
-  checkExpanded(element): boolean {
-    let flag = false;
-    this.expandedElement.forEach(e => {
-      if(e === element) {
-        flag = true;        
-      }
-    });
-    return flag;
-  }
-
-  pushPopElement(element) {
-    const index = this.expandedElement.indexOf(element);
-    console.log(index);
-    if(index === -1) {
-        this.expandedElement.push(element);
-    } else {
-      this.expandedElement.splice(index,1);
-    }
   }
 
 }
