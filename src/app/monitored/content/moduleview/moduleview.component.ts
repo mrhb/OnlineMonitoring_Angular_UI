@@ -7,11 +7,7 @@ import { ViewComponent } from '../view.component';
   styleUrls: ['./moduleview.component.sass']
 })
 export class ModuleviewComponent implements ViewComponent,OnInit {
-  @Input() data: any;
-
   constructor() { }
-
- 
   ngOnInit(): void {
   }
 

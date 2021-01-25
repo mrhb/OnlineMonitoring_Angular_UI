@@ -7,9 +7,7 @@ import { ViewComponent } from '../view.component';
   styleUrls: ['./iconview.component.sass']
 })
 export class IconviewComponent implements ViewComponent,OnInit {
-  @Input() data: any;
   constructor() { }
-
   ngOnInit(): void {
   }
 

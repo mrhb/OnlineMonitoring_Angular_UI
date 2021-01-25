@@ -68,7 +68,29 @@ constructor(private http: HttpClient,
     .subscribe((Infos)=>{
       localStorage.setItem('TrendsInfo', JSON.stringify(Infos));
       this.  TrendsInfoSubject.next(Infos);
+
+      this.selectedSeries.metricsInfo=[];
+      Infos.forEach((info)=> {
+        info.UnitsInfo.forEach((unit)=> {
+            var measurment=this.getFavoritMetric(unit.deviceType);
+            var   metric:MetricInfo={
+              Unit:unit,
+              Measurment:measurment
+            };
+            this. addToList(metric);
+          })
+      });
+
     })
+  }
+  getFavoritMetric(unitType){
+   
+    if(unitType=="mint")
+    return"Gen_kW";
+    if(unitType=="amf25")
+    return"Load_kW";
+    else
+    return"Power";
   }
   getUinitMetric(unitType){
     this.selectedSeries.metricsInfo=[];
