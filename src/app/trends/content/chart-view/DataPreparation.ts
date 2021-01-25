@@ -7,9 +7,13 @@ function Convertor(seriasData,seriesInfo:SeriesInfo) {
 
     //const metrics= ["Oil_P" ,"Water_T" ];
     const metrics= [];
+    const lables= [];
+
 
     for(var m = 0; m < seriesInfo.metricsInfo.length; m++) {
-        metrics[m] =seriesInfo.metricsInfo[m]["Unit"]["name"]+": "+seriesInfo.metricsInfo[m]["Measurment"];
+        metrics[m] =seriesInfo.metricsInfo[m]["Measurment"];
+        lables[m] =seriesInfo.metricsInfo[m]["Unit"]["name"]+": "+seriesInfo.metricsInfo[m]["Measurment"];
+
     }
 
     // initialize array
@@ -30,7 +34,7 @@ function Convertor(seriasData,seriesInfo:SeriesInfo) {
     
     for (let  f = 0; f < metrics.length; f++){
         series.push(
-            { data: data[f], label:metrics[f] }
+            { data: data[f], label:lables[f] }
         );
     }
     return series;
