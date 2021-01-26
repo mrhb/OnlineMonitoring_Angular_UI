@@ -172,71 +172,60 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
     var range:IRange;
     console.log("selectedRange: "+this.selectedRange);
 
-
-
     switch (this.selectedRange) {
      case 1://Today
             range={label:"Today",
             endTime:moment().valueOf(),
             startTime: moment().subtract(1,'d').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 2://Last 3 Days
             range={label:"Last 3 Days",
             endTime:moment().valueOf(),
             startTime: moment().subtract(3,'d').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 3://Last Week
             range={label:"Last Week",
             endTime:moment().valueOf(),
             startTime: moment().subtract(7,'d').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 4://Last Month
             range={label:"Last Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(1,'months').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 5://Last 2 Month
             range={label:"Last 2 Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(2,'months').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 6://Last 3 Month
             range={label:"Last 3 Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(3,'months').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 7://Last 6 Month
             range={label:"Last 6 Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(6,'months').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 8://Last 9 Month
             range={label:"Last 9 Month",
             endTime:moment().valueOf(),
             startTime: moment().subtract(9,'months').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 9://Last 1 Year
             range={label:"Last 1 Year",
             endTime:moment().valueOf(),
             startTime: moment().subtract(1,'years').valueOf()
             };
-            this.RangesEvent.emit(range);
           break;
       case 10://From - To
             const dialogRef = this.dialog.open(TimeRangeDilaogueComponent, {
@@ -251,15 +240,17 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
                 endTime:result.EndTime,
                 startTime:result.StartTime
                 };
-                this.RangesEvent.emit(range);
               }
             });       
             break;
             
-      default:
-          console.log("No such Range exists!");
-          break;
-    }//switch
+            default:
+              console.log("No such Range exists!");
+            break;
+          }//switch
+          this._trendsService.LoadMetricsData(range);
+
+            // this.RangesEvent.emit(range);
   }//onRangeSelection
                     
                     

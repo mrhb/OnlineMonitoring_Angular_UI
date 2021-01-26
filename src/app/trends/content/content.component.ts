@@ -12,8 +12,6 @@ import { trendViewComponent } from './trendView.Cmponent';
   styleUrls: ['./content.component.css']
 })
 export class TrendsContentComponent implements OnInit {
-  series : SeriesInfo;
-  seriesData:any;
   @Input() ViewType: string;
   @ViewChild(TrendsViewDirective, {static: true}) trendsView: TrendsViewDirective;
   
@@ -22,7 +20,6 @@ export class TrendsContentComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver
     ) 
     {
-    this.series=_trendsService.getSelected();
   }
 
   ngOnInit(): void {}
@@ -46,13 +43,6 @@ export class TrendsContentComponent implements OnInit {
         break; 
       } 
    } 
-   const componentRef = viewContainerRef.createComponent<trendViewComponent>(componentFactory);
-    componentRef.instance.RangesEvent.subscribe(val => {
-      console.log("RangesEvent value: "+val)
-      this.series.startDate=val["startTime"];
-      this.series.endDate=val["endTime"];
-      this._trendsService.LoadSeriesData();
-    });
-  
+ viewContainerRef.createComponent<trendViewComponent>(componentFactory);
   }
 }

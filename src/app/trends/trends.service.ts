@@ -12,6 +12,7 @@ import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 import { WeekDay } from '@angular/common';
+import { IRange } from './range';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -50,10 +51,11 @@ constructor(private http: HttpClient,
    this.messageService.add(`UserService: ${message}`);
   }
   
-  LoadSeriesData() {
-    var seriesInfo: SeriesInfo=this.getSelected();
+  LoadMetricsData(range:IRange) {
+    this.selectedSeries.startDate=range["startTime"];
+    this.selectedSeries.endDate=range["endTime"];
     /** POST: Send seriesInfo to get series data from timeseries database */
-    this.http.post<SeriesInfo>(baseTrendsUrl, seriesInfo, httpOptions).subscribe((data)=>{
+    this.http.post<SeriesInfo>(baseTrendsUrl, this.selectedSeries, httpOptions).subscribe((data)=>{
     this.metricsDataSubject.next(data);
     });
   }
@@ -108,6 +110,7 @@ constructor(private http: HttpClient,
 
   }
   getSelected(){return this.selectedSeries}
+  
   
   
 

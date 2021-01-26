@@ -4,7 +4,7 @@ import { SeriesData, SeriesInfo } from '../../trendInfo';
 import{trendViewComponent} from '../trendView.Cmponent'
 @Component({
   selector: 'app-table-view',
-  templateUrl: './table-view.component.html',
+  templateUrl:  './table-view.component.html',
   styleUrls: ['./table-view.component.css']
 })
 export class TableViewComponent implements trendViewComponent, OnInit {
