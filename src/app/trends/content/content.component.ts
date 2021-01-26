@@ -17,47 +17,18 @@ export class TrendsContentComponent implements OnInit {
   @Input() ViewType: string;
   @ViewChild(TrendsViewDirective, {static: true}) trendsView: TrendsViewDirective;
   
-  addItem(newItem: any) {
-    console.log("Parent: "+newItem);
-  }
-  
-  constructor(public _trendsService:TrendsService,
-    private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(
+    public _trendsService:TrendsService,
+    private componentFactoryResolver: ComponentFactoryResolver
+    ) 
+    {
     this.series=_trendsService.getSelected();
-    //this.seriesData=
-    this.ReadSeriesData();
-
-   }
-   ReadSeriesData(): void {
-   this._trendsService.getSeriesData(this.series)
-    .subscribe(
-      data => {
-        this.seriesData = data;
-        console.log(data);
-        this.LoadView(this.ViewType) ;
-      },
-      error => {
-        this.seriesData =[
-         {
-           metricsInfo:[],
-           startDate: null,
-           endDate: null 
-          }
-        ];
-        console.log(error);
-      });
-
-    
   }
-  ngOnInit(): void {
-    
-  }
+
+  ngOnInit(): void {}
   ngOnChanges() {
     this.LoadView(this.ViewType) ;
-    // You can also use categoryId.previousValue and 
-    // categoryId.firstChange for comparing old and new values
-    
-}
+  }
   LoadView(Type:string) {
     const viewContainerRef = this.trendsView.viewContainerRef;
      viewContainerRef.clear();
@@ -76,15 +47,11 @@ export class TrendsContentComponent implements OnInit {
       } 
    } 
    const componentRef = viewContainerRef.createComponent<trendViewComponent>(componentFactory);
-
-    componentRef.instance.series = this.series;
-    componentRef.instance.metricsData = this.seriesData;
-    
     componentRef.instance.RangesEvent.subscribe(val => {
       console.log("RangesEvent value: "+val)
       this.series.startDate=val["startTime"];
       this.series.endDate=val["endTime"];
-      this.ReadSeriesData();
+      this._trendsService.LoadSeriesData();
     });
   
   }

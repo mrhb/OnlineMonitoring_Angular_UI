@@ -11,10 +11,6 @@ export class TableViewComponent implements trendViewComponent, OnInit {
   @Output() RangesEvent = new EventEmitter<IRange>();
 
   constructor() { }
-
-
-  series: SeriesInfo;
-  metricsData: SeriesData;
   Ranges = [
     { value: 1, label: 'Today'},
     { value: 2, label: 'Last 3 Days'},

@@ -33,6 +33,7 @@ metrics_minit:string[]=METRICS_minit;
 metrics_amf25:string[]=METRICS_amf25;
 
 public TrendsInfoSubject: BehaviorSubject<TrendInfo[]>;
+public metricsDataSubject: BehaviorSubject<any>=new BehaviorSubject<any>([]);
 
 constructor(private http: HttpClient,
     private messageService: MessageService
@@ -48,21 +49,15 @@ constructor(private http: HttpClient,
    private log(message: string) {
    this.messageService.add(`UserService: ${message}`);
   }
+  
+  LoadSeriesData() {
+    var seriesInfo: SeriesInfo=this.getSelected();
+    /** POST: Send seriesInfo to get series data from timeseries database */
+    this.http.post<SeriesInfo>(baseTrendsUrl, seriesInfo, httpOptions).subscribe((data)=>{
+    this.metricsDataSubject.next(data);
+    });
+  }
 
-  // getSeriesData(): Observable<any> {
-  //   return this.http.get(baseTrendsUrl);
-  // }
-
-  /** POST: Send seriesInfo to get series data from timeseries database */
-  getSeriesData(seriesInfo: SeriesInfo): Observable<any> {
-  return this.http.post<SeriesInfo>(baseTrendsUrl, seriesInfo, httpOptions)
-    .pipe(
-      // map(Sf => {
-      // console.log(Sf);
-      // }),
-      catchError(err => of([]))
-    );
-}
   LoadTrendsInfo() {
     return this.http.get<TrendInfo[]>(baseSidebarUrl,httpOptions)
     .subscribe((Infos)=>{
@@ -80,11 +75,10 @@ constructor(private http: HttpClient,
             this. addToList(metric);
           })
       });
-
     })
   }
+
   getFavoritMetric(unitType){
-   
     if(unitType=="mint")
     return"Gen_kW";
     if(unitType=="amf25")

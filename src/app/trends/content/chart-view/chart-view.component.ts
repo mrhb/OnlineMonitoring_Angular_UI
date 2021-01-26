@@ -10,6 +10,7 @@ import { trendViewComponent } from '../trendView.Cmponent';
 import { MatDialog } from '@angular/material/dialog';
 import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-dilaogue.component';
 import * as moment from 'moment';
+import { TrendsService } from '@app/trends/trends.service';
 
 @Component({
   selector: 'app-chart-view',
@@ -19,9 +20,6 @@ import * as moment from 'moment';
 export class ChartViewComponent implements trendViewComponent, OnInit {
 
   @Output() RangesEvent = new EventEmitter<IRange>();
-
-  series: SeriesInfo;
-  metricsData: SeriesData;
   
   Ranges = [
      { value: 1, label: 'Today'},
@@ -156,8 +154,12 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
               }
     }
   };
-  constructor(private fb: FormBuilder,
-    public dialog: MatDialog) { 
+  constructor(
+    public _trendsService:TrendsService,
+    private fb: FormBuilder,
+    public dialog: MatDialog
+    ) { 
+
 
       }
   selectedRange: number;
@@ -262,13 +264,11 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
                     
                     
 ngOnInit(): void {
-  if((this.metricsData!=null) && (this.series.metricsInfo.length!=0))
-  this.ChartData = DataPreparation(this.metricsData,this.series);
-   
-  this.form = this.fb.group({
-      first: [],
-      second: []
-    })
+    this._trendsService.metricsDataSubject.subscribe((data)=>{
+      var  info:SeriesInfo =this._trendsService.getSelected();
+      if((data!=null) && (info.metricsInfo.length!=0))
+      this.ChartData = DataPreparation(data,info);
+    });
   }
 
 }
