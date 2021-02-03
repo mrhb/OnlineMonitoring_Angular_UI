@@ -19,22 +19,29 @@ export const METRICS_classic:string[]=[
   "Power",           //31
   "RunT_H",          //32
   "RunT_L",          //33
-  ];
+];
 
-  export const METRICS_minit:string[]=[
+export const METRICS_minit:string[]=[
+    "Gen_kW",
+    "Gen_A_L1",
+    "Gen_A_L2",
+    "Gen_A_L3",
+    "Gen_Freq",
+    "Gen_PF",
+    "Battery_Volts",
+    "Oil_Pressure",
+    "water_temp",
+    "Run_Hours",
+    "Genset_kWh",
+  
     "Gen_V_L1-N",
     "Gen_V_L2-N",
     "Gen_V_L3-N",
     "Gen_V_L1-L2",
     "Gen_V_L2-L3",
     "Gen_V_L3-L1",
-    "Gen_A_L1",
-    "Gen_A_L2",
-    "Gen_A_L3",
     "RPM",
-    "Gen_Freq",
     "W-TerminalFreq",
-    "Gen_kW",
     "Gen_kW_L1",
     "Gen_kW_L2",
     "Gen_kW_L3",
@@ -42,33 +49,36 @@ export const METRICS_classic:string[]=[
     "Gen_kVAr_L1",
     "Gen_kVAr_L2",
     "Gen_kVAr_L3",
-    "Gen_PF",
     "Gen_PF_L1",
     "Gen_PF_L2",
     "Gen_PF_L3",
-    "Battery_Volts",
-    "Oil_Pressure",
-    "water_temp",
     "ECU_State",
-    "Run_Hours1",
-    "Run_Hours2",
-    "Energy_kWh1",
-    "Energy_kWh2",
     ];
-  
+    
+    //دسته اولیه(ولتاژ،توان، فرکانس و pf  کلی، جریان هر فاز، 
+    //oilPress, CoolantTemp,Boost_press,Intake_temp, Gen_freq )
+    
     export const METRICS_amf25:string[]=[
+      "Load_kW"        , //14
+      "CoolantTemp"    , //189
+      "Intake_Temp"    , //190
+      "OilPress"       , //191
+      "Load_PF"        , //23
+      "Load_A_L1"      , //8
+      "Load_A_L2"      , //9
+      "Load_A_L3"      , //10
+      "Gen_Freq"       , //12
+      "Genset_kWh"   ,
+      "Run_Hours"    , //3001
+      
+
       "Gen_V_L1-N"    , //1
       "Gen_V_L2-N"    , //2
       "Gen_V_L3-N"    , //3
       "Gen_V_L1-L2"    , //5
       "Gen_V_L2-L3"    , //6
       "Gen_V_L3-L1"    , //7
-      "Load_A_L1"      , //8
-      "Load_A_L2"      , //9
-      "Load_A_L3"      , //10
       "RPM"            , //11
-      "Gen_Freq"       , //12
-      "Load_kW"        , //14
       "Load_kW_L1"     , //15
       "Load_kW_L2"     , //16
       "Load_kW_L3"     , //17
@@ -76,7 +86,6 @@ export const METRICS_classic:string[]=[
       "Load_kVAr_L1"   , //20
       "Load_kVAr_L2"   , //21
       "Load_kVAr_L3"   , //22
-      "Load_PF"        , //23
       "Load_PF_L1"     , //24
       "Load_PF_L2"     , //25
       "Load_PF_L3"     , //26
@@ -94,9 +103,6 @@ export const METRICS_classic:string[]=[
       "DPF1_Ash_Load"  , //184
       "Engine_Speed"   , //187
       "FuelRate"       , //188
-      "CoolantTemp"    , //189
-      "Intake_Temp"    , //190
-      "OilPress"       , //191
       "Boost_Press"    , //192
       "Load"           , //193
       "Oil_Temp"       , //194
@@ -106,13 +112,9 @@ export const METRICS_classic:string[]=[
       "SpeedReq_RPM"   , //207
       "Speed_request"  , //208
       "ECU_FreqSelect0", //209
-      "Run_Hours_1"    , //3001
-      "Run_Hours_2"    , //3002
       "Maintenance"    , //3004
       "Num_Starts"     , //3005
-      "Genset_kWh_1"   , //3006
-      "Genset_kWh_2"   , //3007
-      "Genset_kVArh_1" , //3008
+       "Genset_kVArh_1" , //3008
       "Genset_kVArh_2" , //3009
       "Num_E-Stops_1"  , //3010
       "Num_E-Stops_2"  , //3011
