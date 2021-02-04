@@ -16,9 +16,10 @@ export interface TrendInfo {
     startDate: number|null ;
     endDate: number|null;    
   }
-  export interface MetricInfo {
+  export class MetricInfo {
     Unit: UnitInfo;
-    Measurment: String;
+    metricName: String;
+    selected:boolean=false;
   }
 
   export interface SeriesData {any}

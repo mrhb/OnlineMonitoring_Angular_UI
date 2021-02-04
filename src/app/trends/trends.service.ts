@@ -41,10 +41,12 @@ constructor(private http: HttpClient,
     ) {
       if(JSON.parse(localStorage.getItem('TrendsInfo')))
       {
-      this.TrendsInfoSubject = new BehaviorSubject<TrendInfo[]>(
-        JSON.parse(localStorage.getItem('TrendsInfo')));
+        this.TrendsInfoSubject = new BehaviorSubject<TrendInfo[]>(
+          JSON.parse(localStorage.getItem('TrendsInfo')));
       }else
-      this.TrendsInfoSubject = new BehaviorSubject<TrendInfo[]>([]);
+        this.TrendsInfoSubject = new BehaviorSubject<TrendInfo[]>([]);
+      // this.LoadMetrics();
+        
 
    }
    private log(message: string) {
@@ -54,6 +56,9 @@ constructor(private http: HttpClient,
   LoadMetricsData(range:IRange) {
     this.selectedSeries.startDate=range["startTime"];
     this.selectedSeries.endDate=range["endTime"];
+    this.LoadMetrics();
+  }
+  public LoadMetrics() {
     /** POST: Send seriesInfo to get series data from timeseries database */
     this.http.post<SeriesInfo>(baseTrendsUrl, this.selectedSeries, httpOptions).subscribe((data)=>{
     this.metricsDataSubject.next(data);
@@ -69,14 +74,17 @@ constructor(private http: HttpClient,
       this.selectedSeries.metricsInfo=[];
       Infos.forEach((info)=> {
         info.UnitsInfo.forEach((unit)=> {
-            var measurment=this.getFavoritMetric(unit.deviceType);
+            var metricName=this.getFavoritMetric(unit.deviceType);
             var   metric:MetricInfo={
               Unit:unit,
-              Measurment:measurment
+              metricName:metricName,
+              selected:true
             };
             this. addToList(metric);
           })
       });
+      this.LoadMetrics();
+
     })
   }
 
@@ -102,7 +110,7 @@ constructor(private http: HttpClient,
   }
   removeFromList(item:MetricInfo){
    // const index = this.selectedSeries.metricsInfo.indexOf(item, 0);
-    const index = this.selectedSeries.metricsInfo.findIndex(x => x.Unit ===item.Unit && x.Measurment===item.Measurment);
+    const index = this.selectedSeries.metricsInfo.findIndex(x => x.Unit ===item.Unit && x.metricName===item.metricName);
 
     if (index > -1) {
       this.selectedSeries.metricsInfo.splice(index, 1);

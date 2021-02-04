@@ -62,7 +62,8 @@ export class SideComponent implements OnInit {
   selectedMetric(item:String,checked:boolean){
   var   metric:MetricInfo={
       Unit:this.selectedUnit,
-      Measurment:item,
+      metricName:item,
+      selected:checked
   };
 
     if(checked)

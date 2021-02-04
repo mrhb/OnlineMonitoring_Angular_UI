@@ -11,8 +11,8 @@ function Convertor(seriasData,seriesInfo:SeriesInfo) {
 
 
     for(var m = 0; m < seriesInfo.metricsInfo.length; m++) {
-        metrics[m] =seriesInfo.metricsInfo[m]["Measurment"];
-        lables[m] =seriesInfo.metricsInfo[m]["Unit"]["name"]+": "+seriesInfo.metricsInfo[m]["Measurment"];
+        metrics[m] =seriesInfo.metricsInfo[m]["metricName"];
+        lables[m] =seriesInfo.metricsInfo[m]["Unit"]["name"]+": "+seriesInfo.metricsInfo[m]["metricName"];
 
     }
 
