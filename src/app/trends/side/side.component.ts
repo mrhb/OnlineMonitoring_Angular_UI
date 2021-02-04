@@ -24,6 +24,7 @@ export class SideComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   selectedUnit:UnitInfo=null; 
   selectedUnitMetrics: string[]=[];
+  UnitMetrics: MetricInfo[]=[];
 
   columnsToDisplay = ['GroupName'];
   expandedElement: UnitInfo[];
@@ -55,21 +56,13 @@ export class SideComponent implements OnInit {
     else
     {
       this.selectedUnit=item;
-      this.selectedUnitMetrics=this.trendsService.getUinitMetric(item.deviceType);
     }
-
+    
+    this.UnitMetrics=this.trendsService.getUinitMetric(item);
   }
-  selectedMetric(item:String,checked:boolean){
-  var   metric:MetricInfo={
-      Unit:this.selectedUnit,
-      metricName:item,
-      selected:checked
-  };
-
-    if(checked)
-    this.trendsService.addToList(metric);
-    else
-    this.trendsService.removeFromList(metric);
+  selectedMetric(item:MetricInfo,checked:boolean){
+  item.selected=checked;
+  this.trendsService.updateList(item)
   }
 onChange(event, item:SeriesInfo) {
 }

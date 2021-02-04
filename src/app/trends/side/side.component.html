@@ -70,9 +70,9 @@
               </div>
               <div *ngIf="unit==selectedUnit">
               
-                  <div *ngFor="let metric of selectedUnitMetrics; index as i;">
-                    <mat-checkbox (change)="selectedMetric(metric,$event.checked)"  > </mat-checkbox>                   
-                    <span class="name-column"> {{metric}}</span>
+                  <div *ngFor="let metric of UnitMetrics; index as i;">
+                    <mat-checkbox  (change)="selectedMetric(metric,$event.checked)"  [checked]="metric.selected" > </mat-checkbox>                   
+                    <span class="name-column"> {{metric.metricName}}</span>
                   </div>
            
               </div>

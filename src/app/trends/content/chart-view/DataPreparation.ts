@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import { SeriesInfo } from '../../trendInfo';
 // Named function
-function Convertor(seriasData,seriesInfo:SeriesInfo) {
+function Convertor(seriasData,metricsInfo) {
     let series=  []
     var  data = [];
 
@@ -10,9 +10,9 @@ function Convertor(seriasData,seriesInfo:SeriesInfo) {
     const lables= [];
 
 
-    for(var m = 0; m < seriesInfo.metricsInfo.length; m++) {
-        metrics[m] =seriesInfo.metricsInfo[m]["metricName"];
-        lables[m] =seriesInfo.metricsInfo[m]["Unit"]["name"]+": "+seriesInfo.metricsInfo[m]["metricName"];
+    for(var m = 0; m < metricsInfo.length; m++) {
+        metrics[m] =metricsInfo[m]["metricName"];
+        lables[m] =metricsInfo[m]["Unit"]["name"]+": "+metricsInfo[m]["metricName"];
 
     }
 

@@ -5,7 +5,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import 'chartjs-plugin-zoom'
 
-import { SeriesData, SeriesInfo } from '../../trendInfo';
+import { MetricInfo, SeriesData, SeriesInfo } from '../../trendInfo';
 import { trendViewComponent } from '../trendView.Cmponent';
 import { MatDialog } from '@angular/material/dialog';
 import { TimeRangeDilaogueComponent } from '../time-range-dilaogue/time-range-dilaogue.component';
@@ -256,8 +256,8 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
                     
 ngOnInit(): void {
     this._trendsService.metricsDataSubject.subscribe((data)=>{
-      var  info:SeriesInfo =this._trendsService.getSelected();
-      if((data!=null) && (info.metricsInfo.length!=0))
+      var  info:MetricInfo[] =this._trendsService.getSelected();
+      if((data!=null) && (info.length!=0))
       this.ChartData = DataPreparation(data,info);
     });
   }

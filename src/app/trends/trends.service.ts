@@ -7,12 +7,13 @@ import { catchError, map, retry } from 'rxjs/operators';
 
 
 import {  METRICS_amf25, METRICS_classic, METRICS_minit } from './mock-trends';
-import { MetricInfo, SeriesInfo, TrendInfo } from './trendInfo';
+import { MetricInfo, SeriesInfo, TrendInfo, UnitInfo } from './trendInfo';
 import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 import { WeekDay } from '@angular/common';
 import { IRange } from './range';
+import { Unit } from '@app/management/services/unit';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -59,8 +60,15 @@ constructor(private http: HttpClient,
     this.LoadMetrics();
   }
   public LoadMetrics() {
+    
+    this.selectedSeries
+    var seriesReq:SeriesInfo={
+      startDate:this.selectedSeries.startDate,
+      endDate:this.selectedSeries.endDate,
+      metricsInfo:this.selectedSeries.metricsInfo.filter(p=>p.selected===true)
+    }
     /** POST: Send seriesInfo to get series data from timeseries database */
-    this.http.post<SeriesInfo>(baseTrendsUrl, this.selectedSeries, httpOptions).subscribe((data)=>{
+    this.http.post<SeriesInfo>(baseTrendsUrl,seriesReq, httpOptions).subscribe((data)=>{
     this.metricsDataSubject.next(data);
     });
   }
@@ -70,19 +78,20 @@ constructor(private http: HttpClient,
     .subscribe((Infos)=>{
       localStorage.setItem('TrendsInfo', JSON.stringify(Infos));
       this.  TrendsInfoSubject.next(Infos);
+    
+      if(Infos[0].UnitsInfo[0])
+      {
+        var unit=Infos[0].UnitsInfo[0];
+        this.getUinitMetric(unit);
+        var metricName=this.getFavoritMetric(unit.deviceType);
+        var   metric:MetricInfo={
+          Unit:unit,
+          metricName:metricName,
+          selected:true
+        };
+        this.updateList(metric)
+      }
 
-      this.selectedSeries.metricsInfo=[];
-      Infos.forEach((info)=> {
-        info.UnitsInfo.forEach((unit)=> {
-            var metricName=this.getFavoritMetric(unit.deviceType);
-            var   metric:MetricInfo={
-              Unit:unit,
-              metricName:metricName,
-              selected:true
-            };
-            this. addToList(metric);
-          })
-      });
       this.LoadMetrics();
 
     })
@@ -96,45 +105,47 @@ constructor(private http: HttpClient,
     else
     return"Power";
   }
-  getUinitMetric(unitType){
-    this.selectedSeries.metricsInfo=[];
-    if(unitType=="mint")
-    return this.metrics_minit;
-    if(unitType=="amf25")
-    return this.metrics_amf25;
-    else
-    return this.metrics_classic;
-  }
-  addToList(item:MetricInfo){
-    this.selectedSeries.metricsInfo.push(item);
-  }
-  removeFromList(item:MetricInfo){
-   // const index = this.selectedSeries.metricsInfo.indexOf(item, 0);
-    const index = this.selectedSeries.metricsInfo.findIndex(x => x.Unit ===item.Unit && x.metricName===item.metricName);
+  getUinitMetric(unit:UnitInfo){
+    var merticnames=[]
+        if(unit.deviceType.valueOf()=="mint")
+        merticnames=this.metrics_minit;
+        if(unit.deviceType.valueOf()=="amf25")
+        merticnames=this.metrics_amf25;
+        else
+        merticnames=this.metrics_classic;
+    
 
-    if (index > -1) {
-      this.selectedSeries.metricsInfo.splice(index, 1);
-    }
-
+    merticnames.forEach((m)=>{
+      var   metric:MetricInfo={
+        Unit:unit,
+        metricName:m,
+        selected:false
+      };
+        this.selectedSeries.metricsInfo.push(metric);
+      }
+    );
+    return this.selectedSeries.metricsInfo;
   }
-  getSelected(){return this.selectedSeries}
-  
-  
-  
+  updateList(item:MetricInfo){
+    let index = this.selectedSeries.metricsInfo.findIndex(m =>item.metricName==m.metricName);
+    this.selectedSeries.metricsInfo[index] = item;
+  }
+  getSelected(){
+    return this.selectedSeries.metricsInfo.filter(m=> m.selected===true)}
 
   private handleError(error: HttpErrorResponse) {
-  if (error.error instanceof ErrorEvent) {
-    // A client-side or network error occurred. Handle it accordingly.
-    console.error('An error occurred:', error.error.message);
-  } else {
-    // The backend returned an unsuccessful response code.
-    // The response body may contain clues as to what went wrong.
-    console.error(
-      `Backend returned code ${error.status}, ` +
-      `body was: ${error.error}`);
-    }
-    // Return an observable with a user-facing error message.
-  return throwError(
-    'Something bad happened; please try again later.');
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+      }
+      // Return an observable with a user-facing error message.
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 }
