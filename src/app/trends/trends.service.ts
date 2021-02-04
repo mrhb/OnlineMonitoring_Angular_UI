@@ -129,6 +129,7 @@ constructor(private http: HttpClient,
   updateList(item:MetricInfo){
     let index = this.selectedSeries.metricsInfo.findIndex(m =>item.metricName==m.metricName);
     this.selectedSeries.metricsInfo[index] = item;
+    this.LoadMetrics();
   }
   getSelected(){
     return this.selectedSeries.metricsInfo.filter(m=> m.selected===true)}

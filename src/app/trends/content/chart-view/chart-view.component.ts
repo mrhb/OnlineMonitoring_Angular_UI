@@ -162,7 +162,7 @@ export class ChartViewComponent implements trendViewComponent, OnInit {
 
 
       }
-  selectedRange: number;
+  selectedRange: number=1;
   selectedType: string='line';
   onTypeSelection(type ){
     console.log(type +"  Type Selected");

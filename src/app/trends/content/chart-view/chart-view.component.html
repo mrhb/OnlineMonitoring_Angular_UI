@@ -3,8 +3,8 @@
         <mat-form-field  >
             <mat-label>
                 <mat-icon >calendar_today </mat-icon> Range</mat-label>
-                <mat-select [(ngModel)]="selectedRange" (ngModelChange)="onRangeSelection()">
-                    <mat-option *ngFor="let range of Ranges" [value]="range.value">
+                <mat-select [(ngModel)]="selectedRange">
+                    <mat-option *ngFor="let range of Ranges"  (click)="onRangeSelection()" [value]="range.value">
                         {{range.label}}
                     </mat-option>
                 </mat-select>
