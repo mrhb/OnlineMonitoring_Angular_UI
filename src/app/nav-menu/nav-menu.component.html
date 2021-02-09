@@ -48,8 +48,14 @@
           <div class="profile">
             <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
             <div mat-card-avatar class="example-header-image" 
-            matTooltip="{{this.displayName(userrrr)}}"></div>
+            matTooltip="{{this.displayName(userrrr)}}">
+            <img   class="avatar"  
+            src="{{this.GetAvatarPath(userrrr)}}"
+            alt="Image not found" onerror="this.src='../../assets/user.png';">
           </div>
+          </div>
+
+
         </div>
         <ng-template #loading >
           <a mat-button routerLink="/login"> <mat-icon>login</mat-icon> login </a>

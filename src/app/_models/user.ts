@@ -6,7 +6,8 @@ export class User {
     firstName: string;
     lastName: string;
     username: string;
-    permissionLevel: Permission
+    permissionLevel: Permission;
+    avatarPath: String;
     token?: string;
 }
 
