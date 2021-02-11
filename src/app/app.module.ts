@@ -18,6 +18,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 import { ChartsModule } from 'ng2-charts';
@@ -27,7 +29,6 @@ import { FirstPageComponent } from './first-page/first-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SummaryComponent } from './dashboard/mainpanel/summary/summary.component';
 import { PowerGraphComponent } from './dashboard/mainpanel/power-graph/power-graph.component';
-import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './dashboard/mainpanel/card/card.component';
 import { StateChartComponent } from './dashboard/mainpanel/state-chart/state-chart.component';
 import { ProgressBarComponent } from './dashboard/mainpanel/power-graph/progress-bar/progress-bar.component';
@@ -109,6 +110,7 @@ import { RegistrationComponent } from './login/registration/registration.compone
     MatSelectModule,
     MatInputModule,
     MatTooltipModule,
+    MatMenuModule,
     
     MatPaginatorModule,
     MatSortModule,

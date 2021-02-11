@@ -46,13 +46,27 @@
           <span class="spacer"></span>
         <div *ngIf="(user$ | async) as userrrr; else loading" >
           <div class="profile">
-            <a mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
-            <div mat-card-avatar class="example-header-image" 
-            matTooltip="{{this.displayName(userrrr)}}">
+            <a mat-button [matMenuTriggerFor]="menu"
+            >{{this.displayName(userrrr)}}</a>
+
             <img   class="avatar"  
             src="{{this.GetAvatarPath(userrrr)}}"
-            alt="Image not found" onerror="this.src='../../assets/user.png';">
-          </div>
+            alt="Image not found" onerror="this.src='../../assets/user.png';"
+            matTooltip="{{this.displayName(userrrr)}}"
+            [matMenuTriggerFor]="menu">
+
+
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+              </button>
+              <button mat-menu-item  routerLink="/management/edit/user/{{userrrr.id}}">
+                <mat-icon>account_circle</mat-icon>
+                <span>Profile</span>
+              </button>
+            </mat-menu>
+
           </div>
 
 
