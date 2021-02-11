@@ -38,7 +38,9 @@ export class UsersService {
   set_avatar(id,avatar): Observable<any> {
     return this.http.post(`${baseProfileUrl}/set-avatar/${id}`, avatar);
   }
-
+  set_password(id,passData): Observable<any> {
+    return this.http.patch(`${baseProfileUrl}/set-pass/${id}`, passData);
+  }
   update(id, data): Observable<any> {
     return this.http.patch(`${baseUrl}/${id}`, data);
   }

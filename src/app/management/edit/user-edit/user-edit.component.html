@@ -97,7 +97,24 @@
           </mat-select>
         </mat-form-field> -->
 
-        </form>
+      </form>  
+  <mat-toolbar class="footing-toolbar" >  
+    <ng-template [ngIf]="!isAddMode" >
+      <button   mat-flat-button color="warn" class="btndelete" >
+        <span class="material-icons" (click)="deleteUser()" >delete_forever</span>Delete
+      </button > 
+    </ng-template>
+    <button   mat-flat-button color="warn" >
+        <span class="material-icons" (click)="onSubmit()" >save</span>Save
+    </button >
+    
+    <button  type="button" (click) = "resetForm()" mat-flat-button color="warn">
+        <span class="material-icons"  >restore</span>Cancel
+    </button >
+  </mat-toolbar>
+
+
+       
    
         </mat-expansion-panel>
 
@@ -119,9 +136,63 @@
             </div>
           </form>
         
+
+
         
         </mat-expansion-panel>
+
+        <!-- پسورد  -->
+        <mat-expansion-panel [expanded]="false"  >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons ">
+                password
+                </span>Password
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup] = "passwordForm" class="form">      
+            <div>
+              <mat-form-field appearance="fill"  class="form-element">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="form-element">
+                <mat-label>confirm your new password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="newPassword">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="form-element">
+                <mat-label>confirm your new password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="confirmNewPassword">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>            
+
+
+            </div>
+          </form>
+          <mat-toolbar class="footing-toolbar" >  
+            <ng-template [ngIf]="!isAddMode" >
+              <button   mat-flat-button color="warn" (click)="onNewPasswordSubmit()" >
+                  Update password
+              </button > 
+            </ng-template>
+            
+            <button  type="button" (click) = "resetForm()" mat-flat-button color="warn">
+                <span class="material-icons"  >restore</span>Cancel
+            </button >
+          </mat-toolbar>
+
         
+        </mat-expansion-panel>
       <!-- اطلاعات حساب  -->
         <!-- <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" >
           <mat-expansion-panel-header>
@@ -152,20 +223,6 @@
           Use of this source code is governed by an MIT-style license that
           can be found in the LICENSE file at http://angular.io/license -->
           
-  
-  <mat-toolbar class="footing-toolbar" >  
-    <ng-template [ngIf]="!isAddMode" >
-      <button   mat-flat-button color="warn" class="btndelete" >
-        <span class="material-icons" (click)="deleteUser()" >delete_forever</span>Delete
-      </button > 
-    </ng-template>
-    <button   mat-flat-button color="warn" >
-        <span class="material-icons" (click)="onSubmit()" >save</span>Save
-    </button >
-    
-    <button  type="button" (click) = "resetForm()" mat-flat-button color="warn">
-        <span class="material-icons"  >restore</span>Cancel
-    </button >
-  </mat-toolbar>
+
   
 

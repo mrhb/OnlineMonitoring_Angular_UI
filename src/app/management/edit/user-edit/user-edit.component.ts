@@ -32,7 +32,7 @@ export class UserEditComponent implements OnInit {
   permissionLevels=PERMISSIONLEVELS;
 
   uploadForm: FormGroup;  
-
+  passwordForm:FormGroup;
 
 
   constructor(
@@ -89,6 +89,15 @@ onFileSelect(event) {
       //  validator: MustMatch('password', 'confirmPassword')
     });
 
+
+    this.passwordForm = this.formBuilder.group({
+      password: ['', [ this.isAddMode ? Validators.required : Validators.nullValidator]],
+      newPassword: ['', [Validators.minLength(6), this.isAddMode ? Validators.required : Validators.nullValidator]],
+      confirmNewPassword: ['', this.isAddMode ? Validators.required : Validators.nullValidator]
+    }, {
+       validator: MustMatch('newPassword', 'confirmNewPassword')
+    });
+
     if (!this.isAddMode) {
         this.userService.get(this.id)
             .pipe(first())
@@ -118,6 +127,15 @@ onFileSelect(event) {
       );
     }
 
+    onNewPasswordSubmit() {
+      const formData = new FormData();
+      formData.append('password', this.passwordForm.get('password').value);
+      formData.append('newPassword', this.passwordForm.get('newPassword').value);
+      this.userService.set_password(this.id,this.passwordForm.value).subscribe(
+        (res) =>  this.router.navigate(['/management/users']),
+        (err) => console.log(err)
+      );
+    }
   resetForm() { 
     this.router.navigate(['/management/users']);
  } 
