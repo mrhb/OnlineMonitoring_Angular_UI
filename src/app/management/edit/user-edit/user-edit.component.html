@@ -100,6 +100,28 @@
         </form>
    
         </mat-expansion-panel>
+
+              <!-- اطلاعات حساب  -->
+        <mat-expansion-panel [expanded]="true"  >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons ">
+                home
+                </span>Invoice information
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup] = "uploadForm" (ngSubmit)="onProfileSubmit()">      
+            <div>
+              <input type="file" name="profile" (change)="onFileSelect($event)" />
+            </div>
+            <div>
+              <button type="submit">Upload</button>
+            </div>
+          </form>
+        
+        
+        </mat-expansion-panel>
+        
       <!-- اطلاعات حساب  -->
         <!-- <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" >
           <mat-expansion-panel-header>

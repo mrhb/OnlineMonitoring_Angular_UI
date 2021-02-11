@@ -30,7 +30,9 @@ export class UserEditComponent implements OnInit {
   loading = false;
   submitted = false;
   permissionLevels=PERMISSIONLEVELS;
-  formGroup :FormGroup ; 
+
+  uploadForm: FormGroup;  
+
 
 
   constructor(
@@ -41,9 +43,14 @@ export class UserEditComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
   step = 3;
-  onFormSubmit(): void {
-    console.log('Name:' + this.formGroup.get('name').value);
-} 
+
+
+onFileSelect(event) {
+  if (event.target.files.length > 0) {
+    const file = event.target.files[0];
+    this.uploadForm.get('profile').setValue(file);
+  }
+}
   setStep(index: number) {
     this.step = index;
   }
@@ -67,7 +74,9 @@ export class UserEditComponent implements OnInit {
     if (this.isAddMode) {
         passwordValidators.push(Validators.required);
     }
-
+    this.uploadForm = this.formBuilder.group({
+      profile: ['']
+    });
     this.userInfoForm = this.formBuilder.group({
       // title: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -92,31 +101,6 @@ export class UserEditComponent implements OnInit {
     }
     }
 
-  //   createForm() {
-  //     let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  //     this.formGroup = this.formBuilder.group({
-  //       'email': [null, [Validators.required, Validators.pattern(emailregex)], this.checkInUseEmail],
-  //       'name': [null, Validators.required],
-  //       'password': [null, [Validators.required, this.checkPassword]],
-  //       'description': [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
-  //       'validate': ''
-  //     });
-  //   }
-
-    
-  // setChangeValidate() {
-  //   this.formGroup.get('validate').valueChanges.subscribe(
-  //     (validate) => {
-  //       if (validate == '1') {
-  //         this.formGroup.get('name').setValidators([Validators.required, Validators.minLength(3)]);
-  //         this.titleAlert = "You need to specify at least 3 characters";
-  //       } else {
-  //         this.formGroup.get('name').setValidators(Validators.required);
-  //       }
-  //       this.formGroup.get('name').updateValueAndValidity();
-  //     }
-  //   )
-  // }
     gotoUserss(user: User) {
       const userId = user ? user.id : null;
       // Pass along the hero id if available
@@ -124,36 +108,15 @@ export class UserEditComponent implements OnInit {
       // Include a junk 'foo' property for fun.
       this.router.navigate(['/management/users']);
     }
-   
 
-  //  checkPassword(control) {
-  //   let enteredPassword = control.value
-  //   let passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
-  //   return (!passwordCheck.test(enteredPassword) && enteredPassword) ? { 'requirements': true } : null;
-  // }
-
-  // checkInUseEmail(control) {
-  //   // mimic http database access
-  //   let db = ['tony@gmail.com'];
-  //   return new Observable(observer => {
-  //     setTimeout(() => {
-  //       let result = (db.indexOf(control.value) !== -1) ? { 'alreadyInUse': true } : null;
-  //       observer.next(result);
-  //       observer.complete();
-  //     }, 4000)
-  //   })
-  // }
-
-  // getErrorEmail() {
-  //   return this.formGroup.get('email').hasError('required') ? 'Field is required' :
-  //     this.formGroup.get('email').hasError('pattern') ? 'Not a valid emailaddress' :
-  //       this.formGroup.get('email').hasError('alreadyInUse') ? 'This emailaddress is already in use' : '';
-  // }
-
-  // getErrorPassword() {
-  //   return this.formGroup.get('password').hasError('required') ? 'Field is required (at least eight characters, one uppercase letter and one number)' :
-  //     this.formGroup.get('password').hasError('requirements') ? 'Password needs to be at least eight characters, one uppercase letter and one number' : '';
-  // }
+    onProfileSubmit() {
+      const formData = new FormData();
+      formData.append('avatar', this.uploadForm.get('profile').value);
+      this.userService.set_avatar(this.id,formData).subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
+    }
 
   resetForm() { 
     this.router.navigate(['/management/users']);

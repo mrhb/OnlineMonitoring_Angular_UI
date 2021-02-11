@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 import { MessageService } from './message.service';
 
 const baseUrl =environment.userUrl+ '/api/users';
+const baseProfileUrl =environment.userUrl+ '/api/profile';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +33,10 @@ export class UsersService {
   
   create(data): Observable<any> {
     return this.http.post(baseUrl, data);
+  }
+
+  set_avatar(id,avatar): Observable<any> {
+    return this.http.post(`${baseProfileUrl}/set-avatar/${id}`, avatar);
   }
 
   update(id, data): Observable<any> {
