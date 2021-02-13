@@ -65,11 +65,23 @@ export class MapComponent implements OnInit,AfterViewInit {
         layers: [basemaplayer,  this.markersGroup ]
       });
     }
-  displayMap(): void {
+    displayMap() {
     this.markersGroup.clearLayers()
 
    var marers= this.units.map( item=>{
-     var mar=L.marker([item.lat,item.long]).bindTooltip(item.name, 
+    var  Icon = L.icon({
+      iconRetinaUrl,
+      iconUrl:`assets/mapIcons/${item.state}.png`,
+      shadowUrl,
+      iconSize: [38, 38],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      tooltipAnchor: [16, -28],
+      shadowSize: [41, 41]
+    });
+
+
+     var mar=L.marker([item.lat,item.long], {icon: Icon}).bindTooltip(item.name, 
       {
         permanent: false
       });
