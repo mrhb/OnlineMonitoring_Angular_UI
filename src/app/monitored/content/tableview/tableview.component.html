@@ -58,24 +58,9 @@
       <div class="element-detail-container "
       [@detailExpand]="element == expandedElement  ? 'expanded' : 'collapsed'">
 
-      <li *ngFor="let alarm of element.AlarmList">
-        {{alarm}}
-      </li>
-              <!-- <span  class=" material-icons {{unit.alarm.Icon}} ">warning</span>
-              <div   class="name backgroundAlarm {{unit.alarm.Icon}}">
-                {{unit.name}}
-              </div>
-              <div>
-                {{unit.engines}}
-              </div>
-              <container-element [ngSwitch]="unit.update">
-                <some-element *ngSwitchCase='1'><span class="material-icons">cast_for_education</span></some-element>
-                <some-element *ngSwitchCase='2'><span class="material-icons">cast</span></some-element>
-                <some-element *ngSwitchCase='3'><span class="material-icons">cast_connected</span></some-element>
-                <some-element *ngSwitchDefault>?</some-element>
-              </container-element> -->
-              
-
+        <li *ngFor="let alarm of element.AlarmList">
+          {{alarm}}
+        </li>
       </div>
     </td>
   </ng-container>
