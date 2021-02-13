@@ -106,6 +106,7 @@ constructor(private http: HttpClient,
     return"Power";
   }
   getUinitMetric(unit:UnitInfo){
+    this.selectedSeries.metricsInfo=[];
     var merticnames=[]
         if(unit.deviceType.valueOf()=="mint")
         merticnames=this.metrics_minit;
