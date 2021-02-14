@@ -26,29 +26,36 @@ export class SideComponent implements OnInit {
   selectedUnitMetrics: string[]=[];
   UnitMetrics: MetricInfo[]=[];
 
-  columnsToDisplay = ['GroupName'];
-  expandedElement: UnitInfo[];
-
+  expandedElement:TrendInfo;
+  
+  columnsToDisplay = ['Groups'];
   
   trends : TrendInfo[];
   trendsService:TrendsService;
   constructor(_trendsService:TrendsService) { 
     this.trendsService=_trendsService;
-    
+  
     this.trendsService.TrendsInfoSubject.subscribe(data=>{
       this.trends= data;
       this.dataSource =this.trends;
-      console.log(data);
+      if(this.trends[0].UnitsInfo[0])
+      {
+        this.expandedElement=this.trends[0];
+        this.selectedUnit=this.trends[0].UnitsInfo[0];
+        this.UnitMetrics=this.trendsService.getUinitMetric(this.selectedUnit);
+      }
+
+      console.log(this.trends[0].UnitsInfo[0].name);
     },
     error => {
-           console.log(error);
-    
+      console.log(error);    
+
     })
   }
   
-  ngOnInit(): void {
-    this.dataSource =  this.trends;
-
+  ngOnInit(): void {  
+      this.dataSource =  this.trends;
+    
   }
   selecteUnit(item:UnitInfo){
     if(this.selectedUnit==item)
@@ -64,8 +71,4 @@ export class SideComponent implements OnInit {
   item.selected=checked;
   this.trendsService.updateList(item)
   }
-onChange(event, item:SeriesInfo) {
-}
-
-
 }

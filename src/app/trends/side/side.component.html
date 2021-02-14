@@ -39,7 +39,7 @@
 
   
   <!-- GroupName Column -->
-  <ng-container matColumnDef="GroupName">
+  <ng-container matColumnDef="Groups">
     <th mat-header-cell *matHeaderCellDef></th>
     <td class="name-column" mat-cell *matCellDef="let element"> {{element.GroupName}} </td>
   </ng-container>
@@ -85,7 +85,7 @@
     class="example-element-row"
     [class.example-expanded-row]="expandedElement === element"
     (click)="expandedElement = expandedElement === element ? null : element">
-  </tr>
+    </tr>
 </ng-container>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>
