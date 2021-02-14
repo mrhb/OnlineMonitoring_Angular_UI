@@ -3,6 +3,8 @@ export class stateInto{
     name:String;
     state:String;
     AlarmList:String[]|null;
+    Genset_kWh:Number;
+    Run_Hours:Number;
     time:String;
     elapsed:string;
     lat:string;
@@ -22,6 +24,8 @@ export class unitsStateInfo{
        temp.name=item.name;
        temp.state=item.state;
        temp.AlarmList=this.readJSON(item.AlarmList);
+       temp.Genset_kWh=item.Genset_kWh;
+       temp.Run_Hours=item.Run_Hours;
        temp.time=item.time;
        temp.elapsed=item.elapsed;
        temp.lat=item.lat;

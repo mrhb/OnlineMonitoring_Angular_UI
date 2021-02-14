@@ -79,9 +79,10 @@ export class MapComponent implements OnInit,AfterViewInit {
       tooltipAnchor: [16, -28],
       shadowSize: [41, 41]
     });
-
-
-     var mar=L.marker([item.lat,item.long], {icon: Icon}).bindTooltip(item.name, 
+    var tooltip= `${item.name}
+       <br>RunHour:${item.Run_Hours}
+       <br>Kwh:${item.Genset_kWh}`;
+     var mar=L.marker([item.lat,item.long], {icon: Icon}).bindTooltip(tooltip, 
       {
         permanent: false
       });
