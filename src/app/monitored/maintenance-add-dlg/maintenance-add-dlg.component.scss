@@ -1,0 +1,8 @@
+.pickers{
+    display:flex;
+    width: 250px;
+}
+:host:host{
+    overflow: inherit;
+    width: auto;
+}
