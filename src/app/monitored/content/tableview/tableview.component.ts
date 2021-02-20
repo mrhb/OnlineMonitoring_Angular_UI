@@ -10,7 +10,7 @@ import { StatesService } from '@app/monitored/service/states.service';
 
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { MaintenanceAddDlgComponent } from '@app/monitored/maintenance-add-dlg/maintenance-add-dlg.component';
+import { MaintenanceAddDlgComponent } from '@app/maintenance/maintenance-add-dlg/maintenance-add-dlg.component';
 
 
 @Component({

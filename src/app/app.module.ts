@@ -69,7 +69,7 @@ import{    MaterialModule} from './app-material.module'
 import { fakeBackendProvider } from './_helpers';
 import { RegistrationComponent } from './login/registration/registration.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MaintenanceAddDlgComponent } from './monitored/maintenance-add-dlg/maintenance-add-dlg.component'
+import { MaintenanceAddDlgComponent } from './maintenance/maintenance-add-dlg/maintenance-add-dlg.component'
 import {DpDatePickerModule} from 'ng2-jalali-date-picker';
 
 @NgModule({
