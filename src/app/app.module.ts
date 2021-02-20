@@ -68,6 +68,10 @@ import{    MaterialModule} from './app-material.module'
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 import { RegistrationComponent } from './login/registration/registration.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MaintenanceAddDlgComponent } from './monitored/maintenance-add-dlg/maintenance-add-dlg.component'
+import {DpDatePickerModule} from 'ng2-jalali-date-picker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +101,7 @@ import { RegistrationComponent } from './login/registration/registration.compone
     FilterComponent,
     LoginComponent,
     RegistrationComponent,
+    MaintenanceAddDlgComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,7 +109,9 @@ import { RegistrationComponent } from './login/registration/registration.compone
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    
+    MatDialogModule,
+    DpDatePickerModule,
+
     ChartsModule,
     MatTableModule,
     MatSelectModule,
