@@ -121,7 +121,6 @@ import {DpDatePickerModule} from 'ng2-jalali-date-picker';
     
     MatPaginatorModule,
     MatSortModule,
-    ManagementModule,
     TrendsModule,
     LeafletModule,
     MatFormFieldModule,

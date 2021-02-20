@@ -8,6 +8,11 @@ import { stateInto,unitsStateInfo } from '@app/monitored/service/UnitsData';
 import { OnDestroy } from '@angular/core';
 import { StatesService } from '@app/monitored/service/states.service';
 
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MaintenanceAddDlgComponent } from '@app/monitored/maintenance-add-dlg/maintenance-add-dlg.component';
+
+
 @Component({
   selector: 'app-tableview',
   templateUrl: './tableview.component.html',
@@ -24,6 +29,7 @@ export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
   dataSource = new MatTableDataSource<stateInto>();
   
   constructor(
+    public dialog: MatDialog,
     private statesService:StatesService
   ) { 
   }
@@ -45,4 +51,15 @@ export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
          });
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(MaintenanceAddDlgComponent,
+      {
+        width: '300px',
+        data: {name: "svrwvwrvr"}
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+    });
+  }
 }
