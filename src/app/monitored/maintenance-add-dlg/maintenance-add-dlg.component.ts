@@ -20,7 +20,7 @@ export class MaintenanceAddDlgComponent implements OnInit {
   maintenanceList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   
   StartTime:Moment =  moment().subtract(6,'h');
-  datePickerConfig = {
+  config = {
     drops: 'down',
     format: 'YY/M/D',
     showGoToCurrent: true

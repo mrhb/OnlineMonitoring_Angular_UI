@@ -17,16 +17,10 @@
       <mat-option *ngFor="let topping of maintenanceList" [value]="topping">{{topping}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <br>
 
-    <div class="pickers">
-        <div >
-          <p>Start Time</p>
-          <dp-day-time-calendar  #Start  [(ngModel)]="StartTime" theme="dp-material"
-          [config]="datePickerConfig">
-          </dp-day-time-calendar>
-        </div>
-    </div>
+  <dp-day-calendar theme="dp-material" placeholder="Choose a date...">
+    </dp-day-calendar>
+
         
 </mat-dialog-content>
 <mat-dialog-actions align="end">
