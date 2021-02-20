@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import  * as moment from 'jalali-moment';
 import  {Moment} from 'jalali-moment';
@@ -14,9 +15,13 @@ export interface DialogData {
   styleUrls: ['./maintenance-add-dlg.component.scss']
 })
 export class MaintenanceAddDlgComponent implements OnInit {
+
+  maintenances = new FormControl();
+  maintenanceList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  
   StartTime:Moment =  moment().subtract(6,'h');
   datePickerConfig = {
-    drops: 'up',
+    drops: 'down',
     format: 'YY/M/D',
     showGoToCurrent: true
 }

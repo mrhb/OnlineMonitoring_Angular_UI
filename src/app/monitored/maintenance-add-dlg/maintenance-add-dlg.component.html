@@ -2,6 +2,23 @@
 <mat-dialog-content class="mat-typography">
   <h3>{{data.name}}</h3>
   <p>select which service has been done. </p>
+  <mat-form-field appearance="fill">
+
+    <mat-label>Maintenance servises</mat-label>
+    <mat-select [formControl]="maintenances" multiple>
+      <mat-select-trigger>
+        {{maintenances.value ? maintenances.value[0] : ''}}
+        <span *ngIf="maintenances.value?.length > 1" class="example-additional-selection">
+          (+{{maintenances.value.length - 1}} {{maintenances.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger>
+
+
+      <mat-option *ngFor="let topping of maintenanceList" [value]="topping">{{topping}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+
     <div class="pickers">
         <div >
           <p>Start Time</p>
