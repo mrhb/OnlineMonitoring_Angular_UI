@@ -110,11 +110,10 @@ constructor(private http: HttpClient,
     var merticnames=[]
         if(unit.deviceType.valueOf()=="mint")
         merticnames=this.metrics_minit;
-        if(unit.deviceType.valueOf()=="amf25")
+        else if(unit.deviceType.valueOf()=="amf25")
         merticnames=this.metrics_amf25;
         else
         merticnames=this.metrics_classic;
-    
 
     merticnames.forEach((m)=>{
       var   metric:MetricInfo={

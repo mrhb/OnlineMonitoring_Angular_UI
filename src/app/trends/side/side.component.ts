@@ -42,7 +42,7 @@ export class SideComponent implements OnInit {
       {
         this.expandedElement=this.trends[0];
         this.selectedUnit=this.trends[0].UnitsInfo[0];
-        this.UnitMetrics=this.trendsService.getUinitMetric(this.selectedUnit);
+        this.UnitMetrics=this.trendsService.getUnitMetric(this.selectedUnit);
       }
 
       console.log(this.trends[0].UnitsInfo[0].name);
@@ -65,7 +65,7 @@ export class SideComponent implements OnInit {
       this.selectedUnit=item;
     }
     
-    this.UnitMetrics=this.trendsService.getUinitMetric(item);
+    this.UnitMetrics=this.trendsService.getUnitMetric(item);
   }
   selectedMetric(item:MetricInfo,checked:boolean){
   item.selected=checked;
