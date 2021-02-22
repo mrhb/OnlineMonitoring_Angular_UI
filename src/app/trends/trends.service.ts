@@ -82,7 +82,7 @@ constructor(private http: HttpClient,
       if(Infos[0].UnitsInfo[0])
       {
         var unit=Infos[0].UnitsInfo[0];
-        this.getUinitMetric(unit);
+        this.getUnitMetric(unit);
         var metricName=this.getFavoritMetric(unit.deviceType);
         var   metric:MetricInfo={
           Unit:unit,
@@ -105,16 +105,15 @@ constructor(private http: HttpClient,
     else
     return"Power";
   }
-  getUinitMetric(unit:UnitInfo){
+  getUnitMetric(unit:UnitInfo){
     this.selectedSeries.metricsInfo=[];
     var merticnames=[]
         if(unit.deviceType.valueOf()=="mint")
         merticnames=this.metrics_minit;
-        if(unit.deviceType.valueOf()=="amf25")
+        else if(unit.deviceType.valueOf()=="amf25")
         merticnames=this.metrics_amf25;
         else
         merticnames=this.metrics_classic;
-    
 
     merticnames.forEach((m)=>{
       var   metric:MetricInfo={
