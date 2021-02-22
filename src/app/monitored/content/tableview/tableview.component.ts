@@ -11,6 +11,7 @@ import { StatesService } from '@app/monitored/service/states.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MaintenanceAddDlgComponent } from '@app/maintenance/maintenance-add-dlg/maintenance-add-dlg.component';
+import { Unit } from '@app/management/services/unit';
 
 
 @Component({
@@ -27,7 +28,7 @@ import { MaintenanceAddDlgComponent } from '@app/maintenance/maintenance-add-dlg
 })
 export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
   dataSource = new MatTableDataSource<stateInto>();
-  
+  stateInfos:stateInto[];
   constructor(
     public dialog: MatDialog,
     private statesService:StatesService
@@ -47,16 +48,23 @@ export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
   ngOnInit(): void {
     
     this.statesService.UnitsDataSubject.subscribe((data)=>{
+      this.stateInfos=data.items;
       this.dataSource = new MatTableDataSource<stateInto>(data.items);
          });
   }
 
-  openDialog() {
+  openDialog(info:stateInto) {
     const dialogRef = this.dialog.open(MaintenanceAddDlgComponent,
-      {
-        width: '300px',
-        data: {name: "svrwvwrvr"}
-      });
+            { 
+              // width: '300px', 
+              data : 
+              {
+                maintenances:this.stateInfos[0].maintenances,
+                runHours:this.stateInfos[0].Run_Hours,
+                stateInfo:info
+              }
+            }
+    );
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);

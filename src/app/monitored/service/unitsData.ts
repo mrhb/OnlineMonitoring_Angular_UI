@@ -1,3 +1,4 @@
+import {  Maintenance} from "@app/maintenance/service/maintenance";
 export class stateInto{
     id:String;
     name:String;
@@ -9,6 +10,7 @@ export class stateInto{
     elapsed:string;
     lat:string;
     long:string;
+    maintenances:Maintenance[];
 
 }
 export class unitsStateInfo{
@@ -30,6 +32,7 @@ export class unitsStateInfo{
        temp.elapsed=item.elapsed;
        temp.lat=item.lat;
        temp.long=item.long;
+       temp.maintenances=item.maintenances;
           return temp;
       });
     } 

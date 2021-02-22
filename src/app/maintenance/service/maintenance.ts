@@ -12,5 +12,5 @@ export interface Maintenance {
     },
     duration:Number;
     runHour:Number;
-    date:Number;
+    date:Date;
 }

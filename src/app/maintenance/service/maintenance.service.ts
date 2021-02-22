@@ -22,7 +22,7 @@ export class MaintenanceService {
     return this.http.get<MaintenanceInfo>(`${baseUrl}/${id}`);
   }
 
-  updateMaintenanceById(id, data): Observable<any> {
+  public updateMaintenanceById(id, data: Maintenance[]): Observable<any> {
     return this.http.patch<MaintenanceInfo>(`${baseUrl}/${id}`, data);
   }
 }
