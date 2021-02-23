@@ -1,7 +1,7 @@
-<h2 mat-dialog-title>Record service time</h2>
+<h2 mat-dialog-title>Update performed maintenance services</h2>
 <mat-dialog-content class="mat-typography">
 
-  <h1>select service to update it. </h1>
+  <p>select service to update it. </p>
   <mat-form-field appearance="fill">
     <mat-label>Maintenance servises</mat-label>
     <mat-select [formControl]="selectedMaintenance" >
@@ -20,9 +20,42 @@
   
   <button mat-button  [disabled]="!selectedMaintenance.value" (click)="update()">set</button>
 
-  <ul>
-     <li *ngFor="let added of data.maintenances">{{added.name}}   runhours:{{added.runHour}}   date:{{added.date}}</li>
-  </ul>     
+  <div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <!-- runHour Column -->
+      <ng-container matColumnDef="runHour">
+        <th mat-header-cell *matHeaderCellDef> RunHour </th>
+        <td mat-cell *matCellDef="let element"> {{element.runHour}} </td>
+      </ng-container>
+      <!-- date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef> Symbol </th>
+        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close cdkFocusInitial>cancel</button>
