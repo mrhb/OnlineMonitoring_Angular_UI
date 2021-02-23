@@ -21,8 +21,6 @@
           {{element.name}}
         </div> -->
         {{element.name}}
-        <a (click)="openDialog(element)">add service</a>
-
       </td>
     </ng-container>
 
@@ -46,6 +44,18 @@
           </container-element>
         </td>
     </ng-container>      
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>actions</th>
+      <td class="pdate-column" mat-cell *matCellDef="let element">
+
+        <button mat-icon-button (click)="openDialog(element)" aria-label="maintenance">
+          <mat-icon>build</mat-icon>
+        </button>
+  
+      </td>
+    </ng-container>    
 
     <!-- Actions Column -->
     <ng-container matColumnDef="Actions">

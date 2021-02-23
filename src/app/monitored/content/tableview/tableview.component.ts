@@ -41,7 +41,7 @@ export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
   // dataSource = ELEMENT_DATA; 
   
   // columnsToDisplay = ['Alarm','Name','Engine','Update','Actions'];
-  columnsToDisplay = ['Name','State','Update'];
+  columnsToDisplay = ['Name','State','Update','action'];
   expandedElement: stateInto|null ;
   
   
