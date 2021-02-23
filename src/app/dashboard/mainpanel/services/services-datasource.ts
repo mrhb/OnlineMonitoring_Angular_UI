@@ -5,22 +5,24 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { StatesService } from '@app/monitored/service/states.service';
+import { MaintenanceTime, RemainingHour } from '@app/maintenance/service/maintenance';
 
 // TODO: Replace this with your own data model type
 export interface ServicesItem {
-  id: string;
-  name: string;
+  unitName: string;
+  maintenanceName: string;
   counter: number;
 
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: ServicesItem[] = [
-  {id: 'unit 1', name: 'Maintenance 1' , counter: 0   },
-  {id: 'unit 2', name: 'Maintenance 1' , counter: 276 },
-  {id: 'unit 3', name: 'Service Time 1', counter: 300 },
-  {id: 'unit 4', name: 'Maintenance 1' , counter: 300 },
-  {id: 'unit 4', name: 'Maintenance 1' , counter: 300 },
+const EXAMPLE_DATA: RemainingHour[] = [
+  {unitName: 'unit 1', maintenanceName: 'Maintenance 1' , counter: 0   },
+  {unitName: 'unit 2', maintenanceName: 'Maintenance 1' , counter: 276 },
+  {unitName: 'unit 3', maintenanceName: 'Service Time 1', counter: 300 },
+  {unitName: 'unit 4', maintenanceName: 'Maintenance 1' , counter: 300 },
+  {unitName: 'unit 4', maintenanceName: 'Maintenance 1' , counter: 300 },
  
 ];
 
@@ -36,8 +38,14 @@ export class ServicesDataSource extends  MatTableDataSource<ServicesItem> {
 
 
 
-  constructor() {
+  constructor(public statesService:StatesService)
+  {
     super();
+
+    this.statesService.UnitsDataSubject.subscribe(
+      result=>{
+      this.data=new MaintenanceTime(result.items).items;
+    });
   }
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
@@ -66,8 +74,8 @@ export class ServicesDataSource extends  MatTableDataSource<ServicesItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'name': return compare(a.maintenanceName, b.maintenanceName, isAsc);
+        case 'unitName': return compare(+a.unitName, +b.unitName, isAsc);
         default: return 0;
       }
     });

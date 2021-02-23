@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
-import { Maintenance,MaintenanceInfo } from './maintenance';
+import { Maintenance,OneUnitMaintenanceInfo } from './maintenance';
 
 const baseUrl =environment.userUrl+ '/api/maintenance';
 
@@ -14,15 +14,15 @@ export class MaintenanceService {
 
   constructor(private http: HttpClient) { }
 
-  getAllMaintenances(): Observable<MaintenanceInfo[]> {
-    return this.http.get<MaintenanceInfo[]>(baseUrl);
+  getAllMaintenances(): Observable<OneUnitMaintenanceInfo[]> {
+    return this.http.get<OneUnitMaintenanceInfo[]>(baseUrl);
   }
 
   getMaintenance(id): Observable<any> {
-    return this.http.get<MaintenanceInfo>(`${baseUrl}/${id}`);
+    return this.http.get<OneUnitMaintenanceInfo>(`${baseUrl}/${id}`);
   }
 
   public updateMaintenanceById(id, data: Maintenance[]): Observable<any> {
-    return this.http.patch<MaintenanceInfo>(`${baseUrl}/${id}`, data);
+    return this.http.patch<OneUnitMaintenanceInfo>(`${baseUrl}/${id}`, data);
   }
 }

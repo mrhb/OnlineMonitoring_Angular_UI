@@ -1,7 +1,7 @@
 import {  Maintenance} from "@app/maintenance/service/maintenance";
 export class stateInto{
     id:String;
-    name:String;
+    name:string;
     state:String;
     AlarmList:String[]|null;
     Genset_kWh:Number;
@@ -47,3 +47,4 @@ export class unitsStateInfo{
     }
     }
 }
+

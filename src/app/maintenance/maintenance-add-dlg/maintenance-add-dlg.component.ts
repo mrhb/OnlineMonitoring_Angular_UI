@@ -5,7 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import  * as moment from 'jalali-moment';
 import  {Moment} from 'jalali-moment';
 import { DatePickerComponent } from 'ng2-jalali-date-picker';
-import { Maintenance,MaintenanceInfo } from '@app/maintenance/service/maintenance';
+import { Maintenance,OneUnitMaintenanceInfo } from '@app/maintenance/service/maintenance';
 import {MaintenanceService  } from "@app/maintenance/service/maintenance.service";
 import { Unit } from '@app/management/services/unit';
 import { stateInto } from '@app/monitored/service/UnitsData';
