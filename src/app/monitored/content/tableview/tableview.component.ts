@@ -67,6 +67,7 @@ export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
     );
 
     dialogRef.afterClosed().subscribe(result => {
+      this.statesService.LoadStateReq();
       // console.log(`Dialog result: ${result}`);
     });
   }

@@ -59,14 +59,14 @@ export class StatesService {
   public get UnitsDataValue(): unitsStateInfo {
     return this.UnitsDataSubject.value;
 }
-Load(http: HttpClient,UnitsDataSubject :BehaviorSubject<unitsStateInfo> ) {
+ Load(http: HttpClient,UnitsDataSubject :BehaviorSubject<unitsStateInfo> ) {
    http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions).subscribe((states)=>{
     localStorage.setItem('unitsStateInfo', JSON.stringify(states));
     UnitsDataSubject.next(new unitsStateInfo(states));
   })
 }
 
-LoadStateReq() {
+public LoadStateReq() {
   this.http.post<stateInto[]>(baseSidebarUrl, {}, httpOptions).subscribe((states)=>{
     localStorage.setItem('unitsStateInfo', JSON.stringify(states));
     this.  UnitsDataSubject.next(new unitsStateInfo(states));
