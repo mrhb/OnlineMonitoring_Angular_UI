@@ -57,8 +57,7 @@ export class MaintenanceAddDlgComponent implements OnInit {
 
   save():void{
     this.maintenaceSevice.updateMaintenanceById(this.data.stateInfo.id,this.data.stateInfo.maintenances).subscribe({
-      next: user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
+      next: result => {
         Notiflix.Notify.Success(`${this.data.stateInfo.name}  maintenances updated`);
         this.dialogRef.close()
       },
