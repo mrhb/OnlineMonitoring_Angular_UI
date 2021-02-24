@@ -19,7 +19,7 @@ export class MaintenanceTime{
         _items.map(item=>{
             item.maintenances.map(m=>{
                 var temp=  new RemainingHour();
-                temp.counter=this.calCounter(m,item.Run_Hours);
+                temp.counter=calCounter(m,item.Run_Hours);
                 temp.maintenanceName=m.name;
                 temp.unitName=item.name;
 
@@ -41,32 +41,37 @@ export class MaintenanceTime{
         });
         } 
 
-        calCounter(m:Maintenance,CurrentRunhour:number):number
-        {
-            var counter=0;
-            switch(m.criteria as any) { 
-                case 'runHour': { 
-                    var temp=m.runHour+m.duration; //ساعت کارکردی که باید سرویس مجددا انجام شود
-                    counter= CurrentRunhour-temp;
-                    break; 
-                } 
-                case 'day' : { 
-                    let createdDate = moment(m.date).utc().format();
-                    let expirationDate = moment(m.date).add(m.duration, 'd');//روزی که باید مجددا سرویس انجام شود
-                    counter=expirationDate.subtract(moment.now()).hours();
-                   //statements; 
-                   break; 
-                } 
-                default: { 
-                   //statements; 
-                   break; 
-                } 
-             } 
-             if(counter<0) counter=0;
-            return counter;
-        }
     }
+    
+ export function calCounter(m:Maintenance,CurrentRunhour:number):number
+    {
+        var counter=0;
+        switch(m.criteria as any) { 
+            case 'runHour': { 
+                var temp=m.runHour+m.duration; //ساعت کارکردی که باید سرویس مجددا انجام شود
+                counter= CurrentRunhour-temp;
+                break; 
+            } 
+            case 'day' : { 
+                let createdDate = moment(m.date).utc().format();
+                let expirationDate = moment(m.date).add(m.duration, 'd');//روزی که باید مجددا سرویس انجام شود
+                let today=moment();
+                // counter=expirationDate.subtract(today).hours();
 
+
+                var duration = moment.duration(today.diff(expirationDate));
+                counter = Math.round(duration.asHours());
+               //statements; 
+               break; 
+            } 
+            default: { 
+               //statements; 
+               break; 
+            } 
+         } 
+         if(counter<0) counter=0;
+        return counter;
+    }
 export interface Maintenance {
     name: string;
     criteria:{
