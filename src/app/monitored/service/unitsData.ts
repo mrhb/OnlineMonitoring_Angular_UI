@@ -5,7 +5,7 @@ export class stateInto{
     state:String;
     AlarmList:String[]|null;
     Genset_kWh:Number;
-    Run_Hours:Number;
+    Run_Hours:number;
     time:String;
     elapsed:string;
     lat:string;

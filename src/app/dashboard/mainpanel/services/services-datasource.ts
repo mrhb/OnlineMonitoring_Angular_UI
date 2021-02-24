@@ -15,17 +15,6 @@ export interface ServicesItem {
   counter: number;
 
 }
-
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: RemainingHour[] = [
-  {unitName: 'unit 1', maintenanceName: 'Maintenance 1' , counter: 0   },
-  {unitName: 'unit 2', maintenanceName: 'Maintenance 1' , counter: 276 },
-  {unitName: 'unit 3', maintenanceName: 'Service Time 1', counter: 300 },
-  {unitName: 'unit 4', maintenanceName: 'Maintenance 1' , counter: 300 },
-  {unitName: 'unit 4', maintenanceName: 'Maintenance 1' , counter: 300 },
- 
-];
-
 /**
  * Data source for the Services view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
