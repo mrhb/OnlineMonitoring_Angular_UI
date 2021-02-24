@@ -45,3 +45,7 @@ button:focus{
 .RightAlign{
   text-align: right;
 }
+
+.LeftAlign{
+  text-align: left;
+}

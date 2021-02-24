@@ -31,12 +31,7 @@ const EXAMPLE_DATA: RemainingHour[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ServicesDataSource extends  MatTableDataSource<ServicesItem> {
-  data: ServicesItem[] = EXAMPLE_DATA;
-  paginator: MatPaginator;
-  sort: MatSort;
-
-
+export class MaintenanceDataSource extends  MatTableDataSource<ServicesItem> {
 
   constructor(public statesService:StatesService)
   {

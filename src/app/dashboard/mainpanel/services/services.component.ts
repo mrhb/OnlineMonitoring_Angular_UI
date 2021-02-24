@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { StatesService } from '@app/monitored/service/states.service';
-import { ServicesDataSource, ServicesItem } from './services-datasource';
+import { MaintenanceDataSource, ServicesItem } from './services-datasource';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class ServicesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<ServicesItem>;
-  dataSource: ServicesDataSource;
+  dataSource: MaintenanceDataSource;
   sevicefilterIndx:number=0;
   
 
@@ -24,7 +24,7 @@ export class ServicesComponent implements AfterViewInit, OnInit {
   constructor(public statesService:StatesService){}
 
   ngOnInit() {
-    this.dataSource = new ServicesDataSource(this.statesService);
+    this.dataSource = new MaintenanceDataSource(this.statesService);
 
     this.dataSource.filterPredicate = 
     (data: ServicesItem, filter: string) => data.counter> parseInt(filter);
