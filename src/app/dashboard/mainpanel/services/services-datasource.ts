@@ -30,6 +30,33 @@ export class MaintenanceDataSource extends  MatTableDataSource<ServicesItem> {
       result=>{
       this.data=new MaintenanceTime(result.items).items;
     });
+
+    
+    this.filterPredicate = 
+    (data: ServicesItem, filter: string) =>{
+      switch(filter) { 
+        case 'lessThan24': { 
+          return data.counter<24;
+            break; 
+        } 
+        case '24To299' : { 
+          return (data.counter>=24)&&(data.counter<300);
+           break; 
+        } 
+        case '300To599' : { 
+          return (data.counter>=300)&&(data.counter<600);
+          break; 
+       } 
+        case '600To999' : { 
+          return data.counter>=600;
+          break; 
+     } 
+        default: { 
+          return true;
+          break; 
+        } 
+     } 
+    };
   }
   /**
    *  Called when the table is being destroyed. Use this function, to clean up

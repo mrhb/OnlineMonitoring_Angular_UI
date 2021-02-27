@@ -24,11 +24,7 @@ export class ServicesComponent implements AfterViewInit, OnInit {
   constructor(public statesService:StatesService){}
 
   ngOnInit() {
-    this.dataSource = new MaintenanceDataSource(this.statesService);
-
-    this.dataSource.filterPredicate = 
-    (data: ServicesItem, filter: string) => data.counter> parseInt(filter);
-  
+    this.dataSource = new MaintenanceDataSource(this.statesService);  
   }
 
   ngAfterViewInit() {
@@ -37,16 +33,7 @@ export class ServicesComponent implements AfterViewInit, OnInit {
     this.table.dataSource = this.dataSource;
   }
 
-  public doFilter = (value: string) => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
-  }
-
-  public applyFilter = (value: string) => {   
-    this.dataSource.filter = value.trim().toLocaleLowerCase();    
-  }
-
   onClickMe(value: string) {
-    //this.sevicefilterIndx=value;
-    this.doFilter(value);
+    this.dataSource.filter =value;
   }
 }

@@ -1,8 +1,8 @@
 <div id="main">
-  <button  id="serv1"  (click)="onClickMe('0')" ><p>≤ 24 h</p><p><b>1</b></p></button>
-  <button  id="serv2" (click)="onClickMe('250')"><p>24-299 h </p><p><b>1</b></p></button>
-  <button  id="serv3" (click)="onClickMe('300')"><p>300-599 h</p><p><b>3</b></p></button>
-  <button  id="serv4" (click)="onClickMe('600')"><p>600-999 h</p><p><b>1</b></p></button>
+  <button  id="serv1"  (click)="onClickMe('lessThan24')" ><p>≤ 24 h</p><p><b>1</b></p></button>
+  <button  id="serv2" (click)="onClickMe('24To299')"><p>24-299 h </p><p><b>1</b></p></button>
+  <button  id="serv3" (click)="onClickMe('300To599')"><p>300-599 h</p><p><b>3</b></p></button>
+  <button  id="serv4" (click)="onClickMe('600To999')"><p>600-999 h</p><p><b>1</b></p></button>
 </div>
 <div class="mat-elevation-z8 small-table">
   <table mat-table class="full-width-table" matSort aria-label="Elements">
