@@ -12,7 +12,6 @@ import { stateInto } from '@app/monitored/service/UnitsData';
 
 export interface DialogData {
   maintenances: Maintenance[] ;
-  runHours:Number;
   stateInfo:stateInto
 }
 
@@ -32,7 +31,7 @@ export interface PeriodicElement {
 export class MaintenanceAddDlgComponent implements OnInit {
 
 
-  displayedColumns = ['position', 'name', 'runHour', 'date'];
+  displayedColumns = ['position', 'name','interval', 'runHour', 'date'];
   dataSource 
 
 
@@ -60,7 +59,14 @@ export class MaintenanceAddDlgComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
+  getInterval(element:Maintenance):string{
+    if(element.criteria as any =="day")
+      return "  "+ element.duration+"d  ";
+    else if(element.criteria as any =="runHour")
+      return "  "+element.duration+"h  ";
+    else
+      return "  on Winter  ";
+  }
   update():void{
     let item :  Maintenance = this.selectedMaintenance.value;
     item.runHour=this.RunHours.value;
