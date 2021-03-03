@@ -1,4 +1,5 @@
-<div class="bulckActions">
+<div class="mat-elevation-z8">
+  <div class="bulckActions">
   <form [formGroup]="formGroup"  class="form">
       <mat-form-field  >
       <mat-label>Bulc action</mat-label>
@@ -151,3 +152,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;">
     </tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

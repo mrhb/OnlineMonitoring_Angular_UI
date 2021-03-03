@@ -1,6 +1,7 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
 
@@ -13,10 +14,12 @@ import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
   templateUrl: './units.component.html',
   styleUrls: ['./units.component.css']
 })
-export class UnitsComponent implements OnInit {
+export class UnitsComponent implements OnInit  {
   units:Unit[];
   displayedColumns: string[] = ['select', 'id', 'name','deviceType','state','netaddress','groups','customer','gate','disable','comm','actions'];
   dataSource = new MatTableDataSource<Unit>(this.units);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   selection = new SelectionModel<Unit>(true, []);
 
   constructor(private UnitsService: UnitsService,
@@ -37,6 +40,7 @@ export class UnitsComponent implements OnInit {
         data => {
           this.units = data;
           this.dataSource = new MatTableDataSource<Unit>(this.units);
+          this.dataSource.paginator = this.paginator;
           this.selection = new SelectionModel<Unit>(true, []);
           console.log(data);
         },

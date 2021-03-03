@@ -36,6 +36,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { AuthGuard } from '@app/_helpers';
 import { Permission } from '@app/_models';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -105,6 +106,7 @@ const  routes:  Routes  = [
     MatIconModule,
     MatToolbarModule,
     MatTableModule,
+    MatPaginatorModule ,
     MatCheckboxModule,
     HttpClientModule,
     MatDialogModule,

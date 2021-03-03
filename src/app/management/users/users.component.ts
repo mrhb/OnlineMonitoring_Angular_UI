@@ -1,5 +1,5 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
@@ -17,6 +17,7 @@ import { User } from '../services/user';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 import { Unit } from '../services/unit';
 import { HttpClient } from '@angular/common/http';
+import { MatPaginator } from '@angular/material/paginator';
 
 /**
  * @title Table with selection
@@ -32,6 +33,8 @@ export class UsersComponent implements OnInit {
   users:User[];
   displayedColumns: string[] = ['select', 'id', 'firstname','lastname','email','unitCount','lang','conn','reportsM','reportsW','api','isadmin','actions'];
   dataSource = new MatTableDataSource<User>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   selection = new SelectionModel<User>(true, []);
 
 
@@ -65,6 +68,7 @@ export class UsersComponent implements OnInit {
         data => {
           this.users = data;
           this.dataSource = new MatTableDataSource<User>(this.users);
+          this.dataSource.paginator = this.paginator;
           this.selection = new SelectionModel<User>(true, []);
           console.log(data);
         },
