@@ -1,4 +1,6 @@
 table{
-    /* margin: 10px; */
     width: -webkit-fill-available;
+}
+div{
+    margin: 10px;
 }
