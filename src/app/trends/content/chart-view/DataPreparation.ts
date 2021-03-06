@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import { SeriesInfo } from '../../trendInfo';
+import{GetColor} from'./ColorGenerator';
 // Named function
 function Convertor(seriasData,metricsInfo) {
     let series=  []
@@ -31,10 +32,17 @@ function Convertor(seriasData,metricsInfo) {
         data[f].push(obj3);
         }
     }
-    
+
+
     for (let  f = 0; f < metrics.length; f++){
         series.push(
-            { data: data[f], label:lables[f] }
+            {   
+                data: data[f], label:lables[f] ,
+                backgroundColor:GetColor(f).background.toString(),
+                borderColor:GetColor(f).border.toString(),
+                pointRadius: 2,
+                pointHoverRadius: 4
+            }
         );
     }
     return series;

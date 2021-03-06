@@ -45,15 +45,8 @@
         </div>
   </div>
   <div class="Chart">
-      
-      <canvas baseChart
-      [datasets]="ChartData"     
-      [options]="ChartOptions"
-      [plugins]="ChartPlugins"
-      [legend]="ChartLegend"
-      [chartType]="ChartType"
-      >
-    </canvas> 
+    <canvas #myCanvas id="canvas">{{ chart }}
+    </canvas>
 </div>
 
 
@@ -65,7 +58,7 @@
     <button mat-button >
         <mat-icon >zoom_out</mat-icon>
     </button>
-    <button mat-button >
+    <button mat-button  (click)="resetZoom()">
         <mat-icon >youtube_searched_for</mat-icon>
     </button>
     <button mat-button  >
