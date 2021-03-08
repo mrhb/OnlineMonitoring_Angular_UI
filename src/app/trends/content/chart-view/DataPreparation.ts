@@ -2,7 +2,7 @@ import * as moment from 'moment';
 import { SeriesInfo } from '../../trendInfo';
 import{GetColor} from'./ColorGenerator';
 // Named function
-function Convertor(seriasData,metricsInfo) {
+function Convertor(seriasData,metricsInfo,trim:boolean) {
     let series=  []
     var  data = [];
 
@@ -29,12 +29,25 @@ function Convertor(seriasData,metricsInfo) {
                 x: moment(seriasData[i].time).format('MM/DD/YYYY HH:mm:ss'),
                 y: seriasData[i][metrics[f]]
             };
-        data[f].push(obj3);
+            
+            data[f].push(obj3);
         }
     }
 
 
     for (let  f = 0; f < metrics.length; f++){
+
+        if(trim)
+        {
+            while(data[f][0].y == null) {
+                data[f].shift(); // remove leading null  
+            }
+            
+            while(data[f][data[f].length-1].y == null) { 
+                data[f].pop(); // remove tailing null 
+            }
+        }
+
         series.push(
             {   
                 data: data[f], label:lables[f] ,

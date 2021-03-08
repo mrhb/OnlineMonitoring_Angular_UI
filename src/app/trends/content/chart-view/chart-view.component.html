@@ -27,24 +27,27 @@
                 <mat-select>
                     <mat-option *ngFor="let type of Tools" [value]="type.value">
                         {{type.label}}
-                      </mat-option>
+                    </mat-option>
                 </mat-select>
               </mat-form-field>
             
               <mat-form-field >
                 <mat-label>Display</mat-label>
-                <mat-select [formControl]="toppings" multiple>
-                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                <mat-select [formControl]="toppings" multiple  >
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping" (click)="onDisplayChange(topping)">
+                      {{topping}}  
+                  </mat-option>
                 </mat-select>
               </mat-form-field>
 
-              <button mat-button  >
+              <button mat-button  (click)="EnablePanning()" >
                 <mat-icon> fact_check</mat-icon>
                 Uncheck all values
             </button>
         </div>
   </div>
   <div class="Chart">
+    <button (click)="resetZoom()">Reset Zoom</button>
     <canvas #myCanvas id="canvas">{{ chart }}
     </canvas>
 </div>

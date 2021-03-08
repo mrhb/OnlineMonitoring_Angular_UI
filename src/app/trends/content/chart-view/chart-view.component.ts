@@ -37,7 +37,7 @@ const OPTIONS: ChartOptions = {
                     parser: 'MM/DD/YYYY HH:mm:ss',
                     // round: 'minute',
                     tooltipFormat: 'll HH:mm:ss'
-                },
+                  },
                 scaleLabel: {
                       display: true,
                       labelString: ''
@@ -53,7 +53,7 @@ const OPTIONS: ChartOptions = {
                         
                     },
                     ticks: {
-                        suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                        // suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
                         // OR //
                         beginAtZero: true   // minimum value will be 0.
                     }
@@ -104,7 +104,7 @@ const OPTIONS: ChartOptions = {
                     drag: false,
                     mode: 'x',
                     speed: 0.1
-                }
+                  }
             }
   }
 };
@@ -142,6 +142,9 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
     { value: 2, label: 'Reload all data'},
   ];
   toppingList: string[] = [
+    'panning',
+    'fit to data',
+    'trim start&end null data',
     'Show points',
     'Multiple axis', 
     'No legend', 
@@ -155,12 +158,13 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
   SelectedType=this.Types[1];
   form: FormGroup;
   formGroup :FormGroup ; 
-  
+  public trim:boolean=false; //remove null data
   public chart:Chart ; // This will hold our chart info
   public ChartType: ChartType = 'line';
   public ChartOptions: ChartOptions = OPTIONS;
   public context: CanvasRenderingContext2D;
   public ChartData: any[];
+  public info:MetricInfo[];
   @ViewChild('myCanvas', {static: false}) myCanvas: ElementRef;
   selectedRange: number=1;
   selectedType: string='line';
@@ -184,17 +188,51 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
                     
   ngOnInit(): void {    
     this._trendsService.metricsDataSubject.subscribe((data)=>{
-      var  info:MetricInfo[] =this._trendsService.getSelected();
-      if((data!=null) && (info.length!=0) && (this.chart))
+      this.info =this._trendsService.getSelected();
+      if((data!=null) && (this.info.length!=0) && (this.chart))
       {
-        this.ChartData = DataPreparation(data,info);
-        this.chart.data.datasets=this.ChartData;
-        this.chart.update();
+        this.ChartData =data;
+        this.Display();
       }
         
     });
   }
-
+  EnablePanning()
+  {
+    if ( this.chart.options.plugins.zoom.zoom.enabled) {
+      this.chart.options.plugins.zoom.pan.enabled = true;
+      this.chart.options.plugins.zoom.zoom.enabled = false;
+      this.chart.options.plugins.zoom.zoom.drag = false;
+    }
+    else{
+      this.chart.options.plugins.zoom.pan.enabled = false;
+      this.chart.options.plugins.zoom.zoom.enabled = true;
+      this.chart.options.plugins.zoom.zoom.drag = true;
+    }
+    this.Display();
+  }
+  Display()
+  {
+    this.chart.data.datasets= DataPreparation(this.ChartData,this.info,this.trim);
+    this.chart.update()
+  }
+  onDisplayChange(toppings)
+  {
+    console.log(toppings);
+    switch (toppings) {
+      case 'panning':
+        this.EnablePanning();
+        break
+      case 'fit to data':
+        this.chart.options.scales.yAxes[0].ticks.beginAtZero=!this.chart.options.scales.yAxes[0].ticks.beginAtZero;
+        break
+      case   'trim start&end null data':
+        this.trim=!this.trim;
+      default:
+      break
+    }
+    this.Display();
+  }
   onTypeSelection(type ){
     console.log(type +"  Type Selected");
 
@@ -203,10 +241,10 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
     this.chart.destroy();
     this.chart = new Chart(this.context, {
       type: this.ChartType,
-      // data: {data:this.ChartData},
-      options:OPTIONS,
+      options:this.ChartOptions,
     });
-    this.chart.data.datasets=this.ChartData;
+
+    this.chart.data.datasets= DataPreparation(this.ChartData,this.info,this.trim);
     this.chart.update();
   }
 
@@ -304,7 +342,7 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
 
   resetZoom():void
   {
-    // this.chart.data.datasets=this.ChartData;
-    this.chart.update();
+    this.toppings.setValue([]);
+    this.onTypeSelection(this.ChartType );
   }
 }
