@@ -145,7 +145,8 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
     'panning',
     'fit to data',
     'trim start&end null data',
-    'Show points',
+    'zoom&pan xy',
+    'hide point',
     'Multiple axis', 
     'No legend', 
     'Short legend', 
@@ -228,6 +229,25 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
         break
       case   'trim start&end null data':
         this.trim=!this.trim;
+        break
+      case 'zoom&pan xy':
+        if(this.chart.options.plugins.zoom.zoom.mode=='x')
+        {
+          this.chart.options.plugins.zoom.zoom.mode='xy';
+          this.chart.options.plugins.zoom.pan.mode='xy';
+        }
+        else
+        {
+        this.chart.options.plugins.zoom.zoom.mode='x';  
+        this.chart.options.plugins.zoom.pan.mode='x';
+        }
+        break
+        case 'hide point':
+          if(this.chart.options.elements.point.radius !=0)
+          this.chart.options.elements.point.radius =0;
+          else
+          this.chart.options.elements.point.radius =3;
+        break
       default:
       break
     }
@@ -340,8 +360,9 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
           }//switch
   }//onRangeSelection
 
-  resetZoom():void
+  resetChart():void
   {
+    this.trim=false;
     this.toppings.setValue([]);
     this.onTypeSelection(this.ChartType );
   }

@@ -53,8 +53,6 @@ function Convertor(seriasData,metricsInfo,trim:boolean) {
                 data: data[f], label:lables[f] ,
                 backgroundColor:GetColor(f).background.toString(),
                 borderColor:GetColor(f).border.toString(),
-                pointRadius: 2,
-                pointHoverRadius: 4
             }
         );
     }

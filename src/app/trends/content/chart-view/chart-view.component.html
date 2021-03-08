@@ -47,7 +47,6 @@
         </div>
   </div>
   <div class="Chart">
-    <button (click)="resetZoom()">Reset Zoom</button>
     <canvas #myCanvas id="canvas">{{ chart }}
     </canvas>
 </div>
@@ -61,7 +60,7 @@
     <button mat-button >
         <mat-icon >zoom_out</mat-icon>
     </button>
-    <button mat-button  (click)="resetZoom()">
+    <button mat-button  (click)="resetChart()">
         <mat-icon >youtube_searched_for</mat-icon>
     </button>
     <button mat-button  >
