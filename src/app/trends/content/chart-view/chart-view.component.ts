@@ -18,7 +18,11 @@ const OPTIONS: ChartOptions = {
   display: false,
   text: 'Unit 1'
   },
-
+  elements:{
+    point:{
+      radius:0
+    }
+  },
   tooltips: {
       mode: 'index',
       intersect: false,
@@ -35,15 +39,15 @@ const OPTIONS: ChartOptions = {
               type: 'time',
               time: {
                     parser: 'MM/DD/YYYY HH:mm:ss',
-                    // round: 'minute',
-                    tooltipFormat: 'll HH:mm:ss'
+                    round: 'minute',
+                    tooltipFormat: 'll HH:mm'
                   },
                 scaleLabel: {
                       display: true,
-                      labelString: ''
+                      labelString: 'Time'
                   },
                   ticks: {
-                        maxRotation: 0
+                        maxRotation: 45
                     }
                 }],
                 yAxes: [{
@@ -146,7 +150,7 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
     'fit to data',
     'trim start&end null data',
     'zoom&pan xy',
-    'hide point',
+    'show point',
     'Multiple axis', 
     'No legend', 
     'Short legend', 
@@ -242,7 +246,7 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
         this.chart.options.plugins.zoom.pan.mode='x';
         }
         break
-        case 'hide point':
+        case 'show point':
           if(this.chart.options.elements.point.radius !=0)
           this.chart.options.elements.point.radius =0;
           else

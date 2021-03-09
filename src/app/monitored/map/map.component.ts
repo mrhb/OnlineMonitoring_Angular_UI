@@ -70,7 +70,7 @@ export class MapComponent implements OnInit,AfterViewInit {
 
    var marers= this.units.map( item=>{
     var  Icon = L.icon({
-      iconRetinaUrl,
+      iconRetinaUrl:`assets/mapIcons/${item.state}.png`,
       iconUrl:`assets/mapIcons/${item.state}.png`,
       shadowUrl,
       iconSize: [38, 38],
