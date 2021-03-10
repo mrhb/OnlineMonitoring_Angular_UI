@@ -151,12 +151,12 @@ export class ChartViewComponent implements trendViewComponent, OnInit ,AfterView
     'trim start&end null data',
     'zoom&pan xy',
     'show point',
-    'Multiple axis', 
-    'No legend', 
-    'Short legend', 
-    'Full legend',
-    'Hide tooltips',
-    'Show full screen'
+    // 'Multiple axis', 
+    // 'No legend', 
+    // 'Short legend', 
+    // 'Full legend',
+    // 'Hide tooltips',
+    // 'Show full screen'
   ];
   toppings = new FormControl();
   SelectedRange=this.Ranges[1];
