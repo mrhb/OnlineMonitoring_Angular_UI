@@ -10,7 +10,7 @@ export interface Unit {
     state:Boolean,
     deviceType:{
       type: String,
-      enum: ['mint','amf25','teta']
+      enum: ['mint','amf25','teta','aras']
       },
     groups: string;
     customer: string;

@@ -14,12 +14,14 @@ import { User } from '../../../services/user';
 export enum DeviceType {
   mint= "mint", 
   amf25= "amf25", 
-  teta= "teta"
+  // teta= "teta",
+  aras="aras"
 }
 const DEVICES=[
   {type:DeviceType.mint, name: "Mint"},
   {type:DeviceType.amf25, name: "AMF25"},
-  {type:DeviceType.teta, name: "Teta ECU"},
+  // {type:DeviceType.teta, name: "Teta ECU"},
+  {type:DeviceType.aras, name: "GenSet"},
 ];
 
 
