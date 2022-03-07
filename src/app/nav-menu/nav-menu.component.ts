@@ -14,6 +14,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
+  user: User;
   user$: Observable<User>;
   owners$: Observable<User[]>;
   selectedOwnerId;
@@ -37,6 +38,8 @@ export class NavMenuComponent implements OnInit {
       private UsersService: UsersService,
       private authenticationService: AuthenticationService
       ) {
+        this.user = this.authenticationService.userValue;
+
         this.user$=this.authenticationService.userSubject;
         this.owners$=this.authenticationService.owners;
         this.thenBlock = this.primaryBlock;
