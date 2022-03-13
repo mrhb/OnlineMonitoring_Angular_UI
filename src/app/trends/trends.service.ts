@@ -6,7 +6,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 
 
 
-import {  METRICS_amf25, METRICS_classic, METRICS_minit } from './mock-trends';
+import {  METRICS_amf25, METRICS_classic, METRICS_minit,METRICS_aras } from './mock-trends';
 import { MetricInfo, SeriesInfo, TrendInfo, UnitInfo } from './trendInfo';
 import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
@@ -33,6 +33,7 @@ trendsInfos:TrendInfo[]=[];
 metrics_classic:string[]=METRICS_classic;
 metrics_minit:string[]=METRICS_minit;
 metrics_amf25:string[]=METRICS_amf25;
+metrics_aras:string[]=METRICS_aras;
 
 public TrendsInfoSubject: BehaviorSubject<TrendInfo[]>;
 public metricsDataSubject: BehaviorSubject<any>=new BehaviorSubject<any>([]);
@@ -100,7 +101,9 @@ constructor(private http: HttpClient,
   getFavoritMetric(unitType){
     if(unitType=="mint")
     return"Gen_kW";
-    if(unitType=="amf25")
+    else if(unitType=="amf25")
+    return"Load_kW";
+    else if(unitType=="aras")
     return"Load_kW";
     else
     return"Power";
@@ -111,6 +114,8 @@ constructor(private http: HttpClient,
         if(unit.deviceType.valueOf()=="mint")
         merticnames=this.metrics_minit;
         else if(unit.deviceType.valueOf()=="amf25")
+        merticnames=this.metrics_amf25;
+        else if(unit.deviceType.valueOf()=="aras")
         merticnames=this.metrics_amf25;
         else
         merticnames=this.metrics_classic;
