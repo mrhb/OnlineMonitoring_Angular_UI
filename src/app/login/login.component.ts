@@ -63,8 +63,9 @@ export class LoginComponent implements OnInit {
                   })
                   .then(() => {
                     // get return url from query parameters or default to home page
-                    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/monitored-units';
+                    const returnUrl ='/';// this.route.snapshot.queryParams['returnUrl'] || '/';
                     this.router.navigateByUrl(returnUrl);
+                    window.location.replace('/');
                     this.loading = false;
                   })
                 },
