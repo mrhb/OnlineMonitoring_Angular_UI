@@ -3,12 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-// api:     'http://185.252.28.72:3600/api',
-   api:     'http://localhost:3600/api',
-   sidebar: 'http://localhost:3600/api',
-   authUrl: 'http://localhost:3600',
-   userUrl: 'http://localhost:3600',
+  // production: true,
+  // api:     'http://185.252.28.72:3600/api',
+  //  api:     'http://localhost:3600/api',
+  //  sidebar: 'http://localhost:3600/api',
+  //  authUrl: 'http://localhost:3600',
+  //  userUrl: 'http://localhost:3600',
+  //  useMockServer: false
+
+
+   production: true,
+   api: 'http://tetavisor.com/api',
+   sidebar: 'http://tetavisor.com/api',
+   authUrl: 'http://tetavisor.com',
+   userUrl: 'http://tetavisor.com',
    useMockServer: false
 };
 
