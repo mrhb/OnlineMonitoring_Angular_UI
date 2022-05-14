@@ -116,7 +116,7 @@ constructor(private http: HttpClient,
         else if(unit.deviceType.valueOf()=="amf25")
         merticnames=this.metrics_amf25;
         else if(unit.deviceType.valueOf()=="aras")
-        merticnames=this.metrics_amf25;
+        merticnames=this.metrics_aras;
         else
         merticnames=this.metrics_classic;
 
