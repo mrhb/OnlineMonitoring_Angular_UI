@@ -14,6 +14,7 @@ import * as moment from 'moment';
 import { TrendsService } from '@app/trends/trends.service';
 const OPTIONS: ChartOptions = {
   responsive: true, 
+  maintainAspectRatio: false,
   title: {
   display: false,
   text: 'Unit 1'
