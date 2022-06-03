@@ -17,7 +17,7 @@ import { Unit } from '@app/management/services/unit';
 })
 export class ContentComponent implements OnInit {
   @Input() ViewType: string;
-  @Output() unitSelectionEvent = new EventEmitter<number>(); tempnum:number=0;
+  @Output() unitSelectionEvent = new EventEmitter<String>(); 
   @ViewChild(ViewUnitsDirective, {static: true}) appViewUnits: ViewUnitsDirective;
 
   units:stateInto[];
@@ -29,12 +29,10 @@ export class ContentComponent implements OnInit {
     }
 
   viewClick(){
-    this.tempnum=this.tempnum+1;
-    console.log(this.tempnum +"  clicked");
-    this.unitSelectionEvent.emit(this.tempnum);
+    this.unitSelectionEvent.emit("");
   }
-  onUnitSelection(info:stateInto) {
-    this.unitSelectionEvent.emit(2);
+  onUnitSelection(id:String) {
+    this.unitSelectionEvent.emit(id);
 
   }
   ngOnInit(): void {

@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./side.component.css']
 })
 export class SideComponent implements OnInit {
+  @Input() unitId:string="";
   @Input() sideType:string="";
 
   name:string="Unit 1";

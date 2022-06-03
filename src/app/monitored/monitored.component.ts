@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MonitoredComponent implements OnInit {
 expantion:string="normal";
 viewType:string="table";
+selectedId:string="";
 
 SideType:string="";
 sideOpen:boolean=true;
@@ -41,10 +42,10 @@ showUnitDetail:boolean=false;
       this.SideType="miniDetail";
     }
     this.sideOpen=(this.showfilter||this.showUnitDetail);
-    this.sideOpen=true;
   }
-  unitSelected(selectedId:number){
-    this.showUnitDetail=!this.showUnitDetail;
+  unitSelected(selectedId:string){
+    this.selectedId=selectedId;
+    this.showUnitDetail=true;
     if( this.showUnitDetail)
     {
       this.SideType="miniDetail";

@@ -1,3 +1,4 @@
+import { getNumberOfCurrencyDigits } from "@angular/common";
 import {  Maintenance} from "@app/maintenance/service/maintenance";
 export class stateInto{
     id:String;
@@ -36,7 +37,10 @@ export class unitsStateInfo{
           return temp;
       });
     } 
-
+    getById(id:String):stateInto{
+      var info= this.items.find(element=>element.id==id);
+      return info;
+    }
     
     public readJSON(str) {
       try {

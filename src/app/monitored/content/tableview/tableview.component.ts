@@ -27,7 +27,7 @@ import { Unit } from '@app/management/services/unit';
   ],
 })
 export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
-  @Output() unitSelectionEvent = new EventEmitter<number>(); unitid:number=0;
+  @Output() unitSelectionEvent = new EventEmitter<String>();
   dataSource = new MatTableDataSource<stateInto>();
   stateInfos:stateInto[];
   constructor(
@@ -55,7 +55,7 @@ export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
   }
 
   unitSelected(info:stateInto) {
-    this.unitSelectionEvent.emit(2);
+    this.unitSelectionEvent.emit(info.id);
 
   }
   openDialog(info:stateInto) {

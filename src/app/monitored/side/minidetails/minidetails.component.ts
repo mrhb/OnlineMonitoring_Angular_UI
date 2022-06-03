@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { StatesService } from '@app/monitored/service/states.service';
+import { stateInto } from '@app/monitored/service/UnitsData';
 
 @Component({
   selector: 'minidetails',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./minidetails.component.css']
 })
 export class MinidetailsComponent implements OnInit {
+  @Input() unitId:string;
   element: PeriodicElement | null=ELEMENT_DATA;
-  constructor() { }
+  stateInfos:stateInto;
+
+  constructor(private statesService:StatesService) { }
 
   ngOnInit(): void {
+    this.statesService.UnitsDataSubject.subscribe((data)=>{
+      this.stateInfos=data.getById(this.unitId);
+         });
   }
 
 }
