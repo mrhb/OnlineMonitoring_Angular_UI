@@ -33,6 +33,10 @@ export class ContentComponent implements OnInit {
     console.log(this.tempnum +"  clicked");
     this.unitSelectionEvent.emit(this.tempnum);
   }
+  onUnitSelection(info:stateInto) {
+    this.unitSelectionEvent.emit(2);
+
+  }
   ngOnInit(): void {
   }
   ngOnChanges() {
@@ -55,12 +59,15 @@ export class ContentComponent implements OnInit {
         break; 
       } 
       default: { 
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(ModuleviewComponent);
+         componentFactory = this.componentFactoryResolver.resolveComponentFactory(ModuleviewComponent);
          //statements; 
          break; 
       } 
    } 
     const componentRef = viewContainerRef.createComponent<ViewComponent>(componentFactory);
+
+    componentRef.instance.unitSelectionEvent.subscribe(id => this.onUnitSelection(id));
+
   }
 
 }

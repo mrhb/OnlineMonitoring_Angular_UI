@@ -41,6 +41,7 @@ showUnitDetail:boolean=false;
       this.SideType="miniDetail";
     }
     this.sideOpen=(this.showfilter||this.showUnitDetail);
+    this.sideOpen=true;
   }
   unitSelected(selectedId:number){
     this.showUnitDetail=!this.showUnitDetail;

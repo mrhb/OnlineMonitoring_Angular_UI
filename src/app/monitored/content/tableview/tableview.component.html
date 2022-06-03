@@ -14,7 +14,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="Name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td class="name-column" mat-cell *matCellDef="let element">
+        <td class="name-column" (click)="unitSelected(element)"  mat-cell *matCellDef="let element">
         <span  class="material-icons {{element.state}} ">warning</span>
         <!-- <span  class="name-column">{{element.itemName}} </span>  -->
         <!-- <div class="backgroundAlarm {{element.alarm.Icon}}">

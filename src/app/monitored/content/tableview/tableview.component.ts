@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import{ViewComponent} from '../view.component'
 import { MatPaginator } from '@angular/material/paginator';
@@ -27,6 +27,7 @@ import { Unit } from '@app/management/services/unit';
   ],
 })
 export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
+  @Output() unitSelectionEvent = new EventEmitter<number>(); unitid:number=0;
   dataSource = new MatTableDataSource<stateInto>();
   stateInfos:stateInto[];
   constructor(
@@ -53,6 +54,10 @@ export class TableviewComponent implements ViewComponent,OnInit,OnDestroy {
          });
   }
 
+  unitSelected(info:stateInto) {
+    this.unitSelectionEvent.emit(2);
+
+  }
   openDialog(info:stateInto) {
     const dialogRef = this.dialog.open(MaintenanceAddDlgComponent,
             { 

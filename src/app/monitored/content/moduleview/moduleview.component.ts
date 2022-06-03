@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ViewComponent } from '../view.component';
 
 @Component({
@@ -7,6 +7,8 @@ import { ViewComponent } from '../view.component';
   styleUrls: ['./moduleview.component.sass']
 })
 export class ModuleviewComponent implements ViewComponent,OnInit {
+  @Output() unitSelectionEvent = new EventEmitter<number>(); unitid:number=0;
+
   constructor() { }
   ngOnInit(): void {
   }
