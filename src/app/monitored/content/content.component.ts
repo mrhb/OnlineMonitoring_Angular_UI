@@ -27,10 +27,6 @@ export class ContentComponent implements OnInit {
     ){
 
     }
-
-  viewClick(){
-    this.unitSelectionEvent.emit("");
-  }
   onUnitSelection(id:String) {
     this.unitSelectionEvent.emit(id);
 

@@ -7,7 +7,7 @@ import { ViewComponent } from '../view.component';
   styleUrls: ['./iconview.component.sass']
 })
 export class IconviewComponent implements ViewComponent,OnInit {
-  @Output() unitSelectionEvent = new EventEmitter<number>(); unitid:number=0;
+  @Output() unitSelectionEvent = new EventEmitter<String>();
 
   constructor() { }
   ngOnInit(): void {
