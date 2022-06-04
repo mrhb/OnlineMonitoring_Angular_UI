@@ -31,15 +31,24 @@
     Last Update:{{stateInfos?.elapsed}}
 </p>
 
-<p>
+<h3>
     AlarmList:
-</p>
+</h3>
     
 <div class="alarms-Container">
-    <div class="unit-alarmssss  {{alarm.Icon}}" *ngFor="let alarm of element.alarms">
+    <div class="unit-alarmssss  ECU" *ngFor="let alarm of stateInfos?.AlarmList">
+        <span id="detailIcon" class="material-icons ECU">warning</span>
+        <span id="detailIcon" class="ECU" >
+            {{alarm}}
+        </span>
+    </div>          
+</div>
+
+<!-- <div class="alarms-Container">
+    <div class="unit-alarmssss  {{alarm.Icon}}" *ngFor="let alarm of stateInfos.AlarmList">
         <span id="detailIcon" class="material-icons {{alarm.Icon}}">warning</span>
         <span id="detailIcon" class="{{alarm.Icon}}" >
             {{alarm.name }}
         </span>
     </div>          
-</div>
+</div> -->

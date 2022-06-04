@@ -39,6 +39,7 @@ export class unitsStateInfo{
     } 
     getById(id:String):stateInto{
       var info= this.items.find(element=>element.id==id);
+      if(info && !Array.isArray(info.AlarmList))info.AlarmList=[];
       return info;
     }
     

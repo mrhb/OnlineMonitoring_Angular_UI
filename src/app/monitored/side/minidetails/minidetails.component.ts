@@ -15,9 +15,12 @@ export class MinidetailsComponent implements OnInit {
   constructor(private statesService:StatesService) { }
 
   ngOnInit(): void {
+  }
+  ngOnChanges() {
     this.statesService.UnitsDataSubject.subscribe((data)=>{
+      console.log("minidetailse UnitId: "+this.unitId)
       this.stateInfos=data.getById(this.unitId);
-         });
+         });    
   }
 
 }
