@@ -1,7 +1,7 @@
 <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="side" opened="{{sideOpen}}">
      <!-- <p>salam</p> -->
-      <monitored-side [unitId]="selectedId" [sideType]="SideType" ></monitored-side>
+      <monitored-side [unitId]="selectedId" [sideType]="SideType" (closeEvent)="closeSide()"></monitored-side>
     </mat-sidenav>
     
     <mat-sidenav-content>

@@ -2,7 +2,7 @@
     <h2 *ngIf="unitMiniDetailVisible">Details</h2>
     <h2 *ngIf="filterVisible">Filter</h2>
 
-    <button mat-button  >
+    <button mat-button (click)="onCloseClick()"  >
         <mat-icon>close</mat-icon>
     </button>  
     

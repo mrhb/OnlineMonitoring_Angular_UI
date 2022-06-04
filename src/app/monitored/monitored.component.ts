@@ -57,6 +57,9 @@ showUnitDetail:boolean=false;
     this.sideOpen=(this.showfilter||this.showUnitDetail);
     console.log("selectedId:" +selectedId )
   }
+  closeSide(){
+    this.sideOpen=false;
+  }
   setContentView(type:string){
     this.viewType=type;
   }
