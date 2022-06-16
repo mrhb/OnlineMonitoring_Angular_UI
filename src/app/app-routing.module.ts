@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './login/registration/registration.component';
 import { ManagementModule } from './management/management.module';
 import { MonitoredComponent } from './monitored/monitored.component';
+import { DetailComponent } from './unit/detail/detail.component';
+import { UnitModule } from './unit/unit.module';
 import { AuthGuard } from './_helpers/auth.guard';
 import { Permission, Role } from './_models';
 
@@ -34,6 +36,7 @@ const routes: Routes = [
     ]
    }
   },
+  { path: 'unit', component: UnitModule , pathMatch: 'full' },
     // { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard], data: { roles: [Role.Admin]} },
     { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]},
     { path: '', redirectTo: 'monitored-units', pathMatch: 'full' },

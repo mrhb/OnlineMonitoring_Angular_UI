@@ -1,0 +1,25 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="{{sideOpen}}">
+     <!-- <p>salam</p> -->
+      <!-- <monitored-side [unitId]="selectedId" [sideType]="SideType" (closeEvent)="closeSide()"></monitored-side> -->
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+        <div id="container" [ngClass]="expantion" >    
+            <mat-toolbar>
+                <span>Monitored Units</span>
+
+
+
+                <div class="actions">
+                    <mat-icon  class="filter">filter_alt</mat-icon>
+                    <span class="filter"> filter</span>
+                    <mat-icon  >keyboard_arrow_left</mat-icon>
+                    <mat-icon       >keyboard_arrow_right</mat-icon>
+                </div>
+            </mat-toolbar>   
+           <!-- <app-content [ViewType]=viewType (unitSelectionEvent)="unitSelected($event)"></app-content> -->
+           <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

@@ -40,7 +40,8 @@ imports: [
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatRadioModule 
+    MatRadioModule ,
+    MatSidenavModule
 ],
 exports: [
     MatToolbarModule,
@@ -65,7 +66,8 @@ exports: [
      MatFormFieldModule,
      MatInputModule,
      MatListModule,
-     MatRadioModule 
+     MatRadioModule ,
+     MatSidenavModule
 ],
  
 })

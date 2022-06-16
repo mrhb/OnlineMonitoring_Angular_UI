@@ -46,6 +46,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
 import { ManagementModule } from  './management/management.module';
+import { UnitModule } from  './unit/unit.module';
 import { TrendsModule } from  './trends/trends.module';
 import { MonitoredComponent } from './monitored/monitored.component';
 import { MapComponent } from './monitored/map/map.component';
@@ -119,6 +120,7 @@ import {DpDatePickerModule} from 'ng2-jalali-date-picker';
     MatTooltipModule,
     MatMenuModule,
     ManagementModule,
+    UnitModule,
     MatPaginatorModule,
     MatSortModule,
     TrendsModule,
