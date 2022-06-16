@@ -14,7 +14,7 @@ const  unitRoutes:  Routes  = [
   component:  UnitComponent,
   children: [
     {
-      path:  'detail',
+      path:  'detail/:id',
       component:  DetailComponent,
     }
   ]

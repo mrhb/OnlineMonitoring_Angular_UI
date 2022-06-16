@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StatesService } from '@app/monitored/service/states.service';
 import { stateInto } from '@app/monitored/service/UnitsData';
 
@@ -12,7 +13,8 @@ export class MinidetailsComponent implements OnInit {
   element: PeriodicElement | null=ELEMENT_DATA;
   stateInfos:stateInto;
 
-  constructor(private statesService:StatesService) { }
+  constructor(private statesService:StatesService,
+    private router: Router,) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +23,10 @@ export class MinidetailsComponent implements OnInit {
       console.log("minidetailse UnitId: "+this.unitId)
       this.stateInfos=data.getById(this.unitId);
          });    
+  }
+  showUnitDetailScreen(){
+    this.router.navigate(['/unit/detail/', { id: this.unitId}]);
+
   }
 
 }
