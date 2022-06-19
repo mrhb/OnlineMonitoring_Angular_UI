@@ -19,7 +19,13 @@
 }
 
 
-
+.unit-states > div {
+  background-color: #eeeeee;
+  border: solid 1px #d4d4d4;
+  text-align: center;
+  padding: .3125rem;
+  margin: .6rem;
+}
 
 .alarms-Container{
     padding-top: 3px;

@@ -21,10 +21,6 @@
           {{element.name}}
         </div> -->
         {{element.name}}
-
-        <a [routerLink]="['/unit/detail', element.id]">
-          detail
-        </a>
       </td>
     </ng-container>
 
@@ -57,7 +53,10 @@
         <button mat-icon-button (click)="openDialog(element)" aria-label="maintenance" matTooltip="O&M">
           <mat-icon>build</mat-icon>
         </button>
-  
+
+        <button mat-icon-button   [routerLink]="['/unit/detail', element.id]">
+          <mat-icon> av_timer </mat-icon>
+        </button>  
       </td>
     </ng-container>    
 

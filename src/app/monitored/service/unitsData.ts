@@ -1,9 +1,13 @@
 import { getNumberOfCurrencyDigits } from "@angular/common";
 import {  Maintenance} from "@app/maintenance/service/maintenance";
+import { CONST_breaker, CONST_controller } from './constants';
+
 export class stateInto{
     id:String;
     name:string;
     state:String;
+    breakerState:String;
+    controllerMode:String;
     AlarmList:String[]|null;
     Genset_kWh:Number;
     Run_Hours:number;
@@ -26,6 +30,8 @@ export class unitsStateInfo{
        temp.id=item.id;
        temp.name=item.name;
        temp.state=item.state;
+       temp.breakerState=CONST_breaker.find(x => x.key == item.breakerState).value ;
+       temp.controllerMode=CONST_controller.find(x => x.key == item.controllerMode).value ;
        temp.AlarmList=this.readJSON(item.AlarmList);
        temp.Genset_kWh=item.Genset_kWh;
        temp.Run_Hours=item.Run_Hours;
@@ -52,4 +58,5 @@ export class unitsStateInfo{
     }
     }
 }
+
 

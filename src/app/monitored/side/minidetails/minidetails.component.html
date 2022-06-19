@@ -14,22 +14,21 @@
     
  
 </form> 
-
+<p>  </p>
 <p>
-    state:{{stateInfos?.state}}
+<span>
+    Last Update:
+</span>
+<span>
+    {{stateInfos?.elapsed}}
+</span>
 </p>
 
-<p>
-    Breaker State:
-</p>
-
-<p>
-    Controller Mode:
-</p>
-
-<p>
-    Last Update:{{stateInfos?.elapsed}}
-</p>
+<div class="grid-row grid-col unit-states">
+    <div class="engine-state"><span esg-i18n="Engine state">Engine state</span>: <span class="ng-binding">{{stateInfos?.state}}</span></div>
+    <div class="breaker-state"><span esg-i18n="Breaker state">Breaker state</span>: <span class="ng-binding">{{stateInfos?.breakerState}}</span></div>
+    <div class="controller-mode"><span esg-i18n="Controller Mode">Controller Mode</span>: <span class="ng-binding">{{stateInfos?.controllerMode}}</span></div>
+  </div>
 
 <h3>
     AlarmList:
