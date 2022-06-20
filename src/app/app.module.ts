@@ -5,16 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -48,20 +38,11 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ManagementModule } from  './management/management.module';
 import { UnitModule } from  './unit/unit.module';
 import { TrendsModule } from  './trends/trends.module';
-import { MonitoredComponent } from './unit/monitored/monitored.component';
-import { MapComponent } from './unit/monitored/map/map.component';
-import { ContentComponent } from './unit/monitored/content/content.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { TableviewComponent } from './unit/monitored/content/tableview/tableview.component';
-import { IconviewComponent } from './unit/monitored/content/iconview/iconview.component';
-import { ModuleviewComponent } from './unit/monitored/content/moduleview/moduleview.component';
-import { ViewUnitsDirective } from './unit/monitored/content/view-units.directive';
-import{SideComponent} from './unit/monitored/side/side.component';
-import { MinidetailsComponent } from './unit/monitored/side/minidetails/minidetails.component';
-import { FilterComponent } from './unit/monitored/side/filter/filter.component'
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import{    MaterialModule} from './app-material.module'
 
@@ -72,6 +53,7 @@ import { RegistrationComponent } from './login/registration/registration.compone
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaintenanceAddDlgComponent } from './maintenance/maintenance-add-dlg/maintenance-add-dlg.component'
 import {DpDatePickerModule} from 'ng2-jalali-date-picker';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -90,16 +72,6 @@ import {DpDatePickerModule} from 'ng2-jalali-date-picker';
     MainpanelComponent,
     SidepanelComponent,
     GroupsComponent,
-    MonitoredComponent,
-    MapComponent,
-    ContentComponent,
-    TableviewComponent,
-    IconviewComponent,
-    ModuleviewComponent,
-    SideComponent,
-    ViewUnitsDirective,
-    MinidetailsComponent,
-    FilterComponent,
     LoginComponent,
     RegistrationComponent,
     MaintenanceAddDlgComponent,

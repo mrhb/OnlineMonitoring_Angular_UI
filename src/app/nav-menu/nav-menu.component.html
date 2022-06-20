@@ -24,7 +24,7 @@
        <ng-template [ngIf]="user &&  user.permissionLevel!=4">
          <a mat-button routerLink="/dashboard"> <mat-icon>dashboard</mat-icon>Dashboard </a>
         </ng-template>
-        <a mat-button routerLink="/monitored-units"> <mat-icon>receipt_long</mat-icon> Units </a>
+        <a mat-button routerLink="/unit/monitored"> <mat-icon>receipt_long</mat-icon> Units </a>
         <a mat-button routerLink="/trends"> <mat-icon>trending_up</mat-icon> Analyse </a>
         <ng-template [ngIf]="user && user.permissionLevel!=4">
           <a mat-button routerLink="/management/users"> <mat-icon>fact_check</mat-icon> Management </a>
