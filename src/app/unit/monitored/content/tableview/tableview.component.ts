@@ -4,9 +4,9 @@ import{ViewComponent} from '../view.component'
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { stateInto,unitsStateInfo } from '@app/monitored/service/UnitsData';
+import { stateInto,unitsStateInfo } from '@app/unit/monitored/service/UnitsData';
 import { OnDestroy } from '@angular/core';
-import { StatesService } from '@app/monitored/service/states.service';
+import { StatesService } from '@app/unit/monitored/service/states.service';
 
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';

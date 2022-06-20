@@ -8,7 +8,7 @@ import { DatePickerComponent } from 'ng2-jalali-date-picker';
 import { Maintenance,OneUnitMaintenanceInfo } from '@app/maintenance/service/maintenance';
 import {MaintenanceService  } from "@app/maintenance/service/maintenance.service";
 import { Unit } from '@app/management/services/unit';
-import { stateInto } from '@app/monitored/service/UnitsData';
+import { stateInto } from '@app/unit/monitored/service/UnitsData';
 
 export interface DialogData {
   maintenances: Maintenance[] ;

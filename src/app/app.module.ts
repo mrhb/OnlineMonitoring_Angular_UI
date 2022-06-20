@@ -48,17 +48,17 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ManagementModule } from  './management/management.module';
 import { UnitModule } from  './unit/unit.module';
 import { TrendsModule } from  './trends/trends.module';
-import { MonitoredComponent } from './monitored/monitored.component';
-import { MapComponent } from './monitored/map/map.component';
-import { ContentComponent } from './monitored/content/content.component';
+import { MonitoredComponent } from './unit/monitored/monitored.component';
+import { MapComponent } from './unit/monitored/map/map.component';
+import { ContentComponent } from './unit/monitored/content/content.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { TableviewComponent } from './monitored/content/tableview/tableview.component';
-import { IconviewComponent } from './monitored/content/iconview/iconview.component';
-import { ModuleviewComponent } from './monitored/content/moduleview/moduleview.component';
-import { ViewUnitsDirective } from './monitored/content/view-units.directive';
-import{SideComponent} from './monitored/side/side.component';
-import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.component';
-import { FilterComponent } from './monitored/side/filter/filter.component'
+import { TableviewComponent } from './unit/monitored/content/tableview/tableview.component';
+import { IconviewComponent } from './unit/monitored/content/iconview/iconview.component';
+import { ModuleviewComponent } from './unit/monitored/content/moduleview/moduleview.component';
+import { ViewUnitsDirective } from './unit/monitored/content/view-units.directive';
+import{SideComponent} from './unit/monitored/side/side.component';
+import { MinidetailsComponent } from './unit/monitored/side/minidetails/minidetails.component';
+import { FilterComponent } from './unit/monitored/side/filter/filter.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';

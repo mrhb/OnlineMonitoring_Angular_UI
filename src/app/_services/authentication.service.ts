@@ -6,7 +6,7 @@ import { first, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../_models';
-import { StatesService } from '@app/monitored/service/states.service';
+import { StatesService } from '@app/unit/monitored/service/states.service';
 import { TrendsService } from '@app/trends/trends.service';
 
 import Notiflix from "notiflix-angular";

@@ -6,7 +6,7 @@ import { FirstPageComponent } from './first-page/first-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './login/registration/registration.component';
 import { ManagementModule } from './management/management.module';
-import { MonitoredComponent } from './monitored/monitored.component';
+import { MonitoredComponent } from './unit/monitored/monitored.component';
 import { DetailComponent } from './unit/detail/detail.component';
 import { UnitModule } from './unit/unit.module';
 import { AuthGuard } from './_helpers/auth.guard';

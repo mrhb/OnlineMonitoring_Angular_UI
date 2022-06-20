@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { StatesService } from '@app/monitored/service/states.service';
+import { StatesService } from '@app/unit/monitored/service/states.service';
 import { MaintenanceTime, RemainingHour } from '@app/maintenance/service/maintenance';
 
 // TODO: Replace this with your own data model type
