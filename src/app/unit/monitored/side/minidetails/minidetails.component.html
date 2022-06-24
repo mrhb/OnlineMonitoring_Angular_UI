@@ -14,6 +14,7 @@
     
  
 </form> 
+<div class="grid-row grid-col unit-states">
 <p>  </p>
 <p>
 <span>
@@ -24,17 +25,15 @@
 </span>
 </p>
 
-<div class="grid-row grid-col unit-states">
     <div class="engine-state"><span esg-i18n="Engine state">Engine state</span>: <span class="ng-binding">{{stateInfos?.state}}</span></div>
     <div class="breaker-state"><span esg-i18n="Breaker state">Breaker state</span>: <span class="ng-binding">{{stateInfos?.breakerState}}</span></div>
     <div class="controller-mode"><span esg-i18n="Controller Mode">Controller Mode</span>: <span class="ng-binding">{{stateInfos?.controllerMode}}</span></div>
-  </div>
-
-<h3>
-    AlarmList:
-</h3>
     
-<div class="alarms-Container">
+    <h3>
+        AlarmList:
+    </h3>
+    
+    <div class="alarms-Container">
     <div class="unit-alarmssss  ECU" *ngFor="let alarm of stateInfos?.AlarmList">
         <span id="detailIcon" class="material-icons ECU">warning</span>
         <span id="detailIcon" class="ECU" >
@@ -43,6 +42,7 @@
     </div>          
 </div>
 
+</div>
 <!-- <div class="alarms-Container">
     <div class="unit-alarmssss  {{alarm.Icon}}" *ngFor="let alarm of stateInfos.AlarmList">
         <span id="detailIcon" class="material-icons {{alarm.Icon}}">warning</span>

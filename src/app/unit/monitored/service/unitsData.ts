@@ -22,16 +22,23 @@ export class unitsStateInfo{
    public items:stateInto[];
    constructor(_items:any[])
     {
-      if(!_items)
-      _items=[];
+      if(!_items){
+        _items=[];
+        return;
+        }
       this.items=_items.map(item=>{
        var temp=  new stateInto();
 
        temp.id=item.id;
        temp.name=item.name;
        temp.state=item.state;
-       temp.breakerState=CONST_breaker.find(x => x.key == item.breakerState).value ;
-       temp.controllerMode=CONST_controller.find(x => x.key == item.controllerMode).value ;
+       try{
+         temp.breakerState=CONST_breaker.find(x => x.key == item.breakerState).value ;
+         temp.controllerMode=CONST_controller.find(x => x.key == item.controllerMode).value ;
+       }
+       catch(err){
+
+       }
        temp.AlarmList=this.readJSON(item.AlarmList);
        temp.Genset_kWh=item.Genset_kWh;
        temp.Run_Hours=item.Run_Hours;
