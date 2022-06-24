@@ -16,6 +16,8 @@ import { ViewUnitsDirective } from './monitored/content/view-units.directive';
 import { MinidetailsComponent } from './monitored/side/minidetails/minidetails.component';
 import { FilterComponent } from './monitored/side/filter/filter.component'
 import { MatTableModule } from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
+
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -80,6 +82,7 @@ const  unitRoutes:  Routes  = [
     HttpClientModule,
     MatSidenavModule,
     MatTableModule,
+    MatTabsModule,
     MatSelectModule,
     MatInputModule,
     MatTooltipModule,

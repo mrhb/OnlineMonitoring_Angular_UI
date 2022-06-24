@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {ViewEncapsulation, Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.sass']
+  styleUrls: ['./detail.component.css'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class DetailComponent implements OnInit {
   id: string;

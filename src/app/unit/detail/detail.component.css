@@ -1,0 +1,46 @@
+.mat-toolbar{
+background-color: #ffff
+}
+.actions{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    color: red;
+    margin-right: 0;  
+}
+mat-icon.filter{
+    color: black;
+}
+span.filter{
+    color:#d50000
+}
+.actions mat-icon  {
+margin: 0 .625rem;
+color: #424242;
+}
+.actions span{
+    color: #424242;
+}
+.active-link{
+    color: #424242;  
+    text-emphasis: initial;
+}
+a{
+    color:#d50000;
+    font-size: small;  
+}
+.content-content{
+    padding: 0.6rem;
+    background-color: #f3f3f3;
+}
+.mat-tab-body-content{
+    background-color: white;
+}
+.mat-tab-label {
+    margin-top: 0.6rem;
+    margin-right: 0.6rem;
+    padding: 0 0.6rem !important;
+    min-width: 90px !important;
+    opacity: 1 !important;
+    background-color: white !important;
+}

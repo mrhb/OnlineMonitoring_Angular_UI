@@ -7,21 +7,32 @@
     <mat-sidenav-content>
         <div id="container" [ngClass]="expantion" >    
             <mat-toolbar>
-                <span>Monitored Units</span>
-
-
-
+                <!-- <button mat-icon-button >
+                  <mat-icon>list</mat-icon>
+                </button> -->
+                <span>Unit Details</span>
+               
                 <div class="actions">
-                    <mat-icon  class="filter">filter_alt</mat-icon>
-                    <span class="filter"> filter</span>
-                    <mat-icon  >keyboard_arrow_left</mat-icon>
-                    <mat-icon       >keyboard_arrow_right</mat-icon>
-                </div>
+                  <span>Device:</span>
+                    <!-- <h1 class="submenu-title push-right filter" >  </h1> -->
+                   <mat-icon>av_timer</mat-icon> <a  routerLink="/management/units"   routerLinkActive="active-link "   > Unit Detail </a>
+                   <mat-icon>timeline</mat-icon> <a  routerLink="/management/users"   routerLinkActive="active-link"   > Trends </a>
+                   <mat-icon>event_note</mat-icon> <a  routerLink="/management/groups"  routerLinkActive="active-link"   > Reports </a>
+                   <mat-icon>cloud_download</mat-icon>   <a  routerLink="/management/activity"routerLinkActive="active-link"   > Downloads </a>
+                   <mat-icon>settings</mat-icon>   <a  routerLink="/management/activity"routerLinkActive="active-link"   > Settings </a>
+                  </div>
             </mat-toolbar>   
            <!-- <app-content [ViewType]=viewType (unitSelectionEvent)="unitSelected($event)"></app-content> -->
-
-           <h1>{{this.id}}</h1>
-           <router-outlet></router-outlet>
+            <div class="content-content">
+                <mat-tab-group  mat-align-tabs="end" animationDuration="0ms">
+                    <mat-tab label="Main">
+                        <h1>{{this.id}}</h1>
+                        Content 1
+                    </mat-tab>
+                    <mat-tab label="ECU">Content 2</mat-tab>
+                    <mat-tab label="Internal I/O">Content 3</mat-tab>
+                </mat-tab-group>
+            </div>
         </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
