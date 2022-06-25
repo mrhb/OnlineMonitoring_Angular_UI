@@ -1,4 +1,4 @@
-import { stateInto } from "@app/unit/monitored/service/UnitsData";
+import { stateInto } from "@app/unit/service/UnitsData";
 import  * as moment from 'jalali-moment';
 export interface OneUnitMaintenanceInfo {
     id:number;

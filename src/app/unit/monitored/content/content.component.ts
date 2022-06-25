@@ -1,11 +1,11 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import{ViewComponent} from './view.component'
-import{stateInto,unitsStateInfo} from './../service/UnitsData';
+import{stateInto,unitsStateInfo} from '../../service/UnitsData';
 import { TableviewComponent } from './tableview/tableview.component';
 import { ViewUnitsDirective } from './view-units.directive';
 import { IconviewComponent } from './iconview/iconview.component';
 import { ModuleviewComponent } from './moduleview/moduleview.component';
-import{StatesService} from '../service/states.service';
+import{StatesService} from '../../service/states.service';
 import { Observable,of } from 'rxjs';
 import { UnitsService } from '@app/management/services/units.service';
 import { Unit } from '@app/management/services/unit';

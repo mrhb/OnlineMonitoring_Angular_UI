@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { StatesService } from '@app/unit/monitored/service/states.service';
+import { StatesService } from '@app/unit/service/states.service';
 import { MaintenanceDataSource, ServicesItem } from './services-datasource';
 
 

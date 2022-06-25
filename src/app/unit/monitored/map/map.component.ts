@@ -17,8 +17,8 @@ const iconDefault = L.icon({
 L.Marker.prototype.options.icon = iconDefault;
 
 
-import { StatesService } from '../service/states.service';
-import { stateInto } from '../service/UnitsData';
+import { StatesService } from '../../service/states.service';
+import { stateInto } from '../../service/UnitsData';
 
 
 @Component({

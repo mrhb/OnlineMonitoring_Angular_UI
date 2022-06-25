@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StatesService } from '@app/unit/monitored/service/states.service';
-import { stateInto } from '@app/unit/monitored/service/UnitsData';
+import { StatesService } from '@app/unit/service/states.service';
+import { stateInto } from '@app/unit/service/UnitsData';
 
 @Component({
   selector: 'minidetails',
