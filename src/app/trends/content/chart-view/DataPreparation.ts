@@ -48,6 +48,12 @@ function Convertor(seriasData,metricsInfo,trim:boolean) {
             }
         }
 
+        if(metrics[f]=='OilPress' || metrics[f]=='Gen_Freq')//for devid to 10
+        {
+            data[f].forEach((element, index) => {
+                data[f][index].y = element.y/10;
+              });
+        }
         series.push(
             {   
                 data: data[f], label:lables[f] ,
