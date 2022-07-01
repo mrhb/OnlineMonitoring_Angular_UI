@@ -26,8 +26,229 @@
             <div class="content-content">
                 <mat-tab-group  mat-align-tabs="end" animationDuration="0ms">
                     <mat-tab label="Main">
-                        <h1>{{this.id}}</h1>
-                        Content 1
+                        <div class="grid-row row-01">
+                            <div class="grid-col w-6-24">
+                              <div class="info-panel">
+                                <!--<p class="communication-state online" ng-class="unit.getValueProperty('CommunicationState')"><span esg-i18n="{{unit.getValueProperty('CommunicationState')}}"></span></p>-->
+                                <p class="unit-last-update">
+                                    <span style="display:inline;">
+                                        <span esg-i18n="Last Update" style="display:inline;">Last Update</span>:
+                                    </span>
+                                    <!--<svg class="svg-icon">
+                                        <use xlink:href="#last-update-actual-icon" ></use>
+                                    </svg>-->
+                                    <!-- ngIf: timestamp==null -->
+                                    <!-- ngIf: timestamp!=null --><span ng-if="timestamp!=null" class="ng-binding ng-scope">0001-01-01 03:25:44</span><!-- end ngIf: timestamp!=null -->
+                                </p>
+                                <!-- ngIf: ESGVisionConfig.enableInteliMonitor && EsgAccountManagement.userHasAccess('inteliMonitor') && !BrowserDetection.isMobileVariable && (unit == null || unit.hasVisibleIMONButton()) -->
+                              </div>
+                  
+                              <div class="unit-states clearfix">
+                                <div class="us-ready engine-state">
+                                  <span esg-i18n="Engine state" style="display:inline;">Engine state</span>: <br>
+                                  <span style="display:inline;" class="ng-binding">{{this.details?.state}}</span>
+                                </div>
+                                <div class="breaker-state">
+                                  <span esg-i18n="Breaker state" style="display:inline;">Breaker state</span>: <br>
+                                  <span style="display:inline;" class="ng-binding">{{this.details?.breakerState}}</span>
+                                </div>
+                              </div> <!-- states end -->
+                            </div>
+                          
+                            <div class="unit-detail-blocks block-2 w-6-24 ">
+                  
+                              <div class="grid-col w-3-24 analog-meter">
+                                <!-- ngIf: unit.getValuePropertyByActiveRegion('4_d_u_g_1_v') != null --> <!-- unti gauge end -->
+                              </div> <!-- values end -->
+                  
+                              <div class="grid-col w-3-24 analog-meter">
+                                <!-- ngIf: unit.getValuePropertyByActiveRegion('4_d_u_g_2_v') != null --> <!-- unti gauge end -->
+                              </div> <!-- values end -->
+                              <!--
+                              <div class="grid-col w-3-24 analog-meter">
+                                <div class="unit-gauge">
+                                  <wsv-gauge-meter1 gauge-size="201" value="unit.isNoComm() ? unit.formatValueByType({quality:0}) : unit.getValuePropertyByActiveRegion('4_d_u_g_v_3').value" units="unit.getValuePropertyByActiveRegion('4_d_u_g_v_3').units" label="activeRegionName('4_d_u_g_v_3')" min-value="0" max-value="10" round-num="1" low-limit2="1" low-limit1="3" high-limit1="7" high-limit2="9"></wsv-gauge-meter1>
+                                </div> 
+                              </div> 
+                  
+                              <div class="grid-col w-3-24 analog-meter">
+                                <div class="unit-gauge">
+                                  <wsv-gauge-meter1 gauge-size="201" value="unit.isNoComm() ? unit.formatValueByType({quality:0}) : unit.getValuePropertyByActiveRegion('4_d_u_g_v_4').value" units="unit.getValuePropertyByActiveRegion('4_d_u_g_v_4').units" label="activeRegionName('4_d_u_g_v_4')" min-value="0" max-value="15" round-num="1" low-limit2="1" low-limit1="6" high-limit1="8" high-limit2="12"></wsv-gauge-meter1>
+                                </div>
+                              </div> -->
+                  
+                            </div>  <!-- end of .unit-detail-blocks block-2 -->
+                  
+                            <div  class="grid-col w-6-24 control-diagram">
+                              <!-- ngSwitchWhen: 1 -->
+                              <!-- ngSwitchWhen: 2 -->
+                            </div>
+                  
+                            <div class="grid-col w-6-24 alarmlist">
+                              <div class="instrument-container alarmlist clearfix ng-isolate-scope" show-more="false" unit="unit">
+                      <div class="alarmlist-header unit-alarm-nocommunication" ng-class="unit.getClass()">
+                        <!-- <svg class="svg-icon alarm-indication">
+                          <use xlink:href="#cross-circle-icon" ng-xlink-href="#cross-circle-icon"></use>
+                        </svg> -->
+                        <p class="title">
+                          <span esg-i18n="Alarmlist">Alarmlist</span><br>
+                          <span esg-i18n="title:Active alarms" class="ng-binding" title="Active alarms">0 / </span>
+                          <span esg-i18n="title:Unconfirmed alarms" class="ng-binding" title="Unconfirmed alarms">* 0 / </span>
+                          <span esg-i18n="title:All alarms" class="ng-binding" title="All alarms">Σ 0</span>
+                        </p>
+                        <button class="alarm-reset" ng-click="resetAlarms()" ng-disabled="userHasNotControlPermissions()">
+                          <svg class="svg-icon"><use xlink:href="#alarm-full-cut-icon"></use></svg>
+                        </button>
+                      </div>
+                      <ul ng-class="{more: showMoreAlarms==true}">
+                          <!-- ngRepeat: alarm in alarmList -->
+                      </ul>
+                      <!-- <div class="more-alarms ng-hide" ng-show="alarmList.length > 5 &amp;&amp; showMore != false">            
+                        <span class="more" ng-click="showMoreAlarms=true" ng-hide="showMoreAlarms==true">
+                          <svg class="svg-icon"><use xlink:href="#plus-icon"></use></svg>
+                          <span esg-i18n="Show more">Show more</span>
+                        </span>
+                        <span class="less ng-hide" ng-click="showMoreAlarms=false" ng-hide="showMoreAlarms==false">
+                          <svg class="svg-icon"><use xlink:href="#minus-icon"></use></svg>
+                          <span esg-i18n="Show less">Show less</span>
+                        </span>
+                      </div> -->
+                    </div>              
+                            </div><!-- alarmlist end -->
+                          
+                          </div>
+
+                          <div class="grid-row row-02">
+
+                            <div class="grid-col w-6-24 unit-values-table">
+                              <p class="title" esg-i18n="">Electrical</p>
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <td class="ng-binding">Load L1</td><td class="ng-binding">{{this.details?.Load_A_L1}}A</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding">Load L2</td><td class="ng-binding">{{this.details?.Load_A_L2}}A</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding">Load L3</td><td class="ng-binding">{{this.details?.Load_A_L3}}A</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding">voltage L1-N</td><td class="ng-binding">{{this.details?.Gen_V_L1_N | number:'1.2-2'}}V</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding">voltage L2-N</td><td class="ng-binding">{{this.details?.Gen_V_L3_N | number:'1.2-2'}}V</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding">voltage L3-N</td><td class="ng-binding">{{this.details?.Gen_V_L3_N | number:'1.2-2'}}V</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>        
+                                </tbody>
+                              </table>
+                            </div> <!-- values end -->
+                  
+                            <div class="grid-col w-6-24 unit-values-table">
+                              <p class="title" esg-i18n="">Power</p>
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <td class="ng-binding">active 1</td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding">active 2</td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>        
+                                </tbody>
+                              </table>
+                            </div> <!-- values end -->
+                  
+                            <div class="grid-col w-6-24 unit-values-table">
+                              <p class="title" esg-i18n=""></p>
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>       
+                                </tbody>
+                              </table>
+                            </div> <!-- values end -->
+                  
+                            <div class="grid-col w-6-24 unit-values-table">
+                              <p class="title" esg-i18n=""></p>
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ng-binding"></td><td class="ng-binding"></td>
+                                  </tr>        
+                                </tbody>
+                              </table>
+                            </div> <!-- values end -->
+                  
+                          </div>
                     </mat-tab>
                     <mat-tab label="ECU">Content 2</mat-tab>
                     <mat-tab label="Internal I/O">Content 3</mat-tab>
