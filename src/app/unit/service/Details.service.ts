@@ -57,6 +57,7 @@ export class DetailesService {
   }
   startLodingPeriodically(id:string)
   {
+    this.Load(this.http,this.DetailsInfoSubject,id);
     setInterval(this.Load,10000,this.http,this.DetailsInfoSubject,id);
 
   }
