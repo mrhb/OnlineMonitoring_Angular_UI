@@ -38,7 +38,7 @@
                                         <use xlink:href="#last-update-actual-icon" ></use>
                                     </svg>-->
                                     <!-- ngIf: timestamp==null -->
-                                    <!-- ngIf: timestamp!=null --><span ng-if="timestamp!=null" class="ng-binding ng-scope">0001-01-01 03:25:44</span><!-- end ngIf: timestamp!=null -->
+                                    <!-- ngIf: timestamp!=null --><span ng-if="timestamp!=null" class="ng-binding ng-scope">{{this.details?.elapsed}}</span><!-- end ngIf: timestamp!=null -->
                                 </p>
                                 <!-- ngIf: ESGVisionConfig.enableInteliMonitor && EsgAccountManagement.userHasAccess('inteliMonitor') && !BrowserDetection.isMobileVariable && (unit == null || unit.hasVisibleIMONButton()) -->
                               </div>

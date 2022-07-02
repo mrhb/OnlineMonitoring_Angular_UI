@@ -6,7 +6,8 @@ import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { stateInto, unitsStateInfo } from './UnitsData';
-import { unitDetailsInto } from './unitDetailsData';
+import { detailsInto, unitDetailsInto } from './unitDetailsData';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -42,14 +43,31 @@ const view_DATA: stateInto[] = [
 //UnitsData[]
 
 export class DetailesService {
+  public DetailsInfoSubject: BehaviorSubject<detailsInto>;
   constructor(
     private http: HttpClient
-  ){}
+  ){
+    this.DetailsInfoSubject = new BehaviorSubject<detailsInto>(
+      new detailsInto()
+      );
+  }
   
   get(id): Observable<any> {
     return this.http.get(`${baseSidebarUrl}get-details-by-unitId/${id}`);
   }
-  getDetails(id): unitDetailsInto {
+  startLodingPeriodically(id:string)
+  {
+    setInterval(this.Load,10000,this.http,this.DetailsInfoSubject,id);
+
+  }
+
+  Load(http: HttpClient,UnitsDataSubject :BehaviorSubject<detailsInto>,id:string ) {
+    http.get(`${baseSidebarUrl}get-details-by-unitId/${id}`).subscribe((states)=>{
+     UnitsDataSubject.next(new unitDetailsInto(states).item);
+   })
+ }
+ 
+  getDetails(id:string): unitDetailsInto {
      var details=this.http.get(`${baseSidebarUrl}get-details-by-unitId/${id}`);
       return new unitDetailsInto(details);
   }
